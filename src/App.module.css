@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: #00436a;
+}
+
+:root{
+    ---text-color: #000000
+}
