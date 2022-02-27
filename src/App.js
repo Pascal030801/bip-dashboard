@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from '@chakra-ui/react';
+import { useState } from 'react';
+import Dasbor from './Components/Dasbor/Dasbor';
+import Login from './Components/Login/Login';
+
 
 function App() {
+  const [isLogin, setIsLogin] = useState(false);
+
+  const loginHandler = () => {
+    setIsLogin((prevState) => {
+      return !prevState;
+    })
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container bgColor={'blue.600'} p='0' minW={'full'}>
+        {!isLogin && <Login onLogin={loginHandler} />}
+        <Dasbor />
+    </Container>
   );
 }
 
