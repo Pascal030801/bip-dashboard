@@ -1,95 +1,130 @@
+.dasbor-layout {
+    display: flex;
+    flex-direction: row;
+    max-height: 100vh !important;
+}
+
+.sidebar {
+    background-color: #00436a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 200px;
+    min-height: 100vh;
+    max-height: 100vh;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo h1 {
+    text-align: center;
+}
+
+.logo img {
+    padding-top: 20px;
+    border-radius: 100%;
+}
+
+.divider{
+    border-top: 3px solid #343434;
+}
+
+.menu a{
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+}
+
+.sidebar .menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.sidebar .menu.active{
+    background-color: darkcyan;
+}
+
+.sidebar .menu.active:active{
+    background-color: #04afaf;
+}
+
+.sidebar .menu.active:hover{
+    background-color: #21d3d3;
+}
+
 .content {
-    position: fixed;
-	width: 70%;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	padding: 30px 15%;
-	/* background-color: #fff; */
-	overflow: auto;
-	z-index: 0;
-	-webkit-transform-origin: 0 50%;
-	-moz-transform-origin: 0 50%;
-	-ms-transform-origin: 0 50%;
-	-o-transform-origin: 0 50%;
-	transform-origin: 0 50%;
+    flex: 1 0;
+    min-height: 100vh;
+    max-height: 100vh;
+    background-color: white;
 }
 
-.content:after
-{
-	position: absolute;
-	content: ' ';
-	left: 100%;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	background-image: -webkit-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
-	background-image: -moz-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
-	background-image: -ms-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
-	background-image: -o-linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
-	background-image: linear-gradient(right, rgba(0,0,0,0.2) 0%, transparent 100%);
-	pointer-events: none;
+.content .outlet{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
 }
 
-nav
-{
-	position: fixed;
-	left: -16em;
-	top: 0;
-	bottom: 0;
-	background-color: #654;
-	border-right: 50px solid #765;
-	box-shadow: 4px 0 5px rgba(0,0,0,0.2);
-	z-index: 1;
-	cursor: pointer;
+.menu-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-nav:after
-{
-	position: absolute;
-	content: ' ';
-	width: 0;
-	height: 0;
-	right: -70px;
-	top: 50%;
-	border-width: 15px 10px;
-	border-style: solid;
-	border-color: transparent transparent transparent #765;
+.menu:active {
+    background-color: #0071b3;
 }
 
-nav ul
-{
-	width: 14em;
-	list-style-type: none;
-	margin: 0;
-	padding: 1em;
+.menu:hover{
+    background-color: #227db1;
 }
 
-.content, .content:after, nav, nav *
-{
-	-webkit-transition: all 600ms ease;
-	-moz-transition: all 600ms ease;
-	-ms-transition: all 600ms ease;
-	-o-transition: all 600ms ease;
-	transition: all 600ms ease;
+.menu.logout:active{
+    background-color: #a13838;
 }
 
-nav:hover
-{
-	left: 0;
+.menu .navlink{
+    flex: 1;
 }
 
-nav:hover ~ .content
-{
-	-webkit-transform: translateX(16em) perspective(600px) rotateY(10deg);
-	-moz-transform: translateX(16em) perspective(600px) rotateY(10deg);
-	-ms-transform: translateX(16em) perspective(600px) rotateY(10deg);
-	-o-transform: translateX(16em) perspective(600px) rotateY(10deg);
-	transform: translateX(16em) perspective(600px) rotateY(10deg);
+.logout {
+    background-color: #da0000;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-end;
+    margin-top: auto !important;
 }
 
-nav:hover ~ .content:after
-{
-	left: 60%;
+.menu.logout {
+    /* position: absolute; */
+    bottom: 0;
+}
+
+.menu.logout:hover{
+    background-color: #ff0000;
+}
+
+.logout :hover {
+    background-color: #ec4f4f;
+}
+
+.logout button {
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+}
+
+.logout button:hover{
+    background-color: transparent;
 }

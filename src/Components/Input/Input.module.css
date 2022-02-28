@@ -1,0 +1,18 @@
+.inputWrap{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.inputWrap > input {
+    height: 1.7rem;
+    border-radius: 8px;
+    padding-left: 1rem;
+    border: 1px solid #999;
+    flex: 1;
+    background-color: #83bddd;
+}
+
+.inputWrap > label {
+    flex-basis: 150px;
+}

@@ -28,7 +28,7 @@ const Login = (props) => {
                     <input id='password' type='password' name='password' />
                 </div>
 
-                <button>Masuk</button>
+                <button className={classes.loginbtn}>Masuk</button>
             </form>
         </div>
 

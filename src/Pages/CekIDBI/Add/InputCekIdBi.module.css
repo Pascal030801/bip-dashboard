@@ -1,0 +1,40 @@
+.wrapFormInputCekIdBi{
+    border: 2px solid #000;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 10px;
+    background-color: #c4e9ff;
+}
+
+.wrapFormInputCekIdBi > form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inputWrap{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.inputWrap > select {
+    height: 1.7rem;
+    border-radius: 8px;
+    padding-left: 1rem;
+    flex: 1;
+    border: 1px solid #999;
+    background-color: #83bddd;
+}
+
+.inputWrap > label {
+    flex-basis: 150px;
+}
+
+.wrapFormInputCekIdBi button {
+    height: 40px;
+    background-color: #0077bd;
+    color: white;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
