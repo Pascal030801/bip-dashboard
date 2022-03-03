@@ -7,9 +7,8 @@ import InputCekIdBi from './Pages/CekIDBI/Add/InputCekIdBi';
 
 function App() {
   const navigate = useNavigate();
-  const loginHandler = () => {
-    console.log('login');
-    localStorage.setItem("isLoggedIn", 1);
+  const loginHandler = (token) => {
+    localStorage.setItem("token", token);
     navigate("/", { replace: true })
   }
 

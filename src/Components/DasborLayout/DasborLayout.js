@@ -8,14 +8,14 @@ const DasborLayout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem("isLoggedIn") !== "1") {
+    if (localStorage.getItem("token") === null) {
       navigate("/login", { replace: true });
     }
   }, [navigate]);
 
   const logoutHandler = (e) => {
     e.preventDefault();
-    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("token");
     navigate("/login", { replace: true });
 
   }
