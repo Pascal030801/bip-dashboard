@@ -31,7 +31,8 @@ const InputCekIdBi = () => {
         pasangan_pengaju_phone_number: '',
         pasangan_pengaju_status_perkawinan: '',
         status: '',
-        bank_terpilih: ''        
+        bank_terpilih: '',
+        perumahan_id: '',    
 
     });
 
@@ -97,6 +98,13 @@ const InputCekIdBi = () => {
                     </div>
 
                     <div className={classes.inputWrap}>
+                        <label htmlFor='perumahan_id'>Nama Perumahan</label>
+                        <select id='perumahan_id' name='perumahan_id' value={formData.perumahan_id} onChange={onChangeHandler}>
+                            <option value='1'>SEKIDA VILLAGE PERMAI</option>
+                        </select>
+                    </div>
+
+                    <div className={classes.inputWrap}>
                         <label htmlFor='bank_terpilih'>Bank yang menerima pengajuan</label>
                         <select id='bank_terpilih' name='bank_terpilih' value={formData.bank_terpilih} onChange={onChangeHandler}>
                             <option value='BNI'>BNI</option>
@@ -105,6 +113,7 @@ const InputCekIdBi = () => {
                             <option value='Mandiri'>Mandiri</option>
                         </select>
                     </div>
+                    
                     <div className={classes.tabs}>
                         <div className={classes.tab}>
                             <input type="checkbox" id="chck1" className={classes.accordionCheck} />
