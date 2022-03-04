@@ -1,18 +1,21 @@
 .inputWrap{
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    align-items: center;
 }
 
 .inputWrap > input {
     height: 1.7rem;
     border-radius: 8px;
     padding-left: 1rem;
+    margin-left: 1rem;
     border: 1px solid #999;
-    flex: 1;
+    width: 100%;
+    margin-bottom: 0.75rem;
     background-color: #83bddd;
 }
 
 .inputWrap > label {
     flex-basis: 150px;
+    margin-bottom: 0.75rem;
 }

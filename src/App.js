@@ -4,6 +4,7 @@ import classes from './App.module.css';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import CekIdBi from './Pages/CekIDBI/CekIdBi';
 import InputCekIdBi from './Pages/CekIDBI/Add/InputCekIdBi';
+import React from 'react';
 
 function App() {
   const navigate = useNavigate();

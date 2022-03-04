@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from './Login.module.css';
+import PropTypes from 'prop-types';
 
 
 const BASE_PATH_API = process.env.REACT_APP_API_URL;
@@ -17,11 +18,10 @@ const Login = (props) => {
         axios.post(`${BASE_PATH_API}/login`, {
             email: inputtedEmail,
             password: inputtedPassword,
-
         }).then((response) => {
             props.onLogin(response.data.token);
-
         }).catch((error) => {
+            console.log(error)
             setIsError(true)
         });
     }
@@ -61,5 +61,9 @@ const Login = (props) => {
 
     )
 }
+
+Login.propTypes = {
+    onLogin: PropTypes.func.isRequired,
+};
 
 export default Login
