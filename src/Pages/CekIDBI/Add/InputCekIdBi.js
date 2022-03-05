@@ -1,11 +1,14 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Input from '../../../Components/Input/Input'
 import classes from './InputCekIdBi.module.css'
 
 const InputCekIdBi = () => {
     const BASE_PATH_API = process.env.REACT_APP_API_URL;
+
+    const [isSubmitBtnDisabled, setIsSubmitBtnDisabled] = useState(false);
 
     const navigate = useNavigate();
 
@@ -38,15 +41,60 @@ const InputCekIdBi = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        
+        setIsSubmitBtnDisabled(true);
+        const id = toast.loading("Sedang menambahkan data ke server");
+
         axios.post(`${BASE_PATH_API}/cek_id_bi`, formData, {
             headers: {
                 "AUTH-BIP-TOKEN": localStorage.getItem("token")
             }
         }).then((response) => {
             console.log(response);
-            navigate('/cekIdBi', { replace: true });
+            toast.update(id, {
+                render: 'Berhasil Menambahkan Cek ID BI data',
+                type: 'success',
+                position: 'top-right',
+                autoClose: 500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: 1,
+                isLoading: false,              
+            });
+            setTimeout(()=> {
+                navigate('/cekIdBi', { replace: true });
+            }, 800);
+
         }).catch((error) => {
-            console.log(error.message)
+            if (error.response) {
+                // Request made and server responded
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                // The request was made but no response was received
+                console.log(error.request);
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message);
+            }
+
+            toast.update(id, {
+                render: 'Gagal Menambahkan Cek ID BI data',
+                type: 'error',
+                position: 'top-right',
+                autoClose: 500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: 1,
+                isLoading: false
+            });
+            setIsSubmitBtnDisabled(false);
+
         })
     };
 
@@ -68,10 +116,6 @@ const InputCekIdBi = () => {
 
         })
     }
-
-    useEffect(() => {
-        console.log(formData)
-    }, [formData])
 
     return (
         <div className={classes.InputCekIdBi}>
@@ -150,7 +194,7 @@ const InputCekIdBi = () => {
                             )
                         }
                     </div>
-                    <button>TAMBAH</button>
+                    <button disabled={isSubmitBtnDisabled}>TAMBAH</button>
                 </form>
             </div>
         </div>

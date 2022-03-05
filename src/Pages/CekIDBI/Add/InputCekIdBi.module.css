@@ -39,6 +39,10 @@
     border-radius: 10px;
 }
 
+.wrapFormInputCekIdBi button:disabled {
+    background-color: #555555;
+}
+
 .tabs {
     border-radius: 8px;
     overflow: hidden;

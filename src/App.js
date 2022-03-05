@@ -5,6 +5,8 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import CekIdBi from './Pages/CekIDBI/CekIdBi';
 import InputCekIdBi from './Pages/CekIDBI/Add/InputCekIdBi';
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ function App() {
 
   return (
     <div className={classes.app}>
+      <ToastContainer />
       <Routes>
         <Route path="/login" element={<Login onLogin={loginHandler} />} />
         <Route path="/" element={<DasborLayout />}>
