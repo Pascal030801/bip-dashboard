@@ -18,20 +18,14 @@ const InputCekIdBi = () => {
         pengaju_tempat_lahir: '',
         pengaju_tanggal_lahir: '',
         pengaju_nik_id: '',
-        pengaju_npwp_id: '',
-        pengaju_kk_id: '',
         pengaju_address: '',
-        pengaju_phone_number: '',
         pengaju_status_perkawinan: '',
         pasangan_pengaju_full_name: '',
         pasangan_pengaju_pekerjaan: '',
         pasangan_pengaju_tempat_lahir: '',
         pasangan_pengaju_tanggal_lahir: '',
         pasangan_pengaju_nik_id: '',
-        pasangan_pengaju_npwp_id: '',
-        pasangan_pengaju_kk_id: '',
         pasangan_pengaju_address: '',
-        pasangan_pengaju_phone_number: '',
         pasangan_pengaju_status_perkawinan: '',
         status: '',
         bank_terpilih: '',
@@ -100,7 +94,7 @@ const InputCekIdBi = () => {
 
     const onChangeHandler = (e) => {
         if(e.target.name === 'pengaju_status_perkawinan') {
-            if(e.target.value === 'Sudah Menikah'){
+            if(e.target.value === 'Kawin'){
                 return setFormData((prevState) => {
                     return {...prevState, pengaju_status_perkawinan: e.target.value, pasangan_pengaju_status_perkawinan: e.target.value}
                 })
@@ -125,10 +119,10 @@ const InputCekIdBi = () => {
                     <div className={classes.inputWrap}>
                         <label htmlFor='pengaju_status_perkawinan'>Status Pernikahan</label>
                         <select id='pengaju_status_perkawinan' name='pengaju_status_perkawinan' value={formData.pengaju_status_perkawinan} onChange={onChangeHandler}>
-                            <option value='Lajang'>Lajang</option>
-                            <option value='Sudah Menikah'>Sudah Menikah</option>
-                            <option value='Janda'>Janda</option>
-                            <option value='Duda'>Duda</option>
+                            <option value='Belum Kawin'>Belum Kawin</option>
+                            <option value='Kawin'>Kawin</option>
+                            <option value='Cerai Hidup'>Cerai Hidup</option>
+                            <option value='Cerai Mati'>Cerai Mati</option>
                         </select>
                     </div>
 
@@ -155,6 +149,7 @@ const InputCekIdBi = () => {
                             <option value='BTN'>BTN</option>
                             <option value='BRI'>BRI</option>
                             <option value='Mandiri'>Mandiri</option>
+                            <option value='BPD KALBAR'>BPD KALBAR</option>
                         </select>
                     </div>
                     
@@ -168,13 +163,10 @@ const InputCekIdBi = () => {
                                 <Input required type={'text'} id={'pengaju_tempat_lahir'} label={'Tempat Lahir Pengaju'} onChange={onChangeHandler} />
                                 <Input required type={'date'} id={'pengaju_tanggal_lahir'} label={'Tanggal Lahir Pengaju'} onChange={onChangeHandler} />
                                 <Input required type={'number'} id={'pengaju_nik_id'} label={'Nomor KTP (NIK) Pengaju'} onChange={onChangeHandler} />
-                                <Input required type={'number'} id={'pengaju_npwp_id'} label={'NPWP Pengaju'} onChange={onChangeHandler} />
-                                <Input required type={'number'} id={'pengaju_kk_id'} label={'Nomor KK Pengaju'} onChange={onChangeHandler} />
                                 <Input required type={'text'} id={'pengaju_address'} label={'Alamat Pengaju (Sesuai KTP)'} onChange={onChangeHandler} />
-                                <Input required type={'number'} id={'pengaju_phone_number'} label={'Nomor HP Pengaju'} onChange={onChangeHandler} />
                             </div>
                         </div>
-                        { formData.pengaju_status_perkawinan === "Sudah Menikah" && 
+                        { formData.pengaju_status_perkawinan === "Kawin" && 
                             (
                                 <div className={classes.tab}>
                                     <input type="checkbox" id="chck2" className={classes.accordionCheck} />
@@ -185,10 +177,7 @@ const InputCekIdBi = () => {
                                         <Input type={'text'} id={'pasangan_pengaju_tempat_lahir'} label={'Tempat Lahir Pasangan Pengaju'} onChange={onChangeHandler} />
                                         <Input type={'date'} id={'pasangan_pengaju_tanggal_lahir'} label={'Tanggal Lahir Pasangan Pengaju'} onChange={onChangeHandler} />
                                         <Input type={'text'} id={'pasangan_pengaju_nik_id'} label={'Nomor KTP (NIK) Pasangan Pengaju'} onChange={onChangeHandler} />
-                                        <Input type={'text'} id={'pasangan_pengaju_npwp_id'} label={'NPWP Pasangan Pengaju'} onChange={onChangeHandler} />
-                                        <Input type={'text'} id={'pasangan_pengaju_kk_id'} label={'Nomor KK Pasangan Pengaju'} onChange={onChangeHandler} />
                                         <Input type={'text'} id={'pasangan_pengaju_address'} label={'Alamat Pasangan Pengaju (Sesuai KTP)'} onChange={onChangeHandler} />
-                                        <Input type={'text'} id={'pasangan_pengaju_phone_number'} label={'Nomor HP Pasangan Pengaju'} onChange={onChangeHandler} />
                                     </div>
                                 </div>
                             )
