@@ -18,6 +18,36 @@ const InputCekIdBi = () => {
         pengaju_tempat_lahir: '',
         pengaju_tanggal_lahir: '',
         pengaju_nik_id: '',
+        pengaju_provinsi: '',
+        pengaju_kabupaten: '',
+        pengaju_kecamatan: '',
+        pengaju_desa: '',
+        pengaju_rtrw: '',
+        pengaju_full_address: '',
+        pengaju_status_perkawinan: '',
+        pasangan_pengaju_full_name: '',
+        pasangan_pengaju_pekerjaan: '',
+        pasangan_pengaju_tempat_lahir: '',
+        pasangan_pengaju_tanggal_lahir: '',
+        pasangan_pengaju_nik_id: '',
+        pasangan_pengaju_provinsi: '',
+        pasangan_pengaju_kabupaten: '',
+        pasangan_pengaju_kecamatan: '',
+        pasangan_pengaju_desa: '',
+        pasangan_pengaju_rtrw: '',
+        pasangan_pengaju_full_address: '',
+        pasangan_pengaju_status_perkawinan: '',
+        status: '',
+        bank_terpilih: '',
+        perumahan_id: '',
+    });
+
+    const [errorForm, setErrorForm] = useState({
+        pengaju_full_name: '',
+        pengaju_pekerjaan: '',
+        pengaju_tempat_lahir: '',
+        pengaju_tanggal_lahir: '',
+        pengaju_nik_id: '',
         pengaju_address: '',
         pengaju_status_perkawinan: '',
         pasangan_pengaju_full_name: '',
@@ -29,14 +59,83 @@ const InputCekIdBi = () => {
         pasangan_pengaju_status_perkawinan: '',
         status: '',
         bank_terpilih: '',
-        perumahan_id: '',    
-
+        perumahan_id: '',
     });
 
     const submitHandler = (e) => {
         e.preventDefault();
         
         setIsSubmitBtnDisabled(true);
+
+        let isError = false;
+
+        if(formData.pengaju_full_name === ''){
+            setErrorForm((prevState) => ({...prevState, pengaju_full_name: 'Nama lengkap pengaju wajib di isi'}));
+            isError = true;
+        }
+
+        if(formData.pengaju_pekerjaan === ''){
+            setErrorForm((prevState) => ({...prevState, pengaju_pekerjaan: 'Pekerjaan pengaju wajib di isi'}));
+            isError = true;
+        }
+
+        if(formData.pengaju_tempat_lahir === ''){
+            setErrorForm((prevState) => ({...prevState, pengaju_tempat_lahir: 'Tempat lahir pengaju wajib di isi'}));
+            isError = true;
+        }
+
+        if(formData.pengaju_tanggal_lahir === ''){
+            setErrorForm((prevState) => ({...prevState, pengaju_tanggal_lahir: 'Tanggal lahir pengaju wajib di isi'}));
+            isError = true;
+        }
+
+        if(formData.pengaju_nik_id === ''){
+            setErrorForm((prevState) => ({...prevState, pengaju_nik_id: 'NIK wajib di isi'}));
+            isError = true;
+        }else if(!(/^[-]?(\d+)$/.test(formData.pengaju_nik_id))){
+            setErrorForm((prevState) => ({...prevState, pengaju_nik_id: 'NIK tidak valid'}));
+            isError = true;
+        }else if(formData.pengaju_nik_id.length !== 16){
+            setErrorForm((prevState) => ({...prevState, pengaju_nik_id: 'NIK tidak valid'}));
+            isError = true;
+        }
+
+        if(formData.pengaju_provinsi === ''){
+            setErrorForm((prevState) => ({...prevState, pengaju_address: 'Alamat pengaju wajib di isi'}));
+            isError = true;
+        }
+
+        if(formData.pengaju_kabupaten === ''){
+            setErrorForm((prevState) => ({...prevState, pengaju_address: 'Alamat pengaju wajib di isi'}));
+            isError = true;
+        }
+
+        if(formData.pengaju_kecamatan === ''){
+            setErrorForm((prevState) => ({...prevState, pengaju_address: 'Alamat pengaju wajib di isi'}));
+            isError = true;
+        }
+
+        if(formData.pengaju_desa === ''){
+            setErrorForm((prevState) => ({...prevState, pengaju_address: 'Alamat pengaju wajib di isi'}));
+            isError = true;
+        }
+
+        if(formData.pengaju_rtrw === ''){
+            setErrorForm((prevState) => ({...prevState, pengaju_address: 'Alamat pengaju wajib di isi'}));
+            isError = true;
+        }
+
+        if(formData.pengaju_full_address === ''){
+            setErrorForm((prevState) => ({...prevState, pengaju_address: 'Alamat pengaju wajib di isi'}));
+            isError = true;
+        }
+
+
+
+        if(isError){
+            toast.error("Pastikan data input sudah benar", {autoClose: 500});
+        }
+
         const id = toast.loading("Sedang menambahkan data ke server");
 
         axios.post(`${BASE_PATH_API}/cek_id_bi`, formData, {
@@ -59,7 +158,7 @@ const InputCekIdBi = () => {
             });
             setTimeout(()=> {
                 navigate('/cekIdBi', { replace: true });
-            }, 800);
+            }, 1500);
 
         }).catch((error) => {
             if (error.response) {
@@ -158,12 +257,37 @@ const InputCekIdBi = () => {
                             <input type="checkbox" id="chck1" className={classes.accordionCheck} />
                             <label className={classes['tab-label']} htmlFor="chck1">Data Pengaju</label>
                             <div className={classes['tab-content']}>
-                                <Input required type={'text'} className={classes.inputForm} id={'pengaju_full_name'} label={'Nama Lengkap Pengaju'} onChange={onChangeHandler} />
-                                <Input required type={'text'} id={'pengaju_pekerjaan'} label={'Pekerjaan Pengaju'} onChange={onChangeHandler} />
-                                <Input required type={'text'} id={'pengaju_tempat_lahir'} label={'Tempat Lahir Pengaju'} onChange={onChangeHandler} />
-                                <Input required type={'date'} id={'pengaju_tanggal_lahir'} label={'Tanggal Lahir Pengaju'} onChange={onChangeHandler} />
-                                <Input required type={'number'} id={'pengaju_nik_id'} label={'Nomor KTP (NIK) Pengaju'} onChange={onChangeHandler} />
-                                <Input required type={'text'} id={'pengaju_address'} label={'Alamat Pengaju (Sesuai KTP)'} onChange={onChangeHandler} />
+                                <Input type={'text'} className={classes.inputForm} id={'pengaju_full_name'} label={'Nama Lengkap Pengaju'} onChange={onChangeHandler} />
+                                <Input type={'text'} id={'pengaju_pekerjaan'} label={'Pekerjaan Pengaju'} onChange={onChangeHandler} />
+                                <Input type={'text'} id={'pengaju_tempat_lahir'} label={'Tempat Lahir Pengaju'} onChange={onChangeHandler} />
+                                <Input type={'date'} id={'pengaju_tanggal_lahir'} label={'Tanggal Lahir Pengaju'} onChange={onChangeHandler} />
+                                <Input type={'number'} id={'pengaju_nik_id'} label={'Nomor KTP (NIK) Pengaju'} onChange={onChangeHandler} />
+                                <div className={classes.inputWrap}>
+                                    <label htmlFor='pengaju_provinsi'>Provinsi</label>
+                                    <select id='pengaju_provinsi' name='pengaju_provinsi' value={formData.pengaju_provinsi} onChange={onChangeHandler}>
+                                        <option value='Kalimantan Barat'>Kalimantan Barat</option>
+                                    </select>
+                                </div>
+                                <div className={classes.inputWrap}>
+                                    <label htmlFor='pengaju_kabupaten'>Kabupaten</label>
+                                    <select id='pengaju_kabupaten' name='pengaju_kabupaten' value={formData.pengaju_kabupaten} onChange={onChangeHandler}>
+                                        <option value='Bengkayang'>Bengkayang</option>
+                                    </select>
+                                </div>
+                                <div className={classes.inputWrap}>
+                                    <label htmlFor='pengaju_kecamatan'>Kecamatan</label>
+                                    <select id='pengaju_kecamatan' name='pengaju_kecamatan' value={formData.pengaju_kecamatan} onChange={onChangeHandler}>
+                                        <option value='Bengkayang'>Bengkayang</option>
+                                    </select>
+                                </div>
+                                <div className={classes.inputWrap}>
+                                    <label htmlFor='pengaju_desa'>Desa/Kelurahan</label>
+                                    <select id='pengaju_desa' name='pengaju_desa' value={formData.pengaju_desa} onChange={onChangeHandler}>
+                                        <option value='Bani Amas'>Bani Amas</option>
+                                    </select>
+                                </div>
+                                <Input type={'text'} id={'pengaju_rtrw'} label={'RT/RW'} onChange={onChangeHandler} />
+                                <Input type={'text'} id={'pengaju_full_address'} label={'Alamat Pengaju (Sesuai KTP)'} onChange={onChangeHandler} />
                             </div>
                         </div>
                         { formData.pengaju_status_perkawinan === "Kawin" && 
@@ -177,7 +301,32 @@ const InputCekIdBi = () => {
                                         <Input type={'text'} id={'pasangan_pengaju_tempat_lahir'} label={'Tempat Lahir Pasangan Pengaju'} onChange={onChangeHandler} />
                                         <Input type={'date'} id={'pasangan_pengaju_tanggal_lahir'} label={'Tanggal Lahir Pasangan Pengaju'} onChange={onChangeHandler} />
                                         <Input type={'text'} id={'pasangan_pengaju_nik_id'} label={'Nomor KTP (NIK) Pasangan Pengaju'} onChange={onChangeHandler} />
-                                        <Input type={'text'} id={'pasangan_pengaju_address'} label={'Alamat Pasangan Pengaju (Sesuai KTP)'} onChange={onChangeHandler} />
+                                        <div className={classes.inputWrap}>
+                                            <label htmlFor='pasangan_pengaju_provinsi'>Provinsi</label>
+                                            <select id='pasangan_pengaju_provinsi' name='pasangan_pengaju_provinsi' value={formData.pasangan_pengaju_provinsi} onChange={onChangeHandler}>
+                                                <option value='Kalimantan Barat'>Kalimantan Barat</option>
+                                            </select>
+                                        </div>
+                                        <div className={classes.inputWrap}>
+                                            <label htmlFor='pasangan_pengaju_kabupaten'>Kabupaten</label>
+                                            <select id='pasangan_pengaju_kabupaten' name='pasangan_pengaju_kabupaten' value={formData.pasangan_pengaju_kabupaten} onChange={onChangeHandler}>
+                                                <option value='Bengkayang'>Bengkayang</option>
+                                            </select>
+                                        </div>
+                                        <div className={classes.inputWrap}>
+                                            <label htmlFor='pasangan_pengaju_kecamatan'>Kecamatan</label>
+                                            <select id='pasangan_pengaju_kecamatan' name='pasangan_pengaju_kecamatan' value={formData.pasangan_pengaju_kecamatan} onChange={onChangeHandler}>
+                                                <option value='Bengkayang'>Bengkayang</option>
+                                            </select>
+                                        </div>
+                                        <div className={classes.inputWrap}>
+                                            <label htmlFor='pasangan_pengaju_desa'>Desa/Kelurahan</label>
+                                            <select id='pasangan_pengaju_desa' name='pasangan_pengaju_desa' value={formData.pasangan_pengaju_desa} onChange={onChangeHandler}>
+                                                <option value='Bani Amas'>Bani Amas</option>
+                                            </select>
+                                        </div>
+                                        <Input type={'text'} id={'pasangan_pengaju_rtrw'} label={'RT/RW'} onChange={onChangeHandler} />
+                                        <Input type={'text'} id={'pasangan_pengaju_full_address'} label={'Alamat Pasangan Pengaju (Sesuai KTP)'} onChange={onChangeHandler} />
                                     </div>
                                 </div>
                             )

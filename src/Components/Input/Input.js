@@ -4,18 +4,21 @@ import PropTypes from 'prop-types';
 
 const Input = (props) => {
     return (
-        <div className={classes.inputWrap}>
-            <label className={classes.inputLabel} htmlFor={props.id}>{props.label}</label>
-            <input 
-                required={props.required} 
-                type={props.type} 
-                id={props.id} 
-                name={props.id} 
-                onChange={props.onChange} 
-                onKeyPress={(e) => {
-                    return e.key === 'Enter' && e.preventDefault(); 
-                }} 
-            />
+        <div>
+            <div className={classes.inputWrap}>
+                <label className={classes.inputLabel} htmlFor={props.id}>{props.label}</label>
+                <input 
+                    required={props.required} 
+                    type={props.type} 
+                    id={props.id} 
+                    name={props.id} 
+                    onChange={props.onChange} 
+                    onKeyPress={(e) => {
+                        return e.key === 'Enter' && e.preventDefault(); 
+                    }} 
+                />
+            </div>
+            {props.errorMsg !== '' && <p style={{color: 'red'}}>{props.errorMsg}</p>}
         </div>
     )
 }
@@ -25,11 +28,13 @@ Input.propTypes = {
     label: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    required: PropTypes.bool
+    required: PropTypes.bool,
+    errorMsg: PropTypes.string
 };
 
 Input.defaultValue = {
-    required: false
+    required: false,
+    errorMsg: ''
 }
 
 export default Input
