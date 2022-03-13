@@ -1,7 +1,9 @@
 .cekIdBi {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    padding: 25px;
+}
+
+.title {
+    margin-bottom: 30px;
 }
 
 .addData button{
@@ -12,6 +14,7 @@
     border: 0px none;
     background-color: #630063;
     color: white;
+    margin-bottom: 25px;
 }
 
 .addData button:hover{
@@ -22,10 +25,14 @@
     background-color: #cc02cc;
 }
 
-.selectPerumahan{
+/* .selectPerumahan{
     display: flex;
     flex-direction: column;
     gap: 10px;
+} */
+
+.selectPerumahan {
+    margin-bottom: 30px;
 }
 
 .selectPerumahan select{

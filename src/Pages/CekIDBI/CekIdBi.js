@@ -25,6 +25,7 @@ const CekIdBi = () => {
                     <option value='2'>Perumahan Jagoi</option>
                 </select>
             </div>
+            
             <div className={classes.wrapTableDataCekIdBi}>
                 <table className={classes.tableDataCekIdBi}>
                     <thead>

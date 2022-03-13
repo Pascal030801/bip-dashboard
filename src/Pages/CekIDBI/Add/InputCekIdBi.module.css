@@ -4,12 +4,19 @@
     margin-top: 30px;
     border-radius: 10px;
     background-color: #c4e9ff;
+    /* max-height: 100%; */
 }
 
 .wrapFormInputCekIdBi > form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.wrapDataPengaju {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .inputWrap{
@@ -22,8 +29,8 @@
     height: 1.7rem;
     border-radius: 8px;
     padding-left: 1rem;
-    flex: 1;
     border: 1px solid #999;
+    width: 100%;
     background-color: #83bddd;
 }
 
@@ -97,8 +104,9 @@ input:checked + .tab-label::after{
 }
 
 input:checked ~ .tab-content {
-    max-height: 100vh;
-    padding: 1em;
+    /* max-height: 100%; */
+    /* height: fit-content; */
+    /* padding: 1em; */
 }
 
 /* Chrome, Safari, Edge, Opera */

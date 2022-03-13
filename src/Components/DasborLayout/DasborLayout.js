@@ -1,4 +1,5 @@
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 
@@ -22,49 +23,55 @@ const DasborLayout = () => {
 
   return (
     <div className={classes['dasbor-layout']}>
-      {/* NavBar */}
       <nav className={classes.sidebar}>
-        <div className={classes.logo}>
-          <img src='/Logo.jpg' alt={'Banyuke Intan Permai Logo'} />
-          <h1>{"BIP\nSistem Informasi"}</h1>
+        <div>
+          <img src='/LogoHD.jpg' className={classes.logo} />
         </div>
         <hr className={classes.divider} />
-
-        <ul className={classes['menu-list']}>
-          <li className={classes.menu}>
-            <NavLink className={classes.navlink} to={"cekIdBI"}>Cek ID BI</NavLink>
+        <ul>
+          <li>
+            <NavLink className={classes.navlink} to={"cekIdBI"}><span><FontAwesomeIcon icon="fa-solid fa-money-check-dollar" /></span><span>Cek ID BI</span></NavLink>
           </li>
           <hr className={classes.divider} />
 
-          <li className={`${classes.menu}`}>
-            <NavLink className={classes.navlink} to={"dokumenPengajuan"}>Dokumen Pengajuan</NavLink>
+          <li>
+            <NavLink className={classes.navlink} to={"dokumenPengajuan"}><span><FontAwesomeIcon icon="fa-solid fa-file-export" /></span><span>Dokumen Pengajuan</span></NavLink>
           </li>
           <hr className={classes.divider} />
 
-          <li className={`${classes.menu}`}>
-            <NavLink className={classes.navlink} to={"dokumenLanjutan"}>Dokumen Lanjutan</NavLink>
+          <li>
+            <NavLink className={classes.navlink} to={"dokumenLanjutan"}><span><FontAwesomeIcon icon="fa-solid fa-file-lines" /></span><span>Dokumen Lanjutan</span></NavLink>
           </li>
           <hr className={classes.divider} />
 
-          <li className={`${classes.menu}`}>
-            <NavLink className={classes.navlink} to={"dokumenLaporanPersiapanAkad"}>Dokumen Laporan Persiapan Akad</NavLink>
+          <li>
+            <NavLink className={classes.navlink} to={"dokumenLaporanPersiapanAkad"}><span><FontAwesomeIcon icon="fa-solid fa-file-contract" /></span><span>Dokumen Laporan Persiapan Akad</span></NavLink>
           </li>
           <hr className={classes.divider} />
 
-          <li className={`${classes.menu}`}>
-            <NavLink className={classes.navlink} to={"dokumenKelengkapanAkad"}>Dokumen Kelengkapan Akad</NavLink>
+          <li>
+            <NavLink className={classes.navlink} to={"dokumenKelengkapanAkad"}><span><FontAwesomeIcon icon="fa-solid fa-file-signature" /></span><span>Dokumen Kelengkapan Akad</span></NavLink>
           </li>
           <hr className={classes.divider} />
 
-          <li className={`${classes.menu} ${classes.logout}`} onClick={logoutHandler}>
-            <a href="/" className={classes.navlink}>KELUAR</a>
-          </li>
         </ul>
       </nav>
-      <div className={classes.content}>
-        <div className={classes.outlet}>
+
+      <div className={classes['main-content']}>
+        <header>
+          <div className={classes['header-content']}>
+            <div className={classes['profile-wrap']}>
+              <span>Ersapta Aristo</span>
+              <img src='/avatar-2.jpg' className={classes.profile} />
+            </div>
+          </div>
+        </header>
+        <main>
           <Outlet />
-        </div>
+        </main>
+        <footer>
+          <p>Copyright @Banyuke Intan Permai 2022</p>   
+        </footer>
       </div>
     </div>
   )

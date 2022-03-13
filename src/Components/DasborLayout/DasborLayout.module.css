@@ -1,121 +1,142 @@
 .dasbor-layout {
-    display: flex;
-    flex-direction: row;
-    max-height: 100vh !important;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+}
+
+.divider{
+    border-top: 3px solid #dfdfdf;
+    border-bottom: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    box-shadow: none;
 }
 
 .sidebar {
     background-color: #00436a;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    flex-basis: 200px;
-}
-
-.logo {
-    margin-left: auto;
-    margin-right: auto;
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo h1 {
-    text-align: center;
-}
-
-.logo img {
-    padding-top: 20px;
-    border-radius: 100%;
-}
-
-.divider{
-    border-top: 3px solid #343434;
-}
-
-.menu a{
-    color: white;
-    text-decoration: none;
-    padding: 1rem;
-}
-
-.sidebar .menu {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-.sidebar .menu.active{
-    background-color: darkcyan;
-}
-
-.sidebar .menu.active:active{
-    background-color: #04afaf;
-}
-
-.sidebar .menu.active:hover{
-    background-color: #21d3d3;
-}
-
-.content {
-    flex: 1 0;
+    width: 100%;
+    color: #fff;
     min-height: 100vh;
     max-height: 100vh;
-    /* background-color: #034870; */
-    background-color: #b1aeae;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
-.content .outlet{
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 30px;
+.sidebar a {
+    color: white;
+    padding: 15px 20px;
+    display: block;
 }
 
-.menu-list {
-    flex: 1;
+.sidebar ul {
     display: flex;
     flex-direction: column;
+    
 }
 
-.menu:active {
-    background-color: #0071b3;
+.sidebar .logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 20px;
 }
 
-.menu:hover{
-    background-color: #227db1;
+.main-content {
+    max-width: 100vw !important;
+    /* max-height: 100% !important; */
 }
 
-.menu.logout:active{
-    background-color: #a13838;
+.main-content header {
+    /* position: sticky;
+    position: -webkit-sticky; */
+    position: sticky;
+    top: 0;
+    background-color: #095887;
+    color: #000;
+    width: 100%;
+    height: 75px;   
+    margin: 0;
+    padding: 0 25px;
+
 }
 
-.menu .navlink{
-    flex: 1;
-}
-
-.logout {
-    background-color: #da0000;
-    display: flex !important;
+.main-content header .header-content{
+    display: flex;
+    height: 100%;
     align-items: center;
-    justify-content: center;
-    margin-top: auto !important;
+    flex-wrap: nowrap;
 }
 
-.menu.logout:hover{
-    background-color: #ff0000;
+
+.main-content footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: #fff;
+    border-top: 2px solid #000;
+    color: #000;
+    height: 50px;
+    font-size: 1rem;
 }
 
-.logout :hover {
-    background-color: #ec4f4f;
+.main-content footer p {
+    line-height: 50px;
+    padding-left: 20px;
 }
 
-.logout button {
-    background-color: transparent;
-    border-color: transparent;
-    color: white;
+
+.profile-wrap {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
 }
 
-.logout button:hover{
-    background-color: transparent;
+.main-content header .profile {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    display: flex;
+    justify-self: flex-end;
+}
+
+.main-content main{
+    overflow: auto;
+    /* overflow-anchor: inherit; */
+    padding:  25px 25px 90px;
+    background-color: #c3c6c9;
+    background-color: #fff;
+    /* max-height: min(calc(100% - 75px - 50px), calc(100vh - 75px - 50px)); */
+    /* min-height: calc(100vh - 75px - 50px); */
+    max-height: calc(100vh - 75px - 50px);
+    /* max-height: calc(100% - 75px - 50px); */
+    /* max-height: 100%; */
+}
+
+
+
+@media screen and (max-width: 550px) {
+    /* .dasbor-layout {
+        display: grid;
+        grid-template-columns: 50px auto;
+    } */
+
+    .sidebar {
+        min-height: 100vh;
+        max-height: 100vh;
+        /* max-height: 100vh; */
+    }
+
+    .main-content {
+        max-height: 100vh;
+        min-height: 100vh;
+        overflow: auto;
+    }
+
+    
 }

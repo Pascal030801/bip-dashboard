@@ -1,14 +1,19 @@
 * {
     margin: 0;
     padding: 0;
-}
-
-body {
-    min-width: 100vw;
-    min-height: 100vh;
-    background-color: black;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
 }
 
 :root{
-    ---text-color: #000000
+    --main-color: #027581;
+    --color-dark: #1D2231;
+    --text-grey: #8390A2;
+
+}
+
+body{
+    max-height: 100vh;
+    overflow: auto;
 }
