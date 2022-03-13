@@ -26,7 +26,7 @@ const InputCekIdBi = () => {
         pengaju_desa: '',
         pengaju_rtrw: '',
         pengaju_full_address: '',
-        pengaju_status_perkawinan: 'Kawin',
+        pengaju_status_perkawinan: '',
         pasangan_pengaju_full_name: '',
         pasangan_pengaju_pekerjaan: '',
         pasangan_pengaju_tempat_lahir: '',
@@ -284,7 +284,6 @@ const InputCekIdBi = () => {
                             />
                             <label className={classes['tab-label']} htmlFor="chck1">Data Pengaju</label>
                             <div className={classes['tab-content']} style={{maxHeight: isDataPengajuOpen ? 'fit-content' : 0}}>
-                                <div className={classes.wrapDataPengaju}>
                                     <Input type={'text'} className={classes.inputForm} id={'pengaju_full_name'} label={'Nama Lengkap Pengaju'} onChange={onChangeHandler} />
                                     <Input type={'text'} id={'pengaju_pekerjaan'} label={'Pekerjaan Pengaju'} onChange={onChangeHandler} />
                                     <Input type={'text'} id={'pengaju_tempat_lahir'} label={'Tempat Lahir Pengaju'} onChange={onChangeHandler} />
@@ -316,11 +315,9 @@ const InputCekIdBi = () => {
                                     </div>
                                     <Input type={'text'} id={'pengaju_rtrw'} label={'RT/RW'} onChange={onChangeHandler} />
                                     <Input type={'text'} id={'pengaju_full_address'} label={'Alamat Pengaju (Sesuai KTP)'} onChange={onChangeHandler} />
-                                    <label>Foto KTP</label>
-                                    <input type={'file'} id={'pengaju_foto_KTP'} label={'Foto KTP'} onChange={onChangeHandler} />
-                                </div>
                             </div>
                         </div>
+
                         { formData.pengaju_status_perkawinan === "Kawin" && 
                             (
                                 <div className={classes.tab}>

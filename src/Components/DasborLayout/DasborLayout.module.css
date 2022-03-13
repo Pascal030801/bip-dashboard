@@ -121,15 +121,11 @@
 
 
 @media screen and (max-width: 550px) {
-    /* .dasbor-layout {
-        display: grid;
-        grid-template-columns: 50px auto;
-    } */
+
 
     .sidebar {
         min-height: 100vh;
         max-height: 100vh;
-        /* max-height: 100vh; */
     }
 
     .main-content {
@@ -137,6 +133,5 @@
         min-height: 100vh;
         overflow: auto;
     }
-
     
 }
