@@ -7,13 +7,21 @@
 }
 
 :root{
-    --main-color: #027581;
+    --main-color: #00436A;
     --color-dark: #1D2231;
     --text-grey: #8390A2;
+    --primary-color: #3C5486;
+    --success-color: #8FDE7D;
+    --warning-color: #E9E35C;
+    --error-color: #EA5E5E;
+    --bg-body-color: #D7F3FF;
+    --header-color: #45739E;
+    --white-bluely-text: #EDF4FF;
 
 }
 
 body{
     max-height: 100vh;
     overflow: auto;
+    background-color: #D7F3FF;
 }

@@ -61,7 +61,7 @@ const DasborLayout = () => {
         <header>
           <div className={classes['header-content']}>
             <div className={classes['profile-wrap']}>
-              <span>Ersapta Aristo</span>
+              <h1 className={classes['user-fullname']}>Ersapta Aristo</h1>
               <img src='/avatar-2.jpg' className={classes.profile} />
             </div>
           </div>
