@@ -1,67 +1,29 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import ApiService from '../../Services/apiService';
+import bipErrorHandler from '../../Util/bipErrorHandler';
 import classes from './CekIdBi.module.css'
-
-const BASE_PATH_API = process.env.REACT_APP_API_URL;
 
 const CekIdBi = () => {
     const navigate = useNavigate();
-    const [cekIdBiData, setCekIdBiData] = useState([]);
     const [cekIdBiTable, setCekIdBiTable] = useState([]);
-    const [perumahanList, setPerumahanList] = useState([]);
     const [selectOptionPerumahanList, setSelectOptionPerumahanList] = useState([]);
+    const [selectedPerumahan, setSelectedPerumahan] = useState('all');
 
     const addDataHandler = (e) => {
         e.preventDefault();
         navigate("/cekIdBI/tambah");
     };
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-
-        axios.get(`${BASE_PATH_API}/cek_id_bis`, {
-            headers: {
-                "AUTH-BIP-TOKEN": token
-            }
-        }).then((res) => {
-            console.log(res.data)
-            const cekIdBis = res.data;
-            const formattedCekIdBis = []
-            if(cekIdBis.length > 0){
-                for(const cekIdBi of cekIdBis){
-                    console.log(cekIdBi)
-                    formattedCekIdBis.push((
-                        <tr key={cekIdBi.id}>
-                            <td>{cekIdBi.profil_pengaju.full_name}</td>
-                            <td>{cekIdBi.updated_by}</td>
-                            <td>{cekIdBi.status}</td>
-                            <td>
-                                <div className={classes.actionWrap}>
-                                    <div className={classes['edit-btn']}>EDIT</div>
-                                    <div className={classes['delete-btn']}>DELETE</div>
-                                </div>
-                            </td>
-                        </tr>
-                    ));
-                }
-                console.log(formattedCekIdBis)
-                setCekIdBiTable(formattedCekIdBis);
-            }
-        }).catch((err) => {
-            console.log(err)
-        });
-
-        axios.get(`${BASE_PATH_API}/house_areas`, {
-            headers: {
-                "AUTH-BIP-TOKEN": token
-            }
-        }).then((res) => {
-            console.log(res.data);
+    const fetchPerumahan = async () => {
+        try {
+            const res = await ApiService.getHouseAreas();
+    
             const houseAreas = res.data;
-            setPerumahanList(houseAreas);
-
-            const formattedHouseAreas = []
+            const formattedHouseAreas = [];
+    
             if(houseAreas.length > 0){
                 for(const houseArea of houseAreas){
                     formattedHouseAreas.push(
@@ -70,11 +32,77 @@ const CekIdBi = () => {
                 }
                 setSelectOptionPerumahanList(formattedHouseAreas);
             }
-        }).catch((err) => {
-            console.log(err)
-        });
+        } catch (error) {
+            console.log('error at Cek ID BI view: fetchPerumahan')
+            toast.error(bipErrorHandler(error))
+        }
+    }
 
+    /**
+     * 
+     * @param {string} perumahan_id 
+     */
+    const fetchCekIdBiData = async (perumahan_id) => {
+        try {
+            const res = await ApiService.getCekIdBis({perumahan_id: perumahan_id})
+
+            const cekIdBis = res.data;
+            const formattedCekIdBis = [];
+
+            if(cekIdBis.length > 0){
+                for(const cekIdBi of cekIdBis){
+                    formattedCekIdBis.push((
+                        <tr key={cekIdBi.id}>
+                            <td>{cekIdBi.profil_pengaju.full_name}</td>
+                            <td>{cekIdBi.updated_by}</td>
+                            <td>{cekIdBi.status}</td>
+                            <td>
+                                <div className={classes.actionWrap}>
+                                    <div className={classes['edit-btn']} onClick={(e) => editBtnHandler(e, cekIdBi.id)}>EDIT</div>
+                                    <div className={classes['delete-btn']}>DELETE</div>
+                                </div>
+                            </td>
+                        </tr>
+                    ));
+                }
+                setCekIdBiTable(formattedCekIdBis);
+            }
+
+        } catch (error) {
+            console.log('error at Cek ID BI view: fetchPerumahan')
+            toast.error(bipErrorHandler(error))
+
+        }
+    }
+
+    const fetchData = async () => {
+        try {
+            await fetchPerumahan();
+            await fetchCekIdBiData(selectedPerumahan);
+        } catch (error) {
+            
+        }
+    }
+
+    useEffect(() => {
+        fetchData();        
     }, []);
+
+    /**
+     * 
+     * @param {Event} e 
+     */
+    const selectPerumahanChangeHandler = (e) => {
+        setSelectedPerumahan(e.target.value);
+    }
+
+    useEffect(() => {
+        fetchCekIdBiData(selectedPerumahan);
+    }, [selectedPerumahan])
+
+    const editBtnHandler = (e, id) => {
+        navigate(`/cekIdBI/update/${id}`);
+    }
 
     return (
         <div className={classes.cekIdBi}>
@@ -86,11 +114,11 @@ const CekIdBi = () => {
             </div>
             <div className={classes.selectPerumahan}>
                 <label htmlFor='perumahan'>Nama Perumahan</label>
-                <select id='perumahan' name='perumahan'>
+                <select id='perumahan' name='perumahan' value={selectedPerumahan} onChange={selectPerumahanChangeHandler}>
+                    <option value={'all'}>Semua</option>
                     {selectOptionPerumahanList}
                 </select>
             </div>
-            {console.log(cekIdBiTable)}
             {cekIdBiTable.length > 0 && (
                 <div className={classes.wrapTableDataCekIdBi}>
                     <table className={classes.tableDataCekIdBi}>

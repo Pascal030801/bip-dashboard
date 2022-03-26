@@ -28,6 +28,7 @@ function App() {
         <Route path="/" element={<DasborLayout />}>
           <Route path="cekIdBI" element={<CekIdBi />} />
           <Route path="cekIdBI/tambah" element={<InputCekIdBi />} />
+          <Route path="cekIdBI/update/:id" element={<InputCekIdBi />} />
           <Route path="dokumenPengajuan" element={<div><h1>Dokumen Pengajuan</h1></div>} />
           <Route path="dokumenLanjutan" element={<div><h1>Dokumen Lanjutan</h1></div>} />
           <Route path="dokumenLaporanPersiapanAkad" element={<div><h1>Dokumen Laporan Persiapan Akad</h1></div>} />

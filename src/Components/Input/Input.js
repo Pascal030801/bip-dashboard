@@ -2,22 +2,31 @@ import React from 'react'
 import classes from './Input.module.css';
 import PropTypes from 'prop-types';
 
+function  moviePropsAreEqual(prevMovie, nextMovie) {
+    return prevMovie.value === nextMovie.value 
+    && prevMovie.errorMsg === nextMovie.errorMsg 
+    && prevMovie.hasError === nextMovie.hasError;
+}
+
 const Input = (props) => {
     return (
-        <div className={classes.inputWrap}>
+        <div className={`${classes.inputWrap} ${props.className}`} key={props.id}>
             <label className={classes.inputLabel} htmlFor={props.id}>{props.label}</label>
-            <input 
-                required={props.required} 
-                type={props.type} 
-                id={props.id} 
-                name={props.id} 
-                onChange={props.onChange} 
-                onKeyPress={(e) => {
-                    return e.key === 'Enter' && e.preventDefault(); 
-                }} 
-            />
-            {props.errorMsg !== '' && <span style={{color: 'red'}}>{props.errorMsg}</span>}
-
+            <div className={classes.inputCom}>
+                <input 
+                    required={props.required} 
+                    type={props.type} 
+                    id={props.id} 
+                    name={props.id} 
+                    onChange={props.onChange} 
+                    onKeyPress={(e) => {
+                        return e.key === 'Enter' && e.preventDefault(); 
+                    }} 
+                    onBlur={props.onBlur}
+                    value={props.value}
+                />
+                {props.errorMsg !== '' && <span style={{color: 'red'}}>{props.errorMsg}</span>}
+            </div>
         </div>
     )
 }
@@ -36,4 +45,4 @@ Input.defaultValue = {
     errorMsg: ''
 }
 
-export default Input
+export default React.memo(Input, moviePropsAreEqual);

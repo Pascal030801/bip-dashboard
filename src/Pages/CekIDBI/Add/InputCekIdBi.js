@@ -2,15 +2,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import FormData from 'form-data';
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Input from '../../../Components/Input/Input'
+import useInput from '../../../Hooks/useInput';
+import ApiService from '../../../Services/apiService';
+import bipErrorHandler from '../../../Util/bipErrorHandler';
+import validation from '../../../Util/validation';
 import classes from './InputCekIdBi.module.css'
 
 const InputCekIdBi = () => {
     const BASE_PATH_API = process.env.REACT_APP_API_URL;
+    const {id: cekIdBI__ID} = useParams();
+    const inputWrapClasses = classes.cekIdBi__input;
 
     const [isSubmitBtnDisabled, setIsSubmitBtnDisabled] = useState(false);
+
     const [isDataPengajuOpen, setIsDataPengajuOpen] = useState(false);
     const [isDataPasanganPengajuOpen, setIsDataPasanganPengajuOpen] = useState(false);
     const [perumahanList, setPerumahanList] = useState([]);
@@ -30,23 +37,60 @@ const InputCekIdBi = () => {
     const [selectOptionDesaList, setSelectOptionDesaList] = useState([]);
     const [selectOptionDesaPasanganPengajuList, setSelectOptionDesaPasanganPengajuList] = useState([]);
 
-    const navigate = useNavigate();
-    const [imageFotoKTP, setImageFotoKTP] = useState(null);
-    const [imageFotoKTPPasangan, setImageFotoKTPPasangan] = useState(null);
+    const pengajuFullName = useInput((val) => {
+        console.log('value: ', val)
+        return validation.empty(val);
+    })
+
+    const pengajuPekerjaan = useInput((val) => {
+        return validation.empty(val);
+    });
+
+    const pengajuTempatLahir = useInput((val) => {
+        return validation.empty(val);
+    });
+
+    const pengajuTanggalLahir = useInput((val) => {
+        return validation.empty(val);
+    });
+
+    const pengajuNikId = useInput((val) => {
+        return validation.empty(val);
+    });
+
+    const pengajuProvinsi = useInput((val) => {
+        return validation.empty(val);
+    });
+
+    const pengajuKabupaten = useInput((val) => {
+        return validation.empty(val);
+    });
+
+    const pengajuKecamatan = useInput((val) => {
+        return validation.empty(val);
+    });
+
+    const pengajuDesa = useInput((val) => {
+        return validation.empty(val);
+    });
+
+    const pengajuRtRw = useInput((val) => {
+        return validation.empty(val);
+    });
+
+    const pengajuFullAddress = useInput((val) => {
+        return validation.empty(val);
+    });
+
+    const pengajuStatusPerkawinan = useInput((val) => {
+        return validation.empty(val);
+    });
+
+    const pengajuFotoKTP = useInput((val) => {
+        return validation.empty(val);
+    });
+
     const [formData, setFormData] = useState({
-        pengaju_full_name: '',
-        pengaju_pekerjaan: '',
-        pengaju_tempat_lahir: '',
-        pengaju_tanggal_lahir: '',
-        pengaju_nik_id: '',
-        pengaju_provinsi: -1,
-        pengaju_kabupaten: -1,
-        pengaju_kecamatan: -1,
-        pengaju_desa: -1,
-        pengaju_rtrw: '',
-        pengaju_full_address: '',
-        pengaju_status_perkawinan: -1,
-        foto_ktp_pengaju: null,
         pasangan_pengaju_full_name: '',
         pasangan_pengaju_pekerjaan: '',
         pasangan_pengaju_tempat_lahir: '',
@@ -65,65 +109,14 @@ const InputCekIdBi = () => {
         perumahan_id: -1,
     });
 
-    const [errorForm, setErrorForm] = useState({
-        pengaju_full_name: '',
-        pengaju_pekerjaan: '',
-        pengaju_tempat_lahir: '',
-        pengaju_tanggal_lahir: '',
-        pengaju_nik_id: '',
-        pengaju_provinsi: '',
-        pengaju_kabupaten: '',
-        pengaju_kecamatan: '',
-        pengaju_desa: '',
-        pengaju_rtrw: '',
-        pengaju_full_address: '',
-        pengaju_status_perkawinan: '',
-        pasangan_pengaju_full_name: '',
-        pasangan_pengaju_pekerjaan: '',
-        pasangan_pengaju_tempat_lahir: '',
-        pasangan_pengaju_tanggal_lahir: '',
-        pasangan_pengaju_nik_id: '',
-        pasangan_pengaju_provinsi: '',
-        pasangan_pengaju_kabupaten: '',
-        pasangan_pengaju_kecamatan: '',
-        pasangan_pengaju_desa: '',
-        pasangan_pengaju_rtrw: '',
-        pasangan_pengaju_full_address: '',
-        pasangan_pengaju_status_perkawinan: '',
-        status: '',
-        bank_terpilih: '',
-        perumahan_id: '',
-    });
+    const navigate = useNavigate();
+    const [imageFotoKTP, setImageFotoKTP] = useState(null);
+    const [imageFotoKTPPasangan, setImageFotoKTPPasangan] = useState(null);
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
 
-        axios.get(`${BASE_PATH_API}/house_areas`, {
-            headers: {
-                "AUTH-BIP-TOKEN": token
-            }
-        }).then((res) => {
-            const houseAreas = res.data;
-            setPerumahanList(houseAreas);
-
-            const formattedHouseAreas = []
-            if(houseAreas.length > 0){
-                for(const houseArea of houseAreas){
-                    formattedHouseAreas.push(
-                        <option key={houseArea.id} value={houseArea.id}>{houseArea.nama}</option>
-                    );
-                }
-                setSelectOptionPerumahanList(formattedHouseAreas);
-            }
-        }).catch((err) => {
-            console.log(err)
-        });
-
-        axios.get(`${BASE_PATH_API}/provinsis`, {
-            headers: {
-                "AUTH-BIP-TOKEN": token
-            }
-        }).then((res) => {
+    const fetchProvinsis = async () => {
+        try {
+            const res = await ApiService.getProvinsis();
             const provinsis = res.data;
 
             const formattedProvinsis = []
@@ -135,45 +128,109 @@ const InputCekIdBi = () => {
                 }
                 setSelectOptionProvinsiList(formattedProvinsis);
             }
-        }).catch((err) => {
-            console.log(err)
-        });
+        } catch (error) {
+            toast.error(bipErrorHandler(error))
+        }
+    };
 
-        axios.get(`${BASE_PATH_API}/kabupatens`, {
-            headers: {
-                "AUTH-BIP-TOKEN": token
-            }
-        }).then((res) => {
+    const fetchKabupatens = async () => {
+        try {
+            const res = await ApiService.getKabupatens();
             const kabupatens = res.data;
             setKabupatenList(kabupatens);
 
-        }).catch((err) => {
-            console.log(err)
-        });
+        } catch (error) {
+            toast.error(bipErrorHandler(error))
+        }
+    };
 
-        axios.get(`${BASE_PATH_API}/kecamatans`, {
-            headers: {
-                "AUTH-BIP-TOKEN": token
-            }
-        }).then((res) => {
+    const fetchKecamatans = async () => {
+        try {
+            const res = await ApiService.getKecamatans();
             const kecamatans = res.data;
             setKecamatanList(kecamatans);
-            
-        }).catch((err) => {
-            console.log(err)
-        });
 
-        axios.get(`${BASE_PATH_API}/desas`, {
-            headers: {
-                "AUTH-BIP-TOKEN": token
-            }
-        }).then((res) => {
+        } catch (error) {
+            toast.error(bipErrorHandler(error))
+        }
+    };
+
+    const fetchDesas = async () => {
+        try {
+            const res = await ApiService.getDesas();
             const desas = res.data;
             setDesaList(desas);
+
+        } catch (error) {
+            toast.error(bipErrorHandler(error))
+        }
+    }
+
+    const fetchPerumahan = async () => {
+        try {
+            const res = await ApiService.getHouseAreas();
+    
+            const houseAreas = res.data;
+            const formattedHouseAreas = [];
+    
+            if(houseAreas.length > 0){
+                for(const houseArea of houseAreas){
+                    formattedHouseAreas.push(
+                        <option key={houseArea.id} value={houseArea.id}>{houseArea.nama}</option>
+                    );
+                }
+                setSelectOptionPerumahanList(formattedHouseAreas);
+            }
+        } catch (error) {
+            console.log('error at Cek ID BI view: fetchPerumahan')
+            toast.error(bipErrorHandler(error))
+        }
+    }
+
+    const fetchCekIdByID = async () => {
+        try {
+            const res = await ApiService.getCekIdBiByID(cekIdBI__ID);
+            const cekIdBiData = res.data;
+            console.log(cekIdBiData)
+
+            pengajuFullName.setValue(cekIdBiData.profil_pengaju.full_name);
+            pengajuPekerjaan.setValue(cekIdBiData.profil_pengaju.position);
+            pengajuTempatLahir.setValue(cekIdBiData.profil_pengaju.place_of_birth);
+            pengajuTanggalLahir.setValue(cekIdBiData.profil_pengaju.date_of_birth);
+            pengajuNikId.setValue(cekIdBiData.profil_pengaju.nik_id);
+            pengajuProvinsi.setValue(cekIdBiData.profil_pengaju.provinsi_id);
+            pengajuKabupaten.setValue(cekIdBiData.profil_pengaju.kabupaten_id);
+            pengajuKecamatan.setValue(cekIdBiData.profil_pengaju.kecamatan_id);
+            pengajuDesa.setValue(cekIdBiData.profil_pengaju.desa_id);
+            pengajuRtRw.setValue(cekIdBiData.profil_pengaju.rtrw);
+            pengajuFullAddress.setValue(cekIdBiData.profil_pengaju.full_address);
+
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    const fetchData = async () => {
+        try {
+            console.log(cekIdBI__ID);
+            await fetchProvinsis();
+            await fetchKabupatens();
+            await fetchKecamatans();
+            await fetchDesas();
+            await fetchPerumahan();
+
+            if(cekIdBI__ID !== undefined && cekIdBI__ID !== null){
+                await fetchCekIdByID()
+            }
+        } catch (error) {
             
-        }).catch((err) => {
-            console.log(err)
-        });
+        }
+    }
+
+    
+
+    useEffect(() => {
+        fetchData();        
     }, [])
 
     useEffect(() => {
@@ -298,93 +355,19 @@ const InputCekIdBi = () => {
         e.preventDefault();
         
         setIsSubmitBtnDisabled(true);
-
-        let isError = false;
-
-        if(formData.pengaju_full_name === ''){
-            setErrorForm((prevState) => ({...prevState, pengaju_full_name: 'Nama lengkap pengaju wajib di isi'}));
-            isError = true;
-        }
-
-        if(formData.pengaju_pekerjaan === ''){
-            setErrorForm((prevState) => ({...prevState, pengaju_pekerjaan: 'Pekerjaan pengaju wajib di isi'}));
-            isError = true;
-        }
-
-        if(formData.pengaju_tempat_lahir === ''){
-            setErrorForm((prevState) => ({...prevState, pengaju_tempat_lahir: 'Tempat lahir pengaju wajib di isi'}));
-            isError = true;
-        }
-
-        if(formData.pengaju_tanggal_lahir === ''){
-            setErrorForm((prevState) => ({...prevState, pengaju_tanggal_lahir: 'Tanggal lahir pengaju wajib di isi'}));
-            isError = true;
-        }
-
-        if(formData.pengaju_nik_id === ''){
-            setErrorForm((prevState) => ({...prevState, pengaju_nik_id: 'NIK wajib di isi'}));
-            isError = true;
-        }else if(!(/^[-+]?(\d+)$/.test(formData.pengaju_nik_id))){
-            setErrorForm((prevState) => ({...prevState, pengaju_nik_id: 'NIK tidak valid'}));
-            isError = true;
-        }else if(formData.pengaju_nik_id.length !== 16){
-            setErrorForm((prevState) => ({...prevState, pengaju_nik_id: 'NIK tidak valid'}));
-            isError = true;
-        }else{
-            setErrorForm((prevState) => ({...prevState, pengaju_nik_id: ''}));
-            
-        }
-
-        if(formData.pengaju_provinsi === ''){
-            setErrorForm((prevState) => ({...prevState, pengaju_full_address: 'Alamat pengaju wajib di isi'}));
-            isError = true;
-        }
-
-        if(formData.pengaju_kabupaten === ''){
-            setErrorForm((prevState) => ({...prevState, pengaju_full_address: 'Alamat pengaju wajib di isi'}));
-            isError = true;
-        }
-
-        if(formData.pengaju_kecamatan === ''){
-            setErrorForm((prevState) => ({...prevState, pengaju_full_address: 'Alamat pengaju wajib di isi'}));
-            isError = true;
-        }
-
-        if(formData.pengaju_desa === ''){
-            setErrorForm((prevState) => ({...prevState, pengaju_full_address: 'Alamat pengaju wajib di isi'}));
-            isError = true;
-        }
-
-        if(formData.pengaju_rtrw === ''){
-            setErrorForm((prevState) => ({...prevState, pengaju_full_address: 'Alamat pengaju wajib di isi'}));
-            isError = true;
-        }
-
-        if(formData.pengaju_full_address === ''){
-            setErrorForm((prevState) => ({...prevState, pengaju_full_address: 'Alamat pengaju wajib di isi'}));
-            isError = true;
-        }else{
-            setErrorForm((prevState) => ({...prevState, pengaju_full_address: ''}));
-        }
-
-
-
-        if(isError){
-            console.log(errorForm);
+        
+        if( !pengajuFullName.isValid
+            || !pengajuPekerjaan.isValid
+        ){
             setIsSubmitBtnDisabled(false);
-
             return toast.error("Pastikan data input sudah benar", {autoClose: 500});
         }
-        
         const formD = new FormData();
         const id = toast.loading("Sedang menambahkan data ke server");
         
         for(const key in formData){
-            console.log(formData[key]);
             formD.append(key, formData[key]);
         }
-
-        console.log(formD);
 
         axios.post(`${BASE_PATH_API}/cek_id_bi`, formD, {
             headers: {
@@ -531,11 +514,62 @@ const InputCekIdBi = () => {
                             />
                             <label className={`${classes['tab-label']} ${isDataPengajuOpen ? classes['accordion-open'] : ''}`} htmlFor="chck1">Data Pengaju</label>
                             <div className={`${classes['tab-content']} ${isDataPengajuOpen ? classes['accordion-open'] : ''}`}>
-                                    <Input type={'text'} className={classes.inputForm} id={'pengaju_full_name'} label={'Nama Lengkap Pengaju'} onChange={onChangeHandler} />
-                                    <Input type={'text'} id={'pengaju_pekerjaan'} label={'Pekerjaan Pengaju'} onChange={onChangeHandler} />
-                                    <Input type={'text'} id={'pengaju_tempat_lahir'} label={'Tempat Lahir Pengaju'} onChange={onChangeHandler} />
-                                    <Input type={'date'} id={'pengaju_tanggal_lahir'} label={'Tanggal Lahir Pengaju'} onChange={onChangeHandler} />
-                                    <Input type={'number'} id={'pengaju_nik_id'} label={'Nomor KTP (NIK) Pengaju'} onChange={onChangeHandler} />
+                                    <Input 
+                                        type={'text'} 
+                                        className={inputWrapClasses} 
+                                        value={pengajuFullName.value} 
+                                        id={'pengaju_full_name'} 
+                                        label={'Nama Lengkap Pengaju'} 
+                                        onChange={pengajuFullName.valueChangeHandler} 
+                                        onBlur={pengajuFullName.inputBlurHandler}
+                                        errorMsg={pengajuFullName.errorMessage}
+                                        hasError={pengajuFullName.hasError}
+                                    />
+                                    <Input 
+                                        className={inputWrapClasses}
+                                        type={'text'} 
+                                        id={'pengaju_pekerjaan'} 
+                                        label={'Pekerjaan Pengaju'}
+                                        value={pengajuPekerjaan.value}
+                                        onChange={pengajuPekerjaan.valueChangeHandler}
+                                        onBlur={pengajuPekerjaan.inputBlurHandler} 
+                                        errorMsg={pengajuPekerjaan.errorMessage}
+                                        hasError={pengajuPekerjaan.hasError}
+                                    />
+                                    <Input 
+                                        className={inputWrapClasses}
+                                        type={'text'} 
+                                        id={'pengaju_tempat_lahir'} 
+                                        label={'Tempat Lahir Pengaju'}
+                                        value={pengajuTempatLahir.value}
+                                        onChange={pengajuTempatLahir.valueChangeHandler} 
+                                        onBlur={pengajuTempatLahir.inputBlurHandler}
+                                        errorMsg={pengajuTempatLahir.errorMessage}
+                                        hasError={pengajuTempatLahir.hasError}
+                                        
+                                    />
+                                    <Input
+                                        className={inputWrapClasses}
+                                        type={'date'}
+                                        id={'pengaju_tanggal_lahir'}
+                                        label={'Tanggal Lahir Pengaju'}
+                                        value={pengajuTanggalLahir.value}
+                                        onChange={pengajuTanggalLahir.valueChangeHandler} 
+                                        onBlur={pengajuTanggalLahir.inputBlurHandler}
+                                        errorMsg={pengajuTanggalLahir.errorMessage}
+                                        hasError={pengajuTanggalLahir.hasError}
+                                    />
+                                    <Input 
+                                        className={inputWrapClasses}
+                                        type={'number'} 
+                                        id={'pengaju_nik_id'} 
+                                        label={'Nomor KTP (NIK) Pengaju'} 
+                                        value={pengajuNikId.value}
+                                        onChange={pengajuNikId.valueChangeHandler} 
+                                        onBlur={pengajuNikId.inputBlurHandler}
+                                        errorMsg={pengajuNikId.errorMessage}
+                                        hasError={pengajuNikId.hasError}
+                                    />
                                     <div className={classes.inputWrap}>
                                         <label htmlFor='pengaju_provinsi'>Provinsi</label>
                                         <select id='pengaju_provinsi' name='pengaju_provinsi' value={formData.pengaju_provinsi} onChange={onChangeHandler}>
@@ -564,8 +598,28 @@ const InputCekIdBi = () => {
                                             {selectOptionDesaList}
                                         </select>
                                     </div>
-                                    <Input type={'text'} id={'pengaju_rtrw'} label={'RT/RW'} onChange={onChangeHandler} />
-                                    <Input type={'text'} id={'pengaju_full_address'} label={'Alamat Pengaju (Sesuai KTP)'} onChange={onChangeHandler} />
+                                    <Input 
+                                        className={inputWrapClasses}
+                                        type={'text'} 
+                                        id={'pengaju_rtrw'} 
+                                        label={'RT/RW'} 
+                                        value={pengajuRtRw.value}
+                                        onChange={pengajuRtRw.valueChangeHandler} 
+                                        onBlur={pengajuRtRw.inputBlurHandler}
+                                        errorMsg={pengajuRtRw.errorMessage}
+                                        hasError={pengajuRtRw.hasError}
+                                    />
+                                    <Input 
+                                        className={inputWrapClasses}
+                                        type={'text'} 
+                                        id={'pengaju_full_address'} 
+                                        label={'Alamat Pengaju (Sesuai KTP)'} 
+                                        value={pengajuFullAddress.value}
+                                        onChange={pengajuFullAddress.valueChangeHandler} 
+                                        onBlur={pengajuFullAddress.inputBlurHandler}
+                                        errorMsg={pengajuFullAddress.errorMessage}
+                                        hasError={pengajuFullAddress.hasError}
+                                    />
 
                                     <div className={classes['input_file']}>
                                         <p>Alamat Pengaju (Sesuai KTP)</p>

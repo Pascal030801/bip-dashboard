@@ -12,6 +12,28 @@
     /* gap: 15px; */
 }
 
+.cekIdBi__input {
+    min-height: 2.5rem;
+}
+
+.cekIdBi__input input {
+    min-height: 1.7rem;
+    border-radius: 8px;
+    padding-left: 1rem;
+    margin-left: 1rem;
+    border: 1px solid #999;
+    flex: 1;
+    background-color: #83bddd;
+}
+
+.cekIdBi__input span {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+}
+
+.cekIdBi__input > label {
+    flex-basis: 150px;
+}
 
 .inputWrap{
     display: flex;
@@ -28,7 +50,7 @@
     padding-left: 1rem;
     margin-left: 1rem;
     border: 1px solid #999;
-    width: 100%;
+    flex: 1;
     background-color: #83bddd;
 }
 
