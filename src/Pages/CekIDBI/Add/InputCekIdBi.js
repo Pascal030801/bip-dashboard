@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Input from '../../../Components/Input/Input'
+import Loading from '../../../Components/Loading/Loading';
 import useInput from '../../../Hooks/useInput';
 import ApiService from '../../../Services/apiService';
 import bipErrorHandler from '../../../Util/bipErrorHandler';
@@ -17,6 +18,7 @@ const InputCekIdBi = () => {
     const inputWrapClasses = classes.cekIdBi__input;
 
     const [isSubmitBtnDisabled, setIsSubmitBtnDisabled] = useState(false);
+    const [showLoading, setShowLoading] = useState(true);
 
     const [isDataPengajuOpen, setIsDataPengajuOpen] = useState(false);
     const [isDataPasanganPengajuOpen, setIsDataPasanganPengajuOpen] = useState(false);
@@ -222,6 +224,7 @@ const InputCekIdBi = () => {
             if(cekIdBI__ID !== undefined && cekIdBI__ID !== null){
                 await fetchCekIdByID()
             }
+            setShowLoading(false);
         } catch (error) {
             
         }
@@ -355,19 +358,35 @@ const InputCekIdBi = () => {
         e.preventDefault();
         
         setIsSubmitBtnDisabled(true);
-        
+        setShowLoading(true);
         if( !pengajuFullName.isValid
             || !pengajuPekerjaan.isValid
         ){
             setIsSubmitBtnDisabled(false);
+            setShowLoading(false);
+
             return toast.error("Pastikan data input sudah benar", {autoClose: 500});
         }
         const formD = new FormData();
         const id = toast.loading("Sedang menambahkan data ke server");
         
-        for(const key in formData){
-            formD.append(key, formData[key]);
-        }
+        formD.append('status', formData.status);
+        formD.append('bank_terpilih', formData.bank_terpilih);
+        formD.append('perumahan_id', formData.perumahan_id);
+        formD.append('pengaju_full_name', pengajuFullName.value);
+        formD.append('pengaju_pekerjaan', pengajuPekerjaan.value);
+        formD.append('pengaju_tempat_lahir', pengajuTempatLahir.value);
+        formD.append('pengaju_tanggal_lahir', pengajuTanggalLahir.value);
+        formD.append('pengaju_nik_id', pengajuNikId.value);
+        formD.append('pengaju_provinsi', pengajuProvinsi.value);
+        formD.append('pengaju_kabupaten', pengajuKabupaten.value);
+        formD.append('pengaju_kecamatan', pengajuKecamatan.value);
+        formD.append('pengaju_desa', pengajuDesa.value);
+        formD.append('pengaju_rtrw', pengajuRtRw.value);
+        formD.append('pengaju_full_address', pengajuFullAddress.value);
+        formD.append('pengaju_status_perkawinan', pengajuStatusPerkawinan.value);
+        formD.append('pengaju_foto_ktp', pengajuFotoKTP.value);
+        console.log(pengajuFotoKTP)
 
         axios.post(`${BASE_PATH_API}/cek_id_bi`, formD, {
             headers: {
@@ -386,9 +405,11 @@ const InputCekIdBi = () => {
                 draggable: false,
                 isLoading: false,      
             });
+            setShowLoading(false);
             setTimeout(()=> {
                 navigate('/cekIdBi', { replace: true });
             }, 1500);
+
 
         }).catch((error) => {
             if (error.response) {
@@ -403,7 +424,7 @@ const InputCekIdBi = () => {
                 // Something happened in setting up the request that triggered an Error
                 console.log('Error', error.message);
             }
-
+            setShowLoading(false);
             toast.update(id, {
                 render: 'Gagal Menambahkan Cek ID BI data',
                 type: 'error',
@@ -433,9 +454,7 @@ const InputCekIdBi = () => {
             }
         }else if(e.target.name === 'foto_ktp_pengaju'){
             setImageFotoKTP(URL.createObjectURL(e.target.files[0]));
-            return setFormData((prevState) => {
-                return {...prevState, foto_ktp_pengaju: e.target.files[0]}
-            })
+            pengajuFotoKTP.setValue(e.target.files[0]);
         }else if(e.target.name === 'foto_ktp_pasangan_pengaju'){
 
             setImageFotoKTPPasangan(URL.createObjectURL(e.target.files[0]));
@@ -710,6 +729,7 @@ const InputCekIdBi = () => {
                     <button disabled={isSubmitBtnDisabled}>TAMBAH</button>
                 </form>
             </div>
+            {showLoading && <Loading />}
         </div>
     )
 }

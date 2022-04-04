@@ -1,3 +1,4 @@
+import deleteRequest from "./deleteRequest";
 import getRequest from "./getRequest";
 
 const BASE_PATH_API = process.env.REACT_APP_API_URL;
@@ -90,6 +91,14 @@ const ApiService = {
     getCekIdBiByID: async (cekIdBI__ID, params) => {
         try {
             return await getRequest(`${BASE_PATH_API}/cek_id_bi/${cekIdBI__ID}`, token, params);
+        } catch (error) {
+            throw error;
+        }
+    },
+
+    deleteCekIdBiByID: async (cekIdBI__ID, params) => {
+        try {
+            return await deleteRequest(`${BASE_PATH_API}/cek_id_bi/${cekIdBI__ID}`, token, params);
         } catch (error) {
             throw error;
         }
