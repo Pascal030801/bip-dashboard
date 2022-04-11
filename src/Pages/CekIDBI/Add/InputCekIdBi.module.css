@@ -1,4 +1,6 @@
-.wrapFormInputCekIdBi{
+.InputCekIdBi {}
+
+.wrapFormInputCekIdBi {
     border: 2px solid #000;
     padding: 30px;
     margin-top: 30px;
@@ -6,7 +8,7 @@
     background-color: #fff;
 }
 
-.wrapFormInputCekIdBi > form {
+.wrapFormInputCekIdBi>form {
     display: flex;
     flex-direction: column;
     /* gap: 15px; */
@@ -31,11 +33,11 @@
     margin-left: 1rem;
 }
 
-.cekIdBi__input > label {
+.cekIdBi__input>label {
     flex-basis: 150px;
 }
 
-.inputWrap{
+.cekIdBi__select_input {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -44,17 +46,19 @@
     min-height: 2.5rem;
 }
 
-.inputWrap > select {
-    height: 1.7rem;
+.cekIdBi__select_input select {
+    min-height: 1.7rem;
     border-radius: 8px;
     padding-left: 1rem;
+    padding-right: 1rem;
     margin-left: 1rem;
     border: 1px solid #999;
     flex: 1;
     background-color: #83bddd;
+
 }
 
-.inputWrap > label {
+.cekIdBi__select_input>label {
     flex-basis: 150px;
 }
 
@@ -81,7 +85,8 @@
     overflow: hidden;
     margin-bottom: 20px;
 }
-.tab > label {
+
+.tab>label {
     display: flex;
     justify-content: space-between;
     padding: 1em;
@@ -89,12 +94,13 @@
     font-weight: bold;
     cursor: pointer;
 }
-    /* Icon */
+
+/* Icon */
 .tab:hover {
     background: darken(midnightblue, 10%);
 }
 
-.tab > label::after {
+.tab>label::after {
     content: "\276F";
     width: 1em;
     height: 1em;
@@ -110,7 +116,7 @@
     background: darken(midnightblue, 10%);
 }
 
-.tab-label.accordion-open::after{
+.tab-label.accordion-open::after {
     transform: rotate(90deg);
 }
 
@@ -131,16 +137,16 @@
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
-.input_file{
+.input_file {
     /* display: none; */
     display: flex;
     flex: 1;
@@ -148,7 +154,7 @@ input[type=number] {
     align-items: center;
 }
 
-.input_file p{
+.input_file p {
     flex-basis: 150px;
 }
 
@@ -175,7 +181,7 @@ input[type=number] {
     border: 1px solid black;
 }
 
-.input_file input[type=file]{
+.input_file input[type=file] {
     display: none;
 
 }

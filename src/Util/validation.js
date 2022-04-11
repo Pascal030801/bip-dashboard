@@ -29,12 +29,19 @@ const validation = {
         }
     },
     nik: (input) => {
-        if(!validation.realNumber(input).isValid){
+        if(!validation.empty(input.trim()).isValid){
+            return {isValid: false, message: 'NIK tidak boleh kosong'};
+        }else if(!validation.realNumber(input).isValid){
             return {isValid: false, message: 'Input yang di ijinkan hanya angka'};
         }else if(input.length !== 16){
             return {isValid: false, message: 'NIK tidak valid'};
-        }else if(!validation.empty(input.trim()).isValid){
-            return {isValid: false, message: 'NIK tidak boleh kosong'};
+        }
+
+        return {isValid: true, message: 'Sudah Sesuai'};
+    },
+    sameWithPlaceHolder: (input) => {
+        if(input === 'placeholder') {
+            return {isValid: false, message: 'Kolom tidak boleh kosong'};
         }
 
         return {isValid: true, message: 'Sudah Sesuai'};

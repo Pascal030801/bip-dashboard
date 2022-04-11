@@ -20,13 +20,19 @@ import { useEffect, useState } from 'react';
  */
 
 /**
+ * @typedef {Object} UseInputParam
+ * @property {string | Number} initialValue - initial value of the input
+ * @property {function} [validateValue] - put the function for validate the input
+ */
+
+/**
  * Custom Hook for handling enteredValue and check is the input field has touched also validate every value inputted
- * @param {function} [validateValue=(val) => {return {isValid: true, message: ''};}] - put the function for validate the input
+ * @param {UseInputParam} param
  * @returns {UseInput} the result of data
 
  */
-const useInput = ( validateValue ) => {
-    const [enteredValue, setEnteredValue] = useState('');
+const useInput = ( {initialValue = '', validateValue = () => {return {isValid: true}}} ) => {
+    const [enteredValue, setEnteredValue] = useState(initialValue);
     const [isTouched, setIsTouched] = useState(false);
     const [valueIsValid, setValueIsValid] = useState(false);
     const [hasError, setHasError] = useState(false);
@@ -64,7 +70,7 @@ const useInput = ( validateValue ) => {
     };
 
     const reset = () => {
-        setEnteredValue('');
+        setEnteredValue(initialValue);
         setIsTouched(false);
     };
 

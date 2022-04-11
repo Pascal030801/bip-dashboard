@@ -2,10 +2,10 @@ import React from 'react'
 import classes from './Input.module.css';
 import PropTypes from 'prop-types';
 
-function  moviePropsAreEqual(prevMovie, nextMovie) {
-    return prevMovie.value === nextMovie.value 
-    && prevMovie.errorMsg === nextMovie.errorMsg 
-    && prevMovie.hasError === nextMovie.hasError;
+function  inputPropsAreEqual(prevInput, nextInput) {
+    return prevInput.value === nextInput.value 
+    && prevInput.errorMsg === nextInput.errorMsg 
+    && prevInput.hasError === nextInput.hasError;
 }
 
 const Input = (props) => {
@@ -13,8 +13,7 @@ const Input = (props) => {
         <div className={`${classes.inputWrap} ${props.className}`} key={props.id}>
             <label className={classes.inputLabel} htmlFor={props.id}>{props.label}</label>
             <div className={classes.inputCom}>
-                <input 
-                    required={props.required} 
+                <input
                     type={props.type} 
                     id={props.id} 
                     name={props.id} 
@@ -36,13 +35,11 @@ Input.propTypes = {
     label: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    required: PropTypes.bool,
     errorMsg: PropTypes.string
 };
 
 Input.defaultValue = {
-    required: false,
     errorMsg: ''
 }
 
-export default React.memo(Input, moviePropsAreEqual);
+export default React.memo(Input, inputPropsAreEqual);

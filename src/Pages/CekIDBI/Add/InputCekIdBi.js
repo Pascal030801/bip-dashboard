@@ -6,9 +6,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Input from '../../../Components/Input/Input'
 import Loading from '../../../Components/Loading/Loading';
+import SelectInput from '../../../Components/SelectInput/SelectInput';
 import useInput from '../../../Hooks/useInput';
 import ApiService from '../../../Services/apiService';
 import bipErrorHandler from '../../../Util/bipErrorHandler';
+import formatter from '../../../Util/formatter';
 import validation from '../../../Util/validation';
 import classes from './InputCekIdBi.module.css'
 
@@ -16,13 +18,19 @@ const InputCekIdBi = () => {
     const BASE_PATH_API = process.env.REACT_APP_API_URL;
     const {id: cekIdBI__ID} = useParams();
     const inputWrapClasses = classes.cekIdBi__input;
+    const selectInputWrapClasses = classes.cekIdBi__select_input;
+    const selectInputPlaceHolder = 'placeholder';
 
+    const [selectOptionBankList] = useState(formatter.selectOptionsBank);
+    const [selectOptionStatusPerkawinanList] = useState(formatter.selectOptionsStatusPerkawinan);
+    
     const [isSubmitBtnDisabled, setIsSubmitBtnDisabled] = useState(false);
     const [showLoading, setShowLoading] = useState(true);
 
+    const [isPengajuSudahKawin, setIsPengajuSudahKawin] = useState(false);
+
     const [isDataPengajuOpen, setIsDataPengajuOpen] = useState(false);
     const [isDataPasanganPengajuOpen, setIsDataPasanganPengajuOpen] = useState(false);
-    const [perumahanList, setPerumahanList] = useState([]);
     const [selectOptionPerumahanList, setSelectOptionPerumahanList] = useState([]);
 
     const [selectOptionProvinsiList, setSelectOptionProvinsiList] = useState([]);
@@ -38,78 +46,166 @@ const InputCekIdBi = () => {
     const [desaList, setDesaList] = useState([]);
     const [selectOptionDesaList, setSelectOptionDesaList] = useState([]);
     const [selectOptionDesaPasanganPengajuList, setSelectOptionDesaPasanganPengajuList] = useState([]);
+    
+    const statusIdBi = useInput({initialValue: selectInputPlaceHolder, validateValue: (val) => {
+        return validation.sameWithPlaceHolder(val);
+    }});
 
-    const pengajuFullName = useInput((val) => {
-        console.log('value: ', val)
+    const perumahanDipilih = useInput({initialValue: selectInputPlaceHolder, validateValue: (val) => {
+        return validation.sameWithPlaceHolder(val);
+    }});
+
+    const bankTerpilih = useInput({initialValue: selectInputPlaceHolder, validateValue: (val) => {
+        return validation.sameWithPlaceHolder(val);
+    }});
+
+    const pengajuFullName = useInput({validateValue: (val) => {
         return validation.empty(val);
-    })
+    }})
 
-    const pengajuPekerjaan = useInput((val) => {
+    const pengajuPekerjaan = useInput({validateValue: (val) => {
         return validation.empty(val);
-    });
+    }});
 
-    const pengajuTempatLahir = useInput((val) => {
+    const pengajuTempatLahir = useInput({validateValue: (val) => {
         return validation.empty(val);
-    });
+    }});
 
-    const pengajuTanggalLahir = useInput((val) => {
+    const pengajuTanggalLahir = useInput({validateValue: (val) => {
         return validation.empty(val);
-    });
+    }});
 
-    const pengajuNikId = useInput((val) => {
+    const pengajuNikId = useInput({validateValue: (val) => {
+        return validation.nik(val);
+    }});
+
+    const pengajuProvinsi = useInput({initialValue: selectInputPlaceHolder, validateValue: (val) => {
+        
+        return validation.sameWithPlaceHolder(val);
+    }});
+
+    const pengajuKabupaten = useInput({initialValue: selectInputPlaceHolder,validateValue: (val) => {
+        return validation.sameWithPlaceHolder(val);
+    }});
+
+    const pengajuKecamatan = useInput({initialValue: selectInputPlaceHolder,validateValue: (val) => {
+        return validation.sameWithPlaceHolder(val);
+    }});
+
+    const pengajuDesa = useInput({initialValue: selectInputPlaceHolder,validateValue: (val) => {
+        return validation.sameWithPlaceHolder(val);
+    }});
+
+    const pengajuRtRw = useInput({validateValue: (val) => {
         return validation.empty(val);
-    });
+    }});
 
-    const pengajuProvinsi = useInput((val) => {
+    const pengajuFullAddress = useInput({validateValue: (val) => {
         return validation.empty(val);
-    });
+    }});
 
-    const pengajuKabupaten = useInput((val) => {
-        return validation.empty(val);
-    });
+    const pengajuStatusPerkawinan = useInput({initialValue: selectInputPlaceHolder, validateValue: (val) => {
+        return validation.sameWithPlaceHolder(val);
+    }});
 
-    const pengajuKecamatan = useInput((val) => {
-        return validation.empty(val);
-    });
+    const pengajuFotoKTP = useInput({validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.empty(val);
+        }
+        return {isValid: true};
+    }});
 
-    const pengajuDesa = useInput((val) => {
-        return validation.empty(val);
-    });
+    const pasanganPengajuFullName = useInput({validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.empty(val);
+        }
+        return {isValid: true};
+    }})
 
-    const pengajuRtRw = useInput((val) => {
-        return validation.empty(val);
-    });
+    const pasanganPengajuPekerjaan = useInput({validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.empty(val);
+        }
+        return {isValid: true};
 
-    const pengajuFullAddress = useInput((val) => {
-        return validation.empty(val);
-    });
+    }});
 
-    const pengajuStatusPerkawinan = useInput((val) => {
-        return validation.empty(val);
-    });
+    const pasanganPengajuTempatLahir = useInput({validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.empty(val);
+        }
+        return {isValid: true};
+    }});
 
-    const pengajuFotoKTP = useInput((val) => {
-        return validation.empty(val);
-    });
+    const pasanganPengajuTanggalLahir = useInput({validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.empty(val);
+        }
+        return {isValid: true};
+    }});
 
-    const [formData, setFormData] = useState({
-        pasangan_pengaju_full_name: '',
-        pasangan_pengaju_pekerjaan: '',
-        pasangan_pengaju_tempat_lahir: '',
-        pasangan_pengaju_tanggal_lahir: '',
-        pasangan_pengaju_nik_id: '',
-        pasangan_pengaju_provinsi: -1,
-        pasangan_pengaju_kabupaten: -1,
-        pasangan_pengaju_kecamatan: -1,
-        pasangan_pengaju_desa: -1,
-        pasangan_pengaju_rtrw: '',
-        pasangan_pengaju_full_address: '',
-        pasangan_pengaju_status_perkawinan: '',
-        foto_ktp_pasangan_pengaju: null,
-        status: 'Sedang Diperiksa',
-        bank_terpilih: -1,
-        perumahan_id: -1,
-    });
+    const pasanganPengajuNikId = useInput({validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.nik(val);
+        }
+        return {isValid: true};
+    }});
+
+    const pasanganPengajuProvinsi = useInput({initialValue: selectInputPlaceHolder, validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.sameWithPlaceHolder(val);
+        }
+        return {isValid: true};
+    }});
+
+    const pasanganPengajuKabupaten = useInput({initialValue: selectInputPlaceHolder,validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.sameWithPlaceHolder(val);
+        }
+        return {isValid: true};
+    }});
+
+    const pasanganPengajuKecamatan = useInput({initialValue: selectInputPlaceHolder,validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.sameWithPlaceHolder(val);
+        }
+        return {isValid: true};
+    }});
+
+    const pasanganPengajuDesa = useInput({initialValue: selectInputPlaceHolder,validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.sameWithPlaceHolder(val);
+        }
+        return {isValid: true};
+    }});
+
+    const pasanganPengajuRtRw = useInput({validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.empty(val);
+        }
+        return {isValid: true};
+    }});
+
+    const pasanganPengajuFullAddress = useInput({validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.empty(val);
+        }
+        return {isValid: true};
+    }});
+
+    const pasanganPengajuStatusPerkawinan = useInput({initialValue: selectInputPlaceHolder, validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.sameWithPlaceHolder(val);
+        }
+        return {isValid: true};
+    }});
+
+    const pasanganPengajuFotoKTP = useInput({validateValue: (val) => {
+        if(isPengajuSudahKawin){
+            return validation.empty(val);
+        }
+        return {isValid: true};
+    }});
 
     const navigate = useNavigate();
     const [imageFotoKTP, setImageFotoKTP] = useState(null);
@@ -214,7 +310,6 @@ const InputCekIdBi = () => {
 
     const fetchData = async () => {
         try {
-            console.log(cekIdBI__ID);
             await fetchProvinsis();
             await fetchKabupatens();
             await fetchKecamatans();
@@ -230,129 +325,69 @@ const InputCekIdBi = () => {
         }
     }
 
-    
-
     useEffect(() => {
         fetchData();        
     }, [])
 
     useEffect(() => {
-        if(formData.pengaju_provinsi !== -1){
+        
+        if(pengajuProvinsi.value !== selectInputPlaceHolder){
+            pengajuKabupaten.setValue(selectInputPlaceHolder);
 
-            const formattedKabupatens = [];
-
-            const kabupatens = kabupatenList.filter((kabupaten) => {
-                return kabupaten.provinsiId === parseInt(formData.pengaju_provinsi, 10);
-            });
-
-            if(kabupatens.length > 0){
-                for(const kabupaten of kabupatens){
-                    formattedKabupatens.push(
-                        <option key={kabupaten.id} value={kabupaten.id}>{kabupaten.nama}</option>
-                    );
-                }
-                setSelectOptionKabupatenList(formattedKabupatens);
-            }
+            const formattedKabupatens = formatter.selectOptionsKabupatenByProvinsiId(kabupatenList, parseInt(pengajuProvinsi.value, 10));
+            setSelectOptionKabupatenList(formattedKabupatens);
         }
-    }, [formData.pengaju_provinsi]);
+    }, [pengajuProvinsi.value]);
 
     useEffect(() => {
-        if(formData.pasangan_pengaju_provinsi !== -1){
+        if(pasanganPengajuProvinsi.value !== selectInputPlaceHolder){
+            pasanganPengajuKabupaten.setValue(selectInputPlaceHolder);
 
-            const formattedKabupatens = [];
-
-            const kabupatens = kabupatenList.filter((kabupaten) => {
-                return kabupaten.provinsiId === parseInt(formData.pasangan_pengaju_provinsi, 10);
-            });
-
-            if(kabupatens.length > 0){
-                for(const kabupaten of kabupatens){
-                    formattedKabupatens.push(
-                        <option key={kabupaten.id} value={kabupaten.id}>{kabupaten.nama}</option>
-                    );
-                }
-                setSelectOptionKabupatenPasanganPengajuList(formattedKabupatens);
-            }
+            const formattedKabupatens = formatter.selectOptionsKabupatenByProvinsiId(kabupatenList, parseInt(pasanganPengajuProvinsi.value, 10));
+            setSelectOptionKabupatenPasanganPengajuList(formattedKabupatens);
+            
         }
-    }, [formData.pasangan_pengaju_provinsi])
+    }, [pasanganPengajuProvinsi.value])
 
     useEffect(() => {
-        if(formData.pengaju_kabupaten !== -1){
+        if(pengajuKabupaten.value !== selectInputPlaceHolder){
+            pengajuKecamatan.setValue(selectInputPlaceHolder);
 
-            const formattedKecamatans = [];
-
-            const kecamatans = kecamatanList.filter((kecamatan) => {
-                return kecamatan.kabupatenId === parseInt(formData.pengaju_kabupaten, 10);
-            });
-
-            if(kecamatans.length > 0){
-                for(const kecamatan of kecamatans){
-                    formattedKecamatans.push(
-                        <option key={kecamatan.id} value={kecamatan.id}>{kecamatan.nama}</option>
-                    );
-                }
-                setSelectOptionKecamatanList(formattedKecamatans);
-            }
+            const formattedKecamatans = formatter.selectOptionsKecamatanByKabupatenId(kecamatanList, parseInt(pengajuKabupaten.value, 10));
+            setSelectOptionKecamatanList(formattedKecamatans);
         }
-    }, [formData.pengaju_kabupaten]);
+    }, [pengajuKabupaten.value]);
 
     useEffect(() => {
-        if(formData.pasangan_pengaju_kabupaten !== -1){
+        if(pasanganPengajuKabupaten.value !== selectInputPlaceHolder){
+            pasanganPengajuKecamatan.setValue(selectInputPlaceHolder);
 
-            const formattedKecamatans = [];
-
-            const kecamatans = kecamatanList.filter((kecamatan) => {
-                return kecamatan.kabupatenId === parseInt(formData.pasangan_pengaju_kabupaten, 10);
-            });
-
-            if(kecamatans.length > 0){
-                for(const kecamatan of kecamatans){
-                    formattedKecamatans.push(
-                        <option key={kecamatan.id} value={kecamatan.id}>{kecamatan.nama}</option>
-                    );
-                }
-                setSelectOptionKecamatanPasanganPengajuList(formattedKecamatans);
-            }
+            const formattedKecamatans = formatter.selectOptionsKecamatanByKabupatenId(kecamatanList, parseInt(pasanganPengajuKabupaten.value, 10));
+            setSelectOptionKecamatanPasanganPengajuList(formattedKecamatans);
         }
-    }, [formData.pasangan_pengaju_kabupaten]);
+    }, [pasanganPengajuKabupaten.value]);
 
     useEffect(() => {
-        if(formData.pengaju_kecamatan !== -1){
-            const formattedDesas = [];
+        if(pengajuKecamatan.value !== selectInputPlaceHolder){
+            pengajuDesa.setValue(selectInputPlaceHolder);
 
-            const desas = desaList.filter((desa) => {
-                return desa.kecamatanId === parseInt(formData.pengaju_kecamatan, 10);
-            });
-
-            if(desas.length > 0){
-                for(const desa of desas){
-                    formattedDesas.push(
-                        <option key={desa.id} value={desa.id}>{desa.nama}</option>
-                    );
-                }
-                setSelectOptionDesaList(formattedDesas);
-            }
+            const formattedDesas = formatter.selectOptionsDesaByKecamatanId(desaList, parseInt(pengajuKecamatan.value, 10));
+            setSelectOptionDesaList(formattedDesas);
         }
-    }, [formData.pengaju_kecamatan]);
+    }, [pengajuKecamatan.value]);
 
     useEffect(() => {
-        if(formData.pasangan_pengaju_kecamatan !== -1){
-            const formattedDesas = [];
+        if(pasanganPengajuKecamatan.value !== selectInputPlaceHolder){
+            pasanganPengajuDesa.setValue(selectInputPlaceHolder);
 
-            const desas = desaList.filter((desa) => {
-                return desa.kecamatanId === parseInt(formData.pasangan_pengaju_kecamatan, 10);
-            });
-
-            if(desas.length > 0){
-                for(const desa of desas){
-                    formattedDesas.push(
-                        <option key={desa.id} value={desa.id}>{desa.nama}</option>
-                    );
-                }
-                setSelectOptionDesaPasanganPengajuList(formattedDesas);
-            }
+            const formattedDesas = formatter.selectOptionsDesaByKecamatanId(desaList, parseInt(pasanganPengajuKecamatan.value, 10));
+            setSelectOptionDesaPasanganPengajuList(formattedDesas);
         }
-    }, [formData.pasangan_pengaju_kecamatan]);
+    }, [pasanganPengajuKecamatan.value]);
+
+    useEffect(() => {
+        setIsPengajuSudahKawin(pengajuStatusPerkawinan.value === 'Kawin');
+    }, [pengajuStatusPerkawinan.value])
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -368,11 +403,10 @@ const InputCekIdBi = () => {
             return toast.error("Pastikan data input sudah benar", {autoClose: 500});
         }
         const formD = new FormData();
-        const id = toast.loading("Sedang menambahkan data ke server");
         
-        formD.append('status', formData.status);
-        formD.append('bank_terpilih', formData.bank_terpilih);
-        formD.append('perumahan_id', formData.perumahan_id);
+        formD.append('status', statusIdBi.value);
+        formD.append('bank_terpilih', bankTerpilih.value);
+        formD.append('perumahan_id', perumahanDipilih.value);
         formD.append('pengaju_full_name', pengajuFullName.value);
         formD.append('pengaju_pekerjaan', pengajuPekerjaan.value);
         formD.append('pengaju_tempat_lahir', pengajuTempatLahir.value);
@@ -386,7 +420,30 @@ const InputCekIdBi = () => {
         formD.append('pengaju_full_address', pengajuFullAddress.value);
         formD.append('pengaju_status_perkawinan', pengajuStatusPerkawinan.value);
         formD.append('pengaju_foto_ktp', pengajuFotoKTP.value);
-        console.log(pengajuFotoKTP)
+
+        if(isPengajuSudahKawin){
+            formD.append('pasangan_pengaju_full_name', pasanganPengajuFullName.value);
+            formD.append('pasangan_pengaju_pekerjaan', pasanganPengajuPekerjaan.value);
+            formD.append('pasangan_pengaju_tempat_lahir', pasanganPengajuTempatLahir.value);
+            formD.append('pasangan_pengaju_tanggal_lahir', pasanganPengajuTanggalLahir.value);
+            formD.append('pasangan_pengaju_nik_id', pasanganPengajuNikId.value);
+            formD.append('pasangan_pengaju_provinsi', pasanganPengajuProvinsi.value);
+            formD.append('pasangan_pengaju_kabupaten', pasanganPengajuKabupaten.value);
+            formD.append('pasangan_pengaju_kecamatan', pasanganPengajuKecamatan.value);
+            formD.append('pasangan_pengaju_desa', pasanganPengajuDesa.value);
+            formD.append('pasangan_pengaju_rtrw', pasanganPengajuRtRw.value);
+            formD.append('pasangan_pengaju_full_address', pasanganPengajuFullAddress.value);
+            formD.append('pasangan_pengaju_status_perkawinan', pasanganPengajuStatusPerkawinan.value);
+            formD.append('pasangan_pengaju_foto_ktp', pasanganPengajuFotoKTP.value);
+        }
+
+        // console.log(formD);
+
+        // setIsSubmitBtnDisabled(false);
+        // setShowLoading(false);
+        // return true;
+
+        const id = toast.loading("Sedang menambahkan data ke server");
 
         axios.post(`${BASE_PATH_API}/cek_id_bi`, formD, {
             headers: {
@@ -442,78 +499,82 @@ const InputCekIdBi = () => {
     };
 
     const onChangeHandler = (e) => {
-        if(e.target.name === 'pengaju_status_perkawinan') {
-            if(e.target.value === 'Kawin'){
-                return setFormData((prevState) => {
-                    return {...prevState, pengaju_status_perkawinan: e.target.value, pasangan_pengaju_status_perkawinan: e.target.value}
-                })
-            }else{
-                return setFormData((prevState) => {
-                    return {...prevState, pengaju_status_perkawinan: e.target.value, pasangan_pengaju_status_perkawinan: null}
-                })
-            }
-        }else if(e.target.name === 'foto_ktp_pengaju'){
+        if(e.target.name === 'foto_ktp_pengaju'){
             setImageFotoKTP(URL.createObjectURL(e.target.files[0]));
             pengajuFotoKTP.setValue(e.target.files[0]);
+            return true;
         }else if(e.target.name === 'foto_ktp_pasangan_pengaju'){
 
             setImageFotoKTPPasangan(URL.createObjectURL(e.target.files[0]));
-            return setFormData((prevState) => {
-                return {...prevState, foto_ktp_pasangan_pengaju: e.target.files[0]}
-            });
-            
+            pasanganPengajuFotoKTP.setValue(e.target.files[0]);
+            return true;
         }
-
-        return setFormData((prevState) => {
-            return {...prevState, [e.target.name]: e.target.value}
-
-        })
     }
 
     return (
         <div className={classes.InputCekIdBi}>
             <h1>Input Cek ID BI Data</h1>
             <div className={classes.wrapFormInputCekIdBi}>
-                <form onSubmit={submitHandler}>
-                    <div className={classes.inputWrap}>
-                        <label htmlFor='pengaju_status_perkawinan'>Status Pernikahan</label>
-                        <select id='pengaju_status_perkawinan' name='pengaju_status_perkawinan' value={formData.pengaju_status_perkawinan} onChange={onChangeHandler}>
-                            <option value='-1' hidden disabled>Pilih Status Perkawinan Pengaju</option>
-                            <option value='Belum Kawin'>Belum Kawin</option>
-                            <option value='Kawin'>Kawin</option>
-                            <option value='Cerai Hidup'>Cerai Hidup</option>
-                            <option value='Cerai Mati'>Cerai Mati</option>
-                        </select>
-                    </div>
+                <form onSubmit={submitHandler} autoComplete="off" autoCorrect='off'>
+                    <SelectInput 
+                        className={selectInputWrapClasses}
+                        id='pengaju_status_perkawinan'
+                        label='Status Pernikahan Pengaju'
+                        isUsingPlaceHolder
+                        placeholderText='Pilih Status Perkawinan Pengaju'
+                        value={pengajuStatusPerkawinan.value}
+                        onBlur={pengajuStatusPerkawinan.inputBlurHandler}
+                        onChange={pengajuStatusPerkawinan.valueChangeHandler}
+                        options={selectOptionStatusPerkawinanList}
+                        errorMsg={pengajuStatusPerkawinan.errorMessage}
+                        hasError={pengajuStatusPerkawinan.hasError}
+                    />
 
-                    <div className={classes.inputWrap}>
-                        <label htmlFor='status'>Status ID BI</label>
-                        <select id='status' name='status' value={formData.status} onChange={onChangeHandler}>
-                            <option value='Sedang Diperiksa'>Sedang Diperiksa</option>
-                            <option value='Aman'>Aman</option>
-                            <option value='Tidak Aman'>Tidak Aman</option>
-                        </select>
-                    </div>
+                    <SelectInput 
+                        className={selectInputWrapClasses}
+                        id='status_id_bi'
+                        label='Status ID BI'
+                        isUsingPlaceHolder
+                        placeholderText='Pilih Status ID BI Pengaju'
+                        value={statusIdBi.value}
+                        onBlur={statusIdBi.inputBlurHandler}
+                        onChange={statusIdBi.valueChangeHandler}
+                        options={[
+                            <option key={'Sedang Diperiksa'} value='Sedang Diperiksa'>Sedang Diperiksa</option>,
+                            <option key={'Aman'} value='Aman'>Aman</option>,
+                            <option key={'Tidak Aman'} value='Tidak Aman'>Tidak Aman</option>,
+                        ]}
+                        errorMsg={statusIdBi.errorMessage}
+                        hasError={statusIdBi.hasError}
+                    />
 
-                    <div className={classes.inputWrap}>
-                        <label htmlFor='perumahan_id'>Nama Perumahan</label>
-                        <select id='perumahan_id' name='perumahan_id' value={formData.perumahan_id} onChange={onChangeHandler}>
-                            <option value={-1}>Pilih Perumahan</option>
-                            {selectOptionPerumahanList}
-                        </select>
-                    </div>
+                    <SelectInput 
+                        className={selectInputWrapClasses}
+                        id='perumahan_id'
+                        label='Nama Perumahan'
+                        isUsingPlaceHolder
+                        placeholderText='Pilih Area Perumahan Dari Rumah Yang Akan Dibeli'
+                        value={perumahanDipilih.value}
+                        onBlur={perumahanDipilih.inputBlurHandler}
+                        onChange={perumahanDipilih.valueChangeHandler}
+                        options={selectOptionPerumahanList}
+                        errorMsg={perumahanDipilih.errorMessage}
+                        hasError={perumahanDipilih.hasError}
+                    />
 
-                    <div className={classes.inputWrap}>
-                        <label htmlFor='bank_terpilih'>Bank yang menerima pengajuan</label>
-                        <select id='bank_terpilih' name='bank_terpilih' value={formData.bank_terpilih} onChange={onChangeHandler}>
-                            <option value='-1'>Pilih Bank</option>
-                            <option value='BNI'>BNI</option>
-                            <option value='BTN'>BTN</option>
-                            <option value='BRI'>BRI</option>
-                            <option value='Mandiri'>Mandiri</option>
-                            <option value='BPD KALBAR'>BPD KALBAR</option>
-                        </select>
-                    </div>
+                    <SelectInput 
+                        className={selectInputWrapClasses}
+                        id='bank_terpilih'
+                        label='Bank yang menerima pengajuan'
+                        isUsingPlaceHolder
+                        placeholderText='Pilih Bank yang menerima pengajuan atau Bank yang diajukan'
+                        value={bankTerpilih.value}
+                        onBlur={bankTerpilih.inputBlurHandler}
+                        onChange={bankTerpilih.valueChangeHandler}
+                        options={selectOptionBankList}
+                        errorMsg={bankTerpilih.errorMessage}
+                        hasError={bankTerpilih.hasError}
+                    />
                     
                     <div className={classes.tabs} style={{marginTop: '25px'}}>
                         <div className={classes.tab}>
@@ -589,34 +650,61 @@ const InputCekIdBi = () => {
                                         errorMsg={pengajuNikId.errorMessage}
                                         hasError={pengajuNikId.hasError}
                                     />
-                                    <div className={classes.inputWrap}>
-                                        <label htmlFor='pengaju_provinsi'>Provinsi</label>
-                                        <select id='pengaju_provinsi' name='pengaju_provinsi' value={formData.pengaju_provinsi} onChange={onChangeHandler}>
-                                            <option value={-1} disabled hidden>Pilih Provinsi</option>
-                                            {selectOptionProvinsiList}
-                                        </select>
-                                    </div>
-                                    <div className={classes.inputWrap}>
-                                        <label htmlFor='pengaju_kabupaten'>Kabupaten</label>
-                                        <select id='pengaju_kabupaten' name='pengaju_kabupaten' disabled={formData.pengaju_provinsi === -1} value={formData.pengaju_kabupaten} onChange={onChangeHandler}>
-                                            <option value={-1} disabled hidden>{formData.pengaju_provinsi === -1 ? 'Pilih Provinsi Dahulu' : 'Pilih Kabupaten'}</option>
-                                            {selectOptionKabupatenList}
-                                        </select>
-                                    </div>
-                                    <div className={classes.inputWrap}>
-                                        <label htmlFor='pengaju_kecamatan'>Kecamatan</label>
-                                        <select id='pengaju_kecamatan' name='pengaju_kecamatan' disabled={formData.pengaju_kabupaten === -1} value={formData.pengaju_kecamatan} onChange={onChangeHandler}>
-                                            <option value={-1} disabled hidden>{formData.pengaju_kabupaten === -1 ? 'Pilih Kabupaten Dahulu' : 'Pilih Kecamatan'}</option>
-                                            {selectOptionKecamatanList}
-                                        </select>
-                                    </div>
-                                    <div className={classes.inputWrap}>
-                                        <label htmlFor='pengaju_desa'>Desa/Kelurahan</label>
-                                        <select id='pengaju_desa' name='pengaju_desa' disabled={formData.pengaju_kecamatan === -1} value={formData.pengaju_desa} onChange={onChangeHandler}>
-                                            <option value={-1} disabled hidden>{formData.pengaju_kecamatan === -1 ? 'Pilih Kecamatan Dahulu' : 'Pilih Desa'}</option>
-                                            {selectOptionDesaList}
-                                        </select>
-                                    </div>
+                                    <SelectInput 
+                                        className={selectInputWrapClasses}
+                                        id='pengaju_provinsi'
+                                        label='Provinsi'
+                                        isUsingPlaceHolder
+                                        placeholderText='Pilih Provinsi'
+                                        value={pengajuProvinsi.value}
+                                        onBlur={pengajuProvinsi.inputBlurHandler}
+                                        onChange={pengajuProvinsi.valueChangeHandler}
+                                        options={selectOptionProvinsiList}
+                                        errorMsg={pengajuProvinsi.errorMessage}
+                                        hasError={pengajuProvinsi.hasError}
+                                    />
+                                    <SelectInput 
+                                        className={selectInputWrapClasses}
+                                        id='pengaju_kabupaten'
+                                        label='Kabupaten'
+                                        isUsingPlaceHolder
+                                        placeholderText={pengajuProvinsi.value === selectInputPlaceHolder ? 'Pilih Provinsi Terlebih Dahulu' : 'Pilih Kabupaten'}
+                                        disabled={pengajuProvinsi.value === selectInputPlaceHolder}
+                                        value={pengajuKabupaten.value}
+                                        onBlur={pengajuKabupaten.inputBlurHandler}
+                                        onChange={pengajuKabupaten.valueChangeHandler}
+                                        options={selectOptionKabupatenList}
+                                        errorMsg={pengajuKabupaten.errorMessage}
+                                        hasError={pengajuKabupaten.hasError}
+                                    />
+                                    <SelectInput 
+                                        className={selectInputWrapClasses}
+                                        id='pengaju_kecamatan'
+                                        label='Kecamatan'
+                                        isUsingPlaceHolder
+                                        placeholderText={pengajuKabupaten.value === selectInputPlaceHolder ? 'Pilih Kabupaten Terlebih Dahulu' : 'Pilih Kecamatan'}
+                                        disabled={pengajuKabupaten.value === selectInputPlaceHolder}
+                                        value={pengajuKecamatan.value}
+                                        onBlur={pengajuKecamatan.inputBlurHandler}
+                                        onChange={pengajuKecamatan.valueChangeHandler}
+                                        options={selectOptionKecamatanList}
+                                        errorMsg={pengajuKecamatan.errorMessage}
+                                        hasError={pengajuKecamatan.hasError}
+                                    />
+                                    <SelectInput 
+                                        className={selectInputWrapClasses}
+                                        id='pengaju_desa'
+                                        label='Desa/Kelurahan'
+                                        isUsingPlaceHolder
+                                        placeholderText={pengajuKecamatan.value === selectInputPlaceHolder ? 'Pilih Kecamatan Terlebih Dahulu' : 'Pilih Desa'}
+                                        disabled={pengajuKecamatan.value === selectInputPlaceHolder}
+                                        value={pengajuDesa.value}
+                                        onBlur={pengajuDesa.inputBlurHandler}
+                                        onChange={pengajuDesa.valueChangeHandler}
+                                        options={selectOptionDesaList}
+                                        errorMsg={pengajuDesa.errorMessage}
+                                        hasError={pengajuDesa.hasError}
+                                    />
                                     <Input 
                                         className={inputWrapClasses}
                                         type={'text'} 
@@ -655,7 +743,7 @@ const InputCekIdBi = () => {
                             </div>
                         </div>
 
-                        { formData.pengaju_status_perkawinan === "Kawin" && 
+                        { pengajuStatusPerkawinan.value === "Kawin" && 
                             (
                                 <div className={classes.tab}>
                                     <input 
@@ -674,41 +762,139 @@ const InputCekIdBi = () => {
                                     />
                                     <label className={`${classes['tab-label']} ${isDataPasanganPengajuOpen ? classes['accordion-open'] : ''}`} htmlFor="chck2">Data Pasangan Pengaju</label>
                                     <div className={`${classes['tab-content']} ${isDataPasanganPengajuOpen ? classes['accordion-open'] : ''}`}>
-                                        <Input type={'text'} id={'pasangan_pengaju_full_name'} label={'Nama Lengkap Pasangan Pengaju'} onChange={onChangeHandler} />
-                                        <Input type={'text'} id={'pasangan_pengaju_pekerjaan'} label={'Pekerjaan Pasangan Pengaju'} onChange={onChangeHandler} />
-                                        <Input type={'text'} id={'pasangan_pengaju_tempat_lahir'} label={'Tempat Lahir Pasangan Pengaju'} onChange={onChangeHandler} />
-                                        <Input type={'date'} id={'pasangan_pengaju_tanggal_lahir'} label={'Tanggal Lahir Pasangan Pengaju'} onChange={onChangeHandler} />
-                                        <Input type={'text'} id={'pasangan_pengaju_nik_id'} label={'Nomor KTP (NIK) Pasangan Pengaju'} onChange={onChangeHandler} />
-                                        <div className={classes.inputWrap}>
-                                            <label htmlFor='pasangan_pengaju_provinsi'>Provinsi</label>
-                                            <select id='pasangan_pengaju_provinsi' name='pasangan_pengaju_provinsi' value={formData.pasangan_pengaju_provinsi} onChange={onChangeHandler}>
-                                                <option value={-1} disabled hidden>Pilih Provinsi</option>
-                                                {selectOptionProvinsiList}
-                                            </select>
-                                        </div>
-                                        <div className={classes.inputWrap}>
-                                            <label htmlFor='pasangan_pengaju_kabupaten'>Kabupaten</label>
-                                            <select id='pasangan_pengaju_kabupaten' name='pasangan_pengaju_kabupaten' disabled={formData.pasangan_pengaju_provinsi === -1} value={formData.pasangan_pengaju_kabupaten} onChange={onChangeHandler}>
-                                                <option value={-1} disabled hidden>{formData.pasangan_pengaju_provinsi === -1 ? 'Pilih Provinsi Dahulu' : 'Pilih Kabupaten'}</option>
-                                                {selectOptionKabupatenPasanganPengajuList}
-                                            </select>
-                                        </div>
-                                        <div className={classes.inputWrap}>
-                                            <label htmlFor='pasangan_pengaju_kecamatan'>Kecamatan</label>
-                                            <select id='pasangan_pengaju_kecamatan' name='pasangan_pengaju_kecamatan' disabled={formData.pasangan_pengaju_kabupaten === -1} value={formData.pasangan_pengaju_kecamatan} onChange={onChangeHandler}>
-                                                <option value={-1} disabled hidden>{formData.pasangan_pengaju_kabupaten === -1 ? 'Pilih Kabupaten Dahulu' : 'Pilih Kecamatan'}</option>
-                                                {selectOptionKecamatanPasanganPengajuList}
-                                            </select>
-                                        </div>
-                                        <div className={classes.inputWrap}>
-                                            <label htmlFor='pasangan_pengaju_desa'>Desa/Kelurahan</label>
-                                            <select id='pasangan_pengaju_desa' name='pasangan_pengaju_desa' disabled={formData.pasangan_pengaju_kecamatan === -1} value={formData.pasangan_pengaju_desa} onChange={onChangeHandler}>
-                                                <option value={-1} disabled hidden>{formData.pengaju_kecamatan === -1 ? 'Pilih Kecamatan Dahulu' : 'Pilih Desa'}</option>
-                                                {selectOptionDesaPasanganPengajuList}
-                                            </select>
-                                        </div>
-                                        <Input type={'text'} id={'pasangan_pengaju_rtrw'} label={'RT/RW'} onChange={onChangeHandler} />
-                                        <Input type={'text'} id={'pasangan_pengaju_full_address'} label={'Alamat Pasangan Pengaju (Sesuai KTP)'} onChange={onChangeHandler} />
+                                    <Input 
+                                        type={'text'} 
+                                        className={inputWrapClasses} 
+                                        value={pasanganPengajuFullName.value} 
+                                        id={'pasangan_pengaju_full_name'} 
+                                        label={'Nama Lengkap Pasangan Pengaju'} 
+                                        onChange={pasanganPengajuFullName.valueChangeHandler} 
+                                        onBlur={pasanganPengajuFullName.inputBlurHandler}
+                                        errorMsg={pasanganPengajuFullName.errorMessage}
+                                        hasError={pasanganPengajuFullName.hasError}
+                                    />
+                                    <Input 
+                                        className={inputWrapClasses}
+                                        type={'text'} 
+                                        id={'pasangan_pengaju_pekerjaan'} 
+                                        label={'Pekerjaan Pasangan Pengaju'}
+                                        value={pasanganPengajuPekerjaan.value}
+                                        onChange={pasanganPengajuPekerjaan.valueChangeHandler}
+                                        onBlur={pasanganPengajuPekerjaan.inputBlurHandler} 
+                                        errorMsg={pasanganPengajuPekerjaan.errorMessage}
+                                        hasError={pasanganPengajuPekerjaan.hasError}
+                                    />
+                                    <Input 
+                                        className={inputWrapClasses}
+                                        type={'text'} 
+                                        id={'pasangan_pengaju_tempat_lahir'} 
+                                        label={'Tempat Lahir Pasangan Pengaju'}
+                                        value={pasanganPengajuTempatLahir.value}
+                                        onChange={pasanganPengajuTempatLahir.valueChangeHandler} 
+                                        onBlur={pasanganPengajuTempatLahir.inputBlurHandler}
+                                        errorMsg={pasanganPengajuTempatLahir.errorMessage}
+                                        hasError={pasanganPengajuTempatLahir.hasError}
+                                        
+                                    />
+                                    <Input
+                                        className={inputWrapClasses}
+                                        type={'date'}
+                                        id={'pasangan_pengaju_tanggal_lahir'}
+                                        label={'Tanggal Lahir Pasangan Pengaju'}
+                                        value={pasanganPengajuTanggalLahir.value}
+                                        onChange={pasanganPengajuTanggalLahir.valueChangeHandler} 
+                                        onBlur={pasanganPengajuTanggalLahir.inputBlurHandler}
+                                        errorMsg={pasanganPengajuTanggalLahir.errorMessage}
+                                        hasError={pasanganPengajuTanggalLahir.hasError}
+                                    />
+                                    <Input 
+                                        className={inputWrapClasses}
+                                        type={'number'} 
+                                        id={'pasangan_pengaju_nik_id'} 
+                                        label={'Nomor KTP (NIK) Pasangan Pengaju'} 
+                                        value={pasanganPengajuNikId.value}
+                                        onChange={pasanganPengajuNikId.valueChangeHandler} 
+                                        onBlur={pasanganPengajuNikId.inputBlurHandler}
+                                        errorMsg={pasanganPengajuNikId.errorMessage}
+                                        hasError={pasanganPengajuNikId.hasError}
+                                    />
+                                    <SelectInput 
+                                        className={selectInputWrapClasses}
+                                        id='pasangan_pengaju_provinsi'
+                                        label='Provinsi'
+                                        isUsingPlaceHolder
+                                        placeholderText='Pilih Provinsi'
+                                        value={pasanganPengajuProvinsi.value}
+                                        onBlur={pasanganPengajuProvinsi.inputBlurHandler}
+                                        onChange={pasanganPengajuProvinsi.valueChangeHandler}
+                                        options={selectOptionProvinsiList}
+                                        errorMsg={pasanganPengajuProvinsi.errorMessage}
+                                        hasError={pasanganPengajuProvinsi.hasError}
+                                    />
+                                    <SelectInput 
+                                        className={selectInputWrapClasses}
+                                        id='pasangan_pengaju_kabupaten'
+                                        label='Kabupaten'
+                                        isUsingPlaceHolder
+                                        placeholderText={pasanganPengajuProvinsi.value === selectInputPlaceHolder ? 'Pilih Provinsi Terlebih Dahulu' : 'Pilih Kabupaten'}
+                                        disabled={pasanganPengajuProvinsi.value === selectInputPlaceHolder}
+                                        value={pasanganPengajuKabupaten.value}
+                                        onBlur={pasanganPengajuKabupaten.inputBlurHandler}
+                                        onChange={pasanganPengajuKabupaten.valueChangeHandler}
+                                        options={selectOptionKabupatenPasanganPengajuList}
+                                        errorMsg={pasanganPengajuKabupaten.errorMessage}
+                                        hasError={pasanganPengajuKabupaten.hasError}
+                                    />
+                                    <SelectInput 
+                                        className={selectInputWrapClasses}
+                                        id='pasangan_pengaju_kecamatan'
+                                        label='Kecamatan'
+                                        isUsingPlaceHolder
+                                        placeholderText={pasanganPengajuKabupaten.value === selectInputPlaceHolder ? 'Pilih Kabupaten Terlebih Dahulu' : 'Pilih Kecamatan'}
+                                        disabled={pasanganPengajuKabupaten.value === selectInputPlaceHolder}
+                                        value={pasanganPengajuKecamatan.value}
+                                        onBlur={pasanganPengajuKecamatan.inputBlurHandler}
+                                        onChange={pasanganPengajuKecamatan.valueChangeHandler}
+                                        options={selectOptionKecamatanPasanganPengajuList}
+                                        errorMsg={pasanganPengajuKecamatan.errorMessage}
+                                        hasError={pasanganPengajuKecamatan.hasError}
+                                    />
+                                    <SelectInput 
+                                        className={selectInputWrapClasses}
+                                        id='pasangan_pengaju_desa'
+                                        label='Desa/Kelurahan'
+                                        isUsingPlaceHolder
+                                        placeholderText={pasanganPengajuKecamatan.value === selectInputPlaceHolder ? 'Pilih Kecamatan Terlebih Dahulu' : 'Pilih Desa'}
+                                        disabled={pasanganPengajuKecamatan.value === selectInputPlaceHolder}
+                                        value={pasanganPengajuDesa.value}
+                                        onBlur={pasanganPengajuDesa.inputBlurHandler}
+                                        onChange={pasanganPengajuDesa.valueChangeHandler}
+                                        options={selectOptionDesaPasanganPengajuList}
+                                        errorMsg={pasanganPengajuDesa.errorMessage}
+                                        hasError={pasanganPengajuDesa.hasError}
+                                    />
+                                    <Input 
+                                        className={inputWrapClasses}
+                                        type={'text'} 
+                                        id={'pasangan_pengaju_rtrw'} 
+                                        label={'RT/RW'} 
+                                        value={pasanganPengajuRtRw.value}
+                                        onChange={pasanganPengajuRtRw.valueChangeHandler} 
+                                        onBlur={pasanganPengajuRtRw.inputBlurHandler}
+                                        errorMsg={pasanganPengajuRtRw.errorMessage}
+                                        hasError={pasanganPengajuRtRw.hasError}
+                                    />
+                                    <Input 
+                                        className={inputWrapClasses}
+                                        type={'text'} 
+                                        id={'pasangan_pengaju_full_address'} 
+                                        label={'Alamat Pasangan Pengaju (Sesuai KTP)'} 
+                                        value={pasanganPengajuFullAddress.value}
+                                        onChange={pasanganPengajuFullAddress.valueChangeHandler} 
+                                        onBlur={pasanganPengajuFullAddress.inputBlurHandler}
+                                        errorMsg={pasanganPengajuFullAddress.errorMessage}
+                                        hasError={pasanganPengajuFullAddress.hasError}
+                                    />
                                         <div className={classes['input_file']}>
                                             <p>Alamat Pasangan Pengaju (Sesuai KTP)</p>
                                             <div className={classes['input']}>
