@@ -37,9 +37,9 @@ const Login = (props) => {
     useEffect(() => {
         console.log(localStorage.getItem('token'))
         if (localStorage.getItem("token") !== null) {
-            navigate("/", { replace: true })
+            navigate("/", { replace: true });
         }
-    })
+    }, [])
     return (
         <div className={classes['login-card']}>
             <form onSubmit={submitHandler} className={classes.form}>

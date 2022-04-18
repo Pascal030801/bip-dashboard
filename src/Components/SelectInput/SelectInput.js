@@ -7,7 +7,8 @@ function  selectInputPropsAreEqual(prevSelectInput, nextSelectInput) {
     && prevSelectInput.errorMsg === nextSelectInput.errorMsg 
     && prevSelectInput.hasError === nextSelectInput.hasError
     && prevSelectInput.options === nextSelectInput.options
-    && prevSelectInput.placeholderText === nextSelectInput.placeholderText;
+    && prevSelectInput.placeholderText === nextSelectInput.placeholderText
+    && prevSelectInput.disabled === nextSelectInput.disabled;
 }
 
 const SelectInput = (props) => {

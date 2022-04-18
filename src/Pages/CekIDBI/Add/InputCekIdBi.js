@@ -291,17 +291,106 @@ const InputCekIdBi = () => {
             const cekIdBiData = res.data;
             console.log(cekIdBiData)
 
+            statusIdBi.setValue(cekIdBiData.status);
+            console.log(cekIdBiData.profil_pengaju.status_perkawinan)
+            pengajuStatusPerkawinan.setValue(cekIdBiData.profil_pengaju.status_perkawinan);
+            pengajuStatusPerkawinan.setDisable(true);
+
+            perumahanDipilih.setValue(cekIdBiData.perumahan_id);
+            perumahanDipilih.setDisable(true);
+
+            bankTerpilih.setValue(cekIdBiData.bank_terpilih);
+            
             pengajuFullName.setValue(cekIdBiData.profil_pengaju.full_name);
+            pengajuFullName.setDisable(true);
+            pengajuFullName.setDisable(true);
+
             pengajuPekerjaan.setValue(cekIdBiData.profil_pengaju.position);
+            pengajuPekerjaan.setDisable(true);
+
             pengajuTempatLahir.setValue(cekIdBiData.profil_pengaju.place_of_birth);
-            pengajuTanggalLahir.setValue(cekIdBiData.profil_pengaju.date_of_birth);
+            pengajuTempatLahir.setDisable(true);
+
+            const pengajuTanggalLahirData = new Date(cekIdBiData.profil_pengaju.date_of_birth);
+            const pengajuTanggalLahirDataMonth = pengajuTanggalLahirData.getMonth() < 11 ? `0${(pengajuTanggalLahirData.getMonth() + 1)}` : pengajuTanggalLahirData.getMonth() + 1;
+            const pengajuTanggalLahirDataDay = pengajuTanggalLahirData.getDate() < 10 ? `0${pengajuTanggalLahirData.getDate()}` : pengajuTanggalLahirData.getDate();
+            pengajuTanggalLahir.setValue(`${pengajuTanggalLahirData.getFullYear()}-${pengajuTanggalLahirDataMonth}-${pengajuTanggalLahirDataDay}`);
+            pengajuTanggalLahir.setDisable(true);
+
             pengajuNikId.setValue(cekIdBiData.profil_pengaju.nik_id);
-            pengajuProvinsi.setValue(cekIdBiData.profil_pengaju.provinsi_id);
-            pengajuKabupaten.setValue(cekIdBiData.profil_pengaju.kabupaten_id);
-            pengajuKecamatan.setValue(cekIdBiData.profil_pengaju.kecamatan_id);
-            pengajuDesa.setValue(cekIdBiData.profil_pengaju.desa_id);
+            pengajuNikId.setDisable(true);
+
+            pengajuProvinsi.setValue(cekIdBiData.profil_pengaju.provinsiId);
+            pengajuProvinsi.setDisable(true);
+            
+            pengajuKabupaten.setValue(cekIdBiData.profil_pengaju.kabupatenId);
+            pengajuKabupaten.setValue(cekIdBiData.profil_pengaju.kabupatenId);
+            pengajuKabupaten.setDisable(true);
+
+            pengajuKecamatan.setValue(cekIdBiData.profil_pengaju.kecamatanId);
+            pengajuKecamatan.setValue(cekIdBiData.profil_pengaju.kecamatanId);
+            pengajuKecamatan.setDisable(true);
+            
+            pengajuDesa.setValue(cekIdBiData.profil_pengaju.desaId);
+            pengajuDesa.setValue(cekIdBiData.profil_pengaju.desaId);
+            pengajuDesa.setDisable(true);
+
             pengajuRtRw.setValue(cekIdBiData.profil_pengaju.rtrw);
+            pengajuRtRw.setDisable(true);
+
             pengajuFullAddress.setValue(cekIdBiData.profil_pengaju.full_address);
+            pengajuFullAddress.setDisable(true);
+            
+            const pengajuKtpData = String(cekIdBiData.profil_pengaju.foto_ktp_path).replace('\\\\', '\/');
+            setImageFotoKTP(`${BASE_PATH_API}/${pengajuKtpData}`);
+            pengajuFotoKTP.setDisable(true);
+
+            console.log(cekIdBiData.profil_pengaju.status_perkawinan)
+            if(cekIdBiData.profil_pengaju.status_perkawinan === 'Kawin'){
+                pasanganPengajuFullName.setValue(cekIdBiData.profile_pasangan_pengaju.full_name);
+                pasanganPengajuFullName.setDisable(true);
+                pasanganPengajuFullName.setDisable(true);
+
+                pasanganPengajuPekerjaan.setValue(cekIdBiData.profile_pasangan_pengaju.position);
+                pasanganPengajuPekerjaan.setDisable(true);
+
+                pasanganPengajuTempatLahir.setValue(cekIdBiData.profile_pasangan_pengaju.place_of_birth);
+                pasanganPengajuTempatLahir.setDisable(true);
+
+                const pasanganPengajuTanggalLahirData = new Date(cekIdBiData.profile_pasangan_pengaju.date_of_birth);
+                const pasanganPengajuTanggalLahirDataMonth = pasanganPengajuTanggalLahirData.getMonth() < 11 ? `0${(pasanganPengajuTanggalLahirData.getMonth() + 1)}` : pasanganPengajuTanggalLahirData.getMonth() + 1;
+                const pasanganPengajuTanggalLahirDataDay = pasanganPengajuTanggalLahirData.getDate() < 10 ? `0${pasanganPengajuTanggalLahirData.getDate()}` : pasanganPengajuTanggalLahirData.getDate();
+                pasanganPengajuTanggalLahir.setValue(`${pengajuTanggalLahirData.getFullYear()}-${pasanganPengajuTanggalLahirDataMonth}-${pasanganPengajuTanggalLahirDataDay}`);
+                pasanganPengajuTanggalLahir.setDisable(true);
+
+                pasanganPengajuNikId.setValue(cekIdBiData.profile_pasangan_pengaju.nik_id);
+                pasanganPengajuNikId.setDisable(true);
+
+                pasanganPengajuProvinsi.setValue(cekIdBiData.profile_pasangan_pengaju.provinsiId);
+                pasanganPengajuProvinsi.setDisable(true);
+                
+                pasanganPengajuKabupaten.setValue(cekIdBiData.profile_pasangan_pengaju.kabupatenId);
+                pasanganPengajuKabupaten.setValue(cekIdBiData.profile_pasangan_pengaju.kabupatenId);
+                pasanganPengajuKabupaten.setDisable(true);
+
+                pasanganPengajuKecamatan.setValue(cekIdBiData.profile_pasangan_pengaju.kecamatanId);
+                pasanganPengajuKecamatan.setValue(cekIdBiData.profile_pasangan_pengaju.kecamatanId);
+                pasanganPengajuKecamatan.setDisable(true);
+                
+                pasanganPengajuDesa.setValue(cekIdBiData.profile_pasangan_pengaju.desaId);
+                pasanganPengajuDesa.setValue(cekIdBiData.profile_pasangan_pengaju.desaId);
+                pasanganPengajuDesa.setDisable(true);
+
+                pasanganPengajuRtRw.setValue(cekIdBiData.profile_pasangan_pengaju.rtrw);
+                pasanganPengajuRtRw.setDisable(true);
+
+                pasanganPengajuFullAddress.setValue(cekIdBiData.profile_pasangan_pengaju.full_address);
+                pasanganPengajuFullAddress.setDisable(true);
+                
+                const pasanganPengajuKtpData = String(cekIdBiData.profile_pasangan_pengaju.foto_ktp_path).replace('\\\\', '\/');
+                setImageFotoKTPPasangan(`${BASE_PATH_API}/${pasanganPengajuKtpData}`);
+                pasanganPengajuFotoKTP.setDisable(true);
+            }
 
         } catch (error) {
             console.log(error)
@@ -394,8 +483,33 @@ const InputCekIdBi = () => {
         
         setIsSubmitBtnDisabled(true);
         setShowLoading(true);
-        if( !pengajuFullName.isValid
-            || !pengajuPekerjaan.isValid
+        if( !(statusIdBi.isValid &&
+            bankTerpilih.isValid &&
+            perumahanDipilih.isValid &&
+            pengajuFullName.isValid &&
+            pengajuPekerjaan.isValid &&
+            pengajuTempatLahir.isValid &&
+            pengajuTanggalLahir.isValid &&
+            pengajuNikId.isValid &&
+            pengajuProvinsi.isValid &&
+            pengajuKabupaten.isValid &&
+            pengajuKecamatan.isValid &&
+            pengajuDesa.isValid &&
+            pengajuRtRw.isValid &&
+            pengajuStatusPerkawinan.isValid &&
+            pengajuFotoKTP.isValid &&
+            pasanganPengajuFullName.isValid &&
+            pasanganPengajuPekerjaan.isValid &&
+            pasanganPengajuTempatLahir.isValid &&
+            pasanganPengajuTanggalLahir.isValid &&
+            pasanganPengajuNikId.isValid &&
+            pasanganPengajuProvinsi.isValid &&
+            pasanganPengajuKabupaten.isValid &&
+            pasanganPengajuKecamatan.isValid &&
+            pasanganPengajuDesa.isValid &&
+            pasanganPengajuRtRw.isValid &&
+            pasanganPengajuFotoKTP.isValid
+            )
         ){
             setIsSubmitBtnDisabled(false);
             setShowLoading(false);
@@ -433,69 +547,117 @@ const InputCekIdBi = () => {
             formD.append('pasangan_pengaju_desa', pasanganPengajuDesa.value);
             formD.append('pasangan_pengaju_rtrw', pasanganPengajuRtRw.value);
             formD.append('pasangan_pengaju_full_address', pasanganPengajuFullAddress.value);
-            formD.append('pasangan_pengaju_status_perkawinan', pasanganPengajuStatusPerkawinan.value);
+            formD.append('pasangan_pengaju_status_perkawinan', pengajuStatusPerkawinan.value);
             formD.append('pasangan_pengaju_foto_ktp', pasanganPengajuFotoKTP.value);
         }
 
-        // console.log(formD);
-
-        // setIsSubmitBtnDisabled(false);
-        // setShowLoading(false);
-        // return true;
-
         const id = toast.loading("Sedang menambahkan data ke server");
 
-        axios.post(`${BASE_PATH_API}/cek_id_bi`, formD, {
-            headers: {
-                "AUTH-BIP-TOKEN": localStorage.getItem("token"),
-                'Content-Type': 'multipart/form-data; boundary=cekIDBI',
-            }
-        }).then((response) => {
-            toast.update(id, {
-                render: 'Berhasil Menambahkan Cek ID BI data',
-                type: 'success',
-                position: 'top-right',
-                autoClose: 500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                isLoading: false,      
-            });
-            setShowLoading(false);
-            setTimeout(()=> {
-                navigate('/cekIdBi', { replace: true });
-            }, 1500);
+        if(!(cekIdBI__ID !== undefined && cekIdBI__ID !== null)){
+            axios.post(`${BASE_PATH_API}/cek_id_bi`, formD, {
+                headers: {
+                    "AUTH-BIP-TOKEN": localStorage.getItem("token"),
+                    'Content-Type': 'multipart/form-data; boundary=cekIDBI',
+                }
+            }).then((response) => {
+                toast.update(id, {
+                    render: 'Berhasil Menambahkan Cek ID BI data',
+                    type: 'success',
+                    position: 'top-right',
+                    autoClose: 500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    isLoading: false,      
+                });
+                setShowLoading(false);
+                setTimeout(()=> {
+                    navigate('/cekIdBi', { replace: true });
+                }, 1500);
 
 
-        }).catch((error) => {
-            if (error.response) {
-                // Request made and server responded
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                // The request was made but no response was received
-                console.log(error.request);
-            } else {
-                // Something happened in setting up the request that triggered an Error
-                console.log('Error', error.message);
-            }
-            setShowLoading(false);
-            toast.update(id, {
-                render: 'Gagal Menambahkan Cek ID BI data',
-                type: 'error',
-                position: 'top-right',
-                autoClose: 500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                isLoading: false
-            });
-            setIsSubmitBtnDisabled(false);
+            }).catch((error) => {
+                if (error.response) {
+                    // Request made and server responded
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    console.log(error.request);
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                setShowLoading(false);
+                toast.update(id, {
+                    render: 'Gagal Menambahkan Cek ID BI data',
+                    type: 'error',
+                    position: 'top-right',
+                    autoClose: 500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    isLoading: false
+                });
+                setIsSubmitBtnDisabled(false);
 
-        })
+            })
+        }else{
+            axios.put(`${BASE_PATH_API}/cek_id_bi/${cekIdBI__ID}`, formD, {
+                headers: {
+                    "AUTH-BIP-TOKEN": localStorage.getItem("token"),
+                    'Content-Type': 'multipart/form-data; boundary=cekIDBI',
+                }
+            }).then((response) => {
+                toast.update(id, {
+                    render: 'Berhasil Memperbarui Cek ID BI data',
+                    type: 'success',
+                    position: 'top-right',
+                    autoClose: 500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    isLoading: false,      
+                });
+                setShowLoading(false);
+                setTimeout(()=> {
+                    navigate('/cekIdBi', { replace: true });
+                }, 1500);
+
+
+            }).catch((error) => {
+                if (error.response) {
+                    // Request made and server responded
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    console.log(error.request);
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                setShowLoading(false);
+                toast.update(id, {
+                    render: 'Gagal Memperbarui Cek ID BI data',
+                    type: 'error',
+                    position: 'top-right',
+                    autoClose: 500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    isLoading: false
+                });
+                setIsSubmitBtnDisabled(false);
+
+            })
+        }
     };
 
     const onChangeHandler = (e) => {
@@ -528,6 +690,7 @@ const InputCekIdBi = () => {
                         options={selectOptionStatusPerkawinanList}
                         errorMsg={pengajuStatusPerkawinan.errorMessage}
                         hasError={pengajuStatusPerkawinan.hasError}
+                        disabled={pengajuStatusPerkawinan.isDisabled}
                     />
 
                     <SelectInput 
@@ -546,6 +709,7 @@ const InputCekIdBi = () => {
                         ]}
                         errorMsg={statusIdBi.errorMessage}
                         hasError={statusIdBi.hasError}
+                        disabled={statusIdBi.isDisabled}
                     />
 
                     <SelectInput 
@@ -560,6 +724,7 @@ const InputCekIdBi = () => {
                         options={selectOptionPerumahanList}
                         errorMsg={perumahanDipilih.errorMessage}
                         hasError={perumahanDipilih.hasError}
+                        disabled={perumahanDipilih.isDisabled}
                     />
 
                     <SelectInput 
@@ -574,6 +739,7 @@ const InputCekIdBi = () => {
                         options={selectOptionBankList}
                         errorMsg={bankTerpilih.errorMessage}
                         hasError={bankTerpilih.hasError}
+                        disabled={bankTerpilih.isDisabled}
                     />
                     
                     <div className={classes.tabs} style={{marginTop: '25px'}}>
@@ -604,6 +770,7 @@ const InputCekIdBi = () => {
                                         onBlur={pengajuFullName.inputBlurHandler}
                                         errorMsg={pengajuFullName.errorMessage}
                                         hasError={pengajuFullName.hasError}
+                                        disabled={pengajuFullName.isDisabled}
                                     />
                                     <Input 
                                         className={inputWrapClasses}
@@ -615,6 +782,7 @@ const InputCekIdBi = () => {
                                         onBlur={pengajuPekerjaan.inputBlurHandler} 
                                         errorMsg={pengajuPekerjaan.errorMessage}
                                         hasError={pengajuPekerjaan.hasError}
+                                        disabled={pengajuPekerjaan.isDisabled}
                                     />
                                     <Input 
                                         className={inputWrapClasses}
@@ -626,6 +794,7 @@ const InputCekIdBi = () => {
                                         onBlur={pengajuTempatLahir.inputBlurHandler}
                                         errorMsg={pengajuTempatLahir.errorMessage}
                                         hasError={pengajuTempatLahir.hasError}
+                                        disabled={pengajuTempatLahir.isDisabled}
                                         
                                     />
                                     <Input
@@ -638,6 +807,7 @@ const InputCekIdBi = () => {
                                         onBlur={pengajuTanggalLahir.inputBlurHandler}
                                         errorMsg={pengajuTanggalLahir.errorMessage}
                                         hasError={pengajuTanggalLahir.hasError}
+                                        disabled={pengajuTanggalLahir.isDisabled}
                                     />
                                     <Input 
                                         className={inputWrapClasses}
@@ -649,6 +819,7 @@ const InputCekIdBi = () => {
                                         onBlur={pengajuNikId.inputBlurHandler}
                                         errorMsg={pengajuNikId.errorMessage}
                                         hasError={pengajuNikId.hasError}
+                                        disabled={pengajuNikId.isDisabled}
                                     />
                                     <SelectInput 
                                         className={selectInputWrapClasses}
@@ -662,6 +833,7 @@ const InputCekIdBi = () => {
                                         options={selectOptionProvinsiList}
                                         errorMsg={pengajuProvinsi.errorMessage}
                                         hasError={pengajuProvinsi.hasError}
+                                        disabled={pengajuProvinsi.isDisabled}
                                     />
                                     <SelectInput 
                                         className={selectInputWrapClasses}
@@ -669,7 +841,7 @@ const InputCekIdBi = () => {
                                         label='Kabupaten'
                                         isUsingPlaceHolder
                                         placeholderText={pengajuProvinsi.value === selectInputPlaceHolder ? 'Pilih Provinsi Terlebih Dahulu' : 'Pilih Kabupaten'}
-                                        disabled={pengajuProvinsi.value === selectInputPlaceHolder}
+                                        disabled={pengajuProvinsi.value === selectInputPlaceHolder || pengajuKabupaten.isDisabled}
                                         value={pengajuKabupaten.value}
                                         onBlur={pengajuKabupaten.inputBlurHandler}
                                         onChange={pengajuKabupaten.valueChangeHandler}
@@ -683,7 +855,7 @@ const InputCekIdBi = () => {
                                         label='Kecamatan'
                                         isUsingPlaceHolder
                                         placeholderText={pengajuKabupaten.value === selectInputPlaceHolder ? 'Pilih Kabupaten Terlebih Dahulu' : 'Pilih Kecamatan'}
-                                        disabled={pengajuKabupaten.value === selectInputPlaceHolder}
+                                        disabled={pengajuKabupaten.value === selectInputPlaceHolder || pengajuKecamatan.isDisabled}
                                         value={pengajuKecamatan.value}
                                         onBlur={pengajuKecamatan.inputBlurHandler}
                                         onChange={pengajuKecamatan.valueChangeHandler}
@@ -697,7 +869,7 @@ const InputCekIdBi = () => {
                                         label='Desa/Kelurahan'
                                         isUsingPlaceHolder
                                         placeholderText={pengajuKecamatan.value === selectInputPlaceHolder ? 'Pilih Kecamatan Terlebih Dahulu' : 'Pilih Desa'}
-                                        disabled={pengajuKecamatan.value === selectInputPlaceHolder}
+                                        disabled={pengajuKecamatan.value === selectInputPlaceHolder || pengajuDesa.isDisabled}
                                         value={pengajuDesa.value}
                                         onBlur={pengajuDesa.inputBlurHandler}
                                         onChange={pengajuDesa.valueChangeHandler}
@@ -715,6 +887,7 @@ const InputCekIdBi = () => {
                                         onBlur={pengajuRtRw.inputBlurHandler}
                                         errorMsg={pengajuRtRw.errorMessage}
                                         hasError={pengajuRtRw.hasError}
+                                        disabled={pengajuRtRw.isDisabled}
                                     />
                                     <Input 
                                         className={inputWrapClasses}
@@ -726,6 +899,7 @@ const InputCekIdBi = () => {
                                         onBlur={pengajuFullAddress.inputBlurHandler}
                                         errorMsg={pengajuFullAddress.errorMessage}
                                         hasError={pengajuFullAddress.hasError}
+                                        disabled={pengajuFullAddress.isDisabled}
                                     />
 
                                     <div className={classes['input_file']}>
@@ -737,7 +911,7 @@ const InputCekIdBi = () => {
                                                     (<img src={imageFotoKTP} style={{height: '100%', width: '100%'}} />)
                                                 }
                                             </label>
-                                            <input type={'file'} id={'foto_ktp_pengaju'} name={'foto_ktp_pengaju'} onChange={onChangeHandler} />
+                                            <input type={'file'} id={'foto_ktp_pengaju'} name={'foto_ktp_pengaju'} onChange={onChangeHandler} disabled={pengajuFotoKTP.isDisabled} />
                                         </div>
                                     </div>
                             </div>
@@ -772,6 +946,7 @@ const InputCekIdBi = () => {
                                         onBlur={pasanganPengajuFullName.inputBlurHandler}
                                         errorMsg={pasanganPengajuFullName.errorMessage}
                                         hasError={pasanganPengajuFullName.hasError}
+                                        disabled={pasanganPengajuFullName.isDisabled}
                                     />
                                     <Input 
                                         className={inputWrapClasses}
@@ -783,6 +958,8 @@ const InputCekIdBi = () => {
                                         onBlur={pasanganPengajuPekerjaan.inputBlurHandler} 
                                         errorMsg={pasanganPengajuPekerjaan.errorMessage}
                                         hasError={pasanganPengajuPekerjaan.hasError}
+                                        disabled={pasanganPengajuPekerjaan.isDisabled}
+
                                     />
                                     <Input 
                                         className={inputWrapClasses}
@@ -794,6 +971,7 @@ const InputCekIdBi = () => {
                                         onBlur={pasanganPengajuTempatLahir.inputBlurHandler}
                                         errorMsg={pasanganPengajuTempatLahir.errorMessage}
                                         hasError={pasanganPengajuTempatLahir.hasError}
+                                        disabled={pasanganPengajuTempatLahir.isDisabled}
                                         
                                     />
                                     <Input
@@ -806,6 +984,7 @@ const InputCekIdBi = () => {
                                         onBlur={pasanganPengajuTanggalLahir.inputBlurHandler}
                                         errorMsg={pasanganPengajuTanggalLahir.errorMessage}
                                         hasError={pasanganPengajuTanggalLahir.hasError}
+                                        disabled={pasanganPengajuTanggalLahir.isDisabled}
                                     />
                                     <Input 
                                         className={inputWrapClasses}
@@ -817,6 +996,7 @@ const InputCekIdBi = () => {
                                         onBlur={pasanganPengajuNikId.inputBlurHandler}
                                         errorMsg={pasanganPengajuNikId.errorMessage}
                                         hasError={pasanganPengajuNikId.hasError}
+                                        disabled={pasanganPengajuNikId.isDisabled}
                                     />
                                     <SelectInput 
                                         className={selectInputWrapClasses}
@@ -830,6 +1010,7 @@ const InputCekIdBi = () => {
                                         options={selectOptionProvinsiList}
                                         errorMsg={pasanganPengajuProvinsi.errorMessage}
                                         hasError={pasanganPengajuProvinsi.hasError}
+                                        disabled={pasanganPengajuProvinsi.isDisabled}
                                     />
                                     <SelectInput 
                                         className={selectInputWrapClasses}
@@ -837,7 +1018,7 @@ const InputCekIdBi = () => {
                                         label='Kabupaten'
                                         isUsingPlaceHolder
                                         placeholderText={pasanganPengajuProvinsi.value === selectInputPlaceHolder ? 'Pilih Provinsi Terlebih Dahulu' : 'Pilih Kabupaten'}
-                                        disabled={pasanganPengajuProvinsi.value === selectInputPlaceHolder}
+                                        disabled={pasanganPengajuProvinsi.value === selectInputPlaceHolder || pasanganPengajuKabupaten.isDisabled}
                                         value={pasanganPengajuKabupaten.value}
                                         onBlur={pasanganPengajuKabupaten.inputBlurHandler}
                                         onChange={pasanganPengajuKabupaten.valueChangeHandler}
@@ -851,7 +1032,7 @@ const InputCekIdBi = () => {
                                         label='Kecamatan'
                                         isUsingPlaceHolder
                                         placeholderText={pasanganPengajuKabupaten.value === selectInputPlaceHolder ? 'Pilih Kabupaten Terlebih Dahulu' : 'Pilih Kecamatan'}
-                                        disabled={pasanganPengajuKabupaten.value === selectInputPlaceHolder}
+                                        disabled={pasanganPengajuKabupaten.value === selectInputPlaceHolder || pasanganPengajuKecamatan.isDisabled}
                                         value={pasanganPengajuKecamatan.value}
                                         onBlur={pasanganPengajuKecamatan.inputBlurHandler}
                                         onChange={pasanganPengajuKecamatan.valueChangeHandler}
@@ -865,7 +1046,7 @@ const InputCekIdBi = () => {
                                         label='Desa/Kelurahan'
                                         isUsingPlaceHolder
                                         placeholderText={pasanganPengajuKecamatan.value === selectInputPlaceHolder ? 'Pilih Kecamatan Terlebih Dahulu' : 'Pilih Desa'}
-                                        disabled={pasanganPengajuKecamatan.value === selectInputPlaceHolder}
+                                        disabled={pasanganPengajuKecamatan.value === selectInputPlaceHolder || pasanganPengajuDesa.isDisabled}
                                         value={pasanganPengajuDesa.value}
                                         onBlur={pasanganPengajuDesa.inputBlurHandler}
                                         onChange={pasanganPengajuDesa.valueChangeHandler}
@@ -883,6 +1064,7 @@ const InputCekIdBi = () => {
                                         onBlur={pasanganPengajuRtRw.inputBlurHandler}
                                         errorMsg={pasanganPengajuRtRw.errorMessage}
                                         hasError={pasanganPengajuRtRw.hasError}
+                                        disabled={pasanganPengajuRtRw.isDisabled}
                                     />
                                     <Input 
                                         className={inputWrapClasses}
@@ -894,6 +1076,7 @@ const InputCekIdBi = () => {
                                         onBlur={pasanganPengajuFullAddress.inputBlurHandler}
                                         errorMsg={pasanganPengajuFullAddress.errorMessage}
                                         hasError={pasanganPengajuFullAddress.hasError}
+                                        disabled={pasanganPengajuFullAddress.isDisabled}
                                     />
                                         <div className={classes['input_file']}>
                                             <p>Alamat Pasangan Pengaju (Sesuai KTP)</p>
@@ -904,7 +1087,7 @@ const InputCekIdBi = () => {
                                                         (<img src={imageFotoKTPPasangan} style={{height: '100%', width: '100%'}} />)
                                                     }
                                                 </label>
-                                                <input type={'file'} id={'foto_ktp_pasangan_pengaju'} name={'foto_ktp_pasangan_pengaju'} onChange={onChangeHandler} />
+                                                <input type={'file'} id={'foto_ktp_pasangan_pengaju'} name={'foto_ktp_pasangan_pengaju'} onChange={onChangeHandler} disabled={pasanganPengajuFotoKTP.isDisabled} />
                                             </div>
                                         </div>
                                     </div>

@@ -144,7 +144,7 @@ const CekIdBi = () => {
             }
         } catch (error) {
             console.log('error at Cek ID BI view: fetchPerumahan')
-            toast.error(bipErrorHandler(error))
+            toast.error(bipErrorHandler(error), {autoClose: 500})
             setShowLoading(false);
 
         }

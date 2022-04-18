@@ -15,10 +15,10 @@ const token = localStorage.getItem('token');
 * @property {number} nik_id - nomor NIK
 * @property {number} npwp_id - nomor NPWP
 * @property {number} kk_id - nomor KK
-* @property {number} provinsi_id - provinsi ID
-* @property {number} kabupaten_id - kabupaten ID
-* @property {number} kecamatan_id - kecamatan ID
-* @property {number} desa_id - desa ID
+* @property {number} provinsiId - provinsi ID
+* @property {number} kabupatenId - kabupaten ID
+* @property {number} kecamatanId - kecamatan ID
+* @property {number} desaId - desa ID
 * @property {number} rtrw - RT RW alamat
 * @property {number} full_address - alamat lengkap
 * @property {number} phone_number - nomor telpon
@@ -40,44 +40,47 @@ const token = localStorage.getItem('token');
 */
 
 const ApiService = {
+    getToken: () => {
+        return localStorage.getItem('token');
+    },
     getHouseAreas: async (params) => {
         try {
-            return await getRequest(`${BASE_PATH_API}/house_areas`, token, params);
+            return await getRequest(`${BASE_PATH_API}/house_areas`, ApiService.getToken(), params);
         } catch (error) {
             throw error;
         }
     },
     getCekIdBis: async (params) => {
         try {
-            return await getRequest(`${BASE_PATH_API}/cek_id_bis`, token, params);
+            return await getRequest(`${BASE_PATH_API}/cek_id_bis`, ApiService.getToken(), params);
         } catch (error) {
             throw error;
         }
     },
     getProvinsis: async (params) => {
         try {
-            return await getRequest(`${BASE_PATH_API}/provinsis`, token, params);
+            return await getRequest(`${BASE_PATH_API}/provinsis`, ApiService.getToken(), params);
         } catch (error) {
             throw error;
         }
     },
     getKabupatens: async (params) => {
         try {
-            return await getRequest(`${BASE_PATH_API}/kabupatens`, token, params);
+            return await getRequest(`${BASE_PATH_API}/kabupatens`, ApiService.getToken(), params);
         } catch (error) {
             throw error;
         }
     },
     getKecamatans: async (params) => {
         try {
-            return await getRequest(`${BASE_PATH_API}/kecamatans`, token, params);
+            return await getRequest(`${BASE_PATH_API}/kecamatans`, ApiService.getToken(), params);
         } catch (error) {
             throw error;
         }
     },
     getDesas: async (params) => {
         try {
-            return await getRequest(`${BASE_PATH_API}/desas`, token, params);
+            return await getRequest(`${BASE_PATH_API}/desas`, ApiService.getToken(), params);
         } catch (error) {
             throw error;
         }
@@ -90,7 +93,7 @@ const ApiService = {
      */
     getCekIdBiByID: async (cekIdBI__ID, params) => {
         try {
-            return await getRequest(`${BASE_PATH_API}/cek_id_bi/${cekIdBI__ID}`, token, params);
+            return await getRequest(`${BASE_PATH_API}/cek_id_bi/${cekIdBI__ID}`, ApiService.getToken(), params);
         } catch (error) {
             throw error;
         }
@@ -98,7 +101,7 @@ const ApiService = {
 
     deleteCekIdBiByID: async (cekIdBI__ID, params) => {
         try {
-            return await deleteRequest(`${BASE_PATH_API}/cek_id_bi/${cekIdBI__ID}`, token, params);
+            return await deleteRequest(`${BASE_PATH_API}/cek_id_bi/${cekIdBI__ID}`, ApiService.getToken(), params);
         } catch (error) {
             throw error;
         }

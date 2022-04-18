@@ -1,6 +1,9 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const getRequest = async (url, token, params) => {
+
     try {
         const response = await axios.get(url, {
             headers: {
@@ -9,8 +12,16 @@ const getRequest = async (url, token, params) => {
             params: params
         });
         return response;
-    } catch(err) {
-        throw err
+    } 
+    catch(err) {
+        if(String(err?.response?.data?.message).toLowerCase() === 'token expired'){
+            // localStorage.removeItem('token');
+            // console.log(localStorage.getItem('token'))
+            err.response.data.message = 'Login Kadaluarsa, Silahkan Refresh Untuk Login Kembali'
+            throw err;
+        }else{
+            throw err;
+        }        
     }
 }
 

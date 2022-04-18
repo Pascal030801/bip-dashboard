@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 function  inputPropsAreEqual(prevInput, nextInput) {
     return prevInput.value === nextInput.value 
     && prevInput.errorMsg === nextInput.errorMsg 
-    && prevInput.hasError === nextInput.hasError;
+    && prevInput.hasError === nextInput.hasError
+    && prevInput.disabled === nextInput.disabled;
 }
 
 const Input = (props) => {
@@ -23,6 +24,7 @@ const Input = (props) => {
                     }} 
                     onBlur={props.onBlur}
                     value={props.value}
+                    disabled={props.disabled}
                 />
                 {props.errorMsg !== '' && <span style={{color: 'red'}}>{props.errorMsg}</span>}
             </div>
@@ -35,11 +37,13 @@ Input.propTypes = {
     label: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    errorMsg: PropTypes.string
+    errorMsg: PropTypes.string,
+    disabled: PropTypes.bool
 };
 
 Input.defaultValue = {
-    errorMsg: ''
+    errorMsg: '',
+    disabled: false
 }
 
 export default React.memo(Input, inputPropsAreEqual);
