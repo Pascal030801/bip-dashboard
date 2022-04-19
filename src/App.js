@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import DokumenPengajuan from './Pages/DokumenPengajuan/DokumenPengajuan';
+import InputDokumenPengajuan from './Pages/DokumenPengajuan/Add/InputDokumenPengajuan';
 
 library.add(fas)
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="cekIdBI/tambah" element={<InputCekIdBi />} />
           <Route path="cekIdBI/update/:id" element={<InputCekIdBi />} />
           <Route path="dokumenPengajuan" element={<DokumenPengajuan />} />
+          <Route path="dokumenPengajuan/update/:id" element={<InputDokumenPengajuan />} />
           <Route path="dokumenLanjutan" element={<div><h1>Dokumen Lanjutan</h1></div>} />
           <Route path="dokumenLaporanPersiapanAkad" element={<div><h1>Dokumen Laporan Persiapan Akad</h1></div>} />
           <Route path="dokumenKelengkapanAkad" element={<div><h1>Dokumen Kelengkapan Akad</h1></div>} />

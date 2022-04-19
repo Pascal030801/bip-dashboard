@@ -57,6 +57,13 @@ const ApiService = {
             throw error;
         }
     },
+    getDokumenPengajuans: async (params) => {
+        try {
+            return await getRequest(`${BASE_PATH_API}/dokumen_pengajuans`, ApiService.getToken(), params);
+        } catch (error) {
+            throw error;
+        }
+    },
     getProvinsis: async (params) => {
         try {
             return await getRequest(`${BASE_PATH_API}/provinsis`, ApiService.getToken(), params);
@@ -98,10 +105,17 @@ const ApiService = {
             throw error;
         }
     },
-
+    
     deleteCekIdBiByID: async (cekIdBI__ID, params) => {
         try {
             return await deleteRequest(`${BASE_PATH_API}/cek_id_bi/${cekIdBI__ID}`, ApiService.getToken(), params);
+        } catch (error) {
+            throw error;
+        }
+    },
+    deleteDokumenPengajuanByID: async (DokumenPengajuan__ID, params) => {
+        try {
+            return await deleteRequest(`${BASE_PATH_API}/dokumen_pengajuan/${DokumenPengajuan__ID}`, ApiService.getToken(), params);
         } catch (error) {
             throw error;
         }

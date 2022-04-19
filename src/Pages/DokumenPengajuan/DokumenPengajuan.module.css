@@ -1,0 +1,86 @@
+.dokumenPengajuan {
+    padding: 25px;
+}
+
+.title {
+    margin-bottom: 30px;
+}
+
+.addData button {
+    height: 40px;
+    width: 200px;
+    border-radius: 20px;
+    box-shadow: none;
+    border: 0px none;
+    background-color: var(--primary-color);
+    color: white;
+    margin-bottom: 25px;
+}
+
+.addData button:hover {
+    background-color: #aa01aa;
+}
+
+.addData button:active {
+    background-color: #cc02cc;
+}
+
+.selectPerumahan {
+    margin-bottom: 30px;
+}
+
+.selectPerumahan select {
+    height: 40px;
+    width: 200px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.selectPerumahan select:focus {
+    background-color: #fff;
+}
+
+.selectPerumahan select:active {
+    background-color: #fff;
+}
+
+.wrapTableDataDokumenPengajuan {
+    width: 100%;
+}
+
+.tableDataDokumenPengajuan {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableDataDokumenPengajuan td,
+.tableDataDokumenPengajuan th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.actionWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+.actionWrap>* {
+    border: 1px solid black;
+    flex-basis: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 8px;
+}
+
+.edit-btn {
+    background-color: var(--success-color) !important;
+}
+
+.delete-btn {
+    background-color: var(--error-color) !important;
+}

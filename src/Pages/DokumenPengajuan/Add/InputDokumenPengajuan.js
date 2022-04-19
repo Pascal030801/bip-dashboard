@@ -12,9 +12,9 @@ import ApiService from '../../../Services/apiService';
 import bipErrorHandler from '../../../Util/bipErrorHandler';
 import formatter from '../../../Util/formatter';
 import validation from '../../../Util/validation';
-import classes from './InputCekIdBi.module.css'
+import classes from './InputDokumenPengajuan.module.css'
 
-const InputCekIdBi = () => {
+const InputDokumenPengajuan = () => {
     const BASE_PATH_API = process.env.REACT_APP_API_URL;
     const {id: cekIdBI__ID} = useParams();
     const inputWrapClasses = classes.cekIdBi__input;
@@ -1102,4 +1102,4 @@ const InputCekIdBi = () => {
     )
 }
 
-export default InputCekIdBi
+export default InputDokumenPengajuan
