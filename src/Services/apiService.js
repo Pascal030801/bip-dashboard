@@ -15,10 +15,10 @@ const token = localStorage.getItem('token');
 * @property {number} nik_id - nomor NIK
 * @property {number} npwp_id - nomor NPWP
 * @property {number} kk_id - nomor KK
-* @property {number} provinsiId - provinsi ID
-* @property {number} kabupatenId - kabupaten ID
-* @property {number} kecamatanId - kecamatan ID
-* @property {number} desaId - desa ID
+* @property {number} provinsi_id - provinsi ID
+* @property {number} kabupaten_id - kabupaten ID
+* @property {number} kecamatan_id - kecamatan ID
+* @property {number} desa_id - desa ID
 * @property {number} rtrw - RT RW alamat
 * @property {number} full_address - alamat lengkap
 * @property {number} phone_number - nomor telpon

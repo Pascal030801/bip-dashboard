@@ -320,19 +320,19 @@ const InputCekIdBi = () => {
             pengajuNikId.setValue(cekIdBiData.profil_pengaju.nik_id);
             pengajuNikId.setDisable(true);
 
-            pengajuProvinsi.setValue(cekIdBiData.profil_pengaju.provinsiId);
+            pengajuProvinsi.setValue(cekIdBiData.profil_pengaju.provinsi_id);
             pengajuProvinsi.setDisable(true);
             
-            pengajuKabupaten.setValue(cekIdBiData.profil_pengaju.kabupatenId);
-            pengajuKabupaten.setValue(cekIdBiData.profil_pengaju.kabupatenId);
+            pengajuKabupaten.setValue(cekIdBiData.profil_pengaju.kabupaten_id);
+            pengajuKabupaten.setValue(cekIdBiData.profil_pengaju.kabupaten_id);
             pengajuKabupaten.setDisable(true);
 
-            pengajuKecamatan.setValue(cekIdBiData.profil_pengaju.kecamatanId);
-            pengajuKecamatan.setValue(cekIdBiData.profil_pengaju.kecamatanId);
+            pengajuKecamatan.setValue(cekIdBiData.profil_pengaju.kecamatan_id);
+            pengajuKecamatan.setValue(cekIdBiData.profil_pengaju.kecamatan_id);
             pengajuKecamatan.setDisable(true);
             
-            pengajuDesa.setValue(cekIdBiData.profil_pengaju.desaId);
-            pengajuDesa.setValue(cekIdBiData.profil_pengaju.desaId);
+            pengajuDesa.setValue(cekIdBiData.profil_pengaju.desa_id);
+            pengajuDesa.setValue(cekIdBiData.profil_pengaju.desa_id);
             pengajuDesa.setDisable(true);
 
             pengajuRtRw.setValue(cekIdBiData.profil_pengaju.rtrw);
@@ -366,19 +366,19 @@ const InputCekIdBi = () => {
                 pasanganPengajuNikId.setValue(cekIdBiData.profile_pasangan_pengaju.nik_id);
                 pasanganPengajuNikId.setDisable(true);
 
-                pasanganPengajuProvinsi.setValue(cekIdBiData.profile_pasangan_pengaju.provinsiId);
+                pasanganPengajuProvinsi.setValue(cekIdBiData.profile_pasangan_pengaju.provinsi_id);
                 pasanganPengajuProvinsi.setDisable(true);
                 
-                pasanganPengajuKabupaten.setValue(cekIdBiData.profile_pasangan_pengaju.kabupatenId);
-                pasanganPengajuKabupaten.setValue(cekIdBiData.profile_pasangan_pengaju.kabupatenId);
+                pasanganPengajuKabupaten.setValue(cekIdBiData.profile_pasangan_pengaju.kabupaten_id);
+                pasanganPengajuKabupaten.setValue(cekIdBiData.profile_pasangan_pengaju.kabupaten_id);
                 pasanganPengajuKabupaten.setDisable(true);
 
-                pasanganPengajuKecamatan.setValue(cekIdBiData.profile_pasangan_pengaju.kecamatanId);
-                pasanganPengajuKecamatan.setValue(cekIdBiData.profile_pasangan_pengaju.kecamatanId);
+                pasanganPengajuKecamatan.setValue(cekIdBiData.profile_pasangan_pengaju.kecamatan_id);
+                pasanganPengajuKecamatan.setValue(cekIdBiData.profile_pasangan_pengaju.kecamatan_id);
                 pasanganPengajuKecamatan.setDisable(true);
                 
-                pasanganPengajuDesa.setValue(cekIdBiData.profile_pasangan_pengaju.desaId);
-                pasanganPengajuDesa.setValue(cekIdBiData.profile_pasangan_pengaju.desaId);
+                pasanganPengajuDesa.setValue(cekIdBiData.profile_pasangan_pengaju.desa_id);
+                pasanganPengajuDesa.setValue(cekIdBiData.profile_pasangan_pengaju.desa_id);
                 pasanganPengajuDesa.setDisable(true);
 
                 pasanganPengajuRtRw.setValue(cekIdBiData.profile_pasangan_pengaju.rtrw);
@@ -1095,7 +1095,7 @@ const InputCekIdBi = () => {
                             )
                         }
                     </div>
-                    <button disabled={isSubmitBtnDisabled}>TAMBAH</button>
+                    <button disabled={isSubmitBtnDisabled}>{cekIdBI__ID !== undefined && cekIdBI__ID !== null ? 'UPDATE' : 'TAMBAH'}</button>
                 </form>
             </div>
             {showLoading && <Loading />}
