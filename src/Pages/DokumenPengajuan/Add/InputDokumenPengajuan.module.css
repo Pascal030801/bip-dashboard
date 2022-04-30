@@ -1,6 +1,6 @@
-.InputCekIdBi {}
+.InputDokumenPengajuan {}
 
-.wrapFormInputCekIdBi {
+.wrapFormInputDokumenPengajuan {
     border: 2px solid #000;
     padding: 30px;
     margin-top: 30px;
@@ -8,17 +8,17 @@
     background-color: #fff;
 }
 
-.wrapFormInputCekIdBi>form {
+.wrapFormInputDokumenPengajuan>form {
     display: flex;
     flex-direction: column;
     /* gap: 15px; */
 }
 
-.cekIdBi__input {
+.dokumenPengajuan__input {
     min-height: 2.5rem;
 }
 
-.cekIdBi__input input {
+.dokumenPengajuan__input input {
     min-height: 1.7rem;
     border-radius: 8px;
     padding-left: 1rem;
@@ -28,7 +28,7 @@
     background-color: #83bddd;
 }
 
-.cekIdBi__input input:disabled {
+.dokumenPengajuan__input input:disabled {
     border-width: 1px;
     border-style: solid;
     border-color: #545454;
@@ -36,16 +36,16 @@
     color: var(--disabled-text-color);
 }
 
-.cekIdBi__input span {
+.dokumenPengajuan__input span {
     margin-top: 0.5rem;
     margin-left: 1rem;
 }
 
-.cekIdBi__input>label {
+.dokumenPengajuan__input>label {
     flex-basis: 150px;
 }
 
-.cekIdBi__select_input {
+.dokumenPengajuan__select_input {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -54,7 +54,7 @@
     min-height: 2.5rem;
 }
 
-.cekIdBi__select_input select {
+.dokumenPengajuan__select_input select {
     min-height: 1.7rem;
     border-radius: 8px;
     padding-left: 1rem;
@@ -66,7 +66,7 @@
 
 }
 
-.cekIdBi__select_input select:disabled {
+.dokumenPengajuan__select_input select:disabled {
     border-width: 1px;
     border-style: solid;
     border-color: #545454;
@@ -75,11 +75,11 @@
 
 }
 
-.cekIdBi__select_input>label {
+.dokumenPengajuan__select_input>label {
     flex-basis: 150px;
 }
 
-.wrapFormInputCekIdBi button {
+.wrapFormInputDokumenPengajuan button {
     height: 40px;
     background-color: #0077bd;
     color: white;
@@ -87,7 +87,7 @@
     border-radius: 10px;
 }
 
-.wrapFormInputCekIdBi button:disabled {
+.wrapFormInputDokumenPengajuan button:disabled {
     background-color: #555555;
 }
 

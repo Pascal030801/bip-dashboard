@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { background } from '@chakra-ui/react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useReactToPrint } from 'react-to-print';
 import { toast } from 'react-toastify';
 import Loading from '../../Components/Loading/Loading';
 import Modal from '../../Components/Modal/Modal';
 import ApiService from '../../Services/apiService';
 import bipErrorHandler from '../../Util/bipErrorHandler';
 import classes from './DokumenPengajuan.module.css'
+import DokumenPengajuanTemplateSurat from './TemplateSurat/DokumenPengajuanTemplateSurat';
 
 const DokumenPengajuan = () => {
     const navigate = useNavigate();
@@ -15,7 +18,7 @@ const DokumenPengajuan = () => {
     const [showModal, setShowModal] = useState(false);
     const [showLoading, setShowLoading] = useState(true);
     const [selectedDokumenPengajuan, setSelectedDokumenPengajuan] = useState(false);
-
+    const documentToPrintedRef = useRef();
     const fetchPerumahan = async () => {
         try {
             const res = await ApiService.getHouseAreas();
@@ -38,7 +41,7 @@ const DokumenPengajuan = () => {
     }
 
     const deleteBtnHandler = async (e, cekIdBiId) => {
-        setselectedDokumenPengajuan(cekIdBiId);
+        setSelectedDokumenPengajuan(cekIdBiId);
         setShowModal(true)
     }
 
@@ -49,8 +52,7 @@ const DokumenPengajuan = () => {
     const cancelBtnHandler = (e) => {
         e.preventDefault();
         setShowModal(false);
-        setselectedDokumenPengajuan(null);
-
+        setSelectedDokumenPengajuan(null);
     }
 
     /**
@@ -62,6 +64,14 @@ const DokumenPengajuan = () => {
         setShowModal(false);
         setSelectedDokumenPengajuan(null);
     }
+
+    const handlePrint = useReactToPrint({
+        content: () => documentToPrintedRef.current,
+      });
+
+    const printDocumentHandler = (e, documentId) => {
+        handlePrint()
+    };
 
     /**
      * 
@@ -128,6 +138,7 @@ const DokumenPengajuan = () => {
                             <td>{dokumenPengajuan.house_id && dokumenPengajuan.house_id === '' ? dokumenPengajuan.house.blok : 'Belum Pilih Rumah'}</td>
                             <td>
                                 <div className={classes.actionWrap}>
+                                    <div className={classes['print-btn']} onClick={(e) => printDocumentHandler(e, dokumenPengajuan.id)}>PRINT</div>
                                     <div className={classes['edit-btn']} onClick={(e) => editBtnHandler(e, dokumenPengajuan.id)}>EDIT</div>
                                     <div className={classes['delete-btn']} onClick={(e) => deleteBtnHandler(e, dokumenPengajuan.id)}>DELETE</div>
                                 </div>
@@ -182,46 +193,51 @@ const DokumenPengajuan = () => {
     }
 
     return (
-        <div className={classes.dokumenPengajuan}>
-            <h1 className={classes.title}>
-                Dokumen Pengajuan
-            </h1>
-            <div className={classes.selectPerumahan}>
-                <label htmlFor='perumahan'>Nama Perumahan</label>
-                <select id='perumahan' name='perumahan' value={selectedPerumahan} onChange={selectPerumahanChangeHandler}>
-                    <option value={'all'}>Semua</option>
-                    {selectOptionPerumahanList}
-                </select>
-            </div>
-            {dokumenPengajuanTable.length > 0 && (
-                <div className={classes.wrapTableDataDokumenPengajuan}>
-                    <table className={classes.tableDataDokumenPengajuan}>
-                        <thead>
-                            <tr>
-                                <th>Nama Pemohon</th>
-                                <th>Nama Marketer</th>
-                                <th>Nomor Rumah</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {dokumenPengajuanTable.length > 0 && dokumenPengajuanTable}
-                            
-                        </tbody>
-                    </table>
+        <>
+            <div className={classes.dokumenPengajuan}>
+                <h1 className={classes.title}>
+                    Dokumen Pengajuan
+                </h1>
+                <div className={classes.selectPerumahan}>
+                    <label htmlFor='perumahan'>Nama Perumahan</label>
+                    <select id='perumahan' name='perumahan' value={selectedPerumahan} onChange={selectPerumahanChangeHandler}>
+                        <option value={'all'}>Semua</option>
+                        {selectOptionPerumahanList}
+                    </select>
                 </div>
-            )}
-            {dokumenPengajuanTable.length === 0 && (<p>Tidak ada data Dokumen Pengajuan</p>)}
-            {showModal && <Modal
-                title='Hapus Dokumen Pengajuan'
-                message='Apakah anda yakin ingin mengahapus Dokumen Pengajuan ini?'
-                onCancel={cancelBtnHandler}
-                onClose={closeBtnHandler}
-                onConfirm={confirmBtnHandler}
-                closeOnClickOutside={false}
-            />}
-            {showLoading && <Loading />}
-        </div>
+                {dokumenPengajuanTable.length > 0 && (
+                    <div className={classes.wrapTableDataDokumenPengajuan}>
+                        <table className={classes.tableDataDokumenPengajuan}>
+                            <thead>
+                                <tr>
+                                    <th>Nama Pemohon</th>
+                                    <th>Nama Marketer</th>
+                                    <th>Nomor Rumah</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {dokumenPengajuanTable.length > 0 && dokumenPengajuanTable}
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                )}
+                {dokumenPengajuanTable.length === 0 && (<p>Tidak ada data Dokumen Pengajuan</p>)}
+                {showModal && <Modal
+                    title='Hapus Dokumen Pengajuan'
+                    message='Apakah anda yakin ingin mengahapus Dokumen Pengajuan ini?'
+                    onCancel={cancelBtnHandler}
+                    onClose={closeBtnHandler}
+                    onConfirm={confirmBtnHandler}
+                    closeOnClickOutside={false}
+                />}
+                {showLoading && <Loading />}
+            </div>
+            <div className={classes.printed} >
+                <DokumenPengajuanTemplateSurat ref={documentToPrintedRef} />
+            </div>
+        </>
     )
 }
 

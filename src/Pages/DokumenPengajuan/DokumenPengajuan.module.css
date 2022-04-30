@@ -79,8 +79,33 @@
 
 .edit-btn {
     background-color: var(--success-color) !important;
+    cursor: pointer;
 }
 
 .delete-btn {
     background-color: var(--error-color) !important;
+    cursor: pointer;
+}
+
+.printed {
+    display: none;
+}
+
+@media print {
+
+    .dokumenPengajuan,
+    nav,
+    header,
+    footer {
+        display: none;
+    }
+
+    .printed {
+        display: block;
+    }
+
+    body {
+        margin: 0;
+        box-shadow: 0;
+    }
 }

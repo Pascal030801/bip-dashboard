@@ -92,6 +92,13 @@ const ApiService = {
             throw error;
         }
     },
+    getHouses: async (params) => {
+        try {
+            return await getRequest(`${BASE_PATH_API}/houses`, ApiService.getToken(), params);
+        } catch (error) {
+            throw error;
+        }
+    },
     /**
      * 
      * @param {*} cekIdBI__ID 
@@ -101,6 +108,14 @@ const ApiService = {
     getCekIdBiByID: async (cekIdBI__ID, params) => {
         try {
             return await getRequest(`${BASE_PATH_API}/cek_id_bi/${cekIdBI__ID}`, ApiService.getToken(), params);
+        } catch (error) {
+            throw error;
+        }
+    },
+
+    getDokumenPengajuanByID: async (dokumenPengajuan__ID, params) => {
+        try {
+            return await getRequest(`${BASE_PATH_API}/dokumen_pengajuan/${dokumenPengajuan__ID}`, ApiService.getToken(), params);
         } catch (error) {
             throw error;
         }
