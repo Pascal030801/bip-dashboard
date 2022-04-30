@@ -1,0 +1,13 @@
+.inputWrap{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    flex: 1;
+}
+
+.inputCom {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}

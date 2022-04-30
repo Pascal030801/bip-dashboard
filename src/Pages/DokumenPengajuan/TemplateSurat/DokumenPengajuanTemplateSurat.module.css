@@ -1,0 +1,21 @@
+.DokumenPengajuanTemplateSurat {
+    width: 21cm;
+    height: 29.7cm;
+    padding-top: 0.508cm;
+    padding-left: 2.4892cm;
+}
+
+.kop {
+    display: flex;
+    flex-direction: row;
+}
+
+.logoPerusahaan {
+    width: 2cm;
+    height: 2cm;
+}
+
+.kop_title {
+    display: flex;
+    flex-direction: column;
+}
