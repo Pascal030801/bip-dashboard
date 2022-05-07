@@ -2,20 +2,136 @@
     width: 21cm;
     height: 29.7cm;
     padding-top: 0.508cm;
-    padding-left: 2.4892cm;
+    padding-left: 2.5cm;
 }
 
 .kop {
     display: flex;
     flex-direction: row;
+    text-align: center;
 }
 
 .logoPerusahaan {
-    width: 2cm;
-    height: 2cm;
+    width: 3.5cm;
+    height: 3.5cm;
+}
+
+.logoBankdanBUMN{
+    text-align: center;
+    width: 90%;
+
 }
 
 .kop_title {
     display: flex;
     flex-direction: column;
+    margin-left: 1.5cm;
 }
+
+.isiHalaman1{
+    font-size: 20px;
+    line-height: 35pt;
+    padding : 15px;
+}
+
+.isiHalaman1 tr{
+    width: 90%;
+}
+
+
+.JudulHalaman{
+    text-decoration-line: underline;
+    text-align: center;
+}
+
+.isiHalaman{
+    font-size:12px;
+}
+
+
+.wrapKop{
+    width: 100%;
+}
+
+.wrapTableKelengkapanDokumenKPR{
+    width: 100%;
+}
+
+.tabelKelengkapanDokumenKPR td{
+    border: 1px solid black;
+    padding: 8px;
+    font-size: 10px;
+}
+
+.tabelKelengkapanDokumenKPR{
+    width: 90%;
+    border-collapse: collapse;
+}
+
+.tabelKelengkapanDokumenKPR th {
+    border: 1px solid black;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.tablePersetujuanTTD{
+    width: 90%;
+    text-align: center;
+}
+
+.tabelPersetujuanPemohonTTD{
+    font-size: 12px;
+    float:right;
+    width: 50%;
+    text-align: center;
+}
+
+.tabelPernyataanPenyerahan{
+    line-height: 20pt;
+    font-size: 12px;
+}
+
+.materai{
+    text-align: left;
+    border: 1px solid black;
+    width: 30%;
+}
+
+.wrapHalaman1{
+    width: 100%;
+}
+
+.wrapHalaman2{
+    width: 100%;
+}
+.wrapHalaman3{
+    width: 100%;
+}
+.wrapHalaman4{
+    width: 100%;
+}
+
+.tabelBestTimetoCall td{
+    border: 1px solid black;
+    padding: 8px;
+    font-size: 10px;
+}
+
+.tabelBestTimetoCall{
+    width: 90%;
+    border-collapse: collapse;
+}
+
+.tabelBestTimetoCall th {
+    border: 1px solid black;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.tabelBestTimetoCallTTD{
+    font-size: 12px;
+    float:right;
+    width: 50%;
+    text-align: center;
+}
+
