@@ -4,7 +4,12 @@ import React, { forwardRef, useRef } from 'react';
 import classes from './DokumenPengajuanTemplateSurat.module.css';
 
 const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) => {
-
+    console.log(props.data);
+    
+    const setData = (data) => {
+        console.log(data);
+        console.log('setData called');
+    }
     return (
         <div className={classes.DokumenPengajuanTemplateSurat} ref={documentTemplateRef}>
             <div className={classes.wrapHalaman1}>
@@ -42,72 +47,75 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     <tr>
                         <td style={{width: "35%"}}>Nama Pengaju</td>
                             :&nbsp;
-                        <td>(Nama Pemohon)</td>
+                        <td>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_name  : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>Blok Rumah</td>
                             :&nbsp;
-                        <td>(Nomor Rumah)</td>
+                        <td>{props?.data?.house?.blok ? props?.data?.house?.blok  : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>No. SHM</td>
                             :&nbsp;
-                        <td>(No. SHM)</td>
+                        <td>{props?.data?.house?.nomor_shm ? props?.data?.house?.nomor_shm  : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>Nama Perumahan</td>
                             :&nbsp;
-                        <td>SEKIDA VILLAGE PERMAI</td>
+                        <td>{props?.data?.cekIdBi?.perumahan?.nama ? props?.data?.cekIdBi?.perumahan?.nama  : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "50%"}}>Alamat Perumahan</td>
                             :&nbsp;
-                        <td>Jalan Pararel Aruk-Jagoi</td>
+                        <td>{props?.data?.cekIdBi?.perumahan?.full_address ? props?.data?.cekIdBi?.perumahan?.full_address  : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>Desa</td>
                             :&nbsp;
-                        <td>Sekida</td>
+                        <td>{props?.data?.cekIdBi?.perumahan?.desaAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.desaAlamatPerumahan.nama  : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>Kecamatan</td>
                             :&nbsp;
-                        <td>Jagoi Babang</td>
+                        <td>{props?.data?.cekIdBi?.perumahan?.kecamatanAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.kecamatanAlamatPerumahan.nama  : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>Kabupaten</td>
                             :&nbsp;
-                        <td>Bengkayang</td>
+                        <td>{props?.data?.cekIdBi?.perumahan?.kabupatenAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.kabupatenAlamatPerumahan.nama  : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>Provinsi</td>
                             :&nbsp;
-                        <td>Kalimantan Barat</td>
+                        <td>{props?.data?.cekIdBi?.perumahan?.provinsiAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.provinsiAlamatPerumahan.nama  : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>Harga Rumah</td>
                             :&nbsp;
-                        <td>Rp. 153.000.000,-</td>
+                        {/* <td>Rp. 153.000.000,-</td> */}
+                        <td>{props?.data?.house?.harga ? props?.data?.house?.harga   : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>Uang Muka</td>
                         :&nbsp;
-                        <td>Rp. &nbsp;&nbsp;&nbsp;&nbsp;7.650.000,-</td>
+                        {/* <td>Rp. &nbsp;&nbsp;&nbsp;&nbsp;7.650.000,-</td> */}
+                        <td>{props?.data?.uang_muka ? props?.data?.uang_muka   : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>Plafon Kredit</td>
                             :&nbsp;
-                        <td>Rp.	145.350.000,-</td>
+                        {/* <td>Rp.	145.350.000,-</td> */}
+                        <td>{props?.data?.plafon_kredit ? props?.data?.plafon_kredit   : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>Jangka Waktu</td>
                             :&nbsp;
-                        <td>20 Tahun</td>
+                        <td>{props?.data?.jangka_waktu ? props?.data?.jangka_waktu   : ''}</td>
                     </tr>
                     <tr>
                         <td style={{width: "35%"}}>No. Telepon/Hp.</td>
                             :&nbsp;
-                        <td>(No. Telepon/Hp.)</td>
+                        <td>{props?.data?.cekIdBi?.profil_pengaju?.phone_number ? props?.data?.cekIdBi?.profil_pengaju?.phone_number  : ''}</td>
                     </tr>
                 </table>
             </div>
