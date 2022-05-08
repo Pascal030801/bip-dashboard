@@ -82,7 +82,6 @@ const DokumenPengajuan = () => {
     };
 
     useEffect(() => {
-        console.log(data === {})
         if( data !== undefined && data !== null ){
             handlePrint();
         }
@@ -110,7 +109,7 @@ const DokumenPengajuan = () => {
                 draggable: false,
                 isLoading: false,      
             });
-            await fetchCekIdBiData(selectedPerumahan);
+            await fetchDokumenPengajuanData(selectedPerumahan);
             setShowModal(false);
             setShowLoading(false);
         } catch (error) {

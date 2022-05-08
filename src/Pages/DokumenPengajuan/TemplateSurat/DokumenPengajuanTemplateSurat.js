@@ -1,5 +1,3 @@
-import { Center, Container } from '@chakra-ui/react';
-import { faAlignLeft } from '@fortawesome/free-solid-svg-icons';
 import React, { forwardRef, useRef } from 'react';
 import classes from './DokumenPengajuanTemplateSurat.module.css';
 

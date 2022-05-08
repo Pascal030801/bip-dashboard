@@ -59,6 +59,10 @@ const InputDokumenPengajuan = () => {
         return validation.empty(val);
     }});
 
+    const jangkaWaktu = useInput({validateValue: (val) => {
+        return validation.empty(val);
+    }});
+
     const navigate = useNavigate();
 
     const fetchHouseByPerumahanId = async (perumahanId) => {
@@ -93,11 +97,12 @@ const InputDokumenPengajuan = () => {
         try {
             if(dokumenPengajuan__ID !== undefined && dokumenPengajuan__ID !== null){
                 const dokumenPengajuanData = await fetchDokumenPengajuanByID();
-                console.log(dokumenPengajuanData);
+                
                 namaMarketer.setValue(dokumenPengajuanData.nama_marketer);
                 await fetchHouseByPerumahanId(dokumenPengajuanData.cekIdBi.perumahanId);
                 rumahDipilih.setValue(dokumenPengajuanData.house_id);
                 plafonKredit.setValue(dokumenPengajuanData.plafon_kredit);
+                jangkaWaktu.setValue(dokumenPengajuanData.jangka_waktu);
                 tempatDanTanggalDokumen.setValue(dokumenPengajuanData.tempat_dan_tanggal_dokumen);
                 namaPengaju.setValue(dokumenPengajuanData.cekIdBi.profil_pengaju.full_name);
                 statusDokumenPengajuan.setValue(dokumenPengajuanData.status_dokumen_pengajuan)
@@ -115,7 +120,6 @@ const InputDokumenPengajuan = () => {
             const rumahIndex = rumahList.findIndex((rumah) => {
                 return rumah.id === parseInt(rumahDipilih.value, 10);
             });
-            // console.log(rumahList[rumahIndex].uang_muka)
             uangMuka.setValue(rumahList[rumahIndex].uang_muka);
             nomorSHM.setValue(rumahList[rumahIndex].nomor_shm);
         }
@@ -152,6 +156,7 @@ const InputDokumenPengajuan = () => {
         formD.append('tempat_dan_tanggal_dokumen', tempatDanTanggalDokumen.value);
         formD.append('nama_marketer', namaMarketer.value);
         formD.append('nomor_shm', nomorSHM.value);
+        formD.append('jangka_waktu', jangkaWaktu.value)
 
         const id = toast.loading("Sedang menambahkan data ke server");
 
@@ -280,6 +285,18 @@ const InputDokumenPengajuan = () => {
                         errorMsg={plafonKredit.errorMessage}
                         hasError={plafonKredit.hasError}
                         disabled={plafonKredit.isDisabled}
+                    />
+                    <Input 
+                        type={'text'} 
+                        className={inputWrapClasses} 
+                        value={jangkaWaktu.value} 
+                        id={'jangka_waktu'} 
+                        label={'Jangka Waktu Cicilan (Contoh: 20 Tahun)'} 
+                        onChange={jangkaWaktu.valueChangeHandler} 
+                        onBlur={jangkaWaktu.inputBlurHandler}
+                        errorMsg={jangkaWaktu.errorMessage}
+                        hasError={jangkaWaktu.hasError}
+                        disabled={jangkaWaktu.isDisabled}
                     />
                     <Input 
                         type={'text'} 
