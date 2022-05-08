@@ -253,7 +253,7 @@ const DokumenPengajuan = () => {
                 {showLoading && <Loading />}
             </div>
             <div className={classes.printed} >
-                <DokumenPengajuanTemplateSurat data={data} ref={documentToPrintedRef} />
+                {data && <DokumenPengajuanTemplateSurat data={data} ref={documentToPrintedRef} />}
             </div>
         </>
     )

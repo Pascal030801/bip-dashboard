@@ -96,6 +96,11 @@ const InputDokumenPengajuan = () => {
                 console.log(dokumenPengajuanData);
                 namaMarketer.setValue(dokumenPengajuanData.nama_marketer);
                 await fetchHouseByPerumahanId(dokumenPengajuanData.cekIdBi.perumahanId);
+                rumahDipilih.setValue(dokumenPengajuanData.house_id);
+                plafonKredit.setValue(dokumenPengajuanData.plafon_kredit);
+                tempatDanTanggalDokumen.setValue(dokumenPengajuanData.tempat_dan_tanggal_dokumen);
+                namaPengaju.setValue(dokumenPengajuanData.cekIdBi.profil_pengaju.full_name);
+                statusDokumenPengajuan.setValue(dokumenPengajuanData.status_dokumen_pengajuan)
             }else{
                 navigate('/dokumenPengajuan', { replace: true });
             }
@@ -110,6 +115,7 @@ const InputDokumenPengajuan = () => {
             const rumahIndex = rumahList.findIndex((rumah) => {
                 return rumah.id === parseInt(rumahDipilih.value, 10);
             });
+            // console.log(rumahList[rumahIndex].uang_muka)
             uangMuka.setValue(rumahList[rumahIndex].uang_muka);
             nomorSHM.setValue(rumahList[rumahIndex].nomor_shm);
         }
@@ -145,13 +151,14 @@ const InputDokumenPengajuan = () => {
         formD.append('plafon_kredit', plafonKredit.value);
         formD.append('tempat_dan_tanggal_dokumen', tempatDanTanggalDokumen.value);
         formD.append('nama_marketer', namaMarketer.value);
+        formD.append('nomor_shm', nomorSHM.value);
 
         const id = toast.loading("Sedang menambahkan data ke server");
 
         axios.put(`${BASE_PATH_API}/dokumen_pengajuan/${dokumenPengajuan__ID}`, formD, {
             headers: {
                 "AUTH-BIP-TOKEN": localStorage.getItem("token"),
-                'Content-Type': 'multipart/form-data; boundary=dokumenPengajuan',
+                // 'Content-Type': 'multipart/form-data; boundary=dokumenPengajuan',
             }
         }).then((response) => {
             toast.update(id, {
