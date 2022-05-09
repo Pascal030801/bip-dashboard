@@ -59,6 +59,10 @@ const InputDokumenPengajuan = () => {
         return validation.empty(val);
     }});
 
+    const jangkaWaktu = useInput({validateValue: (val) => {
+        return validation.empty(val);
+    }});
+
     const navigate = useNavigate();
 
     const fetchHouseByPerumahanId = async (perumahanId) => {
@@ -93,9 +97,15 @@ const InputDokumenPengajuan = () => {
         try {
             if(dokumenPengajuan__ID !== undefined && dokumenPengajuan__ID !== null){
                 const dokumenPengajuanData = await fetchDokumenPengajuanByID();
-                console.log(dokumenPengajuanData);
+                
                 namaMarketer.setValue(dokumenPengajuanData.nama_marketer);
                 await fetchHouseByPerumahanId(dokumenPengajuanData.cekIdBi.perumahanId);
+                rumahDipilih.setValue(dokumenPengajuanData.house_id);
+                plafonKredit.setValue(dokumenPengajuanData.plafon_kredit);
+                jangkaWaktu.setValue(dokumenPengajuanData.jangka_waktu);
+                tempatDanTanggalDokumen.setValue(dokumenPengajuanData.tempat_dan_tanggal_dokumen);
+                namaPengaju.setValue(dokumenPengajuanData.cekIdBi.profil_pengaju.full_name);
+                statusDokumenPengajuan.setValue(dokumenPengajuanData.status_dokumen_pengajuan)
             }else{
                 navigate('/dokumenPengajuan', { replace: true });
             }
@@ -145,13 +155,15 @@ const InputDokumenPengajuan = () => {
         formD.append('plafon_kredit', plafonKredit.value);
         formD.append('tempat_dan_tanggal_dokumen', tempatDanTanggalDokumen.value);
         formD.append('nama_marketer', namaMarketer.value);
+        formD.append('nomor_shm', nomorSHM.value);
+        formD.append('jangka_waktu', jangkaWaktu.value)
 
         const id = toast.loading("Sedang menambahkan data ke server");
 
         axios.put(`${BASE_PATH_API}/dokumen_pengajuan/${dokumenPengajuan__ID}`, formD, {
             headers: {
                 "AUTH-BIP-TOKEN": localStorage.getItem("token"),
-                'Content-Type': 'multipart/form-data; boundary=dokumenPengajuan',
+                // 'Content-Type': 'multipart/form-data; boundary=dokumenPengajuan',
             }
         }).then((response) => {
             toast.update(id, {
@@ -273,6 +285,18 @@ const InputDokumenPengajuan = () => {
                         errorMsg={plafonKredit.errorMessage}
                         hasError={plafonKredit.hasError}
                         disabled={plafonKredit.isDisabled}
+                    />
+                    <Input 
+                        type={'text'} 
+                        className={inputWrapClasses} 
+                        value={jangkaWaktu.value} 
+                        id={'jangka_waktu'} 
+                        label={'Jangka Waktu Cicilan (Contoh: 20 Tahun)'} 
+                        onChange={jangkaWaktu.valueChangeHandler} 
+                        onBlur={jangkaWaktu.inputBlurHandler}
+                        errorMsg={jangkaWaktu.errorMessage}
+                        hasError={jangkaWaktu.hasError}
+                        disabled={jangkaWaktu.isDisabled}
                     />
                     <Input 
                         type={'text'} 

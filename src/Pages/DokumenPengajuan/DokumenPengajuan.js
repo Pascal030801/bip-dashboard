@@ -1,5 +1,5 @@
 import { background } from '@chakra-ui/react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 import { toast } from 'react-toastify';
@@ -9,16 +9,19 @@ import ApiService from '../../Services/apiService';
 import bipErrorHandler from '../../Util/bipErrorHandler';
 import classes from './DokumenPengajuan.module.css'
 import DokumenPengajuanTemplateSurat from './TemplateSurat/DokumenPengajuanTemplateSurat';
+import _ from 'lodash';
 
 const DokumenPengajuan = () => {
     const navigate = useNavigate();
     const [dokumenPengajuanTable, setDokumenPengajuanTable] = useState([]);
+    const [dokumenPengajuanDatas, setDokumenPengajuanDatas] = useState([]);
     const [selectOptionPerumahanList, setSelectOptionPerumahanList] = useState([]);
     const [selectedPerumahan, setSelectedPerumahan] = useState('all');
     const [showModal, setShowModal] = useState(false);
     const [showLoading, setShowLoading] = useState(true);
     const [selectedDokumenPengajuan, setSelectedDokumenPengajuan] = useState(false);
     const documentToPrintedRef = useRef();
+    const [data, setData] = useState();
     const fetchPerumahan = async () => {
         try {
             const res = await ApiService.getHouseAreas();
@@ -67,11 +70,22 @@ const DokumenPengajuan = () => {
 
     const handlePrint = useReactToPrint({
         content: () => documentToPrintedRef.current,
+        onAfterPrint: () => {setData(null)}
       });
 
-    const printDocumentHandler = (e, documentId) => {
-        handlePrint()
+    function printDocumentHandler(e, dokumenPengajuans, documentId) {
+        e.preventDefault();
+
+        const dokumenIndex = _.findIndex(dokumenPengajuans, (dokumen) => dokumen.id === documentId);
+        setData(dokumenPengajuans[dokumenIndex]);
+
     };
+
+    useEffect(() => {
+        if( data !== undefined && data !== null ){
+            handlePrint();
+        }
+    },  [data])
 
     /**
      * 
@@ -95,7 +109,7 @@ const DokumenPengajuan = () => {
                 draggable: false,
                 isLoading: false,      
             });
-            await fetchCekIdBiData(selectedPerumahan);
+            await fetchDokumenPengajuanData(selectedPerumahan);
             setShowModal(false);
             setShowLoading(false);
         } catch (error) {
@@ -129,6 +143,8 @@ const DokumenPengajuan = () => {
             setDokumenPengajuanTable([]);
             const formattedDokumenPengajuans = [];
 
+            setDokumenPengajuanDatas(res.data);
+
             if(dokumenPengajuans.length > 0){
                 for(const dokumenPengajuan of dokumenPengajuans){
                   formattedDokumenPengajuans.push((
@@ -138,7 +154,7 @@ const DokumenPengajuan = () => {
                             <td>{dokumenPengajuan.house_id && dokumenPengajuan.house_id === '' ? dokumenPengajuan.house.blok : 'Belum Pilih Rumah'}</td>
                             <td>
                                 <div className={classes.actionWrap}>
-                                    <div className={classes['print-btn']} onClick={(e) => printDocumentHandler(e, dokumenPengajuan.id)}>PRINT</div>
+                                    <div className={classes['print-btn']} onClick={(e) => printDocumentHandler(e, dokumenPengajuans, dokumenPengajuan.id)}>PRINT</div>
                                     <div className={classes['edit-btn']} onClick={(e) => editBtnHandler(e, dokumenPengajuan.id)}>EDIT</div>
                                     <div className={classes['delete-btn']} onClick={(e) => deleteBtnHandler(e, dokumenPengajuan.id)}>DELETE</div>
                                 </div>
@@ -146,8 +162,9 @@ const DokumenPengajuan = () => {
                         </tr>
                     ));
                 }
-                setDokumenPengajuanTable(formattedDokumenPengajuans);
             }
+
+            setDokumenPengajuanTable(formattedDokumenPengajuans);
         } catch (error) {
             console.log('error at Dokumen Pengajuan view: fetchDokumenPengajuanData')
             toast.error(bipErrorHandler(error), {autoClose: 500})
@@ -235,7 +252,7 @@ const DokumenPengajuan = () => {
                 {showLoading && <Loading />}
             </div>
             <div className={classes.printed} >
-                <DokumenPengajuanTemplateSurat ref={documentToPrintedRef} />
+                {data && <DokumenPengajuanTemplateSurat data={data} ref={documentToPrintedRef} />}
             </div>
         </>
     )
