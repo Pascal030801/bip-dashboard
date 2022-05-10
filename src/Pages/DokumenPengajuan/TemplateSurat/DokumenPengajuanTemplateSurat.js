@@ -44,80 +44,82 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                 </div>
                 <table className={classes.isiHalaman1} style={{textAlign:"justify"}}>
                     <tr>
-                        <td style={{width: "35%"}}>Nama Pengaju</td>
+                        <td style={{width: "4.95cm"}}>Nama Konsumen</td>
                             :&nbsp;
                         <td>{ props.data.cekIdBi.profil_pengaju.full_name }</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>Blok Rumah</td>
+                        <td style={{width: "4.95cm"}}>Blok Rumah</td>
                             :&nbsp;
                         <td>{props?.data?.house?.blok ? props?.data?.house?.blok  : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>No. SHM</td>
+                        <td style={{width: "4.95cm"}}>No. SHM</td>
                             :&nbsp;
                         <td>{props?.data?.house?.nomor_shm ? props?.data?.house?.nomor_shm  : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>Nama Perumahan</td>
+                        <td style={{width: "4.95cm"}}>Nama Perumahan</td>
                             :&nbsp;
                         <td>{props?.data?.cekIdBi?.perumahan?.nama ? props?.data?.cekIdBi?.perumahan?.nama  : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "50%"}}>Alamat Perumahan</td>
+                        <td style={{width: "4.95cm"}}>Alamat Perumahan</td>
                             :&nbsp;
                         <td>{props?.data?.cekIdBi?.perumahan?.full_address ? props?.data?.cekIdBi?.perumahan?.full_address  : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>Desa</td>
+                        <td style={{width: "4.95cm"}}>Desa</td>
                             :&nbsp;
                         <td>{props?.data?.cekIdBi?.perumahan?.desaAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.desaAlamatPerumahan.nama  : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>Kecamatan</td>
+                        <td style={{width: "4.95cm"}}>Kecamatan</td>
                             :&nbsp;
                         <td>{props?.data?.cekIdBi?.perumahan?.kecamatanAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.kecamatanAlamatPerumahan.nama  : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>Kabupaten</td>
+                        <td style={{width: "4.95cm"}}>Kabupaten</td>
                             :&nbsp;
                         <td>{props?.data?.cekIdBi?.perumahan?.kabupatenAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.kabupatenAlamatPerumahan.nama  : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>Provinsi</td>
+                        <td style={{width: "4.95cm"}}>Provinsi</td>
                             :&nbsp;
                         <td>{props?.data?.cekIdBi?.perumahan?.provinsiAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.provinsiAlamatPerumahan.nama  : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>Harga Rumah</td>
+                        <td style={{width: "4.95cm"}}>Harga Rumah</td>
                             :&nbsp;
                         {/* <td>Rp. 153.000.000,-</td> */}
                         <td>{props?.data?.house?.harga ? props?.data?.house?.harga   : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>Uang Muka</td>
+                        <td style={{width: "4.95cm"}}>Uang Muka</td>
                         :&nbsp;
                         {/* <td>Rp. &nbsp;&nbsp;&nbsp;&nbsp;7.650.000,-</td> */}
                         <td>{props?.data?.uang_muka ? props?.data?.uang_muka   : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>Plafon Kredit</td>
+                        <td style={{width: "4.95cm"}}>Plafon Kredit</td>
                             :&nbsp;
                         {/* <td>Rp.	145.350.000,-</td> */}
                         <td>{props?.data?.plafon_kredit ? props?.data?.plafon_kredit   : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>Jangka Waktu</td>
+                        <td style={{width: "4.95cm"}}>Jangka Waktu</td>
                             :&nbsp;
                         <td>{props?.data?.jangka_waktu ? props?.data?.jangka_waktu   : ''}</td>
                     </tr>
                     <tr>
-                        <td style={{width: "35%"}}>No. Telepon/Hp.</td>
+                        <td style={{width: "4.95cm"}}>No. Telepon/Hp.</td>
                             :&nbsp;
                         <td>{props?.data?.cekIdBi?.profil_pengaju?.phone_number ? props?.data?.cekIdBi?.profil_pengaju?.phone_number  : ''}</td>
                     </tr>
                 </table>
             </div>
+            <br></br>
+            <br></br>
             <br></br>
             <br></br>
             <br></br>
@@ -171,111 +173,111 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     <div className={classes.wrapTableKelengkapanDokumenKPR}>
                         <table className={classes.tabelKelengkapanDokumenKPR}>
                             <tr style={{textAlign:"center"}}>
-                                <th colSpan={3} style={{width:"20%"}}>KELENGKAPAN DOKUMEN KPR BERSUBSIDI BTN</th>
+                                <th colSpan={3} style={{width:"3.3cm"}}>KELENGKAPAN DOKUMEN KPR BERSUBSIDI BTN</th>
                             </tr>
                             <tr style={{textAlign:"center", backgroundColor:"#B4C6E7"}}>
-                                <th colSpan={3} style={{width:"20%"}}>Dilengkapi Sebelum Pengajuan Kredit</th>
+                                <th colSpan={3} style={{width:"3.3cm"}}>Dilengkapi Sebelum Pengajuan Kredit</th>
                             </tr>
                             <tr>
-                                <td style={{width:"2%", fontSize:"14px", textAlign:"center"}}>
+                                <td style={{width:"0.33cm", fontSize:"14px", textAlign:"center"}}>
                                     <b>A</b>
                                 </td>
-                                <td colSpan={2} style={{width:"20%", fontSize:"14px"}}><b>Dokumen Pemohon</b></td>
+                                <td colSpan={2} style={{width:"3.3cm", fontSize:"14px"}}><b>Dokumen Pemohon</b></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>1. </td>
-                                <td style={{width:"80%"}}>Formulir Aplikasi Kredit</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Formulir Aplikasi Kredit</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>2. </td>
-                                <td style={{width:"80%"}}>Pas Foto Terbaru</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Pas Foto Terbaru</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>3. </td>
-                                <td style={{width:"80%"}}>Surat Pemesanan Rumah</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Surat Pemesanan Rumah</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>4. </td>
-                                <td style={{width:"80%"}}>Fotokopi KTP Elektronik atau Resi KPR Elektronik</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Fotokopi KTP Elektronik atau Resi KPR Elektronik</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>5. </td>
-                                <td style={{width:"80%"}}>Fotokopi Kartu Keluarga</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Fotokopi Kartu Keluarga</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>6. </td>
-                                <td style={{width:"80%"}}>Fotokopi Akta Nikah atau Akta perkawinan bagi yang berstatus kawin atau Fotokopi akta cerai bagi yang berstatus cerai</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Fotokopi Akta Nikah atau Akta perkawinan bagi yang berstatus kawin atau Fotokopi akta cerai bagi yang berstatus cerai</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>7. </td>
-                                <td style={{width:"80%"}}>Fotokopi NPWP</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Fotokopi NPWP</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>8. </td>
-                                <td style={{width:"80%"}}>
+                                <td style={{width:"13.2cm"}}>
                                     Fotokopi bukti pelaporan pajak 
                                     <br></br>
-                                        • Telah menjadi wajib pajak lebih dari sama dengan 1 tahun dan penghasilan lebih dari sama dengan PTKP, melampirkan &nbsp;&nbsp;&nbsp;SPT PPh
+                                        • Telah menjadi wajib pajak lebih dari sama dengan 1 tahun dan penghasilan lebih dari sama dengan PTKP, &nbsp;&nbsp;&nbsp;melampirkan SPT PPh
                                          <br></br>
-                                        • Telah menjadi wajib pajak lebih dari sama dengan 1 tahun dan penghasilan kurang dari PTKP, melampirkan SPT PPh Nihil
+                                        • Telah menjadi wajib pajak lebih dari sama dengan 1 tahun dan penghasilan kurang dari PTKP, melampirkan &nbsp;&nbsp;&nbsp;SPT PPh Nihil
                                          <br></br>
-                                        • belum menjadi wajib pajak kurang dari 1 tahun melampirkan surat pernyataan penyerahan SPT PPh tahun selanjutnya
+                                        • belum menjadi wajib pajak kurang dari 1 tahun melampirkan surat pernyataan penyerahan SPT PPh tahun &nbsp;&nbsp;&nbsp;selanjutnya
                                 </td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>9. </td>
-                                <td style={{width:"80%"}}>Fotokopi rekening Koran atau Fotokopi buku tabungan yang disahkan oleh Bank sekurang-kurangnya 3 (tiga) bulan</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Fotokopi rekening Koran atau Fotokopi buku tabungan yang disahkan oleh Bank sekurang-kurangnya 3 (tiga) bulan</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>10. </td>
-                                <td style={{width:"80%"}}>Surat keterangan bertempat tinggal dari kepala desa/lurah tempat tinggal saat ini bilamana kelompok sasaran tidak bertempat tinggal sesuai alamat pada KTP Elektronik</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Surat keterangan bertempat tinggal dari kepala desa/lurah tempat tinggal saat ini bilamana kelompok sasaran tidak bertempat tinggal sesuai alamat pada KTP Elektronik</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>11. </td>
-                                <td style={{width:"80%"}}>Brosur</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Brosur</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>12. </td>
-                                <td style={{width:"80%"}}>Fotocopy Sertifikat</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Fotocopy Sertifikat</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>13. </td>
-                                <td style={{width:"80%"}}>Fotocopy IMB</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Fotocopy IMB</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>14. </td>
-                                <td style={{width:"80%"}}>Sikasep</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Sikasep</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
-                                <td style={{width:"2%", fontSize:"14px", textAlign:"center"}}>
+                                <td style={{width:"0.33cm", fontSize:"14px", textAlign:"center"}}>
                                     <b>B</b>
                                 </td>
-                                <td style={{width:"20%", fontSize:"14px"}}><b>Dokumen Penghasilan (Pemohon Pegawai)</b></td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"3.3cm", fontSize:"14px"}}><b>Dokumen Penghasilan (Pemohon Pegawai)</b></td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>1. </td>
-                                <td style={{width:"80%"}}>Slip gaji yang disahkan oleh pejabat yang berwenang pada tempat bekerja</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Slip gaji yang disahkan oleh pejabat yang berwenang pada tempat bekerja</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>
                             <tr>
                                 <td style={{textAlign:"center"}}>2. </td>
-                                <td style={{width:"80%"}}>Surat keterangan kepegawaian dari tempat bekerja</td>
-                                <td style={{width:"5%"}}></td>
+                                <td style={{width:"13.2cm"}}>Surat keterangan kepegawaian dari tempat bekerja</td>
+                                <td style={{width:"0.825cm"}}></td>
                             </tr>   
                         </table>
                     </div>
@@ -287,6 +289,7 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
             <br></br>
             <br></br>
             <br></br>
+          
             <div className={classes.wrapHalaman3}>
                 <div className={classes.wrapKop}>
                     <div className={classes.kop}>
@@ -328,96 +331,96 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     <p>Jln. Yos Sudarso, Singkawang</p>
                     <br></br>
                     <p>Saya yang bertanda tangan di bawah ini :</p>
-                    <table style={{width: "85%", lineHeight:"1.15"}}>
+                    <table style={{width: "15cm", lineHeight:"1.15"}}>
                         <tr>
-                            <td style={{width: "20%"}}>Nama</td>
-                                :&nbsp;
+                            <td style={{width: "3.1cm"}}>Nama</td>
+                                :&nbsp;&nbsp;&nbsp;&nbsp;
                             <td>Yuda Siswanto</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>Jabatan</td>
-                                :&nbsp;
+                            <td style={{width: "3.1cm"}}>Jabatan</td>
+                                :&nbsp;&nbsp;&nbsp;&nbsp;
                             <td>Direktur PT. Banyuke Intan Permai</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>Alamat</td>
-                                :&nbsp;
+                            <td style={{width: "3.1cm"}}>Alamat</td>
+                                :&nbsp;&nbsp;&nbsp;&nbsp;
                             <td>Jalan Pacung, RT.006/Rw.003, Sebalo, Kecamatan Bengkayang,
                                 Kabupaten Bengkayang, Kalimantan Barat</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>No. KTP</td>
-                                :&nbsp;
+                            <td style={{width: "3.1cm"}}>No. KTP</td>
+                                :&nbsp;&nbsp;&nbsp;&nbsp;
                             <td>6107040209950001</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>No. Telepon/HP</td>
-                                :&nbsp;
+                            <td style={{width: "3.1cm"}}>No. Telepon/HP</td>
+                                :&nbsp;&nbsp;&nbsp;&nbsp;
                             <td>0852 7059 4208</td>
                         </tr>
                     </table>
                     <br></br>
                     <p>Menawarkan 1 (satu) unit rumah kepada :</p>
-                    <table style={{width: "85%", lineHeight:"1.15"}}>
+                    <table style={{width: "15cm", lineHeight:"1.15"}}>
                         <tr>
-                            <td style={{width: "20%"}}>Nama</td>
-                                :&nbsp;
+                            <td style={{width: "3.1cm"}}>Nama</td>
+                                :
                             <td>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_name : ''}</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>Alamat</td>
-                                :&nbsp;
+                            <td style={{width: "3.1cm"}}>Alamat</td>
+                                :
                             <td>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_address : ''}</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>No. KTP</td>
-                                :&nbsp;
+                            <td style={{width: "3.1cm"}}>No. KTP</td>
+                                :
                             <td>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.nik_id : ''}</td>
                         </tr>
                     </table>
                     <br></br>
                     <p>Dengan keterangan sebagai berikut:</p>
-                    <table style={{width: "85%", lineHeight:"1.15"}}>
+                    <table style={{width: "15cm", lineHeight:"1.15"}}>
                         <tr>
-                            <td style={{width: "20%"}}>Alamat Rumah</td>
-                                :&nbsp; 
+                            <td style={{width: "3.1cm"}}>Alamat Rumah</td>
+                                :
                             <td> {props?.data?.cekIdBi?.perumahan?.full_address ? props?.data?.cekIdBi?.perumahan?.full_address : ''}</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>Type/Luas Tanah</td>
-                                :&nbsp; 
+                            <td style={{width: "3.1cm"}}>Type/Luas Tanah</td>
+                                : 
                             <td> {props?.data?.house?.house_type ? props?.data?.house?.house_type : ''}/{props?.data?.house?.luas_tanah ? props?.data?.house?.luas_tanah : ''} </td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}> Blok</td>
-                                :&nbsp; 
+                            <td style={{width: "3.1cm"}}> Blok</td>
+                                :
                             <td>{props?.data?.house?.blok ? props?.data?.house?.blok : ''}</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>Status Rumah</td>
-                                :&nbsp; 
+                            <td style={{width: "3.1cm"}}>Status Rumah</td>
+                                : 
                             <td>Sertifikat Hak Milik</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>No. Sertifikat</td>
-                                :&nbsp; 
+                            <td style={{width: "3.1cm"}}>No. Sertifikat</td>
+                                : 
                             <td>{props?.data?.house?.nomor_shm ? props?.data?.house?.nomor_shm : ''}</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>Harga Jual</td>
-                                :&nbsp; 
+                            <td style={{width: "3.1cm"}}>Harga Jual</td>
+                                : 
                             {/* <td> Rp. 153.000.000,-</td> */}
                             <td>{props?.data?.house?.harga ? props?.data?.house?.harga : ''}</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>DP</td>
-                                :&nbsp; 
+                            <td style={{width: "3.1cm"}}>DP</td>
+                                :
                             {/* <td> Rp. &nbsp;&nbsp;&nbsp;&nbsp;7.650.000,-</td> */}
                             <td>{props?.data?.house?.uang_muka ? props?.data?.house?.uang_muka : ''}</td>
                         </tr>
                         <tr>
-                            <td style={{width: "20%"}}>Kredit Dimohonkan</td>
-                                :&nbsp; 
+                            <td style={{width: "3.1cm"}}>Kredit Dimohonkan</td>
+                                :
                             {/* <td> Rp. 145.350.000,-</td> */}
                             <td>{props?.data?.house?.harga ? (parseInt(props?.data?.house?.harga, 10) - parseInt(props?.data?.house?.uang_muka, 10)) : ''}</td>
                         </tr>
@@ -426,43 +429,44 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     <p>Demikian surat Pemesanan ini dibuat guna pengurusan Kredit Pemilikan Rumah (KPR) pada Bank Tabungan Negara.</p>
                     <br></br>
                     <br></br>
+                    <br></br>
                     <table className={classes.tablePersetujuanTTD}>
-                        <tr style={{textAlign:"center" , width :"30%"}}>
-                            <td></td>
-                            <td></td>
-                            <td>{props?.data?.tempat_dan_tanggal_dokumen ? props?.data?.tempat_dan_tanggal_dokumen : ''}</td>
+                        <tr style={{textAlign:"center" , width :"15cm"}}>
+                            <td style={{width : "5cm"}}></td>
+                            <td style={{width : "5cm"}}></td>
+                            <td style={{width : "5cm"}}>{props?.data?.tempat_dan_tanggal_dokumen ? props?.data?.tempat_dan_tanggal_dokumen : ''}</td>
                         </tr>
-                        <tr style={{textAlign:"center" , width :"30%"}}>
-                            <td>Mengetahui,</td>
-                            <td> </td>
-                            <td>Hormat Saya,</td>
+                        <tr style={{textAlign:"center" , width :"15cm"}}>
+                            <td style={{width : "5cm"}}>Mengetahui,</td>
+                            <td style={{width : "5cm"}}> </td>
+                            <td style={{width : "5cm"}}>Hormat Saya,</td>
                         </tr>
-                        <tr style={{textAlign:"center" , width :"30%"}}>
-                            <td> </td>
-                            <td> Marketing, </td>
-                            <td> </td>
+                        <tr style={{textAlign:"center" , width :"15cm"}}>
+                            <td style={{width : "5cm"}}> </td>
+                            <td style={{width : "5cm"}}> Marketing, </td>
+                            <td style={{width : "5cm"}}> </td>
                         </tr>
-                        <tr style={{textAlign:"center" , width :"30%"}}>
-                            <td> 
-                                <p className={classes.materai} style={{width:"30%"}}>
+                        <tr style={{textAlign:"center" , width :"15cm"}}>
+                            <td style={{width : "5cm"}}> 
+                                <p className={classes.materai} style={{width:"2.5"}}>
                                     Meterai
                                     <br></br>
                                     Rp 10.000,-
                                 </p>
                                 <br></br>
                             </td>
-                            <td></td>
-                            <td></td>
+                            <td style={{width : "5cm"}}></td>
+                            <td style={{width : "5cm"}}></td>
                         </tr>
-                        <tr style={{textAlign:"center", width :"30%"}}>
-                            <td>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_name : ''}</td>
-                            <td></td>
-                            <td>YUDA SISWANTO</td>
+                        <tr style={{textAlign:"center", width :"15cm"}}>
+                            <td style={{width : "5cm"}}>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_name : ''}</td>
+                            <td style={{width : "5cm"}}></td>
+                            <td style={{width : "5cm"}}>YUDA SISWANTO</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>{props?.data?.nama_marketer ? props?.data?.nama_marketer : ''}</td>
-                            <td></td>
+                            <td style={{width : "5cm"}}></td>
+                            <td style={{width : "5cm"}}>{props?.data?.nama_marketer ? props?.data?.nama_marketer : ''}</td>
+                            <td style={{width : "5cm"}}></td>
                         </tr>
                     </table>
                 </div>
@@ -476,6 +480,12 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
             <br></br>
             <br></br>
             <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+
             <div className={classes.wrapHalaman4}>
                 <div className={classes.JudulHalaman}>
                     <h2>
@@ -491,34 +501,34 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                         </p>
                         <table className={classes.tabelPernyataanPenyerahan}>
                             <tr>
-                                <td>Nama Lengkap &nbsp;&nbsp;</td>
-                                <td>:&nbsp;</td>
+                                <td style={{width: "3.5cm"}}>Nama Lengkap</td>
+                                <td>:</td>
                                 <td>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_name : ''}</td>
                             </tr>
                             <tr>
-                                <td>No. KTP &nbsp;&nbsp;</td>
-                                <td>:&nbsp;</td>
+                                <td style={{width: "3.5cm"}}>No. KTP</td>
+                                <td>:</td>
                                 <td>{props?.data?.cekIdBi?.profil_pengaju?.nik_id ? props?.data?.cekIdBi?.profil_pengaju?.nik_id : ''}</td>
                             </tr>
                             <tr>
-                                <td>Tempat, Tanggal Lahir &nbsp;&nbsp;</td>
-                                <td>:&nbsp;</td>
+                                <td style={{width: "3.5cm"}}>Tempat, Tanggal Lahir</td>
+                                <td>:</td>
                                 <td>{props?.data?.cekIdBi?.profil_pengaju?.place_of_birth ? `${props?.data?.cekIdBi?.profil_pengaju?.place_of_birth}, ${pengajuTanggalLahir}` : ''}</td>
                             </tr>
                             <tr>
-                                <td>Pekerjaan &nbsp;&nbsp;</td>
-                                <td>:&nbsp;</td>
+                                <td style={{width: "3.5cm"}}>Pekerjaan</td>
+                                <td>:</td>
                                 <td>{props?.data?.cekIdBi?.profil_pengaju?.position ? props?.data?.cekIdBi?.profil_pengaju?.position : ''}</td>
                             </tr>
                             <tr>
-                                <td>Alamat &nbsp;&nbsp;</td>
-                                <td>:&nbsp;</td>
+                                <td style={{width: "3.5cm"}}>Alamat</td>
+                                <td>:</td>
                                 <td>{props?.data?.cekIdBi?.profil_pengaju?.full_address ? props?.data?.cekIdBi?.profil_pengaju?.full_address : ''}</td>
                             </tr>
                         </table>
                         <br></br>
                         <p>Menyatakan hal-hal sebagai berikut:</p>
-                        <table style={{width: "90%"}}>
+                        <table style={{width: "16.5cm"}}>
                             <tr>
                                 1.
                                     <td style={{paddingLeft:"5px"}}>Bahwa dikarenakan saya memiliki Nomor Pokok Wajib Pajak (NPWP) kurang dari 1 (satu) tahun pada saat 
@@ -541,7 +551,7 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                             </tr>
                         </table>
                         <br></br>
-                        <p style={{width: "90%"}}>
+                        <p style={{width: "16.5cm"}}>
                             Demikian surat pernyataan ini saya buat dengan sebenarnya tanpa paksaan dari pihak 
                             manapun dan apabila di kemudian hari pernyataan saya ini tidak benar, 
                             saya bersedia mengembalikan seluruh subsidi yang saya terima.
@@ -551,13 +561,13 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     </div>
                     <table className={classes.tabelPersetujuanPemohonTTD} style={{textAlign:"center"}}>
                         <tr>
-                            <td>Jagoi Babang, 1 Januari 2021</td>
+                            <td style={{width:"5cm"}}>Jagoi Babang, 1 Januari 2021</td>
                         </tr>
                         <br></br>
                         <br></br>
                         <tr style={{paddingLeft:"50px"}}>
-                            <td style={{width:"70%"}}> 
-                                <p className={classes.materai} style={{width:"30%"}}>
+                            <td style={{width:"5.775cm"}}> 
+                                <p className={classes.materai} style={{width:"1.7cm"}}>
                                     Meterai
                                     <br></br>
                                     Rp 10.000,-
@@ -567,7 +577,7 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>
+                            <td style={{width:"5cm"}}>
                                 <br></br>
                                 {props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_name  : ''}
                             </td>
@@ -593,6 +603,10 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
             <br></br>
             <br></br>
             <br></br>
+            <br></br>
+            <br></br>
+            
+
             <div className={classes.wrapHalaman5}>
                 <img src='/LogoBank&BUMN.png' className={classes.logoBankdanBUMN} />
                 <div className={classes.JudulHalaman}>
@@ -612,9 +626,9 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                 <div className={classes.isiHalaman} style={{textAlign:"justify"}}>
                     <table className={classes.tabelBestTimetoCall}>
                         <tr style={{textAlign:"center"}}>
-                            <th style={{width:"20%"}}>KETERANGAN</th>
-                            <th style={{width:"50%"}}>NAMA</th>
-                            <th style={{width:"25%"}}>NO. TELEPON/
+                            <th style={{width:"3.8cm"}}>KETERANGAN</th>
+                            <th style={{width:"8cm"}}>NAMA</th>
+                            <th style={{width:"4.125cm"}}>NO. TELEPON/
                             <br></br>NO. HP</th>
                             <th>JAM YANG BISA DIHUBUNGI</th>
                         </tr>
@@ -646,7 +660,7 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     <br></br>
                     <div style={{lineHeight:"15pt"}}>
                         <b>Catatan</b>
-                        <table style={{width: "85%", paddingLeft:"10px"}}>
+                        <table style={{width: "16cm", paddingLeft:"10px"}}>
                             <tr>
                                 
                                 •	
@@ -682,7 +696,7 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                         <br></br>
                         <br></br>
                         <tr style={{paddingLeft:"50px"}}>
-                            <td style={{width:"70%"}}> 
+                            <td style={{width:"5.775cm"}}> 
                             </td>
                             <td></td>
                         </tr>
