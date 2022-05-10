@@ -37,9 +37,8 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                             </p>
                         </div>
                     </div>
-                    <hr width="620px;" height="100px" color='black'></hr>
-                    <hr width="620px;"></hr>
-                    <hr width="620px;" height="200px" color='black'></hr>
+                    <hr style={{width: "100%", height:"2px", marginTop: "2px"}} color='black'></hr>
+                    <hr style={{width: "100%", height:"2px", marginTop: "2px"}} color='black'></hr>
                     <br></br>
                 </div>
                 <table className={classes.isiHalaman1} style={{textAlign:"justify"}}>
@@ -51,73 +50,72 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     <tr>
                         <td style={{width: "4.95cm"}}>Blok Rumah</td>
                             :&nbsp;
-                        <td>{props?.data?.house?.blok ? props?.data?.house?.blok  : ''}</td>
+                        <td>{props.data.house.blok}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>No. SHM</td>
                             :&nbsp;
-                        <td>{props?.data?.house?.nomor_shm ? props?.data?.house?.nomor_shm  : ''}</td>
+                        <td>{props.data.house.nomor_shm}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Nama Perumahan</td>
                             :&nbsp;
-                        <td>{props?.data?.cekIdBi?.perumahan?.nama ? props?.data?.cekIdBi?.perumahan?.nama  : ''}</td>
+                        <td>{props.data.cekIdBi.perumahan.nama}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Alamat Perumahan</td>
                             :&nbsp;
-                        <td>{props?.data?.cekIdBi?.perumahan?.full_address ? props?.data?.cekIdBi?.perumahan?.full_address  : ''}</td>
+                        <td>{props.data.cekIdBi.perumahan.full_address }</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Desa</td>
                             :&nbsp;
-                        <td>{props?.data?.cekIdBi?.perumahan?.desaAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.desaAlamatPerumahan.nama  : ''}</td>
+                        <td>{props.data.cekIdBi.perumahan.desaAlamatPerumahan.nama}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Kecamatan</td>
                             :&nbsp;
-                        <td>{props?.data?.cekIdBi?.perumahan?.kecamatanAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.kecamatanAlamatPerumahan.nama  : ''}</td>
+                        <td>{props.data.cekIdBi.perumahan.kecamatanAlamatPerumahan.nama}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Kabupaten</td>
                             :&nbsp;
-                        <td>{props?.data?.cekIdBi?.perumahan?.kabupatenAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.kabupatenAlamatPerumahan.nama  : ''}</td>
+                        <td>{props.data.cekIdBi.perumahan.kabupatenAlamatPerumahan.nama}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Provinsi</td>
                             :&nbsp;
-                        <td>{props?.data?.cekIdBi?.perumahan?.provinsiAlamatPerumahan.nama ? props?.data?.cekIdBi?.perumahan?.provinsiAlamatPerumahan.nama  : ''}</td>
+                        <td>{props.data.cekIdBi.perumahan.provinsiAlamatPerumahan.nama}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Harga Rumah</td>
                             :&nbsp;
-                        {/* <td>Rp. 153.000.000,-</td> */}
-                        <td>{props?.data?.house?.harga ? props?.data?.house?.harga   : ''}</td>
+                        <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.house.harga, 10))},-</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Uang Muka</td>
                         :&nbsp;
-                        {/* <td>Rp. &nbsp;&nbsp;&nbsp;&nbsp;7.650.000,-</td> */}
-                        <td>{props?.data?.uang_muka ? props?.data?.uang_muka   : ''}</td>
+                        <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.uang_muka, 10))  },-</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Plafon Kredit</td>
                             :&nbsp;
-                        {/* <td>Rp.	145.350.000,-</td> */}
-                        <td>{props?.data?.plafon_kredit ? props?.data?.plafon_kredit   : ''}</td>
+                        <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.plafon_kredit, 10))  },-</td>
+
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Jangka Waktu</td>
                             :&nbsp;
-                        <td>{props?.data?.jangka_waktu ? props?.data?.jangka_waktu   : ''}</td>
+                        <td>{props.data.jangka_waktu}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>No. Telepon/Hp.</td>
                             :&nbsp;
-                        <td>{props?.data?.cekIdBi?.profil_pengaju?.phone_number ? props?.data?.cekIdBi?.profil_pengaju?.phone_number  : ''}</td>
+                        <td>{props.data.cekIdBi.profil_pengaju.phone_number}</td>
                     </tr>
                 </table>
             </div>
+            <br></br>
             <br></br>
             <br></br>
             <br></br>
@@ -158,9 +156,8 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     
                         </div> 
                     </div> 
-                    <hr width="620px;" height="100px" color='black'></hr>
-                    <hr width="620px;"></hr>
-                    <hr width="620px;" height="200px" color='black'></hr>
+                    <hr style={{width: "100%", height:"2px", marginTop: "2px"}} color='black'></hr>
+                    <hr style={{width: "100%", height:"2px", marginTop: "2px"}} color='black'></hr>
                     <br></br>
                 </div>
                 <div className={classes.isiHalaman} style={{textAlign:"justify"}}>
@@ -408,21 +405,20 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Harga Jual</td>
-                                : 
-                            {/* <td> Rp. 153.000.000,-</td> */}
-                            <td>{props?.data?.house?.harga ? props?.data?.house?.harga : ''}</td>
+                                :
+                            <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.house.harga, 10))  },-</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>DP</td>
                                 :
-                            {/* <td> Rp. &nbsp;&nbsp;&nbsp;&nbsp;7.650.000,-</td> */}
-                            <td>{props?.data?.house?.uang_muka ? props?.data?.house?.uang_muka : ''}</td>
+                            <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.house.uang_muka, 10))  },-</td>
+
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Kredit Dimohonkan</td>
                                 :
-                            {/* <td> Rp. 145.350.000,-</td> */}
-                            <td>{props?.data?.house?.harga ? (parseInt(props?.data?.house?.harga, 10) - parseInt(props?.data?.house?.uang_muka, 10)) : ''}</td>
+                            <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format((parseInt(props.data.house.harga, 10) - parseInt(props.data.house.uang_muka, 10)))  },-</td>
+
                         </tr>
                     </table>
                     <br></br>
@@ -561,7 +557,7 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     </div>
                     <table className={classes.tabelPersetujuanPemohonTTD} style={{textAlign:"center"}}>
                         <tr>
-                            <td style={{width:"5cm"}}>Jagoi Babang, 1 Januari 2021</td>
+                            <td style={{width:"5cm"}}>{props.data.tempat_dan_tanggal_dokumen}</td>
                         </tr>
                         <br></br>
                         <br></br>

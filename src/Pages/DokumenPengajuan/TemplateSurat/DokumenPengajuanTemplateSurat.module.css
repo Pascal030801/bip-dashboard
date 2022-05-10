@@ -3,6 +3,7 @@
     height: 29.7cm;
     padding-top: 0.508cm;
     padding-left: 2.5cm;
+    padding-right: 2.5cm;
 }
 
 .kop {
@@ -16,7 +17,7 @@
     height: 3.5cm;
 }
 
-.logoBankdanBUMN{
+.logoBankdanBUMN {
     text-align: center;
     width: 90%;
 
@@ -28,42 +29,42 @@
     margin-left: 1.5cm;
 }
 
-.isiHalaman1{
+.isiHalaman1 {
     font-size: 20px;
     line-height: 35pt;
-    padding : 15px;
+    padding: 15px;
 }
 
-.isiHalaman1 tr{
+.isiHalaman1 tr {
     width: 16.5cm;
 }
 
 
-.JudulHalaman{
+.JudulHalaman {
     text-decoration-line: underline;
     text-align: center;
 }
 
-.isiHalaman{
-    font-size:12px;
+.isiHalaman {
+    font-size: 12px;
 }
 
 
-.wrapKop{
+.wrapKop {
     width: 100%;
 }
 
-.wrapTableKelengkapanDokumenKPR{
+.wrapTableKelengkapanDokumenKPR {
     width: 100%;
 }
 
-.tabelKelengkapanDokumenKPR td{
+.tabelKelengkapanDokumenKPR td {
     border: 1px solid black;
     padding: 8px;
     font-size: 12px;
 }
 
-.tabelKelengkapanDokumenKPR{
+.tabelKelengkapanDokumenKPR {
     width: 16.5cm;
     border-collapse: collapse;
 }
@@ -74,60 +75,62 @@
     font-size: 12px;
 }
 
-.tablePersetujuanTTD{
+.tablePersetujuanTTD {
     width: 90%;
     text-align: center;
 }
 
-.tabelPersetujuanPemohonTTD{
+.tabelPersetujuanPemohonTTD {
     font-size: 12px;
-    float:right;
+    float: right;
     width: 7cm;
     text-align: center;
 }
 
-.tabelPernyataanPenyerahan{
+.tabelPernyataanPenyerahan {
     line-height: 20pt;
     font-size: 12px;
-    width : 15cm;
+    width: 15cm;
 }
 
-.materai{
+.materai {
     text-align: left;
     border: 1px solid black;
     width: 30%;
 }
 
-.wrapHalaman1{
+.wrapHalaman1 {
     width: 100%;
     font-family: "Times New Roman", Times, serif;
 }
 
-.wrapHalaman2{
-    width: 100%;
-    font-family: "Times New Roman", Times, serif;
-}
-.wrapHalaman3{
-    width: 100%;
-    font-family: "Times New Roman", Times, serif;
-}
-.wrapHalaman4{
+.wrapHalaman2 {
     width: 100%;
     font-family: "Times New Roman", Times, serif;
 }
 
-.wrapHalaman5{
+.wrapHalaman3 {
     width: 100%;
     font-family: "Times New Roman", Times, serif;
 }
 
-.tabelBestTimetoCall td{
+.wrapHalaman4 {
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.wrapHalaman5 {
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.tabelBestTimetoCall td {
     border: 1px solid black;
     padding: 8px;
     font-size: 10px;
 }
 
-.tabelBestTimetoCall{
+.tabelBestTimetoCall {
     width: 16.5cm;
     border-collapse: collapse;
 }
@@ -138,10 +141,9 @@
     font-size: 12px;
 }
 
-.tabelBestTimetoCallTTD{
+.tabelBestTimetoCallTTD {
     font-size: 12px;
-    float:right;
+    float: right;
     width: 8.25cm;
     text-align: center;
 }
-

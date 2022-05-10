@@ -1,22 +1,25 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 
 import classes from './DasborLayout.module.css';
 const DasborLayout = () => {
 
   const navigate = useNavigate();
-
+  const [fullName, setFullName] = useState();
   useEffect(() => {
     if (localStorage.getItem("token") === null) {
       navigate("/login", { replace: true });
     }
+    setFullName(localStorage.getItem('fullName'));
+
   }, [navigate]);
 
   const logoutHandler = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("fullName");
     navigate("/login", { replace: true });
 
   }
@@ -54,6 +57,11 @@ const DasborLayout = () => {
           </li>
           <hr className={classes.divider} />
 
+          <li onClick={logoutHandler}>
+            <a className={classes.navlink} ><span><FontAwesomeIcon icon="fa-solid fa-right-from-bracket" /></span><span>Logout</span></a>
+          </li>
+          <hr className={classes.divider} />
+
         </ul>
       </nav>
 
@@ -61,8 +69,11 @@ const DasborLayout = () => {
         <header>
           <div className={classes['header-content']}>
             <div className={classes['profile-wrap']}>
-              <h1 className={classes['user-fullname']}>Ersapta Aristo</h1>
-              <img src='/avatar-2.jpg' className={classes.profile} />
+              <h1 className={classes['user-fullname']}>{fullName}</h1>
+              {/* <img src='/avatar-2.jpg' className={classes.profile} /> */}
+              <div className={classes['profile-picture-wrap']}>
+                <FontAwesomeIcon icon="fa-solid fa-user-tie" className={classes.profile} />
+              </div>
             </div>
           </div>
         </header>

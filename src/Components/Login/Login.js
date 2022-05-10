@@ -19,7 +19,7 @@ const Login = (props) => {
             email: inputtedEmail,
             password: inputtedPassword,
         }).then((response) => {
-            props.onLogin(response.data.token);
+            props.onLogin(response.data);
         }).catch((error) => {
             console.log(error)
             setIsError(true)

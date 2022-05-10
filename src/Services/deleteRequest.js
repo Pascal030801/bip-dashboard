@@ -12,8 +12,7 @@ const deleteRequest = async (url, token, params) => {
     } catch(err) {
         if(String(err?.response?.data?.message).toLowerCase() === 'token expired'){
             localStorage.removeItem('token');
-            console.log(localStorage.getItem('token'))
-            err.response.data.message = 'Login Kadaluarsa, Silahkan Refresh Untuk Login Kembali'
+            err.response.data.message = 'Login Kadaluarsa, Silahkan Muat Ulang Halaman Untuk Login Kembali'
             throw err;
         }else{
             throw err;

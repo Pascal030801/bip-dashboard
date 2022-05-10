@@ -17,9 +17,9 @@ library.add(fas)
 
 function App() {
   const navigate = useNavigate();
-  const loginHandler = (token) => {
-    console.log(token)
-    localStorage.setItem("token", token);
+  const loginHandler = (response) => {
+    localStorage.setItem("token", response.token);
+    localStorage.setItem("fullName", response.name);
     navigate("/", { replace: true })
   }
 
