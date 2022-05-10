@@ -35,7 +35,7 @@
 }
 
 .isiHalaman1 tr{
-    width: 90%;
+    width: 16.5cm;
 }
 
 
@@ -60,11 +60,11 @@
 .tabelKelengkapanDokumenKPR td{
     border: 1px solid black;
     padding: 8px;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .tabelKelengkapanDokumenKPR{
-    width: 90%;
+    width: 16.5cm;
     border-collapse: collapse;
 }
 
@@ -82,13 +82,14 @@
 .tabelPersetujuanPemohonTTD{
     font-size: 12px;
     float:right;
-    width: 50%;
+    width: 7cm;
     text-align: center;
 }
 
 .tabelPernyataanPenyerahan{
     line-height: 20pt;
     font-size: 12px;
+    width : 15cm;
 }
 
 .materai{
@@ -99,16 +100,25 @@
 
 .wrapHalaman1{
     width: 100%;
+    font-family: "Times New Roman", Times, serif;
 }
 
 .wrapHalaman2{
     width: 100%;
+    font-family: "Times New Roman", Times, serif;
 }
 .wrapHalaman3{
     width: 100%;
+    font-family: "Times New Roman", Times, serif;
 }
 .wrapHalaman4{
     width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.wrapHalaman5{
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
 }
 
 .tabelBestTimetoCall td{
@@ -118,7 +128,7 @@
 }
 
 .tabelBestTimetoCall{
-    width: 90%;
+    width: 16.5cm;
     border-collapse: collapse;
 }
 
@@ -131,7 +141,7 @@
 .tabelBestTimetoCallTTD{
     font-size: 12px;
     float:right;
-    width: 50%;
+    width: 8.25cm;
     text-align: center;
 }
 
