@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from './Login.module.css';
 import PropTypes from 'prop-types';
+import { Container } from '@chakra-ui/react';
 
 
 const BASE_PATH_API = process.env.REACT_APP_API_URL;
@@ -39,25 +40,38 @@ const Login = (props) => {
         if (localStorage.getItem("token") !== null) {
             navigate("/", { replace: true });
         }
+
     }, [])
+
     return (
+<div>
         <div className={classes['login-card']}>
             <form onSubmit={submitHandler} className={classes.form}>
-                <p>MASUK</p>
-                {isError && <p style={{color: 'red', fontSize: '1.8em'}}>Email atau Password salah</p>}
+                
+                <h1 style={{textAlign:'center'}}>LOGIN</h1>
+
+                {isError && 
+                    <h7 className={classes.lineUp} style={{color: 'red', fontSize: '1rem', textAlign:'center'}}>
+                        Email atau Password salah, <br></br>Silahkan coba lagi !
+                    </h7>}
+
                 <div className={classes['input-wrap']}>
-                    <label htmlFor='email'>Alamat Email</label>
-                    <input id='email' type='email' name='email' onChange={emailHandler} />
+                    <label htmlFor='email'>Email</label>
+                    <input id='email' type='email' name='email' placeholder='Masukan Email' onChange={emailHandler} />
                 </div>
+
                 <div className={classes['input-wrap']}>
                     <label htmlFor='password'>Kata Sandi</label>
-                    <input id='password' type='password' name='password' onChange={passwordHandler} />
+                    <input id='password' type='password' name='password' placeholder='Masukan Password' onChange={passwordHandler} />
                 </div>
 
-                <button className={classes.loginbtn}>Masuk</button>
+                <div style={{textAlign:'center'}}>
+                    <button className={classes.loginbtn}><b>Login</b></button>
+                </div>
             </form>
         </div>
-
+            <img src='/ElementLogin.png' className={classes.GambarFooter} />         
+        </div>
 
     )
 }
