@@ -286,10 +286,9 @@ const InputCekIdBi = () => {
         try {
             const res = await ApiService.getCekIdBiByID(cekIdBI__ID);
             const cekIdBiData = res.data;
-            console.log(cekIdBiData)
 
             statusIdBi.setValue(cekIdBiData.status);
-            console.log(cekIdBiData.profil_pengaju.status_perkawinan)
+            
             pengajuStatusPerkawinan.setValue(cekIdBiData.profil_pengaju.status_perkawinan);
             pengajuStatusPerkawinan.setDisable(true);
 
@@ -338,8 +337,12 @@ const InputCekIdBi = () => {
             pengajuFullAddress.setValue(cekIdBiData.profil_pengaju.full_address);
             pengajuFullAddress.setDisable(true);
             
-            const pengajuKtpData = String(cekIdBiData.profil_pengaju.foto_ktp_path).replace('\\\\', '\/');
-            setImageFotoKTP(`${BASE_PATH_API}/${pengajuKtpData}`);
+            let pengajuKtpData = null;
+            if(validation.empty(cekIdBiData.profil_pengaju.foto_ktp_path).isValid){
+                pengajuKtpData = String(cekIdBiData.profil_pengaju.foto_ktp_path).replace('\\\\', '\/');
+            }
+            setImageFotoKTP(pengajuKtpData);
+
             pengajuFotoKTP.setValue(cekIdBiData.profil_pengaju.foto_ktp_path);
             pengajuFotoKTP.setDisable(true);
 
@@ -385,8 +388,11 @@ const InputCekIdBi = () => {
                 pasanganPengajuFullAddress.setValue(cekIdBiData.profile_pasangan_pengaju.full_address);
                 pasanganPengajuFullAddress.setDisable(true);
                 
-                const pasanganPengajuKtpData = String(cekIdBiData.profile_pasangan_pengaju.foto_ktp_path).replace('\\\\', '\/');
-                setImageFotoKTPPasangan(`${BASE_PATH_API}/${pasanganPengajuKtpData}`);
+                let pasanganPengajuKtpData = null;
+                if(validation.empty(cekIdBiData.profile_pasangan_pengaju.foto_ktp_path).isValid){
+                    pasanganPengajuKtpData = String(cekIdBiData.profile_pasangan_pengaju.foto_ktp_path).replace('\\\\', '\/');
+                }
+                setImageFotoKTPPasangan(pasanganPengajuKtpData);
                 pasanganPengajuFotoKTP.setValue(cekIdBiData.profile_pasangan_pengaju.foto_ktp_path);
                 pasanganPengajuFotoKTP.setDisable(true);
             }

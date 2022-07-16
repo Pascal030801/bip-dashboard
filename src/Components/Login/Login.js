@@ -48,9 +48,10 @@ const Login = (props) => {
                     <h1 style={{textAlign:'center'}}>LOGIN</h1>
 
                     {isError && 
-                        <h7 className={classes.lineUp} style={{color: 'red', fontSize: '1rem', textAlign:'center'}}>
+                        <h6 className={classes.lineUp} style={{color: 'red', fontSize: '1rem', textAlign:'center'}}>
                             Email atau Password salah, <br></br>Silahkan coba lagi !
-                        </h7>}
+                        </h6>
+                    }
 
                     <div className={classes['input-wrap']}>
                         <label htmlFor='email'>Email</label>

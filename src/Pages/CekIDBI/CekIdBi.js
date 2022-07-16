@@ -128,6 +128,7 @@ const CekIdBi = () => {
                 for(const cekIdBi of cekIdBis){
                     formattedCekIdBis.push((
                         <tr key={cekIdBi.id}>
+                            <td>{cekIdBi.id}</td>
                             <td>{cekIdBi.profil_pengaju.full_name}</td>
                             <td>{cekIdBi.updated_by}</td>
                             <td>{cekIdBi.status}</td>
@@ -206,6 +207,7 @@ const CekIdBi = () => {
                     <table className={classes.tableDataCekIdBi}>
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Nama Pemohon</th>
                                 <th>Di Cek Oleh</th>
                                 <th>Status</th>
