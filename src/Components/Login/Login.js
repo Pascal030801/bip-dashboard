@@ -35,29 +35,40 @@ const Login = (props) => {
     }
 
     useEffect(() => {
-        console.log(localStorage.getItem('token'))
         if (localStorage.getItem("token") !== null) {
             navigate("/", { replace: true });
         }
     }, [])
+
     return (
-        <div className={classes['login-card']}>
-            <form onSubmit={submitHandler} className={classes.form}>
-                <p>MASUK</p>
-                {isError && <p style={{color: 'red', fontSize: '1.8em'}}>Email atau Password salah</p>}
-                <div className={classes['input-wrap']}>
-                    <label htmlFor='email'>Alamat Email</label>
-                    <input id='email' type='email' name='email' onChange={emailHandler} />
-                </div>
-                <div className={classes['input-wrap']}>
-                    <label htmlFor='password'>Kata Sandi</label>
-                    <input id='password' type='password' name='password' onChange={passwordHandler} />
-                </div>
+        <div>
+            <div className={classes['login-card']}>
+                <form onSubmit={submitHandler} className={classes.form}>
+                    
+                    <h1 style={{textAlign:'center'}}>LOGIN</h1>
 
-                <button className={classes.loginbtn}>Masuk</button>
-            </form>
+                    {isError && 
+                        <h7 className={classes.lineUp} style={{color: 'red', fontSize: '1rem', textAlign:'center'}}>
+                            Email atau Password salah, <br></br>Silahkan coba lagi !
+                        </h7>}
+
+                    <div className={classes['input-wrap']}>
+                        <label htmlFor='email'>Email</label>
+                        <input id='email' type='email' name='email' placeholder='Masukan Email' onChange={emailHandler} />
+                    </div>
+
+                    <div className={classes['input-wrap']}>
+                        <label htmlFor='password'>Kata Sandi</label>
+                        <input id='password' type='password' name='password' placeholder='Masukan Password' onChange={passwordHandler} />
+                    </div>
+
+                    <div style={{textAlign:'center'}}>
+                        <button className={classes.loginbtn}><b>Login</b></button>
+                    </div>
+                </form>
+            </div>
+            <img src='/ElementLogin.png' className={classes.GambarFooter} />  
         </div>
-
 
     )
 }

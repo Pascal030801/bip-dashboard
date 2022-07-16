@@ -1,28 +1,91 @@
+@font-face {
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/lexenddeca/v16/K2FifZFYk-dHSE0UPPuwQ7CrD94i-NCKm-U48M1wqxnD.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @keyframes pulsate {
+    0%{
+        box-shadow: 
+        0 0 10px #2D9CDB,
+        0 0 10px #56CCF2;
+    }
+    
+}
+
+@keyframes anim-lineUp {
+    0% {
+      opacity: 0;
+      transform: translateY(80%);
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .login-card{
+        min-height: 100vh;
+        max-height: 100vh;
+    }
+
+    .GambarFooter {
+        max-height: 100vh;
+        min-height: 100vh;
+        overflow: auto;
+    }
+}
+
+.lineUp{
+    animation: 0.5s anim-lineUp ease-out;
+  }
+  
 .form {
-    background-color: whitesmoke;
-    width: 30%;
+    background-color: white;
     display: flex;
     flex-direction: column;
-    padding: 3rem 2rem;
+    padding: 3rem 5.5rem;
     gap: 1rem;
     border-radius: 8px;
-
+    box-shadow: 8px 8px #56CCF2;
 }
 
 .login-card p {
     display: flex;
-    /* justify-content: center; */
     font-size: 2.5rem;
 }
 
 .login-card {
+    font-family: 'Lexend Deca';
+    display: flex;
+    justify-content: center;
+    padding: 7.9% 0%;
 
+}
+
+.GambarFooter{
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  
 }
 
 .input-wrap {
     display: flex;
     flex-direction: column;
-    font-size: 1.7rem;
+    font-size: 1rem;
 }
 
 .input-wrap label {
@@ -30,16 +93,28 @@
 }
 
 .input-wrap input{
-    height: 2rem;
+    font-family: 'Lexend Deca';
+    height: 2.5rem;
+    width: 18rem;
     border-radius: 8px;
     padding: 10px;
 }
 
-.loginbtn {
-    height: 3rem;
-    border-radius: 5px;
-    background-color: #00ab21;
-    color: white;
-    margin-top: 0.9rem
+.input-wrap input:focus{
+    box-shadow:  1px 1px 5px grey;
 }
 
+.loginbtn {
+    height: 2.5rem;
+    width: 8rem;
+    border-radius: 13px;
+    border-color: transparent;
+    background-color: #2D9CDB;
+    color: white;
+    margin-top: 0.9rem;
+    
+}
+.loginbtn:hover{
+    animation: pulsate 1s
+    ease-in-out;
+}
