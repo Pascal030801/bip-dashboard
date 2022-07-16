@@ -44,7 +44,7 @@ const InputDokumenPengajuan = () => {
     }});
 
     const uangMuka = useInput({validateValue: (val) => {
-        return validation.sameWithPlaceHolder(val);
+        return validation.empty(val);
     }});
 
     const plafonKredit = useInput({validateValue: (val) => {
@@ -100,10 +100,12 @@ const InputDokumenPengajuan = () => {
                 
                 namaMarketer.setValue(dokumenPengajuanData.nama_marketer);
                 await fetchHouseByPerumahanId(dokumenPengajuanData.cekIdBi.perumahanId);
-                rumahDipilih.setValue(dokumenPengajuanData.house_id);
-                plafonKredit.setValue(dokumenPengajuanData.plafon_kredit);
-                jangkaWaktu.setValue(dokumenPengajuanData.jangka_waktu);
-                tempatDanTanggalDokumen.setValue(dokumenPengajuanData.tempat_dan_tanggal_dokumen);
+                rumahDipilih.setValue(dokumenPengajuanData.house_id === null ? selectInputPlaceHolder : dokumenPengajuanData.house_id);
+                nomorSHM.setValue(dokumenPengajuanData.house?.nomor_shm ? dokumenPengajuanData.house?.nomor_shm : '')
+                uangMuka.setValue(dokumenPengajuanData.uang_muka || '');
+                plafonKredit.setValue(dokumenPengajuanData.plafon_kredit || '');
+                jangkaWaktu.setValue(dokumenPengajuanData.jangka_waktu || '');
+                tempatDanTanggalDokumen.setValue(dokumenPengajuanData.tempat_dan_tanggal_dokumen || '');
                 namaPengaju.setValue(dokumenPengajuanData.cekIdBi.profil_pengaju.full_name);
                 statusDokumenPengajuan.setValue(dokumenPengajuanData.status_dokumen_pengajuan)
             }else{

@@ -151,10 +151,10 @@ const DokumenPengajuan = () => {
                         <tr key={dokumenPengajuan.id}>
                             <td>{dokumenPengajuan.cekIdBi.profil_pengaju.full_name}</td>
                             <td>{dokumenPengajuan.nama_marketer}</td>
-                            <td>{dokumenPengajuan.house_id && dokumenPengajuan.house_id === '' ? dokumenPengajuan.house.blok : 'Belum Pilih Rumah'}</td>
+                            <td>{dokumenPengajuan.house_id && (dokumenPengajuan.house_id !== '' && dokumenPengajuan.house_id !== null) ? dokumenPengajuan.house.blok : 'Belum Pilih Rumah'}</td>
                             <td>
                                 <div className={classes.actionWrap}>
-                                    <div className={classes['print-btn']} onClick={(e) => printDocumentHandler(e, dokumenPengajuans, dokumenPengajuan.id)}>PRINT</div>
+                                    <div className={classes['print-btn']} disabled={dokumenPengajuan.house_id && (dokumenPengajuan.house_id !== '' && dokumenPengajuan.house_id !== null)} onClick={(e) => printDocumentHandler(e, dokumenPengajuans, dokumenPengajuan.id)}>PRINT</div>
                                     <div className={classes['edit-btn']} onClick={(e) => editBtnHandler(e, dokumenPengajuan.id)}>EDIT</div>
                                     <div className={classes['delete-btn']} onClick={(e) => deleteBtnHandler(e, dokumenPengajuan.id)}>DELETE</div>
                                 </div>
