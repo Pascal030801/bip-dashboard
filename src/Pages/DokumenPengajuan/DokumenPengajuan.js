@@ -77,6 +77,11 @@ const DokumenPengajuan = () => {
         e.preventDefault();
 
         const dokumenIndex = _.findIndex(dokumenPengajuans, (dokumen) => dokumen.id === documentId);
+
+        if(dokumenPengajuans[dokumenIndex].status_dokumen_pengajuan !== "Sudah Diajukan"){
+            toast.error('Dokumen belum diajukan, tidak bisa menampilkan dokumen')
+            return;
+        }
         setData(dokumenPengajuans[dokumenIndex]);
 
     };
@@ -154,7 +159,7 @@ const DokumenPengajuan = () => {
                             <td>{dokumenPengajuan.house_id && (dokumenPengajuan.house_id !== '' && dokumenPengajuan.house_id !== null) ? dokumenPengajuan.house.blok : 'Belum Pilih Rumah'}</td>
                             <td>
                                 <div className={classes.actionWrap}>
-                                    <div className={classes['print-btn']} disabled={dokumenPengajuan.house_id && (dokumenPengajuan.house_id !== '' && dokumenPengajuan.house_id !== null)} onClick={(e) => printDocumentHandler(e, dokumenPengajuans, dokumenPengajuan.id)}>PRINT</div>
+                                    <div className={classes['print-btn']} onClick={(e) => printDocumentHandler(e, dokumenPengajuans, dokumenPengajuan.id)}>PRINT</div>
                                     <div className={classes['edit-btn']} onClick={(e) => editBtnHandler(e, dokumenPengajuan.id)}>EDIT</div>
                                     <div className={classes['delete-btn']} onClick={(e) => deleteBtnHandler(e, dokumenPengajuan.id)}>DELETE</div>
                                 </div>
