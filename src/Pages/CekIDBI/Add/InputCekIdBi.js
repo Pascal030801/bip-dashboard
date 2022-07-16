@@ -288,7 +288,7 @@ const InputCekIdBi = () => {
             const cekIdBiData = res.data;
 
             statusIdBi.setValue(cekIdBiData.status);
-            
+
             pengajuStatusPerkawinan.setValue(cekIdBiData.profil_pengaju.status_perkawinan);
             pengajuStatusPerkawinan.setDisable(true);
 
@@ -346,7 +346,6 @@ const InputCekIdBi = () => {
             pengajuFotoKTP.setValue(cekIdBiData.profil_pengaju.foto_ktp_path);
             pengajuFotoKTP.setDisable(true);
 
-            console.log(cekIdBiData.profil_pengaju.status_perkawinan)
             if(cekIdBiData.profil_pengaju.status_perkawinan === 'Kawin'){
                 pasanganPengajuFullName.setValue(cekIdBiData.profile_pasangan_pengaju.full_name);
                 pasanganPengajuFullName.setDisable(true);
