@@ -129,8 +129,9 @@ const CekIdBi = () => {
                     formattedCekIdBis.push((
                         <tr key={cekIdBi.id}>
                             <td>{cekIdBi.id}</td>
-                            <td>{cekIdBi.profil_pengaju.full_name}</td>
-                            <td>{cekIdBi.updated_by}</td>
+                            <td>{cekIdBi.order?.id}</td>
+                            <td>{cekIdBi.order?.profil_pengaju?.full_name}</td>
+                            <td>{cekIdBi.order?.diurus_oleh?.full_name}</td>
                             <td>{cekIdBi.status}</td>
                             <td>
                                 <div className={classes.actionWrap}>
@@ -144,6 +145,7 @@ const CekIdBi = () => {
                 setCekIdBiTable(formattedCekIdBis);
             }
         } catch (error) {
+            console.log(error)
             console.log('error at Cek ID BI view: fetchPerumahan')
             toast.error(bipErrorHandler(error), {autoClose: 500})
             setShowLoading(false);
@@ -208,8 +210,9 @@ const CekIdBi = () => {
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Order ID</th>
                                 <th>Nama Pemohon</th>
-                                <th>Di Cek Oleh</th>
+                                <th>Di Urus Oleh</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
