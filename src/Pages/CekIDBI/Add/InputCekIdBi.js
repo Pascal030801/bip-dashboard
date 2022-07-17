@@ -289,64 +289,64 @@ const InputCekIdBi = () => {
 
             statusIdBi.setValue(cekIdBiData.status);
 
-            pengajuStatusPerkawinan.setValue(cekIdBiData.profil_pengaju.status_perkawinan);
+            pengajuStatusPerkawinan.setValue(cekIdBiData.order.profil_pengaju.status_perkawinan);
             pengajuStatusPerkawinan.setDisable(true);
 
-            perumahanDipilih.setValue(cekIdBiData.perumahan_id);
+            perumahanDipilih.setValue(cekIdBiData.order.housing_areas_id);
             perumahanDipilih.setDisable(true);
 
-            bankTerpilih.setValue(cekIdBiData.bank_terpilih);
+            bankTerpilih.setValue(cekIdBiData.order.bank_yang_digunakan);
             
-            pengajuFullName.setValue(cekIdBiData.profil_pengaju.full_name);
+            pengajuFullName.setValue(cekIdBiData.order.profil_pengaju.full_name);
             pengajuFullName.setDisable(true);
             pengajuFullName.setDisable(true);
 
-            pengajuPekerjaan.setValue(cekIdBiData.profil_pengaju.position);
+            pengajuPekerjaan.setValue(cekIdBiData.order.profil_pengaju.position);
             pengajuPekerjaan.setDisable(true);
 
-            pengajuTempatLahir.setValue(cekIdBiData.profil_pengaju.place_of_birth);
+            pengajuTempatLahir.setValue(cekIdBiData.order.profil_pengaju.place_of_birth);
             pengajuTempatLahir.setDisable(true);
 
-            const pengajuTanggalLahirData = new Date(cekIdBiData.profil_pengaju.date_of_birth);
+            const pengajuTanggalLahirData = new Date(cekIdBiData.order.profil_pengaju.date_of_birth);
             const pengajuTanggalLahirDataMonth = pengajuTanggalLahirData.getMonth() < 11 ? `0${(pengajuTanggalLahirData.getMonth() + 1)}` : pengajuTanggalLahirData.getMonth() + 1;
             const pengajuTanggalLahirDataDay = pengajuTanggalLahirData.getDate() < 10 ? `0${pengajuTanggalLahirData.getDate()}` : pengajuTanggalLahirData.getDate();
             pengajuTanggalLahir.setValue(`${pengajuTanggalLahirData.getFullYear()}-${pengajuTanggalLahirDataMonth}-${pengajuTanggalLahirDataDay}`);
             pengajuTanggalLahir.setDisable(true);
 
-            pengajuNikId.setValue(cekIdBiData.profil_pengaju.nik_id);
+            pengajuNikId.setValue(cekIdBiData.order.profil_pengaju.nik_id);
             pengajuNikId.setDisable(true);
 
-            pengajuProvinsi.setValue(cekIdBiData.profil_pengaju.provinsi_id);
+            pengajuProvinsi.setValue(cekIdBiData.order.profil_pengaju.provinsi_id);
             pengajuProvinsi.setDisable(true);
             
-            pengajuKabupaten.setValue(cekIdBiData.profil_pengaju.kabupaten_id);
-            pengajuKabupaten.setValue(cekIdBiData.profil_pengaju.kabupaten_id);
+            pengajuKabupaten.setValue(cekIdBiData.order.profil_pengaju.kabupaten_id);
+            pengajuKabupaten.setValue(cekIdBiData.order.profil_pengaju.kabupaten_id);
             pengajuKabupaten.setDisable(true);
 
-            pengajuKecamatan.setValue(cekIdBiData.profil_pengaju.kecamatan_id);
-            pengajuKecamatan.setValue(cekIdBiData.profil_pengaju.kecamatan_id);
+            pengajuKecamatan.setValue(cekIdBiData.order.profil_pengaju.kecamatan_id);
+            pengajuKecamatan.setValue(cekIdBiData.order.profil_pengaju.kecamatan_id);
             pengajuKecamatan.setDisable(true);
             
-            pengajuDesa.setValue(cekIdBiData.profil_pengaju.desa_id);
-            pengajuDesa.setValue(cekIdBiData.profil_pengaju.desa_id);
+            pengajuDesa.setValue(cekIdBiData.order.profil_pengaju.desa_id);
+            pengajuDesa.setValue(cekIdBiData.order.profil_pengaju.desa_id);
             pengajuDesa.setDisable(true);
 
-            pengajuRtRw.setValue(cekIdBiData.profil_pengaju.rtrw);
+            pengajuRtRw.setValue(cekIdBiData.order.profil_pengaju.rtrw);
             pengajuRtRw.setDisable(true);
 
-            pengajuFullAddress.setValue(cekIdBiData.profil_pengaju.full_address);
+            pengajuFullAddress.setValue(cekIdBiData.order.profil_pengaju.full_address);
             pengajuFullAddress.setDisable(true);
             
             let pengajuKtpData = null;
-            if(validation.empty(cekIdBiData.profil_pengaju.foto_ktp_path).isValid){
-                pengajuKtpData = String(cekIdBiData.profil_pengaju.foto_ktp_path).replace('\\\\', '\/');
+            if(validation.empty(cekIdBiData.order.profil_pengaju.foto_ktp_path).isValid){
+                pengajuKtpData = String(cekIdBiData.order.profil_pengaju.foto_ktp_path).replace('\\\\', '\/');
             }
             setImageFotoKTP(pengajuKtpData);
 
-            pengajuFotoKTP.setValue(cekIdBiData.profil_pengaju.foto_ktp_path);
+            pengajuFotoKTP.setValue(cekIdBiData.order.profil_pengaju.foto_ktp_path);
             pengajuFotoKTP.setDisable(true);
 
-            if(cekIdBiData.profil_pengaju.status_perkawinan === 'Kawin'){
+            if(cekIdBiData.order.profil_pengaju.status_perkawinan === 'Kawin'){
                 pasanganPengajuFullName.setValue(cekIdBiData.profile_pasangan_pengaju.full_name);
                 pasanganPengajuFullName.setDisable(true);
                 pasanganPengajuFullName.setDisable(true);
