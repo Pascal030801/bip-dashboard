@@ -4,7 +4,7 @@ import classes from './DokumenPengajuanTemplateSurat.module.css';
 const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) => {
     let pengajuTanggalLahir = '';
     if(props.data){
-        const pengajuTanggalLahirData = new Date(props.data.cekIdBi.profil_pengaju.date_of_birth);
+        const pengajuTanggalLahirData = new Date(props.data.tanggalLahirPengaju);
         const pengajuTanggalLahirDataMonth = pengajuTanggalLahirData.getMonth() < 11 ? `0${(pengajuTanggalLahirData.getMonth() + 1)}` : pengajuTanggalLahirData.getMonth() + 1;
         const pengajuTanggalLahirDataDay = pengajuTanggalLahirData.getDate() < 10 ? `0${pengajuTanggalLahirData.getDate()}` : pengajuTanggalLahirData.getDate();
         pengajuTanggalLahir = `${pengajuTanggalLahirDataDay}-${pengajuTanggalLahirDataMonth}-${pengajuTanggalLahirData.getFullYear()}`;
@@ -45,73 +45,73 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     <tr>
                         <td style={{width: "4.95cm"}}>Nama Konsumen</td>
                             :&nbsp;
-                        <td>{ props.data.cekIdBi.profil_pengaju.full_name }</td>
+                        <td>{ props.data.namaLengkapPengaju }</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Blok Rumah</td>
                             :&nbsp;
-                        <td>{props.data.house.blok}</td>
+                        <td>{props.data.blokRumah}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>No. SHM</td>
                             :&nbsp;
-                        <td>{props.data.house.nomor_shm}</td>
+                        <td>{props.data.nomorShmRumah}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Nama Perumahan</td>
                             :&nbsp;
-                        <td>{props.data.cekIdBi.perumahan.nama}</td>
+                        <td>{props.data.namaPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Alamat Perumahan</td>
                             :&nbsp;
-                        <td>{props.data.cekIdBi.perumahan.full_address }</td>
+                        <td>{props.data.alamatLengkapPerumahan }</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Desa</td>
                             :&nbsp;
-                        <td>{props.data.cekIdBi.perumahan.desaAlamatPerumahan.nama}</td>
+                        <td>{props.data.desaAlamatPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Kecamatan</td>
                             :&nbsp;
-                        <td>{props.data.cekIdBi.perumahan.kecamatanAlamatPerumahan.nama}</td>
+                        <td>{props.data.kecamatanAlamatPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Kabupaten</td>
                             :&nbsp;
-                        <td>{props.data.cekIdBi.perumahan.kabupatenAlamatPerumahan.nama}</td>
+                        <td>{props.data.kabupatenAlamatPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Provinsi</td>
                             :&nbsp;
-                        <td>{props.data.cekIdBi.perumahan.provinsiAlamatPerumahan.nama}</td>
+                        <td>{props.data.provinsiAlamatPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Harga Rumah</td>
                             :&nbsp;
-                        <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.house.harga, 10))},-</td>
+                        <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.hargaRumah, 10))},-</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Uang Muka</td>
                         :&nbsp;
-                        <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.uang_muka, 10))  },-</td>
+                        <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.uangMukaRumah, 10))  },-</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Plafon Kredit</td>
                             :&nbsp;
-                        <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.plafon_kredit, 10))  },-</td>
+                        <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.plafonKreditRumah, 10))  },-</td>
 
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Jangka Waktu</td>
                             :&nbsp;
-                        <td>{props.data.jangka_waktu}</td>
+                        <td>{props.data.jangkaWaktuKreditRumah}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>No. Telepon/Hp.</td>
                             :&nbsp;
-                        <td>{props.data.cekIdBi.profil_pengaju.phone_number}</td>
+                        <td>{props.data.nomorHpPengaju}</td>
                     </tr>
                 </table>
             </div>
@@ -362,17 +362,17 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                         <tr>
                             <td style={{width: "3.1cm"}}>Nama</td>
                                 :
-                            <td>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_name : ''}</td>
+                            <td>{props.data.namaLengkapPengaju}</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Alamat</td>
                                 :
-                            <td>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_address : ''}</td>
+                            <td>{props.data.alamatLengkapPengaju}</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>No. KTP</td>
                                 :
-                            <td>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.nik_id : ''}</td>
+                            <td>{props.data.nikPengaju}</td>
                         </tr>
                     </table>
                     <br></br>
@@ -381,17 +381,17 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                         <tr>
                             <td style={{width: "3.1cm"}}>Alamat Rumah</td>
                                 :
-                            <td> {props?.data?.cekIdBi?.perumahan?.full_address ? props?.data?.cekIdBi?.perumahan?.full_address : ''}</td>
+                            <td> {props.data.alamatLengkapPerumahan}</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Type/Luas Tanah</td>
                                 : 
-                            <td> {props?.data?.house?.house_type ? props?.data?.house?.house_type : ''}/{props?.data?.house?.luas_tanah ? props?.data?.house?.luas_tanah : ''} </td>
+                            <td> {props.data.tipeRumah}/{props.data.luasTanahRumah} </td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}> Blok</td>
                                 :
-                            <td>{props?.data?.house?.blok ? props?.data?.house?.blok : ''}</td>
+                            <td>{props.data.blokRumah}</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Status Rumah</td>
@@ -401,23 +401,23 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                         <tr>
                             <td style={{width: "3.1cm"}}>No. Sertifikat</td>
                                 : 
-                            <td>{props?.data?.house?.nomor_shm ? props?.data?.house?.nomor_shm : ''}</td>
+                            <td>{props.data.nomorShmRumah}</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Harga Jual</td>
                                 :
-                            <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.house.harga, 10))  },-</td>
+                            <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.hargaRumah, 10))  },-</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>DP</td>
                                 :
-                            <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.house.uang_muka, 10))  },-</td>
+                            <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.uangMukaRumah, 10))  },-</td>
 
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Kredit Dimohonkan</td>
                                 :
-                            <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format((parseInt(props.data.house.harga, 10) - parseInt(props.data.house.uang_muka, 10)))  },-</td>
+                            <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format((parseInt(props.data.hargaRumah, 10) - parseInt(props.data.uangMukaRumah, 10)))  },-</td>
 
                         </tr>
                     </table>
@@ -430,7 +430,7 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>{props?.data?.tempat_dan_tanggal_dokumen ? props?.data?.tempat_dan_tanggal_dokumen : ''}</td>
+                            <td style={{width : "5cm"}}>{props.data.tempatDanTanggalDokumenPengajuan}</td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}>Mengetahui,</td>
@@ -455,13 +455,13 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                             <td style={{width : "5cm"}}></td>
                         </tr>
                         <tr style={{textAlign:"center", width :"15cm"}}>
-                            <td style={{width : "5cm"}}>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_name : ''}</td>
+                            <td style={{width : "5cm"}}>{props.data.namaLengkapPengaju}</td>
                             <td style={{width : "5cm"}}></td>
                             <td style={{width : "5cm"}}>YUDA SISWANTO</td>
                         </tr>
                         <tr>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>{props?.data?.nama_marketer ? props?.data?.nama_marketer : ''}</td>
+                            <td style={{width : "5cm"}}>{props.data.namaMarketer}</td>
                             <td style={{width : "5cm"}}></td>
                         </tr>
                     </table>
@@ -499,27 +499,27 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                             <tr>
                                 <td style={{width: "3.5cm"}}>Nama Lengkap</td>
                                 <td>:</td>
-                                <td>{props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_name : ''}</td>
+                                <td>{props.data.namaLengkapPengaju}</td>
                             </tr>
                             <tr>
                                 <td style={{width: "3.5cm"}}>No. KTP</td>
                                 <td>:</td>
-                                <td>{props?.data?.cekIdBi?.profil_pengaju?.nik_id ? props?.data?.cekIdBi?.profil_pengaju?.nik_id : ''}</td>
+                                <td>{props.data.nikPengaju}</td>
                             </tr>
                             <tr>
                                 <td style={{width: "3.5cm"}}>Tempat, Tanggal Lahir</td>
                                 <td>:</td>
-                                <td>{props?.data?.cekIdBi?.profil_pengaju?.place_of_birth ? `${props?.data?.cekIdBi?.profil_pengaju?.place_of_birth}, ${pengajuTanggalLahir}` : ''}</td>
+                                <td>{props.data.tempatLahirPengaju}, {pengajuTanggalLahir}</td>
                             </tr>
                             <tr>
                                 <td style={{width: "3.5cm"}}>Pekerjaan</td>
                                 <td>:</td>
-                                <td>{props?.data?.cekIdBi?.profil_pengaju?.position ? props?.data?.cekIdBi?.profil_pengaju?.position : ''}</td>
+                                <td>{props.data.jabatanPengaju}</td>
                             </tr>
                             <tr>
                                 <td style={{width: "3.5cm"}}>Alamat</td>
                                 <td>:</td>
-                                <td>{props?.data?.cekIdBi?.profil_pengaju?.full_address ? props?.data?.cekIdBi?.profil_pengaju?.full_address : ''}</td>
+                                <td>{props.data.alamatLengkapPengaju}</td>
                             </tr>
                         </table>
                         <br></br>
@@ -557,7 +557,7 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     </div>
                     <table className={classes.tabelPersetujuanPemohonTTD} style={{textAlign:"center"}}>
                         <tr>
-                            <td style={{width:"5cm"}}>{props.data.tempat_dan_tanggal_dokumen}</td>
+                            <td style={{width:"5cm"}}>{props.data.tempatDanTanggalDokumenPengajuan}</td>
                         </tr>
                         <br></br>
                         <br></br>
@@ -575,7 +575,7 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                         <tr>
                             <td style={{width:"5cm"}}>
                                 <br></br>
-                                {props?.data?.cekIdBi?.profil_pengaju?.full_name ? props?.data?.cekIdBi?.profil_pengaju?.full_name  : ''}
+                                {props.data.namaLengkapPengaju}
                             </td>
                         </tr>
                     </table>
@@ -687,7 +687,7 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     <br></br>
                     <table className={classes.tabelBestTimetoCallTTD}>
                         <tr>
-                            <td>{props?.data?.tempat_dan_tanggal_dokumen ? props?.data?.tempat_dan_tanggal_dokumen  : ''}</td>
+                            <td>{props.data.tempatDanTanggalDokumenPengajuan}</td>
                         </tr>
                         <br></br>
                         <br></br>

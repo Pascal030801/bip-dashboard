@@ -76,13 +76,48 @@ const DokumenPengajuan = () => {
     function printDocumentHandler(e, dokumenPengajuans, documentId) {
         e.preventDefault();
 
-        const dokumenIndex = _.findIndex(dokumenPengajuans, (dokumen) => dokumen.id === documentId);
+        const dokumenIndex = _.findIndex(dokumenPengajuans, (dokumen) => dokumen.dokumen_pengajuan.id === documentId);
 
-        if(dokumenPengajuans[dokumenIndex].status_dokumen_pengajuan !== "Sudah Diajukan"){
+        if(dokumenPengajuans[dokumenIndex].dokumen_pengajuan.status_dokumen_pengajuan !== "Sudah Diajukan"){
             toast.error('Dokumen belum diajukan, tidak bisa menampilkan dokumen')
             return;
         }
-        setData(dokumenPengajuans[dokumenIndex]);
+
+        const selectedDokumenPengajuanData = dokumenPengajuans[dokumenIndex]
+        console.log(selectedDokumenPengajuanData);
+        const dokumenData = {
+            namaLengkapPengaju: selectedDokumenPengajuanData.profil_pengaju.full_name,
+            statusPerkawinanPengaju: selectedDokumenPengajuanData.profil_pengaju.status_perkawinan,
+            tempatLahirPengaju: selectedDokumenPengajuanData.profil_pengaju.place_of_birth,
+            tanggalLahirPengaju: selectedDokumenPengajuanData.profil_pengaju.date_of_birth,
+            nikPengaju: selectedDokumenPengajuanData.profil_pengaju.nik_id,
+            provinsiAlamatPengaju: selectedDokumenPengajuanData.profil_pengaju.provinsi.nama,
+            kabupatenAlamatPengaju: selectedDokumenPengajuanData.profil_pengaju.kabupaten.nama,
+            kecamatanAlamatPengaju: selectedDokumenPengajuanData.profil_pengaju.kecamatan.nama,
+            desaAlamatPengaju: selectedDokumenPengajuanData.profil_pengaju.desa.nama,
+            rtrwAlamatPengaju: selectedDokumenPengajuanData.profil_pengaju.rtrw,
+            alamatLengkapPengaju: selectedDokumenPengajuanData.profil_pengaju.full_address,
+            nomorHpPengaju: selectedDokumenPengajuanData.profil_pengaju.phone_number,
+            jabatanPengaju: selectedDokumenPengajuanData.profil_pengaju.position,
+            blokRumah: selectedDokumenPengajuanData.house.blok,
+            nomorShmRumah: selectedDokumenPengajuanData.house.nomor_shm,
+            hargaRumah: selectedDokumenPengajuanData.house.harga,
+            uangMukaRumah: selectedDokumenPengajuanData.house.uang_muka,
+            tipeRumah: selectedDokumenPengajuanData.house.house_type,
+            luasTanahRumah: selectedDokumenPengajuanData.house.luas_tanah,
+            plafonKreditRumah: selectedDokumenPengajuanData.dokumen_pengajuan.plafon_kredit,
+            jangkaWaktuKreditRumah: selectedDokumenPengajuanData.dokumen_pengajuan.jangka_waktu,
+            namaMarketer: selectedDokumenPengajuanData.dokumen_pengajuan.nama_marketer,
+            tempatDanTanggalDokumenPengajuan: selectedDokumenPengajuanData.dokumen_pengajuan.tempat_dan_tanggal_dokumen,
+            namaPerumahan: selectedDokumenPengajuanData.housing_areas.nama,
+            provinsiAlamatPerumahan: selectedDokumenPengajuanData.housing_areas.provinsiAlamatPerumahan.nama,
+            kabupatenAlamatPerumahan: selectedDokumenPengajuanData.housing_areas.kabupatenAlamatPerumahan.nama,
+            kecamatanAlamatPerumahan: selectedDokumenPengajuanData.housing_areas.kecamatanAlamatPerumahan.nama,
+            desaAlamatPerumahan: selectedDokumenPengajuanData.housing_areas.desaAlamatPerumahan.nama,
+            alamatLengkapPerumahan: selectedDokumenPengajuanData.housing_areas.full_address,   
+
+        }
+        setData(dokumenData);
 
     };
 
