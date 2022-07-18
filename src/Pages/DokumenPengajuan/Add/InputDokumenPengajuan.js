@@ -96,18 +96,18 @@ const InputDokumenPengajuan = () => {
     const fetchData = async () => {
         try {
             if(dokumenPengajuan__ID !== undefined && dokumenPengajuan__ID !== null){
-                const dokumenPengajuanData = await fetchDokumenPengajuanByID();
+                const orderDataByDokumenPengajuanId = await fetchDokumenPengajuanByID();
                 
-                namaMarketer.setValue(dokumenPengajuanData.nama_marketer);
-                await fetchHouseByPerumahanId(dokumenPengajuanData.cekIdBi.perumahanId);
-                rumahDipilih.setValue(dokumenPengajuanData.house_id === null ? selectInputPlaceHolder : dokumenPengajuanData.house_id);
-                nomorSHM.setValue(dokumenPengajuanData.house?.nomor_shm ? dokumenPengajuanData.house?.nomor_shm : '')
-                uangMuka.setValue(dokumenPengajuanData.uang_muka || '');
-                plafonKredit.setValue(dokumenPengajuanData.plafon_kredit || '');
-                jangkaWaktu.setValue(dokumenPengajuanData.jangka_waktu || '');
-                tempatDanTanggalDokumen.setValue(dokumenPengajuanData.tempat_dan_tanggal_dokumen || '');
-                namaPengaju.setValue(dokumenPengajuanData.cekIdBi.profil_pengaju.full_name);
-                statusDokumenPengajuan.setValue(dokumenPengajuanData.status_dokumen_pengajuan)
+                namaMarketer.setValue(orderDataByDokumenPengajuanId.dokumen_pengajuan.nama_marketer);
+                await fetchHouseByPerumahanId(orderDataByDokumenPengajuanId.housing_areas_id);
+                rumahDipilih.setValue(orderDataByDokumenPengajuanId.house_id === null ? selectInputPlaceHolder : orderDataByDokumenPengajuanId.house_id);
+                nomorSHM.setValue(orderDataByDokumenPengajuanId.house?.nomor_shm ? orderDataByDokumenPengajuanId.house?.nomor_shm : '')
+                uangMuka.setValue(orderDataByDokumenPengajuanId.dokumen_pengajuan.uang_muka || '');
+                plafonKredit.setValue(orderDataByDokumenPengajuanId.dokumen_pengajuan.plafon_kredit || '');
+                jangkaWaktu.setValue(orderDataByDokumenPengajuanId.dokumen_pengajuan.jangka_waktu || '');
+                tempatDanTanggalDokumen.setValue(orderDataByDokumenPengajuanId.dokumen_pengajuan.tempat_dan_tanggal_dokumen || '');
+                namaPengaju.setValue(orderDataByDokumenPengajuanId.profil_pengaju.full_name);
+                statusDokumenPengajuan.setValue(orderDataByDokumenPengajuanId.dokumen_pengajuan.status_dokumen_pengajuan)
             }else{
                 navigate('/dokumenPengajuan', { replace: true });
             }

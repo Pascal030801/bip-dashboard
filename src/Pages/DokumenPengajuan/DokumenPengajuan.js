@@ -154,14 +154,14 @@ const DokumenPengajuan = () => {
                 for(const dokumenPengajuan of dokumenPengajuans){
                   formattedDokumenPengajuans.push((
                         <tr key={dokumenPengajuan.id}>
-                            <td>{dokumenPengajuan.cekIdBi.profil_pengaju.full_name}</td>
-                            <td>{dokumenPengajuan.nama_marketer}</td>
+                            <td>{dokumenPengajuan.profil_pengaju.full_name}</td>
+                            <td>{dokumenPengajuan.dokumen_pengajuan.nama_marketer}</td>
                             <td>{dokumenPengajuan.house_id && (dokumenPengajuan.house_id !== '' && dokumenPengajuan.house_id !== null) ? dokumenPengajuan.house.blok : 'Belum Pilih Rumah'}</td>
                             <td>
                                 <div className={classes.actionWrap}>
-                                    <div className={classes['print-btn']} onClick={(e) => printDocumentHandler(e, dokumenPengajuans, dokumenPengajuan.id)}>PRINT</div>
-                                    <div className={classes['edit-btn']} onClick={(e) => editBtnHandler(e, dokumenPengajuan.id)}>EDIT</div>
-                                    <div className={classes['delete-btn']} onClick={(e) => deleteBtnHandler(e, dokumenPengajuan.id)}>DELETE</div>
+                                    <div className={classes['print-btn']} onClick={(e) => printDocumentHandler(e, dokumenPengajuans, dokumenPengajuan.dokumen_pengajuan.id)}>PRINT</div>
+                                    <div className={classes['edit-btn']} onClick={(e) => editBtnHandler(e, dokumenPengajuan.dokumen_pengajuan.id)}>EDIT</div>
+                                    <div className={classes['delete-btn']} onClick={(e) => deleteBtnHandler(e, dokumenPengajuan.dokumen_pengajuan.id)}>DELETE</div>
                                 </div>
                             </td>
                         </tr>
