@@ -35,6 +35,10 @@ const InputDokumenPengajuan = () => {
         return validation.empty(val);
     }})
 
+    const nomorTeleponPengaju = useInput({validateValue: (val) => {
+        return validation.empty(val);
+    }})
+    
     const rumahDipilih = useInput({initialValue: selectInputPlaceHolder, validateValue: (val) => {
         return validation.sameWithPlaceHolder(val);
     }});
@@ -107,13 +111,17 @@ const InputDokumenPengajuan = () => {
                 jangkaWaktu.setValue(orderDataByDokumenPengajuanId.dokumen_pengajuan.jangka_waktu || '');
                 tempatDanTanggalDokumen.setValue(orderDataByDokumenPengajuanId.dokumen_pengajuan.tempat_dan_tanggal_dokumen || '');
                 namaPengaju.setValue(orderDataByDokumenPengajuanId.profil_pengaju.full_name);
+                namaPengaju.setDisable(true);
+
+                nomorTeleponPengaju.setValue(orderDataByDokumenPengajuanId.profil_pengaju.phone_number || '');
+
                 statusDokumenPengajuan.setValue(orderDataByDokumenPengajuanId.dokumen_pengajuan.status_dokumen_pengajuan)
             }else{
                 navigate('/dokumenPengajuan', { replace: true });
             }
             setShowLoading(false);
         } catch (error) {
-            
+            console.log(error)
         }
     }
 
@@ -151,6 +159,7 @@ const InputDokumenPengajuan = () => {
         }
         const formD = new FormData();
         
+        formD.append('nomor_telepon_pengaju', nomorTeleponPengaju.value)
         formD.append('status_dokumen_pengajuan', statusDokumenPengajuan.value);
         formD.append('house_id', rumahDipilih.value);
         formD.append('uang_muka', uangMuka.value);
@@ -219,6 +228,18 @@ const InputDokumenPengajuan = () => {
                         errorMsg={namaPengaju.errorMessage}
                         hasError={namaPengaju.hasError}
                         disabled={namaPengaju.isDisabled}
+                    />
+                    <Input 
+                        type={'text'} 
+                        className={inputWrapClasses} 
+                        value={nomorTeleponPengaju.value} 
+                        id={'pengaju_phone_number'} 
+                        label={'Nomor Telepon Pengaju'} 
+                        onChange={nomorTeleponPengaju.valueChangeHandler} 
+                        onBlur={nomorTeleponPengaju.inputBlurHandler}
+                        errorMsg={nomorTeleponPengaju.errorMessage}
+                        hasError={nomorTeleponPengaju.hasError}
+                        disabled={nomorTeleponPengaju.isDisabled}
                     />
                     <SelectInput 
                         className={selectInputWrapClasses}

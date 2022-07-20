@@ -135,6 +135,30 @@ const ApiService = {
             throw error;
         }
     },
+
+    getDokumenLanjutans: async (params) => {
+        try {
+            return await getRequest(`${BASE_PATH_API}/dokumen_lanjutans`, ApiService.getToken(), params);
+        } catch (error) {
+            throw error;
+        }
+    },
+
+    getDokumenLanjutanByID: async (dokumenLanjutan__ID, params) => {
+        try {
+            return await getRequest(`${BASE_PATH_API}/dokumen_lanjutan/${dokumenLanjutan__ID}`, ApiService.getToken(), params);
+        } catch (error) {
+            throw error;
+        }
+    },
+    
+    deleteDokumenLanjutanByID: async (DokumenLanjutan__ID, params) => {
+        try {
+            return await deleteRequest(`${BASE_PATH_API}/dokumen_lanjutan/${DokumenLanjutan__ID}`, ApiService.getToken(), params);
+        } catch (error) {
+            throw error;
+        }
+    },
 }
 
 export default ApiService;
