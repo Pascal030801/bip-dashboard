@@ -154,6 +154,7 @@ const DokumenLanjutan = () => {
                 for(const OrderDokumenLanjutanData of OrderDokumenLanjutanDatas){
                     formattedDokumenLanjutans.push((
                         <tr key={OrderDokumenLanjutanData.id}>
+                            <td>{OrderDokumenLanjutanData.id}</td>
                             <td>{OrderDokumenLanjutanData.profil_pengaju.full_name}</td>
                             <td>{OrderDokumenLanjutanData.dokumen_lanjutan.status}</td>
                             <td>{OrderDokumenLanjutanData.diurus_oleh.full_name}</td>
@@ -171,7 +172,7 @@ const DokumenLanjutan = () => {
 
             setDokumenLanjutanTable(formattedDokumenLanjutans);
         } catch (error) {
-            console.log('error at Dokumen Lanjutan view: fetchDokumenLanjutanData')
+            console.log('error at Dokumen Lanjutan view: fetchDokumenLanjutanData ', error)
             toast.error(bipErrorHandler(error), {autoClose: 500})
             setShowLoading(false);
 
@@ -232,9 +233,10 @@ const DokumenLanjutan = () => {
                         <table className={classes.tableDataDokumenLanjutan}>
                             <thead>
                                 <tr>
+                                    <th>Order ID</th>
                                     <th>Nama Pemohon</th>
+                                    <th>Status</th>
                                     <th>Nama Marketer</th>
-                                    <th>Nomor Rumah</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
