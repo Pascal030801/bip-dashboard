@@ -76,7 +76,7 @@ const DokumenKelengkapanAkad = () => {
     function printDocumentHandler(e, OrderDokumenKelengkapanAkadDatas, documentId) {
         e.preventDefault();
 
-        const dokumenIndex = _.findIndex(OrderDokumenKelengkapanAkadDatas, (dokumen) => dokumen.id === documentId);
+        const dokumenIndex = _.findIndex(OrderDokumenKelengkapanAkadDatas, (dokumen) => dokumen.dokumen_kelengkapan_akad.id === documentId);
 
         if(OrderDokumenKelengkapanAkadDatas[dokumenIndex].dokumen_kelengkapan_akad.status !== "Sudah Diajukan"){
             toast.error('Dokumen belum diajukan, tidak bisa menampilkan dokumen')
