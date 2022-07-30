@@ -113,22 +113,22 @@ const InputDokumenKelengkapanAkad = () => {
                 namaPengaju.setDisable(true);
 
                 statusDokumenKelengkapanAkad.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.status);
-                namaYangBertandaTangan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nama_yang_bertanda_tangan);
-                jabatanYangBertandaTangan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.jabatan_yang_bertanda_tangan);
-                tempatSuratDibuat.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tempat_surat_dibuat);
-                tanggalSuratDibuat.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_surat_dibuat);
-                nomorSuratPernyataan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nomor_surat_pernyataan);
-                tanggalSuratPernyataan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_surat_pernyataan);
-                tempatSuratPernyataanDibuat.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tempat_surat_pernyataan_dibuat);
-                tanggalSuratPernyataanDibuat.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_surat_pernyataan_dibuat);
-                namaPenanggungJawabSuratPernyataan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nama_penanggung_jawab_surat_pernyataan);
-                namaPerusahaanPenanggungJawabBekerja.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nama_perusahaan_penanggung_jawab_bekerja);
-                nomorPenerbitanSertifikatLaikFungsi.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nomor_penerbitan_sertifikat_laik_fungsi);
-                tanggalPenerbitanSertifikatLaikFungsi.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_penerbitan_sertifikat_laik_fungsi);
-                nomorPerpanjanganSertifikatLaikFungsi.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nomor_perpanjangan_sertifikat_laik_fungsi);
-                tanggalPerpanjanganSertifikatLaikFungsi.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_perpanjangan_sertifikat_laik_fungsi);
-                tempatSuratPernyataanDitandaTangan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tempat_surat_pernyataan_ditanda_tangan);
-                tanggalSuratPernyataanDitandaTangan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_surat_pernyataan_ditanda_tangan);
+                namaYangBertandaTangan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nama_yang_bertanda_tangan || '');
+                jabatanYangBertandaTangan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.jabatan_yang_bertanda_tangan || '');
+                tempatSuratDibuat.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tempat_surat_dibuat || '');
+                tanggalSuratDibuat.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_surat_dibuat || '');
+                nomorSuratPernyataan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nomor_surat_pernyataan || '');
+                tanggalSuratPernyataan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_surat_pernyataan || '');
+                tempatSuratPernyataanDibuat.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tempat_surat_pernyataan_dibuat || '');
+                tanggalSuratPernyataanDibuat.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_surat_pernyataan_dibuat || '');
+                namaPenanggungJawabSuratPernyataan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nama_penanggung_jawab_surat_pernyataan || '');
+                namaPerusahaanPenanggungJawabBekerja.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nama_perusahaan_penanggung_jawab_bekerja || '');
+                nomorPenerbitanSertifikatLaikFungsi.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nomor_penerbitan_sertifikat_laik_fungsi || '');
+                tanggalPenerbitanSertifikatLaikFungsi.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_penerbitan_sertifikat_laik_fungsi || '');
+                nomorPerpanjanganSertifikatLaikFungsi.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.nomor_perpanjangan_sertifikat_laik_fungsi || '');
+                tanggalPerpanjanganSertifikatLaikFungsi.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_perpanjangan_sertifikat_laik_fungsi || '');
+                tempatSuratPernyataanDitandaTangan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tempat_surat_pernyataan_ditanda_tangan || '');
+                tanggalSuratPernyataanDitandaTangan.setValue(orderDataByDokumenKelengkapanAkadId.dokumen_kelengkapan_akad.tanggal_surat_pernyataan_ditanda_tangan || '');
             }else{
                 navigate('/dokumenKelengkapanAkad', { replace: true });
             }
