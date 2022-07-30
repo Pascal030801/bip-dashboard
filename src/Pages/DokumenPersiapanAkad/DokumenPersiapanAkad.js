@@ -76,9 +76,9 @@ const DokumenPersiapanAkad = () => {
     function printDocumentHandler(e, OrderDokumenPersiapanAkadDatas, documentId) {
         e.preventDefault();
 
-        const dokumenIndex = _.findIndex(OrderDokumenPersiapanAkadDatas, (dokumen) => dokumen.id === documentId);
+        const dokumenIndex = _.findIndex(OrderDokumenPersiapanAkadDatas, (dokumen) => dokumen.dokumen_persiapan_akad.id === documentId);
 
-        if(OrderDokumenPersiapanAkadDatas[dokumenIndex].dokumen_persiapan_akad.status !== "Sudah Diajukan"){
+        if(OrderDokumenPersiapanAkadDatas[dokumenIndex].dokumen_persiapan_akad.status !== "Sudah Disetujui Dan Terjual"){
             toast.error('Dokumen belum diajukan, tidak bisa menampilkan dokumen')
             return;
         }
@@ -147,7 +147,7 @@ const DokumenPersiapanAkad = () => {
             const OrderDokumenPersiapanAkadDatas = res.data;
             setDokumenPersiapanAkadTable([]);
             const formattedDokumenPersiapanAkads = [];
-            
+
             setDokumenPersiapanAkadDatas(res.data);
 
             if(OrderDokumenPersiapanAkadDatas.length > 0){

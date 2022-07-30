@@ -61,10 +61,6 @@ const InputDokumenPersiapanAkad = () => {
         return validation.empty(val);
     }});
 
-    const nomorPenerbitanSertifikatLaikFungsi = useInput({validateValue: (val) => {
-        return validation.empty(val);
-    }});
-
     const tanggalPenandatangananSuratBeritaAcara = useInput({validateValue: (val) => {
         return validation.empty(val);
     }});
@@ -105,7 +101,6 @@ const InputDokumenPersiapanAkad = () => {
                 nomorSuratPenyetujuanSubsidi.setValue(orderDataByDokumenPersiapanAkadId.dokumen_persiapan_akad.nomor_surat_penyetujuan_subsidi || '');
                 tanggalSuratPenyetujuanSubsidi.setValue(orderDataByDokumenPersiapanAkadId.dokumen_persiapan_akad.tanggal_surat_penyetujuan_subsidi || '');
                 tempatPenandatangananSuratBeritaAcara.setValue(orderDataByDokumenPersiapanAkadId.dokumen_persiapan_akad.tempat_penandatanganan_surat_berita_acara || '');
-                nomorPenerbitanSertifikatLaikFungsi.setValue(orderDataByDokumenPersiapanAkadId.dokumen_persiapan_akad.nomor_penerbitan_sertifikat_laik_fungsi || '');
                 tanggalPenandatangananSuratBeritaAcara.setValue(orderDataByDokumenPersiapanAkadId.dokumen_persiapan_akad.tanggal_penandatanganan_surat_berita_acara || '');
                 tempatPenandatangananSuratSimak.setValue(orderDataByDokumenPersiapanAkadId.dokumen_persiapan_akad.tempat_penandatanganan_surat_simak || '');
                 tanggalPenandatangananSuratSimak.setValue(orderDataByDokumenPersiapanAkadId.dokumen_persiapan_akad.tanggal_penandatanganan_surat_simak || '');
@@ -137,7 +132,6 @@ const InputDokumenPersiapanAkad = () => {
             nomorSuratPenyetujuanSubsidi.isValid &&
             tanggalSuratPenyetujuanSubsidi.isValid &&
             tempatPenandatangananSuratBeritaAcara.isValid &&
-            nomorPenerbitanSertifikatLaikFungsi.isValid &&
             tanggalPenandatangananSuratBeritaAcara.isValid &&
             tempatPenandatangananSuratSimak.isValid &&
             tanggalPenandatangananSuratSimak.isValid
@@ -151,7 +145,6 @@ const InputDokumenPersiapanAkad = () => {
             console.log(nomorSuratPenyetujuanSubsidi.isValid)
             console.log(tanggalSuratPenyetujuanSubsidi.isValid)
             console.log(tempatPenandatangananSuratBeritaAcara.isValid)
-            console.log(nomorPenerbitanSertifikatLaikFungsi.isValid)
             console.log(tanggalPenandatangananSuratBeritaAcara.isValid)
             console.log(tempatPenandatangananSuratSimak.isValid)
             console.log(tanggalPenandatangananSuratSimak.isValid)
@@ -171,7 +164,6 @@ const InputDokumenPersiapanAkad = () => {
         formD.append('nomor_surat_penyetujuan_subsidi', nomorSuratPenyetujuanSubsidi.value)
         formD.append('tanggal_surat_penyetujuan_subsidi', tanggalSuratPenyetujuanSubsidi.value)
         formD.append('tempat_penandatanganan_surat_berita_acara', tempatPenandatangananSuratBeritaAcara.value)
-        formD.append('nomor_penerbitan_sertifikat_laik_fungsi', nomorPenerbitanSertifikatLaikFungsi.value)
         formD.append('tanggal_penandatanganan_surat_berita_acara', tanggalPenandatangananSuratBeritaAcara.value)
         formD.append('tempat_penandatanganan_surat_simak', tempatPenandatangananSuratSimak.value)
         formD.append('tanggal_penandatanganan_surat_simak', tanggalPenandatangananSuratSimak.value)
@@ -356,19 +348,6 @@ const InputDokumenPersiapanAkad = () => {
                         errorMsg={tempatPenandatangananSuratBeritaAcara.errorMessage}
                         hasError={tempatPenandatangananSuratBeritaAcara.hasError}
                         disabled={tempatPenandatangananSuratBeritaAcara.isDisabled}
-                    />
-
-                    <Input 
-                        type={'text'} 
-                        className={inputWrapClasses} 
-                        value={nomorPenerbitanSertifikatLaikFungsi.value} 
-                        id={'nomor_penerbitan_sertifikat_laik_fungsi'} 
-                        label={'Nomor Penerbitan Sertifikat Laik Fungsi'} 
-                        onChange={nomorPenerbitanSertifikatLaikFungsi.valueChangeHandler} 
-                        onBlur={nomorPenerbitanSertifikatLaikFungsi.inputBlurHandler}
-                        errorMsg={nomorPenerbitanSertifikatLaikFungsi.errorMessage}
-                        hasError={nomorPenerbitanSertifikatLaikFungsi.hasError}
-                        disabled={nomorPenerbitanSertifikatLaikFungsi.isDisabled}
                     />
 
                     <Input 
