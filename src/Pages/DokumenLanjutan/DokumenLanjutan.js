@@ -76,7 +76,8 @@ const DokumenLanjutan = () => {
     function printDocumentHandler(e, OrderdokumenLanjutanDatas, documentId) {
         e.preventDefault();
 
-        const dokumenIndex = _.findIndex(OrderdokumenLanjutanDatas, (dokumen) => dokumen.id === documentId);
+
+        const dokumenIndex = _.findIndex(OrderdokumenLanjutanDatas, (dokumen) => dokumen.dokumen_lanjutan.id === documentId);
 
         if(OrderdokumenLanjutanDatas[dokumenIndex].dokumen_lanjutan.status !== "Sudah Diajukan"){
             toast.error('Dokumen belum diajukan, tidak bisa menampilkan dokumen')
