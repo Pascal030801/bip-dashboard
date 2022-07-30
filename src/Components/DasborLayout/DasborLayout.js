@@ -53,7 +53,7 @@ const DasborLayout = () => {
           <hr className={classes.divider} />
 
           <li>
-            <NavLink className={classes.navlink} to={"dokumenLaporanPersiapanAkad"}><span><FontAwesomeIcon icon="fa-solid fa-file-contract" /></span><span>Dokumen Laporan Persiapan Akad</span></NavLink>
+            <NavLink className={classes.navlink} to={"dokumenPersiapanAkad"}><span><FontAwesomeIcon icon="fa-solid fa-file-contract" /></span><span>Dokumen Laporan Persiapan Akad</span></NavLink>
           </li>
           <hr className={classes.divider} />
 

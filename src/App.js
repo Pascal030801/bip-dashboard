@@ -16,6 +16,8 @@ import DokumenLanjutan from './Pages/DokumenLanjutan/DokumenLanjutan';
 import InputDokumenLanjutan from './Pages/DokumenLanjutan/Add/InputDokumenLanjutan';
 import DokumenKelengkapanAkad from './Pages/DokumenKelengkapanAkad/DokumenKelengkapanAkad';
 import InputDokumenKelengkapanAkad from './Pages/DokumenKelengkapanAkad/Add/InputDokumenKelengkapanAkad';
+import DokumenPersiapanAkad from './Pages/DokumenPersiapanAkad/DokumenPersiapanAkad';
+import InputDokumenPersiapanAkad from './Pages/DokumenPersiapanAkad/Add/InputDokumenPersiapanAkad';
 
 library.add(fas)
 
@@ -42,7 +44,8 @@ function App() {
           <Route path="dokumenLanjutan/update/:id" element={<InputDokumenLanjutan />} />
           <Route path="dokumenKelengkapanAkad" element={<DokumenKelengkapanAkad />} />
           <Route path="dokumenKelengkapanAkad/update/:id" element={<InputDokumenKelengkapanAkad />} />
-          <Route path="dokumenLaporanPersiapanAkad" element={<div><h1>Dokumen Laporan Persiapan Akad</h1></div>} />
+          <Route path="dokumenPersiapanAkad" element={<DokumenPersiapanAkad />} />
+          <Route path="dokumenPersiapanAkad/update/:id" element={<InputDokumenPersiapanAkad />} />
         </Route>
       </Routes>
     </div>

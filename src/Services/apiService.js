@@ -183,6 +183,30 @@ const ApiService = {
             throw error;
         }
     },
+
+    getDokumenPersiapanAkads: async (params) => {
+        try {
+            return await getRequest(`${BASE_PATH_API}/dokumen_persiapan_akads`, ApiService.getToken(), params);
+        } catch (error) {
+            throw error;
+        }
+    },
+
+    getDokumenPersiapanAkadByID: async (DokumenPersiapanAkad__ID, params) => {
+        try {
+            return await getRequest(`${BASE_PATH_API}/dokumen_persiapan_akad/${DokumenPersiapanAkad__ID}`, ApiService.getToken(), params);
+        } catch (error) {
+            throw error;
+        }
+    },
+    
+    deleteDokumenPersiapanAkadByID: async (DokumenPersiapanAkad__ID, params) => {
+        try {
+            return await deleteRequest(`${BASE_PATH_API}/dokumen_persiapan_akad/${DokumenPersiapanAkad__ID}`, ApiService.getToken(), params);
+        } catch (error) {
+            throw error;
+        }
+    },
 }
 
 export default ApiService;
