@@ -5,3 +5,153 @@
     padding-left: 2.5cm;
     padding-right: 2.5cm;
 }
+
+/*
+ Kop Surat
+*/
+
+.kop {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.logoPerusahaan {
+    width: 3.5cm;
+    height: 3.5cm;
+}
+
+.kop_title {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5cm;
+}
+
+.wrapKop {
+    width: 100%;
+}
+
+/*
+    Halaman 1
+*/
+.wrapHalaman1 {
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.tabelPersetujuanPemohonTTD {
+    font-size: 12px;
+    float: right;
+    width: 7cm;
+    text-align: center;
+}
+.materai {
+    text-align: left;
+    border: 1px solid black;
+    width: 30%;
+}
+
+/*
+    Halaman 2
+*/
+.wrapHalaman2 {
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.wrapTableKelengkapanDokumenKPR {
+    width: 100%;
+}
+
+.tabelKelengkapanDokumenKPR {
+    width: 16.5cm;
+    border-collapse: collapse;
+}
+
+.tabelKelengkapanDokumenKPR td {
+    border: 1px solid black;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.tabelKelengkapanDokumenKPR th {
+    border: 1px solid black;
+    padding: 8px;
+    font-size: 12px;
+}
+
+/*
+    Halaman 3
+*/
+.wrapHalaman3 {
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/*
+    Halaman 4
+*/
+.wrapHalaman4{
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/*
+    Halaman 5
+*/
+.wrapHalaman5{
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/*
+    Halaman 6
+*/
+.wrapHalaman6{
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/*
+    Halaman 7
+*/
+.wrapHalaman7{
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/*
+    Halaman 8
+*/
+.wrapHalaman8{
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/*
+    Halaman 9
+*/
+.wrapHalaman9{
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/*
+    Halaman 10
+*/
+.wrapHalaman10{
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/*
+    Halaman 11
+*/
+.wrapHalaman11{
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+}
+
+h3{
+    text-align: center;
+}
