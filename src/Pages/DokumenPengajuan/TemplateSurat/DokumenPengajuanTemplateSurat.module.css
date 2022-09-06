@@ -1,7 +1,7 @@
 .DokumenPengajuanTemplateSurat {
     width: 21cm;
     height: 29.7cm;
-    padding-top: 0.508cm;
+    padding-top: 1cm;
     padding-left: 2.5cm;
     padding-right: 2.5cm;
 }
@@ -101,26 +101,37 @@
 
 .wrapHalaman1 {
     width: 100%;
+    height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
 }
 
 .wrapHalaman2 {
     width: 100%;
+    height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
 }
 
 .wrapHalaman3 {
     width: 100%;
+    height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
 }
 
 .wrapHalaman4 {
     width: 100%;
+    height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
 }
 
 .wrapHalaman5 {
     width: 100%;
+    height: 29.4cm;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.wrapHalaman6 {
+    width: 100%;
+    height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
 }
 
@@ -146,4 +157,6 @@
     float: right;
     width: 8.25cm;
     text-align: center;
+
 }
+

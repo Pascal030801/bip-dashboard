@@ -39,94 +39,85 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     </div>
                     <hr style={{width: "100%", height:"2px", marginTop: "2px"}} color='black'></hr>
                     <hr style={{width: "100%", height:"2px", marginTop: "2px"}} color='black'></hr>
-                    <br></br>
                 </div>
+
                 <table className={classes.isiHalaman1} style={{textAlign:"justify"}}>
+                    <thead></thead>
+                    <tbody>
                     <tr>
                         <td style={{width: "4.95cm"}}>Nama Konsumen</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{ props.data.namaLengkapPengaju }</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Blok Rumah</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{props.data.blokRumah}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>No. SHM</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{props.data.nomorShmRumah}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Nama Perumahan</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{props.data.namaPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Alamat Perumahan</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{props.data.alamatLengkapPerumahan }</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Desa</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{props.data.desaAlamatPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Kecamatan</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{props.data.kecamatanAlamatPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Kabupaten</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{props.data.kabupatenAlamatPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Provinsi</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td> 
                         <td>{props.data.provinsiAlamatPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Harga Rumah</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.hargaRumah, 10))},-</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Uang Muka</td>
-                        :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.uangMukaRumah, 10))  },-</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Plafon Kredit</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.plafonKreditRumah, 10))  },-</td>
 
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>Jangka Waktu</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{props.data.jangkaWaktuKreditRumah}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.95cm"}}>No. Telepon/Hp.</td>
-                            :&nbsp;
+                        <td style={{width: "0.5cm"}}>:</td>
                         <td>{props.data.nomorHpPengaju}</td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
 
 
             <div className={classes.wrapHalaman2}>
@@ -168,7 +159,10 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     </div>
                     <br></br>
                     <div className={classes.wrapTableKelengkapanDokumenKPR}>
+                        
                         <table className={classes.tabelKelengkapanDokumenKPR}>
+                            <thead></thead>
+                            <tbody>
                             <tr style={{textAlign:"center"}}>
                                 <th colSpan={3} style={{width:"3.3cm"}}>KELENGKAPAN DOKUMEN KPR BERSUBSIDI BTN</th>
                             </tr>
@@ -220,12 +214,15 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                                 <td style={{textAlign:"center"}}>8. </td>
                                 <td style={{width:"13.2cm"}}>
                                     Fotokopi bukti pelaporan pajak 
-                                    <br></br>
-                                        • Telah menjadi wajib pajak lebih dari sama dengan 1 tahun dan penghasilan lebih dari sama dengan PTKP, &nbsp;&nbsp;&nbsp;melampirkan SPT PPh
-                                         <br></br>
-                                        • Telah menjadi wajib pajak lebih dari sama dengan 1 tahun dan penghasilan kurang dari PTKP, melampirkan &nbsp;&nbsp;&nbsp;SPT PPh Nihil
-                                         <br></br>
-                                        • belum menjadi wajib pajak kurang dari 1 tahun melampirkan surat pernyataan penyerahan SPT PPh tahun &nbsp;&nbsp;&nbsp;selanjutnya
+                                    <p>
+                                        • Telah menjadi wajib pajak lebih dari sama dengan 1 tahun dan penghasilan lebih dari sama dengan PTKP, melampirkan SPT PPh
+                                    </p>
+                                    <p>   
+                                        • Telah menjadi wajib pajak lebih dari sama dengan 1 tahun dan penghasilan kurang dari PTKP, melampirkan SPT PPh Nihil
+                                    </p>
+                                    <p>
+                                        • belum menjadi wajib pajak kurang dari 1 tahun melampirkan surat pernyataan penyerahan SPT PPh tahun selanjutnya
+                                    </p>
                                 </td>
                                 <td style={{width:"0.825cm"}}></td>
                             </tr>
@@ -275,17 +272,14 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                                 <td style={{textAlign:"center"}}>2. </td>
                                 <td style={{width:"13.2cm"}}>Surat keterangan kepegawaian dari tempat bekerja</td>
                                 <td style={{width:"0.825cm"}}></td>
-                            </tr>   
+                            </tr> 
+                            </tbody>  
                         </table>
+                        
                     </div>
                 </div> 
             </div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+
           
             <div className={classes.wrapHalaman3}>
                 <div className={classes.wrapKop}>
@@ -316,117 +310,144 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                     <hr width="620px;" height="100px" color='black'></hr>
                     <hr width="620px;"></hr>
                     <hr width="620px;" height="200px" color='black'></hr>
-                    <br></br>
                 </div>
-                <div className={classes.JudulHalaman}>
-                    <h2>SURAT PEMESANAN RUMAH</h2>
-                </div>
+
+                    <div className={classes.JudulHalaman} style={{paddingTop:"0.5cm"}}>
+                        <h2>SURAT PEMESANAN RUMAH</h2>
+                    </div>
                 <div className={classes.isiHalaman} style={{textAlign:"justify"}}>
-                    <br></br>
-                    <br></br>
-                    <p>Yth. Pimpinan Bank Tabungan Negara</p>
-                    <p>Jln. Yos Sudarso, Singkawang</p>
-                    <br></br>
-                    <p>Saya yang bertanda tangan di bawah ini :</p>
-                    <table style={{width: "15cm", lineHeight:"1.15"}}>
+
+                    <table style={{paddingTop:"0.5cm"}}>
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td> Yth. Pimpinan Bank Tabungan Negara </td>
+                            </tr>
+                            <tr>
+                                <td>Jln. Yos Sudarso, Singkawang</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <table style={{paddingTop:"0.5cm"}}>
+                        <thead></thead>
+                        <tbody>
+                        <tr>
+                            <td colSpan={3}>Saya yang bertanda tangan di bawah ini : </td>
+                        </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Nama</td>
-                                :&nbsp;&nbsp;&nbsp;&nbsp;
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>Yuda Siswanto</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Jabatan</td>
-                                :&nbsp;&nbsp;&nbsp;&nbsp;
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>Direktur PT. Banyuke Intan Permai</td>
                         </tr>
                         <tr>
-                            <td style={{width: "3.1cm"}}>Alamat</td>
-                                :&nbsp;&nbsp;&nbsp;&nbsp;
+                            <td style={{width: "3.1cm",  paddingBottom:"0.60cm"}}>Alamat</td>
+                            <td style={{width: "0.5cm",  paddingBottom:"0.60cm"}}>:</td> 
                             <td>Jalan Pacung, RT.006/Rw.003, Sebalo, Kecamatan Bengkayang,
-                                Kabupaten Bengkayang, Kalimantan Barat</td>
+                                Kabupaten Bengkayang, Kalimantan Barat
+                            </td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>No. KTP</td>
-                                :&nbsp;&nbsp;&nbsp;&nbsp;
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>6107040209950001</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>No. Telepon/HP</td>
-                                :&nbsp;&nbsp;&nbsp;&nbsp;
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>0852 7059 4208</td>
                         </tr>
+                        </tbody>
                     </table>
-                    <br></br>
-                    <p>Menawarkan 1 (satu) unit rumah kepada :</p>
-                    <table style={{width: "15cm", lineHeight:"1.15"}}>
+
+                   
+                    <table style={{paddingTop:"0.5cm"}}>
+                        <thead></thead>
+                        <tbody>
+                        <tr>
+                            <td colSpan={3}> Menawarkan 1 (satu) unit rumah kepada :</td>
+                        </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Nama</td>
-                                :
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>{props.data.namaLengkapPengaju}</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Alamat</td>
-                                :
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>{props.data.alamatLengkapPengaju}</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>No. KTP</td>
-                                :
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>{props.data.nikPengaju}</td>
                         </tr>
+                        </tbody>
                     </table>
-                    <br></br>
-                    <p>Dengan keterangan sebagai berikut:</p>
-                    <table style={{width: "15cm", lineHeight:"1.15"}}>
+
+                    <table style={{paddingTop:"0.5cm"}}>
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td colSpan={3}> Dengan keterangan sebagai berikut: </td>
+                            </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Alamat Rumah</td>
-                                :
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td> {props.data.alamatLengkapPerumahan}</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Type/Luas Tanah</td>
-                                : 
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td> {props.data.tipeRumah}/{props.data.luasTanahRumah} </td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}> Blok</td>
-                                :
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>{props.data.blokRumah}</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Status Rumah</td>
-                                : 
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>Sertifikat Hak Milik</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>No. Sertifikat</td>
-                                : 
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>{props.data.nomorShmRumah}</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Harga Jual</td>
-                                :
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.hargaRumah, 10))  },-</td>
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>DP</td>
-                                :
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(props.data.uangMukaRumah, 10))  },-</td>
 
                         </tr>
                         <tr>
                             <td style={{width: "3.1cm"}}>Kredit Dimohonkan</td>
-                                :
+                            <td style={{width: "0.5cm"}}>:</td> 
                             <td>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format((parseInt(props.data.hargaRumah, 10) - parseInt(props.data.uangMukaRumah, 10)))  },-</td>
 
                         </tr>
+                        <tr style={{lineHeight:"1cm"}}>
+                            <td colSpan={3}>Demikian surat Pemesanan ini dibuat guna pengurusan Kredit Pemilikan Rumah (KPR) pada Bank Tabungan Negara.</td>
+                        </tr>
+                        </tbody>
                     </table>
-                    <br></br>
-                    <p>Demikian surat Pemesanan ini dibuat guna pengurusan Kredit Pemilikan Rumah (KPR) pada Bank Tabungan Negara.</p>
-                    <br></br>
-                    <br></br>
-                    <br></br>
-                    <table className={classes.tablePersetujuanTTD}>
+
+                    <table className={classes.tablePersetujuanTTD} style={{paddingTop:"1cm"}}>
+                        <thead></thead>
+                        <tbody>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
                             <td style={{width : "5cm"}}></td>
@@ -444,7 +465,7 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}> 
-                                <p className={classes.materai} style={{width:"2.5"}}>
+                                <p className={classes.materai} style={{width:"2cm"}}>
                                     Meterai
                                     <br></br>
                                     Rp 10.000,-
@@ -464,38 +485,219 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                             <td style={{width : "5cm"}}>{props.data.namaMarketer}</td>
                             <td style={{width : "5cm"}}></td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
 
+            
             <div className={classes.wrapHalaman4}>
-                <div className={classes.JudulHalaman}>
+                <div className={classes.wrapKop}>
+                    <div className={classes.kop}>
+                        <img src='/LogoHD.jpg' className={classes.logoPerusahaan} />
+                        <div className={classes.kop_title}>
+                            <h2>
+                                PT. BANYUKE INTAN PERMAI
+                            </h2>
+                            <p>
+                                <font size="5">
+                                    <i>
+                                        Developer & Kontraktor
+                                    </i>
+                                </font>
+                            </p>
+                            <p>
+                                Alamat: Jln. Affandi A. Rani / Jalur II No. 7 Rt. 005/Rw. 002
+                            </p>
+                            <p>
+                                Desa Hilir Tengah Kec. Ngabang, Kab. Landak - 78357
+                            </p>
+                            <p>
+                                Telp/Hp: 0812 5672 421
+                            </p>
+                        </div>
+                    </div>
+                    <hr style={{ width: "100%", height: "2px", marginTop: "2px" }} color='black'></hr>
+                    <hr style={{ width: "100%", height: "2px", marginTop: "2px" }} color='black'></hr>
+                    <br></br>
+                </div>
+                <h3 style={{ textDecorationLine: "underline", textalign: "center" }} >
+                    KUITANSI
+                </h3>
+                <br></br>
+                <table style={{width: "15cm", lineHeight:"1.15", fontSize:"12px"}}>
+                    <thead></thead>
+                    <tbody>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>Sudah diterima dari : </td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>Nama</td>
+                        <td style={{width: "0.4cm"}}>:</td>     
+                        <td>Nama Pemohon</td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>Alamat</td>
+                        <td style={{width: "0.4cm"}}>:</td>   
+                        <td>Alamat Pemohon</td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>No. KTP</td>
+                        <td style={{width: "0.4cm"}}>:</td>   
+                        <td>Nomor KTP Pemohon</td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>No. Telepon/Hp.</td>
+                        <td style={{width: "0.4cm"}}>:</td>      
+                        <td>No. Telepon/Hp.</td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>Tujuan Pembayaran</td>
+                        <td style={{width: "0.4cm"}}>:</td>       
+                        <td>Uang Muka Perumahan SEKIDA VILLAGE PERMAI Blok nomor rumah</td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm", paddingBottom:"0.60cm"}}><b><i>Jumlah Rp.</i></b></td>
+                        <td style={{width: "0.4cm", paddingBottom:"0.60cm"}}>:</td>       
+                        <td style={{"borderWidth":"3px", 'borderColor':"black", 'borderStyle':'solid'}}><b>Rp.4.225.000
+                            <p><i>Empat Juta Dua Ratus Dua Puluh Lima Ribu Rupiah</i></p></b>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table className={classes.tabelPersetujuanPemohonTTD} style={{textalign:"center", paddingTop:"1cm"}}>
+                    <thead></thead>
+                    <tbody>
+                        <tr>
+                            <td style={{width:"5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                        </tr>
+                        <tr>
+                            <td style={{paddingTop:"1.3cm"}}>
+                                Nama Pemohon                     
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div className={classes.wrapKop} style={{paddingBottom:"3cm", paddingTop:"0.5cm"}}>
+                <hr style={{ width: "100%", height: "1px", marginTop: "2px" }} color='grey'></hr>
+                    <div className={classes.kop}>
+                        <img src='/LogoHD.jpg' className={classes.logoPerusahaan} />
+                        <div className={classes.kop_title}>
+                            <h2>
+                                PT. BANYUKE INTAN PERMAI
+                            </h2>
+                            <p>
+                                <font size="5">
+                                    <i>
+                                        Developer & Kontraktor
+                                    </i>
+                                </font>
+                            </p>
+                            <p>
+                                Alamat: Jln. Affandi A. Rani / Jalur II No. 7 Rt. 005/Rw. 002
+                            </p>
+                            <p>
+                                Desa Hilir Tengah Kec. Ngabang, Kab. Landak - 78357
+                            </p>
+                            <p>
+                                Telp/Hp: 0812 5672 421
+                            </p>
+                        </div>
+                    </div>
+                    <hr style={{ width: "100%", height: "2px", marginTop: "2px" }} color='black'></hr>
+                    <hr style={{ width: "100%", height: "2px", marginTop: "2px" }} color='black'></hr>
+                    <br></br>
+
+
+                <h3 style={{ textDecorationLine: "underline", textalign: "center"}} >
+                    KUITANSI
+                </h3>
+                <br></br>
+                <table style={{width: "15cm", lineHeight:"1.15", fontSize:"12px"}}>
+                    <thead></thead>
+                    <tbody>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>Sudah diterima dari : </td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>Nama</td>
+                        <td style={{width: "0.4cm"}}>:</td>     
+                        <td>Nama Pemohon</td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>Alamat</td>
+                        <td style={{width: "0.4cm"}}>:</td>   
+                        <td>Alamat Pemohon</td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>No. KTP</td>
+                        <td style={{width: "0.4cm"}}>:</td>   
+                        <td>Nomor KTP Pemohon</td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>No. Telepon/Hp.</td>
+                        <td style={{width: "0.4cm"}}>:</td>      
+                        <td>No. Telepon/Hp.</td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm"}}>Tujuan Pembayaran</td>
+                        <td style={{width: "0.4cm"}}>:</td>       
+                        <td>Uang Muka Perumahan SEKIDA VILLAGE PERMAI Blok nomor rumah</td>
+                    </tr>
+                    <tr>
+                        <td style={{width: "4.5cm", paddingBottom:"0.60cm"}}><b><i>Jumlah Rp.</i></b></td>
+                        <td style={{width: "0.4cm", paddingBottom:"0.60cm"}}>:</td>       
+                        <td style={{"borderWidth":"3px", 'borderColor':"black", 'borderStyle':'solid'}}><b>Rp.4.225.000
+                            <p><i>Empat Juta Dua Ratus Dua Puluh Lima Ribu Rupiah</i></p></b>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table className={classes.tabelPersetujuanPemohonTTD} style={{textalign:"center", paddingTop:"1cm"}}>
+                    <thead></thead>
+                    <tbody>
+                        <tr style={{paddingLeft:"30px"}}>
+                            <td style={{width:"5cm", paddingBottom:"0.3cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:"5.775cm", paddingLeft:"50px"}}> 
+                                <p className={classes.materai} style={{width:"1.7cm"}}>
+                                    Meterai
+                                    <br></br>
+                                    Rp 10.000,-
+                                </p>
+                                <br></br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Nama Pemohon                     
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+
+
+            <div className={classes.wrapHalaman5}>
+                <div className={classes.JudulHalaman} style={{paddingTop:"0.5cm"}}>
                     <h2>
                     SURAT PERNYATAAN PENYERAHAN SPT PPH
                     </h2>
                 </div>
                 <div className={classes.isiHalaman} style={{textAlign:"justify"}}>
                     <div style={{lineHeight:"20pt"}}>
-                        <br></br>
-                        <br></br>
-                        <p>
-                            Yang bertanda tangan di bawah ini :
-                        </p>
-                        <table className={classes.tabelPernyataanPenyerahan}>
+
+                        <table className={classes.tabelPernyataanPenyerahan} style={{paddingTop:"0.5cm"}}>
+                            <thead></thead>
+                            <tbody>
+                            <tr>
+                                <td colSpan={3}>
+                                    Yang bertanda tangan di bawah ini :
+                                </td>
+                            </tr>
                             <tr>
                                 <td style={{width: "3.5cm"}}>Nama Lengkap</td>
                                 <td>:</td>
@@ -521,48 +723,64 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                                 <td>:</td>
                                 <td>{props.data.alamatLengkapPengaju}</td>
                             </tr>
+                            </tbody>
                         </table>
-                        <br></br>
-                        <p>Menyatakan hal-hal sebagai berikut:</p>
-                        <table style={{width: "16.5cm"}}>
+                      
+                        
+                        <table style={{width: "16.5cm", paddingTop:"0.5cm"}}>
+                            <thead></thead>
+                            <tbody>
                             <tr>
+                                <td colSpan={2}>Menyatakan hal-hal sebagai berikut:</td>
+                            </tr>
+                            <tr>
+                                <td style={{paddingBottom:"2.2cm"}}>
                                 1.
-                                    <td style={{paddingLeft:"5px"}}>Bahwa dikarenakan saya memiliki Nomor Pokok Wajib Pajak (NPWP) kurang dari 1 (satu) tahun pada saat 
-                                                                    pengajuan KPR Bersubsidi BTN, maka saya belum dapat menyampaikan Surat Pemberitahuan Tahunan (SPT) 
-                                                                    Pajak Penghasilan (PPh) Orang Pribadi sebagai salah satu dokumen persyaratan pengajuan KPR Bersubsidi 
-                                                                    BTN sebagaimana telah diatur pada ketentuan Pemerintah.
-                                    </td>
+                                </td>
+                                <td style={{paddingLeft:"5px"}}>
+                                    Bahwa dikarenakan saya memiliki Nomor Pokok Wajib Pajak (NPWP) kurang dari 1 (satu) tahun pada saat 
+                                    pengajuan KPR Bersubsidi BTN, maka saya belum dapat menyampaikan Surat Pemberitahuan Tahunan (SPT) 
+                                    Pajak Penghasilan (PPh) Orang Pribadi sebagai salah satu dokumen persyaratan pengajuan KPR Bersubsidi 
+                                    BTN sebagaimana telah diatur pada ketentuan Pemerintah.
+                                 </td>
                             </tr>
                              <tr>
+                                <td style={{paddingBottom:"0.8cm"}}>
                                 2.
-                                    <td style={{paddingLeft:"5px"}}>Bahwa saya bersedia menyampaikan dokumen SPT PPh tahun berikutnya setelah akad kredit KPR Bersubsidi 
-                                                                    BTN kepada Bank BTN.
-                                    </td>
+                                </td>
+                                <td style={{paddingLeft:"5px"}}>
+                                    Bahwa saya bersedia menyampaikan dokumen SPT PPh tahun berikutnya setelah akad kredit KPR Bersubsidi 
+                                    BTN kepada Bank BTN.
+                                </td>
                             </tr>
                             <tr>
+                                <td style={{paddingBottom:"0.8cm"}}>
                                 3.
-                                    <td style={{paddingLeft:"5px"}}>Bahwa saya bersedia menerima konsekuensi yang diberikan oleh Pemerintah dalam hal saya terlambat dan/atau 
-                                                                    tidak menyerahkan dokumen SPT PPh tahun berikutnya setelah akad kredit KPR Bersubsidi kepada Bank BTN.</td>
+                                </td>
+                                    <td style={{paddingLeft:"5px"}}>
+                                    Bahwa saya bersedia menerima konsekuensi yang diberikan oleh Pemerintah dalam hal saya terlambat dan/atau 
+                                    tidak menyerahkan dokumen SPT PPh tahun berikutnya setelah akad kredit KPR Bersubsidi kepada Bank BTN.</td>
                         
                             </tr>
+                            </tbody>
                         </table>
-                        <br></br>
-                        <p style={{width: "16.5cm"}}>
+                       
+                        <p style={{width: "16.5cm", paddingTop:"0.5cm"}}>
                             Demikian surat pernyataan ini saya buat dengan sebenarnya tanpa paksaan dari pihak 
                             manapun dan apabila di kemudian hari pernyataan saya ini tidak benar, 
                             saya bersedia mengembalikan seluruh subsidi yang saya terima.
                         </p>
-                        <br></br>
-                        <br></br>
+                   
                     </div>
-                    <table className={classes.tabelPersetujuanPemohonTTD} style={{textAlign:"center"}}>
+                    <table className={classes.tabelPersetujuanPemohonTTD} style={{textAlign:"center", paddingTop:"0.5cm"}}>
+                        <thead></thead>
+                        <tbody>
                         <tr>
                             <td style={{width:"5cm"}}>{props.data.tempatDanTanggalDokumenPengajuan}</td>
                         </tr>
-                        <br></br>
-                        <br></br>
+                   
                         <tr style={{paddingLeft:"50px"}}>
-                            <td style={{width:"5.775cm"}}> 
+                            <td style={{width:"5.775cm", paddingTop:"1cm"}}> 
                                 <p className={classes.materai} style={{width:"1.7cm"}}>
                                     Meterai
                                     <br></br>
@@ -578,34 +796,16 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                                 {props.data.namaLengkapPengaju}
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+
             
 
-            <div className={classes.wrapHalaman5}>
+            <div className={classes.wrapHalaman6}>
                 <img src='/LogoBank&BUMN.png' className={classes.logoBankdanBUMN} />
-                <div className={classes.JudulHalaman}>
+                <div className={classes.JudulHalaman} style={{paddingTop:"0.5cm"}}>
                     <h2>
                     BEST TIME TO CALL
                     </h2>
@@ -621,6 +821,8 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                 </div>
                 <div className={classes.isiHalaman} style={{textAlign:"justify"}}>
                     <table className={classes.tabelBestTimetoCall}>
+                        <thead></thead>
+                        <tbody>
                         <tr style={{textAlign:"center"}}>
                             <th style={{width:"3.8cm"}}>KETERANGAN</th>
                             <th style={{width:"8cm"}}>NAMA</th>
@@ -652,59 +854,59 @@ const DokumenPengajuanTemplateSurat = forwardRef((props, documentTemplateRef) =>
                             <td></td>
                             <td style={{textAlign:"center"}}>s/d</td>
                         </tr>
+                        </tbody>
                     </table>
-                    <br></br>
-                    <div style={{lineHeight:"15pt"}}>
+
+
+                    <div style={{lineHeight:"15pt", paddingTop:"0.5cm"}}>
                         <b>Catatan</b>
+
                         <table style={{width: "16cm", paddingLeft:"10px"}}>
+                            <thead></thead>
+                            <tbody>
                             <tr>
-                                
+                                <td>
                                 •	
-                                
+                                </td>
                                 <td style={{paddingLeft:"5px"}}>
                                     Nama dan No. Telepon yang terlampir harus sama dengan di formulir pengajuan.
                                 </td>
                             </tr>
                             <tr>
-                                
+                                <td style={{paddingBottom:"0.6cm"}}>
                                 •	
-                              
+                                </td>
                                 <td style={{paddingLeft:"5px"}}>
                                     Untuk mempercepat proses verifikasi pengajuan kredit Bapak/Ibu, mohon Bapak/ibu dapat memastikan Nomor Telepon yang terlampir <b>AKTIF</b> dan <b>DAPAT DIHUBUNGI</b>
                                 </td>
                             </tr>
                             <tr>
-                          
+                                <td style={{paddingBottom:"0.6cm"}}>
                                 •	
-                             
+                                </td>
                                 <td style={{paddingLeft:"5px"}}>
                                     Bahwa Nomor di atas dapat menerima permohonan konfirmasi/verifikasi dari pihak Bank yang akan menggunakan No. yang tertera di atas <b>(021-80631327).</b>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
-                    <br></br>
-                    <br></br>
-                    <table className={classes.tabelBestTimetoCallTTD}>
-                        <tr>
-                            <td>{props.data.tempatDanTanggalDokumenPengajuan}</td>
-                        </tr>
-                        <br></br>
-                        <br></br>
-                        <tr style={{paddingLeft:"50px"}}>
-                            <td style={{width:"5.775cm"}}> 
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <br></br>
-                                <br></br>
-                                <br></br>
-                                <hr></hr>
-                            </td>
-                        </tr>
+
+                    <table className={classes.tabelBestTimetoCallTTD} style={{paddingTop:"0.5cm"}}>
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td>{props.data.tempatDanTanggalDokumenPengajuan}</td>
+                            </tr>
+                            <tr>
+                                <td style={{height:"5cm", paddingLeft:"1.5cm"}}>
+                                    <hr style={{width:"5cm", color:"black"}}></hr>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
+
+
                 </div>   
             </div>
      </div>
