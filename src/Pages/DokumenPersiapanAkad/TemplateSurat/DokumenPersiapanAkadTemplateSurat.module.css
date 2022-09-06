@@ -1,7 +1,93 @@
+
 .DokumenPersiapanAkadTemplateSurat {
     width: 21cm;
     height: 29.7cm;
     padding-top: 0.508cm;
     padding-left: 2.5cm;
     padding-right: 2.5cm;
+}
+h4{
+    text-align: center;
+    padding-left: 0.1cm;
+}
+
+/*
+ Kop Surat
+*/
+
+.kop {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.logoPerusahaan {
+    width: 3.5cm;
+    height: 3.5cm;
+}
+
+.kop_title {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5cm;
+}
+
+.wrapKop {
+    width: 100%;
+}
+
+.tabelPersetujuanPemohonTTD {
+    font-size: 12px;
+    float: right;
+    width: 7cm;
+    text-align: center;
+}
+.materai {
+    text-align: left;
+    border: 1px solid black;
+    width: 30%;
+}
+
+/*
+    Halaman 1
+*/
+.wrapHalaman1 {
+    width: 100%;
+    height: 29.4cm;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/*
+    Halaman 2
+*/
+.wrapHalaman2 {
+    width: 100%;
+    height: 29.4cm;
+    font-family: "Times New Roman", Times, serif;
+
+}
+
+/*
+    Halaman 3
+*/
+.wrapHalaman3 {
+    width: 100%;
+    height: 29.4cm;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/*
+    Halaman 4
+*/
+.wrapHalaman4 {
+    width: 100%;
+    height: 29.4cm;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.LampiranDokumen{
+    width:  100%;
+    height: auto;
+    padding-top: 0.5cm;
+    text-align: center;
 }
