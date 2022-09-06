@@ -192,7 +192,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </div>
             </div>
 
-            <div className={classes.wrapHalaman2} style={{paddingTop:"3cm"}}>
+            <div className={classes.wrapHalaman2}>
                  <div className={classes.wrapKop}>
                     <div className={classes.kop}>
                         <img src='/LogoHD.jpg' className={classes.logoPerusahaan} />
@@ -222,13 +222,10 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <hr style={{ width: "100%", height: "2px", marginTop: "2px" }} color='black'></hr>
                     <br></br>
                 </div>
-            </div>
+                <h3 style={{ textDecorationLine: "underline", textalign: "center", height:"1cm"}}>
+                    CHECKLIST
+                </h3>
 
-            <h3 style={{ textDecorationLine: "underline", textalign: "center" }}>
-                CHECKLIST
-            </h3>
-                    
-            <div style={{width: "100%", paddingTop:"10px"}}>
                 <table className={classes.tabelKelengkapanDokumenKPR}>
                     <thead></thead> 
                     <tbody>
@@ -323,10 +320,9 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
+             <div className={classes.wrapHalaman3}>
 
-            <div className={classes.wrapHalaman3} style={{paddingTop:"8cm"}}>
-
-                <h3 style={{ textDecorationLine: "underline", textalign: "center" }}>
+                <h3 style={{ textDecorationLine: "underline", textalign: "center", paddingTop:"0.5cm"}}>
                     SURAT PERMOHONAN SUBSIDI BANTUAN UANG MUKA (SBUM)
                  </h3>
 
@@ -456,9 +452,10 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman4} style={{paddingTop:"9.5cm"}}>
 
-                <h3 style={{ textDecorationLine: "underline", textalign: "center" }}>
+            <div className={classes.wrapHalaman4}>
+
+                <h3 style={{ textDecorationLine: "underline", textalign: "center", paddingTop:"0.5cm" }}>
                     SURAT PENGAKUAN KEKURANGAN BAYAR UANG MUKA
                 </h3>
 
@@ -572,9 +569,10 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman5} style={{paddingTop:"12.5cm"}}>
+            
+            <div className={classes.wrapHalaman5}>
 
-                <h3 style={{ textDecorationLine: "underline", textalign: "center" }}>
+                <h3 style={{ textDecorationLine: "underline", textalign: "center", paddingTop:"0.5cm"}}>
                     SURAT PERINTAH PEMINDAHBUKUAN DANA SBUM
                 </h3>
 
@@ -700,9 +698,10 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman6} style={{paddingTop:"9cm"}}>
+            
+            <div className={classes.wrapHalaman6}>
 
-                <p style={{ textDecorationLine: "none", textAlign: "right" }}>
+                <p style={{ textDecorationLine: "none", textAlign: "right", paddingTop:"0.4cm" }}>
                     (Format Internal Bank)
                 </p>
 
@@ -913,9 +912,9 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
             </div>
 
             
-            <div className={classes.wrapHalaman7} style={{paddingTop:"2cm"}}>
+            <div className={classes.wrapHalaman7}>
 
-                <p style={{ textDecorationLine: "none", textAlign: "right" }}>
+                <p style={{ textDecorationLine: "none", textAlign: "right", paddingTop:"0.4cm"}}>
                     (Format Kementerian PUPR)
                 </p>
 
@@ -1123,10 +1122,11 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
             
-      
-            <div className={classes.wrapHalaman8} style={{paddingTop:"2cm"}}>
 
-                <h3 style={{ textDecorationLine: "underline", textAlign: "center", paddingTop:"0.4cm"}}>
+                  
+            <div className={classes.wrapHalaman8}>
+
+                <h3 style={{ textDecorationLine: "underline", textAlign: "center", paddingTop:"0.5cm"}}>
                     SURAT PERNYATAAN PENGHUNIAN RUMAH UMUM BERSUBSIDI
                 </h3>
 
@@ -1299,7 +1299,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
             </div>
 
 
-            <div className={classes.wrapHalaman9} style={{paddingTop:"10cm"}}>
+            
+            <div className={classes.wrapHalaman9}>
 
                 <h3 style={{ textDecorationLine: "underline", textAlign: "center", paddingTop:"0.4cm"}}>
                         SURAT KUASA PENDEBETAN DANA
@@ -1417,7 +1418,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman10} style={{paddingTop:"12.5cm"}}>
+            <div className={classes.wrapHalaman10}>
 
                 <h3 style={{ textDecorationLine: "underline", paddingTop:"0.4cm", textAlign:"center"}}>
                     PERSYARATAN KELOMPOK SASARAN
@@ -1535,7 +1536,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman10} style={{paddingTop:"11.5cm"}}>
+            
+            <div className={classes.wrapHalaman11}>
 
                 <h3 style={{ textDecorationLine: "underline", paddingTop:"0.4cm", textAlign:"center"}}>
                     SURAT PERNYATAAN TIDAK MEMILIKI RUMAH
@@ -1631,7 +1633,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman11} style={{paddingTop:"17cm"}}>
+            
+            <div className={classes.wrapHalaman12}>
 
                 <h3 style={{ textDecorationLine: "underline", paddingTop:"0.4cm", textAlign:"center"}}>
                     SURAT KUASA
@@ -1884,7 +1887,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>            
             </div>
 
-            <div className={classes.wrapHalaman10} style={{paddingTop:"3cm"}}>
+            
+            <div className={classes.wrapHalaman13}>
                 <h3 style={{ textDecorationLine: "underline", paddingTop:"0.4cm", textAlign:"center"}}>
                      SURAT PERNYATAAN CALON DEBITUR KPR BERSUBSIDI BTN
                 </h3>
@@ -2062,7 +2066,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman11} style={{paddingTop:"5cm"}}>
+            
+            <div className={classes.wrapHalaman14}>
 
                 <h3 style={{ textDecorationLine: "underline", paddingTop:"0.4cm", textAlign:"center"}}>
                     SURAT PERNYATAAN 
@@ -2239,6 +2244,16 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     </tbody>
                 </table>
             </div>
+
+
+
+
+
+
+
+
+
+           
         </div>
     )
 });
