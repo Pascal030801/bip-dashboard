@@ -201,7 +201,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </div>
             </div>
 
-            <div className={`${classes.wrapHalaman2} ${classes.halamanA4}`}>
+            <div className={classes.wrapHalaman2}>
                  <div className={classes.wrapKop}>
                     <div className={classes.kop}>
                         <img src='/LogoHD.jpg' className={classes.logoPerusahaan} />
@@ -231,110 +231,107 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <hr style={{ width: "100%", height: "2px", marginTop: "2px" }} color='black'></hr>
                     <br></br>
                 </div>
-            
-
-                <h3 style={{ textDecorationLine: "underline", textalign: "center" }}>
+                <h3 style={{ textDecorationLine: "underline", textalign: "center", height:"1cm"}}>
                     CHECKLIST
                 </h3>
-                        
-                <div style={{width: "100%", paddingTop:"10px"}}>
-                    <table className={classes.tabelKelengkapanDokumenKPR}>
-                        <thead></thead> 
-                        <tbody>
-                            <tr style={{textalign:"center"}}>
-                                <th colSpan={3} style={{width:"3.3cm", fontSize:"14px"}}>KELENGKAPAN DOKUMEN KPR BERSUBSIDI BTN</th>
-                            </tr>
-                            <tr style={{textalign:"center", backgroundColor:"#B4C6E7"}}>
-                                <th colSpan={3} style={{width:"3.3cm", fontSize:"14px"}}>Dilengkapi selambat-lambatnya sebelum H-2 Akad Kredit</th>
-                            </tr>
-                            <tr>
-                                <td style={{width:"0.33cm", fontSize:"14px", textalign:"center"}}>
-                                    <b>C</b>
-                                </td>
-                                <td colSpan={2} style={{width:"3.3cm", fontSize:"14px"}}>
-                                    <b>Dokumen Permohonan SBUM (Untuk KPR Bersubsidi BTN yang mendapat fasilitas SBUM)</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>1. </td>
-                                <td style={{width:"13.2cm"}}>Surat permohonan Subsidi Bantuan Uang Muka Perumahan (SBUM)</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>2. </td>
-                                <td style={{width:"13.2cm"}}>Surat pengakuan kekurangan bayar uang muka KPR Bersubsidi BTN</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>3. </td>
-                                <td style={{width:"13.2cm"}}>Surat perintah pemindahbukuan dana SBUM (Standing Instruction)</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{width:"0.33cm", fontSize:"14px", textalign:"center"}}>
-                                    <b>D</b>
-                                </td>
-                                <td colSpan={2} style={{width:"3.3cm", fontSize:"14px"}}>
-                                    <b>Surat Pernyataan Debitur</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>1. </td>
-                                <td style={{width:"13.2cm"}}>Surat Pernyataan Tidak Bekerja yang diketahui oleh kepala desa/lurah bilamana salah satu dari kelompok sasaran suami istri tidak bekerja</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>2. </td>
-                                <td style={{width:"13.2cm"}}>Surat Pernyataan KPR Bersubsidi BTN Format Internal Bank</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>3. </td>
-                                <td style={{width:"13.2cm"}}>Surat Pernyataan KPR Bersubsidi BTN Format Kementerian PUPR</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>4. </td>
-                                <td style={{width:"13.2cm"}}>Surat Pernyataan Penghunian Rumah Umum Bersubsidi</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>5. </td>
-                                <td style={{width:"13.2cm"}}>Surat Kuasa Pendebetan Dana</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>6. </td>
-                                <td style={{width:"13.2cm"}}>Kelompok Sasaran</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>7. </td>
-                                <td style={{width:"13.2cm"}}>Surat Pernyataan tidak memiliki rumah</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>8. </td>
-                                <td style={{width:"13.2cm"}}>Fotokopi Buku Tabungan atas {data.namaPemohon} pada Bank BTN</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>9. </td>
-                                <td style={{width:"13.2cm"}}>Surat Kuasa</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>
-                            <tr>
-                                <td style={{textalign:"center"}}>10. </td>
-                                <td style={{width:"13.2cm"}}>Surat Pernyataan Calon Debitur</td>
-                                <td style={{width:"0.825cm"}}></td>
-                            </tr>  
-                        </tbody>         
-                    </table>
-                </div>
+
+                <table className={classes.tabelKelengkapanDokumenKPR}>
+                    <thead></thead> 
+                    <tbody>
+                        <tr style={{textalign:"center"}}>
+                            <th colSpan={3} style={{width:"3.3cm", fontSize:"14px"}}>KELENGKAPAN DOKUMEN KPR BERSUBSIDI BTN</th>
+                        </tr>
+                        <tr style={{textalign:"center", backgroundColor:"#B4C6E7"}}>
+                            <th colSpan={3} style={{width:"3.3cm", fontSize:"14px"}}>Dilengkapi selambat-lambatnya sebelum H-2 Akad Kredit</th>
+                        </tr>
+                        <tr>
+                            <td style={{width:"0.33cm", fontSize:"14px", textalign:"center"}}>
+                                <b>C</b>
+                            </td>
+                            <td colSpan={2} style={{width:"3.3cm", fontSize:"14px"}}>
+                                <b>Dokumen Permohonan SBUM (Untuk KPR Bersubsidi BTN yang mendapat fasilitas SBUM)</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>1. </td>
+                            <td style={{width:"13.2cm"}}>Surat permohonan Subsidi Bantuan Uang Muka Perumahan (SBUM)</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>2. </td>
+                            <td style={{width:"13.2cm"}}>Surat pengakuan kekurangan bayar uang muka KPR Bersubsidi BTN</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>3. </td>
+                            <td style={{width:"13.2cm"}}>Surat perintah pemindahbukuan dana SBUM (Standing Instruction)</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{width:"0.33cm", fontSize:"14px", textalign:"center"}}>
+                                <b>D</b>
+                            </td>
+                            <td colSpan={2} style={{width:"3.3cm", fontSize:"14px"}}>
+                                <b>Surat Pernyataan Debitur</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>1. </td>
+                            <td style={{width:"13.2cm"}}>Surat Pernyataan Tidak Bekerja yang diketahui oleh kepala desa/lurah bilamana salah satu dari kelompok sasaran suami istri tidak bekerja</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>2. </td>
+                            <td style={{width:"13.2cm"}}>Surat Pernyataan KPR Bersubsidi BTN Format Internal Bank</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>3. </td>
+                            <td style={{width:"13.2cm"}}>Surat Pernyataan KPR Bersubsidi BTN Format Kementerian PUPR</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>4. </td>
+                            <td style={{width:"13.2cm"}}>Surat Pernyataan Penghunian Rumah Umum Bersubsidi</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>5. </td>
+                            <td style={{width:"13.2cm"}}>Surat Kuasa Pendebetan Dana</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>6. </td>
+                            <td style={{width:"13.2cm"}}>Kelompok Sasaran</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>7. </td>
+                            <td style={{width:"13.2cm"}}>Surat Pernyataan tidak memiliki rumah</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>8. </td>
+                            <td style={{width:"13.2cm"}}>Fotokopi Buku Tabungan atas nama pemohon pada Bank BTN</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>9. </td>
+                            <td style={{width:"13.2cm"}}>Surat Kuasa</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textalign:"center"}}>10. </td>
+                            <td style={{width:"13.2cm"}}>Surat Pernyataan Calon Debitur</td>
+                            <td style={{width:"0.825cm"}}></td>
+                        </tr>  
+                    </tbody>         
+                </table>
             </div>
 
-            <div className={`${classes.wrapHalaman3} ${classes.halamanA4}`}>
-                <h3 style={{ textDecorationLine: "underline", textalign: "center" }}>
+             <div className={classes.wrapHalaman3}>
+
+                <h3 style={{ textDecorationLine: "underline", textalign: "center", paddingTop:"0.5cm"}}>
                     SURAT PERMOHONAN SUBSIDI BANTUAN UANG MUKA (SBUM)
                  </h3>
 
@@ -464,9 +461,10 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={`${classes.wrapHalaman4} ${classes.halamanA4}`}>
 
-                <h3 style={{ textDecorationLine: "underline", textalign: "center" }}>
+            <div className={classes.wrapHalaman4}>
+
+                <h3 style={{ textDecorationLine: "underline", textalign: "center", paddingTop:"0.5cm" }}>
                     SURAT PENGAKUAN KEKURANGAN BAYAR UANG MUKA
                 </h3>
 
@@ -580,9 +578,10 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={`${classes.wrapHalaman5} ${classes.halamanA4}`}>
+            
+            <div className={classes.wrapHalaman5}>
 
-                <h3 style={{ textDecorationLine: "underline", textalign: "center" }}>
+                <h3 style={{ textDecorationLine: "underline", textalign: "center", paddingTop:"0.5cm"}}>
                     SURAT PERINTAH PEMINDAHBUKUAN DANA SBUM
                 </h3>
 
@@ -708,9 +707,10 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={`${classes.wrapHalaman6} ${classes.halamanA4}`}>
+            
+            <div className={classes.wrapHalaman6}>
 
-                <p style={{ textDecorationLine: "none", textAlign: "right" }}>
+                <p style={{ textDecorationLine: "none", textAlign: "right", paddingTop:"0.4cm" }}>
                     (Format Internal Bank)
                 </p>
 
@@ -921,9 +921,9 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
             </div>
 
             
-            <div className={`${classes.wrapHalaman7} ${classes.halamanA4}`}>
+            <div className={classes.wrapHalaman7}>
 
-                <p style={{ textDecorationLine: "none", textAlign: "right" }}>
+                <p style={{ textDecorationLine: "none", textAlign: "right", paddingTop:"0.4cm"}}>
                     (Format Kementerian PUPR)
                 </p>
 
@@ -1131,10 +1131,11 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
             
-      
-            <div className={`${classes.wrapHalaman8} ${classes.halamanA4}`}>
 
-                <h3 style={{ textDecorationLine: "underline", textAlign: "center", paddingTop:"0.4cm"}}>
+                  
+            <div className={classes.wrapHalaman8}>
+
+                <h3 style={{ textDecorationLine: "underline", textAlign: "center", paddingTop:"0.5cm"}}>
                     SURAT PERNYATAAN PENGHUNIAN RUMAH UMUM BERSUBSIDI
                 </h3>
 
@@ -1307,7 +1308,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
             </div>
 
 
-            <div className={`${classes.wrapHalaman9} ${classes.halamanA4}`}>
+            
+            <div className={classes.wrapHalaman9}>
 
                 <h3 style={{ textDecorationLine: "underline", textAlign: "center", paddingTop:"0.4cm"}}>
                         SURAT KUASA PENDEBETAN DANA
@@ -1425,7 +1427,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={`${classes.wrapHalaman10} ${classes.halamanA4}`}>
+            <div className={classes.wrapHalaman10}>
 
                 <h3 style={{ textDecorationLine: "underline", paddingTop:"0.4cm", textAlign:"center"}}>
                     PERSYARATAN KELOMPOK SASARAN
@@ -1543,7 +1545,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={`${classes.wrapHalaman11} ${classes.halamanA4}`}>
+            
+            <div className={classes.wrapHalaman11}>
 
                 <h3 style={{ textDecorationLine: "underline", paddingTop:"0.4cm", textAlign:"center"}}>
                     SURAT PERNYATAAN TIDAK MEMILIKI RUMAH
@@ -1639,7 +1642,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={`${classes.wrapHalaman12} ${classes.halamanA4}`}>
+            
+            <div className={classes.wrapHalaman12}>
 
                 <h3 style={{ textDecorationLine: "underline", paddingTop:"0.4cm", textAlign:"center"}}>
                     SURAT KUASA
@@ -1892,7 +1896,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>            
             </div>
 
-            <div className={`${classes.wrapHalaman13} ${classes.halamanA4}`}>
+            
+            <div className={classes.wrapHalaman13}>
                 <h3 style={{ textDecorationLine: "underline", paddingTop:"0.4cm", textAlign:"center"}}>
                      SURAT PERNYATAAN CALON DEBITUR KPR BERSUBSIDI BTN
                 </h3>
@@ -2070,7 +2075,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                 </table>
             </div>
 
-            <div className={`${classes.wrapHalaman14} ${classes.halamanA4}`}>
+            
+            <div className={classes.wrapHalaman14}>
 
                 <h3 style={{ textDecorationLine: "underline", paddingTop:"0.4cm", textAlign:"center"}}>
                     SURAT PERNYATAAN 
@@ -2247,6 +2253,16 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     </tbody>
                 </table>
             </div>
+
+
+
+
+
+
+
+
+
+           
         </div>
     )
 });
