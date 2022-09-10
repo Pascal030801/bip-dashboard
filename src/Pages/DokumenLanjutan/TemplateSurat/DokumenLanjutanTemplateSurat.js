@@ -1,11 +1,20 @@
 import React, { forwardRef, useRef } from 'react';
 import classes from './DokumenLanjutanTemplateSurat.module.css';
+import formatter from '../../../Util/formatter';
 
 const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => {
+    console.log(props);
+    const data = props.data;
+    const formattedUangMuka = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(data.uangMuka, 10))
+    const halfUangMuka = parseInt(data.uangMuka, 10) / 2;
+    const formattedHalfUangMuka = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(halfUangMuka)
+    const paidUangMuka = parseInt(data.uangMuka, 10) - 4000000;
+    const formattedPaidUangMuka = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(paidUangMuka)
+    const formattedHargaRumah = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(data.hargaJualRumah, 10))
 
     return (
         <div className={classes.DokumenLanjutanTemplateSurat} ref={documentTemplateRef}>
-            <div className={classes.wrapHalaman1}>
+            <div className={`${classes.wrapHalaman1} ${classes.halamanA4}`}>
                 <div className={classes.wrapKop}>
                     <div className={classes.kop}>
                         <img src='/LogoHD.jpg' className={classes.logoPerusahaan} />
@@ -48,22 +57,22 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tr>
                         <td style={{width: "4.5cm"}}>Nama</td>
                         <td style={{width: "0.4cm"}}>:</td>     
-                        <td>Nama Pemohon</td>
+                        <td>{data.namaPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.5cm"}}>Alamat</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Alamat Pemohon</td>
+                        <td>{data.alamatPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.5cm"}}>No. KTP</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Nomor KTP Pemohon</td>
+                        <td>{data.noKtpPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.5cm"}}>No. Telepon/Hp.</td>
                         <td style={{width: "0.4cm"}}>:</td>      
-                        <td>No. Telepon/Hp.</td>
+                        <td>{data.noTeleponPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.5cm", paddingBottom:"0.60cm"}}>Tujuan Pembayaran</td>
@@ -73,8 +82,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tr>
                         <td style={{width: "4.5cm", paddingBottom:"0.60cm"}}><b><i>Jumlah Rp.</i></b></td>
                         <td style={{width: "0.4cm", paddingBottom:"0.60cm"}}>:</td>       
-                        <td style={{"borderWidth":"3px", 'borderColor':"black", 'borderStyle':'solid'}}><b>Rp.4.225.000
-                            <p><i>Empat Juta Dua Ratus Dua Puluh Lima Ribu Rupiah</i></p></b>
+                        <td style={{"borderWidth":"3px", 'borderColor':"black", 'borderStyle':'solid', padding: '0.1cm'}}><b>{formattedHalfUangMuka}
+                            <p><i>{formatter.tertulisToTerbilang(halfUangMuka, 'Rupiah')}</i></p></b>
                         </td>
                     </tr>
                     </tbody>
@@ -83,11 +92,11 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <thead></thead>
                     <tbody>
                         <tr>
-                            <td style={{width:"5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width:"5cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr>
                             <td style={{paddingTop:"1.3cm"}}>
-                                Nama Pemohon                     
+                                {data.namaPemohon}                     
                             </td>
                         </tr>
                     </tbody>
@@ -135,22 +144,22 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tr>
                         <td style={{width: "4.5cm"}}>Nama</td>
                         <td style={{width: "0.4cm"}}>:</td>     
-                        <td>Nama Pemohon</td>
+                        <td>{data.namaPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.5cm"}}>Alamat</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Alamat Pemohon</td>
+                        <td>{data.alamatPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.5cm"}}>No. KTP</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Nomor KTP Pemohon</td>
+                        <td>{data.noKtpPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.5cm"}}>No. Telepon/Hp.</td>
                         <td style={{width: "0.4cm"}}>:</td>      
-                        <td>No. Telepon/Hp.</td>
+                        <td>{data.noTeleponPemohon}.</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.5cm", paddingBottom:"0.60cm"}}>Tujuan Pembayaran</td>
@@ -160,8 +169,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tr>
                         <td style={{width: "4.5cm", paddingBottom:"0.60cm"}}><b><i>Jumlah Rp.</i></b></td>
                         <td style={{width: "0.4cm", paddingBottom:"0.60cm"}}>:</td>       
-                        <td style={{"borderWidth":"3px", 'borderColor':"black", 'borderStyle':'solid'}}><b>Rp.4.225.000
-                            <p><i>Empat Juta Dua Ratus Dua Puluh Lima Ribu Rupiah</i></p></b>
+                        <td style={{"borderWidth":"3px", 'borderColor':"black", 'borderStyle':'solid', padding: '0.1cm'}}><b>{formattedHalfUangMuka}
+                            <p><i>{formatter.tertulisToTerbilang(halfUangMuka, 'Rupiah')}</i></p></b>
                         </td>
                     </tr>
                     </tbody>
@@ -170,7 +179,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <thead></thead>
                     <tbody>
                         <tr style={{paddingLeft:"30px"}}>
-                            <td style={{width:"5cm", paddingBottom:"0.3cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width:"5cm", paddingBottom:"0.3cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr>
                             <td style={{width:"5.775cm", paddingLeft:"50px"}}> 
@@ -184,7 +193,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         </tr>
                         <tr>
                             <td>
-                                Nama Pemohon                     
+                                {data.namaPemohon}                     
                             </td>
                         </tr>
                     </tbody>
@@ -326,7 +335,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     SURAT PERMOHONAN SUBSIDI BANTUAN UANG MUKA (SBUM)
                  </h3>
 
-                <table style={{paddingTop:"1cm", fontSize:"12px"}}>
+                <table style={{paddingTop:"0.5cm", fontSize:"14px"}}>
                     <thead></thead>
                     <tbody>
                     <tr style={{textalign:"left"}}>
@@ -359,27 +368,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                         <td style={{width: "0.4cm"}}>:</td>     
-                        <td>Nama Pemohon</td>
+                        <td>{data.namaPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Nomor KTP Pemohon</td>
+                        <td>{data.noKtpPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Tempat, Tanggal Lahir Pemohon</td>
+                        <td>{data.tempatLahirPemohon}, {formatter.formatDate(data.tanggalLahirPemohon)}</td>
                     </tr>
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Pekerjaan Pemohon</td>
+                        <td>{data.pekerjaanPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Alamat Pemohon</td>
+                        <td>{data.alamatPemohon}</td>
                     </tr>
 
                     <tr style={{textalign:"left", height:"1.5cm"}}>
@@ -394,24 +403,24 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <td>PT. BANYUKE INTAN PERMAI</td>
                     </tr>
                     <tr>
-                        <td style={{width: "5cm", paddingLeft:"0.5cm", paddingBottom:"0.50cm"}}>Alamat Rumah yang Dibeli</td>
-                        <td style={{width: "0.4cm", paddingBottom:"0.50cm"}}>:</td>   
-                        <td>Jalan Pararel Aruk-Jagoi, Desa Sekida, Jagoi Babang, Bengkayang, Provinsi Kalimantan Barat</td>
+                        <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat Rumah yang Dibeli</td>
+                        <td style={{width: "0.4cm", verticalAlign: 'top'}}>:</td>   
+                        <td>{data.alamatPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Harga Jual Rumah</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Rp.	164.500.000,-</td>
+                        <td>{formattedHargaRumah},-</td>
                     </tr>
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Besaran Uang Muka</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Rp.	8.225.000,-</td>
+                        <td>{formattedUangMuka},-</td>
                     </tr>
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Bank Pelaksana</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Bank BTN</td>
+                        <td>Bank {data.bankYangDigunakan}</td>
                     </tr>
 
                     <tr style={{textalign:"left", height:"2cm"}}>
@@ -441,11 +450,11 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <thead></thead>
                     <tbody>
                     <tr style={{paddingLeft:"30px"}}>
-                        <td style={{width:"5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                        <td style={{width:"5cm"}}>{data.tempatSuratDibuat}, {formatter.formatDate(data.tanggalSuratDibuat)}</td>
                     </tr>
                     <tr>
                         <td style={{paddingTop:"1.3cm"}}>
-                            Nama Pemohon                     
+                            {data.namaPemohon}                     
                         </td>
                     </tr>
                     </tbody>
@@ -471,33 +480,33 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr>
                             <td style={{width: "4.5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td>Nama Pemohon</td>
+                            <td>{data.namaPemohon}</td>
                         </tr>
                         <tr>
                         <td style={{width: "4.5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Nomor KTP Pemohon</td>
+                        <td>{data.noKtpPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Tempat, Tanggal Lahir Pemohon</td>
+                        <td>{data.tempatLahirPemohon}, {formatter.formatDate(data.tanggalLahirPemohon)}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Pekerjaan Pemohon</td>
+                        <td>{data.pekerjaanPemohon}</td>
                     </tr>
                     <tr>
                         <td style={{width: "4.5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Alamat Pemohon</td>
+                        <td>{data.alamatPemohon}</td>
                     </tr>
 
                     <tr style={{textalign:"left", height:"2cm"}}>
                         <td colSpan={3} style={{width:"100%", textAlign:"justify"}}>
-                            Dengan   ini   menyatakan   bahwa   saya   telah   melakukan   pembayaran   uang   muka   sebesar <b> Rp. 4.225.000,-
-                            ( Empat Juta Dua Ratus Dua Puluh Lima Ribu Rupiah ) </b> dan masih memiliki kekurangan bayar uang muka sebesar <b>Rp. 4.000.000,-
+                            Dengan   ini   menyatakan   bahwa   saya   telah   melakukan   pembayaran   uang   muka   sebesar <b> {formattedPaidUangMuka},-
+                            ( {formatter.tertulisToTerbilang(paidUangMuka, 'Rupiah')} ) </b> dan masih memiliki kekurangan bayar uang muka sebesar <b>Rp. 4.000.000,-
                             ( Empat Juta Rupiah )</b> untuk pembelian rumah sejahtera tapak kepada :
                         </td>
                     </tr>
@@ -509,22 +518,22 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm", paddingBottom:"0.50cm"}}>Alamat Rumah yang Dibeli</td>
                         <td style={{width: "0.4cm", paddingBottom:"0.50cm"}}>:</td>   
-                        <td>Jalan Pararel Aruk-Jagoi, Desa Sekida, Jagoi Babang, Bengkayang, Provinsi Kalimantan Barat</td>
+                        <td>{data.alamatPerumahan}</td>
                     </tr>
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Harga Jual Rumah</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Rp.	164.500.000,-</td>
+                        <td>{formattedHargaRumah},-</td>
                     </tr>
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Besaran Uang Muka</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Rp.	8.225.000,-</td>
+                        <td>{formattedUangMuka},-</td>
                     </tr>
                     <tr>
                         <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Bank Pelaksana</td>
                         <td style={{width: "0.4cm"}}>:</td>   
-                        <td>Bank BTN Kantor Cabang ……………………</td>
+                        <td>Bank {data.bankYangDigunakan} Kantor Cabang {data.kantorCabangBank}</td>
                     </tr>
                     <tr style={{textalign:"left", height:"2cm"}}>
                         <td colSpan={3} style={{width:"100%"}}>
@@ -539,7 +548,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tbody>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width : "5cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}>Menyetujui,</td>
@@ -563,7 +572,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         </tr>
                         <tr style={{textAlign:"center", width :"15cm"}}>
                             <td style={{width : "5cm"}}>YUDA SISWANTO</td>
-                            <td style={{width : "5cm"}}>Nama Pemohon</td>
+                            <td style={{width : "5cm"}}>{data.namaPemohon}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -593,31 +602,31 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td>Nama Pemohon</td>
+                            <td>{data.namaPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td>Nomor KTP Pemohon</td>
+                            <td>{data.noKtpPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td>Tempat, Tanggal Lahir Pemohon</td>
+                            <td>{data.tempatLahirPemohon}, {formatter.formatDate(data.tanggalLahirPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td>Pekerjaan Pemohon</td>
+                            <td>{data.pekerjaanPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td>Alamat Pemohon</td>
+                            <td>{data.alamatPemohon}</td>
                         </tr>
                         <tr style={{textalign:"left"}}>
                             <td colSpan={3} style={{height:"2.5cm"}}>
-                                <p style={{paddingLeft:"1cm", textAlign:"justify"}}>Dengan ini memberikan kuasa kepada PT. Bank Tabungan Negara (Persero) Tbk. Kantor Cabang ……………. </p>
+                                <p style={{paddingLeft:"1cm", textAlign:"justify"}}>Dengan ini memberikan kuasa kepada PT. Bank Tabungan Negara (Persero) Tbk. Kantor Cabang {data.kantorCabangBank}. </p>
                                 untuk melakukan pemindahbukuan pencairan dana Subsidi Bantuan Uang Muka (SBUM) senilai Rp 4.000.000,- (Empat Juta Rupiah) 
                                 untuk digunakan sebagai pengurang pokok kredit atau pembayaran kekurangan uang muka pembelian rumah sejahtera*), kepada :
                             </td>
@@ -657,7 +666,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tbody>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width : "5cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}>Menyetujui,</td>
@@ -669,7 +678,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             <td style={{width : "5cm"}}> </td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
-                            <td style={{width : "5cm"}}>Kantor Cabang …………………
+                            <td style={{width : "5cm"}}>Kantor Cabang {data.kantorCabangBank}
                             </td>
                             <td style={{width : "5cm"}}> </td>
                         </tr>
@@ -688,11 +697,11 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             <td style={{width : "5cm"}}>……………………………………
                                 <p color='grey' textalign='center'>
                                     <i>
-                                        Nama Lengkap, Jabatan
+                                        {data.namaLengkapPihakBank}, {data.jabatanPihakBank}
                                     </i>
                                 </p>
                             </td>
-                            <td style={{width : "5cm"}}>Nama Pemohon</td>
+                            <td style={{width : "5cm"}}>{data.namaPemohon}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -720,27 +729,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td>Nama Pemohon</td>
+                            <td>{data.namaPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Nomor KTP Pemohon</td>
+                            <td >{data.noKtpPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pemohon</td>
+                            <td >{data.tempatLahirPemohon}, {formatter.formatDate(data.tanggalLahirPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Pekerjaan Pemohon</td>
+                            <td >{data.pekerjaanPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Alamat Pemohon</td>
+                            <td >{data.alamatPemohon}</td>
                         </tr>
                         <tr style={{textalign:"left"}}>
                             <td colSpan={3}>
@@ -756,27 +765,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td >Nama Pasangan Pemohon</td>
+                            <td >{data.namaPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Nomor KTP Pasangan Pemohon</td>
+                            <td >{data.noKtpPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pasangan Pemohon</td>
+                            <td >{data.tempatLahirPasanganPemohon}, {formatter.formatDate(data.tanggalLahirPasanganPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Pekerjaan Pasangan Pemohon</td>
+                            <td >{data.pekerjaanPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Alamat Pasangan Pemohon</td>
+                            <td >{data.alamatPasanganPemohon}</td>
                         </tr>
                         <tr style={{textalign:"left"}}>
                             <td colSpan={3}>
@@ -812,7 +821,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         </tr>
                         <tr>
                             <td style={{width: "1cm", paddingLeft:"0.5cm", paddingBottom:"0.50cm"}}>4.</td> 
-                            <td>Saya membeli Rumah Umum Tapak dengan harga Rp.164.500.000,- (Seratus Enam Puluh Empat Juta Lima Ratus Ribu Rupiah) dari pengembang PT. BANYUKE INTAN PERMAI.</td>
+                            <td>Saya membeli Rumah Umum Tapak dengan harga {formattedHargaRumah},- ({formatter.tertulisToTerbilang(data.hargaJualRumah, 'Rupiah')}) dari pengembang PT. BANYUKE INTAN PERMAI.</td>
                         </tr>
                         <tr>
                             <td style={{width: "1cm", paddingLeft:"0.5cm", paddingBottom:"0.50cm"}}>5.</td> 
@@ -867,7 +876,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tbody>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width : "5cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}>Menyetujui,</td>
@@ -886,8 +895,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             </td>
                         </tr>
                         <tr style={{textAlign:"center", width :"15cm"}}>
-                            <td style={{width : "5cm"}}>Nama Pasangan Pemohon</td>
-                            <td style={{width : "5cm"}}>Nama Pemohon</td>
+                            <td style={{width : "5cm"}}>{data.namaPasanganPemohon}</td>
+                            <td style={{width : "5cm"}}>{data.namaPemohon}</td>
                         </tr>
 
                         <tr>
@@ -932,27 +941,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td>Nama Pemohon</td>
+                            <td>{data.namaPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Nomor KTP Pemohon</td>
+                            <td >{data.noKtpPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pemohon</td>
+                            <td >{data.tempatLahirPemohon}, {formatter.formatDate(data.tanggalLahirPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Pekerjaan Pemohon</td>
+                            <td >{data.pekerjaanPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Alamat Pemohon</td>
+                            <td >{data.alamatPemohon}</td>
                         </tr>
                         <tr style={{textalign:"left"}}>
                             <td colSpan={3}>
@@ -968,27 +977,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td >Nama Pasangan Pemohon</td>
+                            <td >{data.namaPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Nomor KTP Pasangan Pemohon</td>
+                            <td >{data.noKtpPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pasangan Pemohon</td>
+                            <td >{data.tempatLahirPasanganPemohon}, {formatter.formatDate(data.tanggalLahirPasanganPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Pekerjaan Pasangan Pemohon</td>
+                            <td >{data.pekerjaanPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Alamat Pasangan Pemohon</td>
+                            <td >{data.alamatPasanganPemohon}</td>
                         </tr>
                         <tr style={{textalign:"left"}}>
                             <td colSpan={3}>
@@ -1079,7 +1088,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tbody>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width : "5cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}>Menyetujui,</td>
@@ -1098,8 +1107,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             </td>
                         </tr>
                         <tr style={{textAlign:"center", width :"15cm"}}>
-                            <td style={{width : "5cm"}}>Nama Pasangan Pemohon</td>
-                            <td style={{width : "5cm"}}>Nama Pemohon</td>
+                            <td style={{width : "5cm"}}>{data.namaPasanganPemohon}</td>
+                            <td style={{width : "5cm"}}>{data.namaPemohon}</td>
                         </tr>
 
                         <tr>
@@ -1141,27 +1150,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td>Nama Pemohon</td>
+                            <td>{data.namaPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Nomor KTP Pemohon</td>
+                            <td >{data.noKtpPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pemohon</td>
+                            <td >{data.tempatLahirPemohon}, {formatter.formatDate(data.tanggalLahirPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Pekerjaan Pemohon</td>
+                            <td >{data.pekerjaanPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Alamat Pemohon</td>
+                            <td >{data.alamatPemohon}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1259,7 +1268,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tbody>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width : "5cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}>Menyetujui,</td>
@@ -1278,8 +1287,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             </td>
                         </tr>
                         <tr style={{textAlign:"center", width :"15cm"}}>
-                            <td style={{width : "5cm"}}>Nama Pasangan Pemohon</td>
-                            <td style={{width : "5cm"}}>Nama Pemohon</td>
+                            <td style={{width : "5cm"}}>{data.namaPasanganPemohon}</td>
+                            <td style={{width : "5cm"}}>{data.namaPemohon}</td>
                         </tr>
 
                         <tr>
@@ -1317,27 +1326,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                          <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td>Nama Pemohon</td>
+                            <td>{data.namaPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Nomor KTP Pemohon</td>
+                            <td >{data.noKtpPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pemohon</td>
+                            <td >{data.tempatLahirPemohon}, {formatter.formatDate(data.tanggalLahirPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Pekerjaan Pemohon</td>
+                            <td >{data.pekerjaanPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Alamat Pemohon</td>
+                            <td >{data.alamatPemohon}</td>
                         </tr>
                         <tr style={{textalign:"left"}}>
                             <td colSpan={3}>
@@ -1357,7 +1366,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr style={{height:"2cm", textAlign:"justify"}}>
                             <td colSpan={3}>
                                 Dengan ini Pemberi Kuasa memberi kuasa kepada Penerima Kuasa untuk melakukan pendebetan dana pada Nomor Rekening Tabungan 
-                                Pemberi Kuasa dengan nomor : .......................................... atas nama (Nama Pemohon) atas biaya asuransi, 
+                                Pemberi Kuasa dengan nomor : .......................................... atas nama ({data.namaPemohon}) atas biaya asuransi, 
                                 biaya pengikatan agunan, dan biaya lainnya yang timbul atas penghentian KPR Bersubsidi BTN yang disebabkan oleh dokumen pernyataan 
                                 yang tidak benar dan/atau tidak dipenuhi dalam proses pengajuan dan pelaksanaan KPR Bersubsidi BTN.
                             </td>
@@ -1377,7 +1386,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tbody>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width : "5cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}><b>PENERIMA KUASA</b></td>
@@ -1412,7 +1421,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                                     </i>
                                 </p>
                             </td>
-                            <td style={{width : "5cm"}}>Nama Pemohon</td>
+                            <td style={{width : "5cm"}}>{data.namaPemohon}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1554,27 +1563,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                          <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td>Nama Pemohon</td>
+                            <td>{data.namaPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Nomor KTP Pemohon</td>
+                            <td >{data.noKtpPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pemohon</td>
+                            <td >{data.tempatLahirPemohon}, {formatter.formatDate(data.tanggalLahirPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Pekerjaan Pemohon</td>
+                            <td >{data.pekerjaanPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Alamat Pemohon</td>
+                            <td >{data.alamatPemohon}</td>
                         </tr>
 
                         <tr style={{textalign:"left", height:"1cm"}}>
@@ -1598,7 +1607,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tbody>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width : "5cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}>Mengetahui,</td>
@@ -1627,7 +1636,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                                     </i>
                                 </p>
                             </td>
-                            <td style={{width : "5cm"}}>Nama Pemohon</td>
+                            <td style={{width : "5cm"}}>{data.namaPemohon}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1652,31 +1661,31 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             <td style={{width:"0.08cm"}}>I.</td>
                             <td colSpan={2} style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td>Nama Pemohon</td>
+                            <td>{data.namaPemohon}</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td colSpan={2} style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td>Nomor KTP Pemohon</td>
+                            <td>{data.noKtpPemohon}</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td colSpan={2} style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pemohon</td>
+                            <td >{data.tempatLahirPemohon}, {formatter.formatDate(data.tanggalLahirPemohon)}</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td colSpan={2} style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td>Pekerjaan Pemohon</td>
+                            <td>{data.pekerjaanPemohon}</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td colSpan={2} style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td>Alamat Pemohon</td>
+                            <td>{data.alamatPemohon}</td>
                         </tr>
                         <tr style={{textalign:"left",height:"0.3cm"}}>
                             <td colSpan={4}> 
@@ -1846,7 +1855,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tbody>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width : "5cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}><b>PENERIMA KUASA</b></td>
@@ -1881,7 +1890,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                                     </i>
                                 </p>
                             </td>
-                            <td style={{width : "5cm"}}>Nama Pemohon</td>
+                            <td style={{width : "5cm"}}>{data.namaPemohon}</td>
                         </tr>
                     </tbody>
                 </table>            
@@ -1904,27 +1913,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td>Nama Pemohon</td>
+                            <td>{data.namaPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Nomor KTP Pemohon</td>
+                            <td >{data.noKtpPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pemohon</td>
+                            <td >{data.tempatLahirPemohon}, {formatter.formatDate(data.tanggalLahirPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Pekerjaan Pemohon</td>
+                            <td >{data.pekerjaanPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Alamat Pemohon</td>
+                            <td >{data.alamatPemohon}</td>
                         </tr>
                         <tr style={{textalign:"left"}}>
                             <td colSpan={3}>
@@ -1940,27 +1949,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td >Nama Pasangan Pemohon</td>
+                            <td >{data.namaPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Nomor KTP Pasangan Pemohon</td>
+                            <td >{data.noKtpPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pasangan Pemohon</td>
+                            <td >{data.tempatLahirPasanganPemohon}, {formatter.formatDate(data.tanggalLahirPasanganPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Pekerjaan Pasangan Pemohon</td>
+                            <td >{data.pekerjaanPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Alamat Pasangan Pemohon</td>
+                            <td >{data.alamatPasanganPemohon}</td>
                         </tr>
                         <tr style={{textalign:"left"}}>
                             <td colSpan={3}>
@@ -2022,7 +2031,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tbody>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width : "5cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}>Menyetujui,</td>
@@ -2041,8 +2050,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             </td>
                         </tr>
                         <tr style={{textAlign:"center", width :"15cm"}}>
-                            <td style={{width : "5cm"}}>Nama Pasangan Pemohon</td>
-                            <td style={{width : "5cm"}}>Nama Pemohon</td>
+                            <td style={{width : "5cm"}}>{data.namaPasanganPemohon}</td>
+                            <td style={{width : "5cm"}}>{data.namaPemohon}</td>
                         </tr>
 
                         <tr>
@@ -2084,27 +2093,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td>Nama Pemohon</td>
+                            <td>{data.namaPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Nomor KTP Pemohon</td>
+                            <td >{data.noKtpPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pemohon</td>
+                            <td >{data.tempatLahirPemohon}, {formatter.formatDate(data.tanggalLahirPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Pekerjaan Pemohon</td>
+                            <td >{data.pekerjaanPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Alamat Pemohon</td>
+                            <td >{data.alamatPemohon}</td>
                         </tr>
                         <tr style={{textalign:"left"}}>
                             <td colSpan={3}>
@@ -2120,27 +2129,27 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Nama Lengkap</td>
                             <td style={{width: "0.4cm"}}>:</td>     
-                            <td >Nama Pasangan Pemohon</td>
+                            <td >{data.namaPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>No. KTP</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Nomor KTP Pasangan Pemohon</td>
+                            <td >{data.noKtpPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Tempat, Tanggal Lahir</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Tempat, Tanggal Lahir Pasangan Pemohon</td>
+                            <td >{data.tempatLahirPasanganPemohon}, {formatter.formatDate(data.tanggalLahirPasanganPemohon)}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Pekerjaan</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Pekerjaan Pasangan Pemohon</td>
+                            <td >{data.pekerjaanPasanganPemohon}</td>
                         </tr>
                         <tr>
                             <td style={{width: "5cm", paddingLeft:"0.5cm"}}>Alamat</td>
                             <td style={{width: "0.4cm"}}>:</td>   
-                            <td >Alamat Pasangan Pemohon</td>
+                            <td >{data.alamatPasanganPemohon}</td>
                         </tr>
                         <tr style={{textalign:"left"}}>
                             <td colSpan={3}>
@@ -2219,7 +2228,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                     <tbody>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}></td>
-                            <td style={{width : "5cm"}}>Jagoi Babang, 1 Januari 2022</td>
+                            <td style={{width : "5cm"}}>{data.tempatSuratDibuat}, {data.tanggalSuratDibuat}</td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
                             <td style={{width : "5cm"}}>Menyetujui,</td>
@@ -2238,8 +2247,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             </td>
                         </tr>
                         <tr style={{textAlign:"center", width :"15cm"}}>
-                            <td style={{width : "5cm"}}>Nama Pasangan Pemohon</td>
-                            <td style={{width : "5cm"}}>Nama Pemohon</td>
+                            <td style={{width : "5cm"}}>{data.namaPasanganPemohon}</td>
+                            <td style={{width : "5cm"}}>{data.namaPemohon}</td>
                         </tr>
                     </tbody>
                 </table>

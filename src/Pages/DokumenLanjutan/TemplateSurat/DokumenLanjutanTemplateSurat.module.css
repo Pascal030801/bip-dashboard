@@ -31,14 +31,16 @@
     width: 100%;
 }
 
-/*
-    Halaman 1
-*/
-.wrapHalaman1 {
+.halamanA4 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
 }
+
+/*
+    Halaman 1
+*/
+.wrapHalaman1 {}
 
 .tabelPersetujuanPemohonTTD {
     font-size: 12px;
@@ -46,6 +48,7 @@
     width: 7cm;
     text-align: center;
 }
+
 .materai {
     text-align: left;
     border: 1px solid black;
@@ -94,7 +97,7 @@
 /*
     Halaman 4
 */
-.wrapHalaman4{
+.wrapHalaman4 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
@@ -103,7 +106,7 @@
 /*
     Halaman 5
 */
-.wrapHalaman5{
+.wrapHalaman5 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
@@ -112,7 +115,7 @@
 /*
     Halaman 6
 */
-.wrapHalaman6{
+.wrapHalaman6 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
@@ -121,7 +124,7 @@
 /*
     Halaman 7
 */
-.wrapHalaman7{
+.wrapHalaman7 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
@@ -130,7 +133,7 @@
 /*
     Halaman 8
 */
-.wrapHalaman8{
+.wrapHalaman8 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
@@ -139,7 +142,7 @@
 /*
     Halaman 9
 */
-.wrapHalaman9{
+.wrapHalaman9 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
@@ -148,7 +151,7 @@
 /*
     Halaman 10
 */
-.wrapHalaman10{
+.wrapHalaman10 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
@@ -157,7 +160,7 @@
 /*
     Halaman 11
 */
-.wrapHalaman11{
+.wrapHalaman11 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
@@ -166,7 +169,7 @@
 /*
     Halaman 12
 */
-.wrapHalaman12{
+.wrapHalaman12 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
@@ -175,7 +178,7 @@
 /*
     Halaman 13
 */
-.wrapHalaman13{
+.wrapHalaman13 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
@@ -184,13 +187,13 @@
 /*
     Halaman 14
 */
-.wrapHalaman14{
+.wrapHalaman14 {
     width: 100%;
     height: 29.4cm;
     font-family: "Times New Roman", Times, serif;
 }
 
 
-h3{
+h3 {
     text-align: center;
 }

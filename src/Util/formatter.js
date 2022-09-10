@@ -89,6 +89,77 @@ const formatter = {
             );
         }
         return formattedStatusPerkawinans;
+    },
+
+    convertNumberToPronounce: (number) => {
+        if(number === 0) return '';
+        if(number === 1) return 'Satu';
+        if(number === 2) return 'Dua';
+        if(number === 3) return 'Tiga';
+        if(number === 4) return 'Empat';
+        if(number === 5) return 'Lima';
+        if(number === 6) return 'Enam';
+        if(number === 7) return 'Tujuh';
+        if(number === 8) return 'Delapan';
+        if(number === 9) return 'Sembilan';
+        if(number === 10) return 'Sepuluh';
+        if(number === 11) return 'Sebelas';
+
+        if(number > 11 && number < 20 ) return formatter.convertNumberToPronounce(number % 10) + ' Belas';
+        if(number >= 20) return formatter.convertNumberToPronounce(Math.floor(number / 10)) + ' Puluh ' + formatter.convertNumberToPronounce(number % 10);
+
+    },
+
+    tertulisToTerbilang: (jumlahUang, mataUang) => {
+        let terbilang = '';
+        // 1.000.000.000
+        if(Math.floor(jumlahUang / 1000000000) > 0 ) {
+            terbilang += ' ' + formatter.convertNumberToPronounce(Math.floor(jumlahUang / 1000000000)) + ' Miliar'
+            jumlahUang = jumlahUang - (Math.floor(jumlahUang / 1000000000) * 1000000000)
+        }
+
+        // 100.000.000
+        if(Math.floor(jumlahUang / 100000000) > 0) {
+            terbilang += ' ' + formatter.convertNumberToPronounce(Math.floor(jumlahUang / 100000000)) + ' Ratus Juta'
+            jumlahUang = jumlahUang - (Math.floor(jumlahUang / 100000000) * 100000000)
+        }
+
+        // 1.000.000
+        if(Math.floor(jumlahUang / 1000000) > 0) {
+            terbilang = terbilang.replace('Juta', '')
+            terbilang += ' ' + formatter.convertNumberToPronounce(Math.floor(jumlahUang / 1000000)) + ' Juta'
+            jumlahUang = jumlahUang - (Math.floor(jumlahUang / 1000000) * 1000000)
+        }
+
+        // 100.000
+        if(Math.floor(jumlahUang / 100000) > 0) {
+            terbilang += ' ' + formatter.convertNumberToPronounce(Math.floor(jumlahUang / 100000)) + ' Ratus Ribu'
+            jumlahUang = jumlahUang - (Math.floor(jumlahUang / 100000) * 100000)
+        }
+
+        // 1.000
+        if(Math.floor(jumlahUang / 1000) > 0) {
+            terbilang = terbilang.replace('Ribu', '')
+            terbilang += ' ' + formatter.convertNumberToPronounce(Math.floor(jumlahUang / 1000)) + ' Ribu'
+            jumlahUang = jumlahUang - (Math.floor(jumlahUang / 1000) * 1000)
+        }
+
+        // 100
+        if(Math.floor(jumlahUang / 100) > 0) {
+            terbilang += ' ' + formatter.convertNumberToPronounce(Math.floor(jumlahUang / 100)) + ' Ratus'
+            jumlahUang = jumlahUang - (Math.floor(jumlahUang / 100) * 100)
+        }
+
+        return terbilang + ' ' + mataUang;
+    },
+
+    formatDate: (rawDate) => {
+        const rawDateData = new Date(rawDate);
+        const rawDateDataMonth = rawDateData.getMonth() < 11 ? `0${(rawDateData.getMonth() + 1)}` : rawDateData.getMonth() + 1;
+        const rawDateDataDay = rawDateData.getDate() < 10 ? `0${rawDateData.getDate()}` : rawDateData.getDate();
+        const formattedRawDate = `${rawDateDataDay}-${rawDateDataMonth}-${rawDateData.getFullYear()}`;
+
+        return formattedRawDate;
     }
 }
 
