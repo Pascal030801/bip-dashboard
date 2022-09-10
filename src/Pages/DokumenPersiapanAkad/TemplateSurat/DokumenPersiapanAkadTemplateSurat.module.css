@@ -1,4 +1,3 @@
-
 .DokumenPersiapanAkadTemplateSurat {
     width: 21cm;
     height: 29.7cm;
@@ -6,7 +5,8 @@
     padding-left: 2.5cm;
     padding-right: 2.5cm;
 }
-h4{
+
+h4 {
     text-align: center;
     padding-left: 0.1cm;
 }
@@ -42,6 +42,7 @@ h4{
     width: 7cm;
     text-align: center;
 }
+
 .materai {
     text-align: left;
     border: 1px solid black;
@@ -85,8 +86,8 @@ h4{
     font-family: "Times New Roman", Times, serif;
 }
 
-.LampiranDokumen{
-    width:  100%;
+.LampiranDokumen {
+    width: 100%;
     height: auto;
     padding-top: 0.5cm;
     text-align: center;
