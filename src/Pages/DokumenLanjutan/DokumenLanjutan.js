@@ -83,7 +83,45 @@ const DokumenLanjutan = () => {
             toast.error('Dokumen belum diajukan, tidak bisa menampilkan dokumen')
             return;
         }
-        setData(OrderdokumenLanjutanDatas[dokumenIndex]);
+
+        console.log(OrderdokumenLanjutanDatas[dokumenIndex])
+        const dokumenData = OrderdokumenLanjutanDatas[dokumenIndex];
+        const formattedData = {
+            uangMuka: dokumenData.dokumen_pengajuan.uang_muka,
+            namaPemohon: dokumenData.profil_pengaju.full_name,
+            noKtpPemohon: dokumenData.profil_pengaju.nik_id,
+            tempatLahirPemohon: dokumenData.profil_pengaju.place_of_birth,
+            tanggalLahirPemohon: dokumenData.profil_pengaju.date_of_birth,
+            pekerjaanPemohon: dokumenData.profil_pengaju.position,
+            alamatPemohon: `${dokumenData.profil_pengaju.full_address} RT/RW ${dokumenData.profil_pengaju.rtrw}, Desa ${dokumenData.profil_pengaju.desa.nama}, ${dokumenData.profil_pengaju.kecamatan.nama}, ${dokumenData.profil_pengaju.kabupaten.nama}, Provinsi ${dokumenData.profil_pengaju.provinsi.nama}`,
+            penghasilanPemohon: dokumenData.profil_pengaju.penghasilan,
+            noTeleponPemohon: dokumenData.profil_pengaju.phone_number,
+            namaPasanganPemohon: dokumenData.cek_id_bi.profile_pasangan_pengaju.full_name,
+            noKtpPasanganPemohon: dokumenData.cek_id_bi.profile_pasangan_pengaju.nik_id,
+            tempatLahirPasanganPemohon: dokumenData.cek_id_bi.profile_pasangan_pengaju.place_of_birth,
+            tanggalLahirPasanganPemohon: dokumenData.cek_id_bi.profile_pasangan_pengaju.date_of_birth,
+            pekerjaanPasanganPemohon: dokumenData.cek_id_bi.profile_pasangan_pengaju.position,
+            alamatPasanganPemohon: `${dokumenData.cek_id_bi.profile_pasangan_pengaju.full_address} RT/RW ${dokumenData.cek_id_bi.profile_pasangan_pengaju.rtrw}`,
+            penghasilanPasanganPemohon: dokumenData.cek_id_bi.profile_pasangan_pengaju.penghasilan,
+            namaPerumahan: dokumenData.housing_areas.nama,
+            alamatPerumahan: `${dokumenData.housing_areas.full_address} Desa ${dokumenData.housing_areas.desaAlamatPerumahan.nama}, ${dokumenData.housing_areas.kecamatanAlamatPerumahan.nama}, ${dokumenData.housing_areas.kabupatenAlamatPerumahan.nama}, Provinsi ${dokumenData.housing_areas.provinsiAlamatPerumahan.nama}`,
+            nomorRumah: dokumenData.house.blok,
+            hargaJualRumah: dokumenData.house.harga,
+            uangMuka: dokumenData.dokumen_pengajuan.uang_muka,
+            kantorCabangBank: dokumenData.dokumen_lanjutan.cabang_bank,
+            tempatSuratDibuat: dokumenData.dokumen_lanjutan.tempat_surat_dibuat,
+            tanggalSuratDibuat: dokumenData.dokumen_lanjutan.tanggal_surat_dibuat,
+            namaLengkapPihakBank: dokumenData.dokumen_lanjutan.nama_lengkap_pihak_bank,
+            jabatanPihakBank: dokumenData.dokumen_lanjutan.jabatan_pihak_bank,
+            namaLengkapPihakKetiga: dokumenData.dokumen_lanjutan.nama_lengkap_pihak_ketiga,
+            jabatanPihakKetiga: dokumenData.dokumen_lanjutan.jabatan_pihak_ketiga,
+            nomorRekeningSimpanan: dokumenData.dokumen_lanjutan.nomor_rekening_bank,
+            nomorRekeningKpr: dokumenData.dokumen_lanjutan.nomor_rekening_bank,
+            nomorSp3k: dokumenData.dokumen_lanjutan.nomor_sp3k,
+            tanggalAkad: dokumenData.dokumen_lanjutan.tanggal_akad,
+            bankYangDigunakan: dokumenData.bank_yang_digunakan
+        }
+        setData(formattedData);
 
     };
 
