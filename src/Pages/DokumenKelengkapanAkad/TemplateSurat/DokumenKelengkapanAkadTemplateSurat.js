@@ -5,7 +5,7 @@ const DokumenKelengkapanAkadTemplateSurat = forwardRef((props, documentTemplateR
 
     return (
         <div className={classes.DokumenKelengkapanAkadTemplateSurat} ref={documentTemplateRef}>
-             <div className={classes.wrapHalaman1}>
+            <div className={classes.wrapHalaman1}>
                  <div className={classes.wrapKop}>
                     <div className={classes.kop}>
                         <img src={'/LogoHD.jpg'} alt="Logo" className={classes.logoPerusahaan} />
@@ -34,15 +34,13 @@ const DokumenKelengkapanAkadTemplateSurat = forwardRef((props, documentTemplateR
                     <hr style={{ width: "100%", height: "2px", marginTop: "2px" }} color='black'></hr>
                     <hr style={{ width: "100%", height: "2px", marginTop: "2px" }} color='black'></hr>
                     <br></br>
-                </div>
-            </div>
+                    </div>
 
-            <h3 style={{ textDecorationLine: "underline", textalign: "center" }}>
-                CHECKLIST
-            </h3>
-                    
-            <div style={{width: "100%", paddingTop:"10px"}}>
-                <table className={classes.tabelKelengkapanDokumenKPR}>
+                    <h3 style={{ textDecorationLine: "underline", textalign: "center", height:"1cm" }}>
+                        CHECKLIST
+                    </h3>
+
+                    <table className={classes.tabelKelengkapanDokumenKPR}>
                     <thead></thead> 
                     <tbody>
                         <tr style={{textalign:"center"}}>
@@ -127,7 +125,8 @@ const DokumenKelengkapanAkadTemplateSurat = forwardRef((props, documentTemplateR
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman2} style={{paddingTop:"15cm"}}>
+            
+            <div className={classes.wrapHalaman2}>
                 <div className={classes.Border}>
                     <h3 style={{ textDecorationLine: "underline", textalign: "center", paddingTop:"0.3cm" }}>
                          BERITA ACARA SERAH TERIMA
@@ -205,71 +204,72 @@ const DokumenKelengkapanAkadTemplateSurat = forwardRef((props, documentTemplateR
                         </tbody>
                     </table>
 
-                <table className={classes.tablePersetujuanTTD} style={{width:"100%", fontSize:"12px"}}>
-                    <thead></thead>
-                    <tbody>
-                        <tr style={{textAlign:"center" , width :"15cm"}}>
-                            <td style={{width : "5cm"}}>Pihak Pertama,</td>
-                            <td style={{width : "5cm"}}>Pihak Kedua,</td>
-                        </tr>
-                        <tr style={{textAlign:"center" , width :"15cm"}}>
-                            <td style={{width : "5cm"}}>
-                                <b>PT BANK TABUNGAN NEGARA (PERSERO) Tbk</b>
-                                <p>
-                                    <b>
-                                        KANTOR CABANG 
-                                    </b>
-                                </p>
-                                <p>
-                                    <b>
-                                        ………………………
-                                    </b>
-                                </p>
-                            </td>
-                            <td style={{width : "5cm", paddingBottom:"0.5cm"}}>
-                                <b>DEBITUR</b>
-                                <p>
-                                    <b>KPR SEJAHTERA FLPP</b>
-                                </p> 
+                    <table className={classes.tablePersetujuanTTD} style={{width:"100%", fontSize:"12px"}}>
+                        <thead></thead>
+                        <tbody>
+                            <tr style={{textAlign:"center" , width :"15cm"}}>
+                                <td style={{width : "5cm"}}>Pihak Pertama,</td>
+                                <td style={{width : "5cm"}}>Pihak Kedua,</td>
+                            </tr>
+                            <tr style={{textAlign:"center" , width :"15cm"}}>
+                                <td style={{width : "5cm"}}>
+                                    <b>PT BANK TABUNGAN NEGARA (PERSERO) Tbk</b>
+                                    <p>
+                                        <b>
+                                            KANTOR CABANG 
+                                        </b>
+                                    </p>
+                                    <p>
+                                        <b>
+                                            ………………………
+                                        </b>
+                                    </p>
+                                </td>
+                                <td style={{width : "5cm", paddingBottom:"0.5cm"}}>
+                                    <b>DEBITUR</b>
+                                    <p>
+                                        <b>KPR SEJAHTERA FLPP</b>
+                                    </p> 
 
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
 
-                        <tr style={{textAlign:"center" , width :"15cm"}}>
-                            <td style={{width : "5cm", height:"2cm"}}></td>
-                            <td style={{width : "5cm", height:"2cm"}}></td>
-                        </tr>
+                            <tr style={{textAlign:"center" , width :"15cm"}}>
+                                <td style={{width : "5cm", height:"2cm"}}></td>
+                                <td style={{width : "5cm", height:"2cm"}}></td>
+                            </tr>
 
-                        <tr style={{textAlign:"center", width :"15cm"}}>
-                            <td style={{width : "5cm"}}>(……………………………………)
-                                <p color='grey' textalign='center'>
-                                    <i>
-                                        Nama Lengkap, Jabatan
-                                    </i>
-                                </p>
-                            </td>
+                            <tr style={{textAlign:"center", width :"15cm"}}>
+                                <td style={{width : "5cm"}}>(……………………………………)
+                                    <p color='grey' textalign='center'>
+                                        <i>
+                                            Nama Lengkap, Jabatan
+                                        </i>
+                                    </p>
+                                </td>
 
-                            <td style={{width : "5cm"}}>(……………………………………)
-                                <p color='grey' textalign='center'>
-                                    <i>
-                                        Nama Lengkap
-                                    </i>
-                                </p>
-                            </td>
-                        </tr>
+                                <td style={{width : "5cm"}}>(……………………………………)
+                                    <p color='grey' textalign='center'>
+                                        <i>
+                                            Nama Lengkap
+                                        </i>
+                                    </p>
+                                </td>
+                            </tr>
 
-                        <tr style={{width :"15cm"}}>
-                            <td style={{width : "5cm"}}>
-                                *) Coret yang tidak perlu
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            <tr style={{width :"15cm"}}>
+                                <td style={{width : "5cm"}}>
+                                    *) Coret yang tidak perlu
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div className={classes.wrapHalaman3} style={{paddingTop:"12cm"}}>
-                <h4 style={{textalign: "center" }}>
+            
+            <div className={classes.wrapHalaman3}>
+                <h4 style={{textalign: "center", paddingTop:"0.5cm" }}>
                     SURAT PERNYATAAN KELAIKAN FUNGSI BANGUNAN RUMAH UMUM TAPAK
                 </h4>
                 <table style={{fontSize:"12px", width:"100%",paddingTop:"1cm", paddingLeft:"0.2cm"}}>
@@ -489,8 +489,9 @@ const DokumenKelengkapanAkadTemplateSurat = forwardRef((props, documentTemplateR
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman3} style={{paddingTop:"10cm"}}>
-                <p style={{fontSize:"12px", height:"1cm"}}>
+            
+            <div className={classes.wrapHalaman4}>
+                <p style={{fontSize:"12px", height:"1cm", paddingTop:"0.5cm"}}>
                     Dengan ini menyatakan bahwa:
                 </p>
                 <h4 style={{textalign: "center" }}>
@@ -546,44 +547,54 @@ const DokumenKelengkapanAkadTemplateSurat = forwardRef((props, documentTemplateR
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman4} style={{paddingTop:"21cm"}}>
+            
+            <div className={classes.wrapHalaman5}>
                 <img src={"./surat_kelaikan_fungsi_bangunan_rumah_umum_tapak_SekidaVillagePermai/Halaman 1.jpg"} className={classes.LampiranDokumen}/>
             </div>
 
-            <div className={classes.wrapHalaman5} style={{paddingTop:"1cm"}}>
+            
+            <div className={classes.wrapHalaman6}>
                 <img src={"./surat_kelaikan_fungsi_bangunan_rumah_umum_tapak_SekidaVillagePermai/Halaman 2.jpg"} className={classes.LampiranDokumen}/>
             </div>
 
-            <div className={classes.wrapHalaman6} style={{paddingTop:"1cm"}}>
+            
+            <div className={classes.wrapHalaman7}>
                 <img src={"./surat_kelaikan_fungsi_bangunan_rumah_umum_tapak_SekidaVillagePermai/Halaman 3.jpg"} className={classes.LampiranDokumen}/>
             </div>
 
-            <div className={classes.wrapHalaman7} style={{paddingTop:"1cm"}}>
+
+            <div className={classes.wrapHalaman8}>
                 <img src={"./surat_kelaikan_fungsi_bangunan_rumah_umum_tapak_SekidaVillagePermai/Halaman 4.jpg"} className={classes.LampiranDokumen}/>
             </div>
 
-            <div className={classes.wrapHalaman8} style={{paddingTop:"1cm"}}>
+
+            <div className={classes.wrapHalaman9}>
                 <img src={"./surat_kelaikan_fungsi_bangunan_rumah_umum_tapak_SekidaVillagePermai/Halaman 5.jpg"} className={classes.LampiranDokumen}/>
             </div>
 
-            <div className={classes.wrapHalaman9} style={{paddingTop:"1cm"}}>
+
+            <div className={classes.wrapHalaman10}>
                 <img src={"./surat_kelaikan_fungsi_bangunan_rumah_umum_tapak_SekidaVillagePermai/Halaman 6.jpg"} className={classes.LampiranDokumen}/>
             </div>
 
-            <div className={classes.wrapHalaman10} style={{paddingTop:"1cm"}}>
+
+            <div className={classes.wrapHalaman11}>
                 <img src={"./surat_kelaikan_fungsi_bangunan_rumah_umum_tapak_SekidaVillagePermai/Halaman 7.jpg"} className={classes.LampiranDokumen}/>
             </div>
 
-            <div className={classes.wrapHalaman11} style={{paddingTop:"1cm"}}>
+
+            <div className={classes.wrapHalaman12}>
                 <img src={"./surat_kelaikan_fungsi_bangunan_rumah_umum_tapak_SekidaVillagePermai/Halaman 8.jpg"} className={classes.LampiranDokumen}/>
             </div>
 
-            <div className={classes.wrapHalaman12} style={{paddingTop:"1cm"}}>
+
+            <div className={classes.wrapHalaman13}>
                 <img src={"./surat_kelaikan_fungsi_bangunan_rumah_umum_tapak_SekidaVillagePermai/Halaman 9.jpg"} className={classes.LampiranDokumen}/>
             </div>
 
-            <div className={classes.wrapHalaman13} style={{paddingTop:"280px"}}>
-                <h3 style={{textalign: "center"}}>
+            
+            <div className={classes.wrapHalaman14}>
+                <h3 style={{textalign: "center", paddingTop:"0.5cm"}}>
                     BERITA ACARA SERAH TERIMA
                     <p>
                         RUMAH UMUM TAPAK
@@ -781,8 +792,9 @@ const DokumenKelengkapanAkadTemplateSurat = forwardRef((props, documentTemplateR
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman14} style={{paddingTop:"280px"}}>
-                <h3 style={{textalign: "center"}}>
+            
+            <div className={classes.wrapHalaman15}>
+                <h3 style={{textalign: "center", paddingTop:"0.5cm"}}>
                     SURAT PERNYATAAN PENYELESAIAN 
                     <p>
                         PRASARANA, SARANA & UTILITAS PERUMAHAN
@@ -975,8 +987,9 @@ const DokumenKelengkapanAkadTemplateSurat = forwardRef((props, documentTemplateR
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman15} style={{paddingTop:"10.5cm"}}>
-                <h3 style={{textalign: "center", textDecorationLine:"underline"}}>
+            
+            <div className={classes.wrapHalaman16}>
+                <h3 style={{textalign: "center", textDecorationLine:"underline", paddingTop:"0.5cm"}}>
                     DAFTAR SIMAK
                 </h3>
 
@@ -1399,8 +1412,9 @@ const DokumenKelengkapanAkadTemplateSurat = forwardRef((props, documentTemplateR
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman16} style={{paddingTop:"9cm"}}>
-                 <div className={classes.wrapKop}>
+            
+            <div className={classes.wrapHalaman17}>
+                 <div className={classes.wrapKop} style={{paddingTop:"0.5cm"}}>
                     <div className={classes.kop}>
                         <img src={'/LogoHD.jpg'} alt="Logo" className={classes.logoPerusahaan} />
                         <div className={classes.kop_title}>
@@ -2020,7 +2034,8 @@ const DokumenKelengkapanAkadTemplateSurat = forwardRef((props, documentTemplateR
                 </div>
             </div>
         </div>
-    </div>
+
+        </div>
     )
 });
 
