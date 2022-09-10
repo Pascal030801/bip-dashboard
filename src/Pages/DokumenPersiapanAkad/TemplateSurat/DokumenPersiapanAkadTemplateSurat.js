@@ -1,3 +1,4 @@
+
 import React, { forwardRef, useRef } from 'react';
 import classes from './DokumenPersiapanAkadTemplateSurat.module.css';
 
@@ -5,9 +6,9 @@ const DokumenPersiapanAkadTemplateSurat = forwardRef((props, documentTemplateRef
 
     return (
         <div className={classes.DokumenPersiapanAkadTemplateSurat} ref={documentTemplateRef}>
-            <div className={classes.wrapHalaman1} style={{paddingTop:"0.5cm"}}>
+            <div className={classes.wrapHalaman1}>
 
-                <h3 style={{ textDecorationLine: "underline", paddingTop:"0.4cm", textAlign:"center"}}>
+                <h3 style={{ textDecorationLine: "underline", paddingTop:"0.5cm", textAlign:"center"}}>
                     SURAT PERNYATAAN 
                 </h3>
 
@@ -174,10 +175,11 @@ const DokumenPersiapanAkadTemplateSurat = forwardRef((props, documentTemplateRef
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman2} style={{paddingTop:"13cm"}}>
+            <div className={classes.wrapHalaman2}>
 
-                <h3 style={{paddingTop:"0.4cm", textAlign:"center"}}>
-                    SURAT PERNYATAAN PEMERIKSAAN KELAIKAN FUNGSI BANGUNAN GEDUNG
+                <h3 style={{textAlign:"center", paddingTop:"0.5cm"}}>
+                    SURAT PERNYATAAN PEMERIKSAAN KELAIKAN FUNGSI 
+                    <p>BANGUNAN GEDUNG</p>
                 </h3>
 
                 <hr style={{ width: "100%", marginTop: "2px" }} color='black'></hr>
@@ -645,16 +647,18 @@ const DokumenPersiapanAkadTemplateSurat = forwardRef((props, documentTemplateRef
                 </table>
             </div>
 
-            <div className={classes.wrapHalaman3} style={{paddingTop:"8cm"}}>
+            <div className={classes.wrapHalaman3}>
                 <img src={'./surat_pernyataan_pemeriksaan_kelaikan_fungsi_bangunan_gedung_lampiran identitas/KTP_SuwardyPurnawan.jpg'} alt="KTP" className={classes.LampiranDokumen}/>
             </div>
 
-            <div className={classes.wrapHalaman4} style={{paddingTop:"2cm"}}>
+            <div className={classes.wrapHalaman4}>
                 <img src={'./surat_pernyataan_pemeriksaan_kelaikan_fungsi_bangunan_gedung_lampiran identitas/SertifikatKeahlian_SuwardyPurnawan.png'} alt="SertifikatKeahlian" className={classes.LampiranDokumen}/>
             </div>
 
         </div>
     )
 });
+
+
 
 export default DokumenPersiapanAkadTemplateSurat;
