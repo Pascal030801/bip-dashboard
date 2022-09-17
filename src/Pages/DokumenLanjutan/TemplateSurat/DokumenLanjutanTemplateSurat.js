@@ -11,6 +11,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
     const paidUangMuka = parseInt(data.uangMuka, 10) - 4000000;
     const formattedPaidUangMuka = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(paidUangMuka)
     const formattedHargaRumah = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(data.hargaJualRumah, 10))
+    const formattedPenghasilanPengaju = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(parseInt(data.penghasilanPemohon, 10))
 
     return (
         <div className={classes.DokumenLanjutanTemplateSurat} ref={documentTemplateRef}>
@@ -809,7 +810,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         </tr>
                         <tr>
                             <td style={{width: "1cm", paddingLeft:"0.5cm", paddingBottom:"0.50cm"}}>1.</td> 
-                            <td>Saya selaku pemohon memiliki gaji/upah pokok/penghasilan bersih/upah rata-rata*) per bulan sebesar Rp. (Gaji Pemohon,-) (Gaji Pemohon Terbilang).</td>
+                            <td>Saya selaku pemohon memiliki gaji/upah pokok/penghasilan bersih/upah rata-rata*) per bulan sebesar ({formattedPenghasilanPengaju},-) ({formatter.tertulisToTerbilang(data.penghasilanPemohon, 'Rupiah')}).</td>
                         </tr>
                         <tr>
                             <td style={{width: "1cm", paddingLeft:"0.5cm", paddingBottom:"0.50cm"}}>2.</td> 
@@ -912,6 +913,9 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                                     <i>
                                         Nama Lengkap, Jabatan dan Stempel
                                     </i>
+                                </p>
+                                <p>
+
                                 </p>
                             </td>
                         </tr>
@@ -1020,8 +1024,8 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             </td>
                         </tr>
                         <tr>
-                            <td style={{width: "1cm", paddingLeft:"0.5cm", paddingBottom:"0.50cm"}}>1.</td> 
-                            <td>Saya selaku pemohon memiliki gaji/upah pokok/penghasilan bersih/upah rata-rata*) per bulan sebesar Rp. (Gaji Pemohon,-) (Gaji Pemohon Terbilang).</td>
+                            <td style={{width: "1cm", paddingLeft:"0.5cm", paddingBottom:"0.50cm", lineHeight: "12px"}}>1.</td> 
+                            <td>Saya selaku pemohon memiliki gaji/upah pokok/penghasilan bersih/upah rata-rata*) per bulan sebesar ({formattedPenghasilanPengaju},-) ({formatter.tertulisToTerbilang(data.penghasilanPemohon, 'Rupiah')}).</td>
                         </tr>
                         <tr>
                             <td style={{width: "1cm", paddingLeft:"0.5cm", paddingBottom:"0.50cm"}}>2.</td> 
@@ -1299,7 +1303,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             <td colSpan={2} style={{textAlign:"center"}}>
                                 <b>
                                     <p>PT. BANK TABUNGAN NEGARA (PERSERO) Tbk.</p>
-                                    <p>KANTOR CABANG ………………………</p>
+                                    <p>KANTOR CABANG {data.kantorCabangBank}</p>
                                 </b>
                             </td>  
                         </tr>
@@ -1354,11 +1358,11 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             </td>
                         </tr>
 
-                        <tr style={{ height:"2cm", textAlign:"justify"}}>
+                        <tr style={{ height:"3cm", textAlign:"justify"}}>
                             <td colSpan={3}>
                                 PT. Bank Tabungan Negara (Persero) Tbk., berkedudukan di Jalan Gajah Mada No. 01 Jakarta Pusat 
-                                yang dalam hal ini diwakili oleh ……………………………….…………………… selaku ………………………………….………………… di 
-                                PT. Bank Tabungan Negara (Persero) Tbk. Kantor Cabang …………………………………...
+                                yang dalam hal ini diwakili oleh  {data.namaLengkapPihakBank} selaku {data.jabatanPihakBank} di 
+                                PT. Bank Tabungan Negara (Persero) Tbk. Kantor Cabang {data.kantorCabangBank}
                                 Selanjutnya disebut “Penerima Kuasa”.
                             </td>
                         </tr>
@@ -1366,7 +1370,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                         <tr style={{height:"2cm", textAlign:"justify"}}>
                             <td colSpan={3}>
                                 Dengan ini Pemberi Kuasa memberi kuasa kepada Penerima Kuasa untuk melakukan pendebetan dana pada Nomor Rekening Tabungan 
-                                Pemberi Kuasa dengan nomor : .......................................... atas nama ({data.namaPemohon}) atas biaya asuransi, 
+                                Pemberi Kuasa dengan nomor : {data.nomorRekeningKpr} atas nama ({data.namaPemohon}) atas biaya asuransi, 
                                 biaya pengikatan agunan, dan biaya lainnya yang timbul atas penghentian KPR Bersubsidi BTN yang disebabkan oleh dokumen pernyataan 
                                 yang tidak benar dan/atau tidak dipenuhi dalam proses pengajuan dan pelaksanaan KPR Bersubsidi BTN.
                             </td>
@@ -1398,7 +1402,7 @@ const DokumenLanjutanTemplateSurat = forwardRef((props, documentTemplateRef) => 
                             <td style={{width : "5cm"}}> </td>
                         </tr>
                         <tr style={{textAlign:"center" , width :"15cm"}}>
-                            <td style={{width : "5cm"}}><b>KANTOR CABANG …………………</b>
+                            <td style={{width : "5cm"}}><b>KANTOR CABANG {data.kantorCabangBank}</b>
                             </td>
                             <td style={{width : "5cm"}}> </td>
                         </tr>

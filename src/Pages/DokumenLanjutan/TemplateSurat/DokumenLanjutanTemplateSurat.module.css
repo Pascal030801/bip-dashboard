@@ -197,3 +197,18 @@
 h3 {
     text-align: center;
 }
+
+.horizontal-dotted-line {
+    background-color: lightblue;
+    min-width: 6cm;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    padding-top: -20px;
+}
+
+.horizontal-dotted-line::before {
+
+    content: '';
+    flex: 1;
+    background-color: red;
+}
